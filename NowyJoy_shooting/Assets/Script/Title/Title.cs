@@ -35,12 +35,15 @@ public class Title : MonoBehaviour
     {
         if (isFull)
         {
+            SoundManager.Instance.ChangeBGM();
             logomove();
             Invoke("ChangeScene", 2f);
             //Invoke("FadeIn", 2f);
             FadeOut();
         }
     }
+
+   
     private void Update()
     {
         if (SceneManager.GetActiveScene().name == "Title")

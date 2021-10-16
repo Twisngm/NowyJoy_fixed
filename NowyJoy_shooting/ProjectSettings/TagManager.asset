@@ -13,6 +13,7 @@ TagManager:
   - Mode_story
   - Mode_integration
   - StopTrigger
+  - Stage
   layers:
   - Default
   - TransparentFX

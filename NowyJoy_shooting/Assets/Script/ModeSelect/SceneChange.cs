@@ -29,7 +29,7 @@ public class SceneChange : MonoBehaviour
     {
         if (selectedMode=="story")
         {
-            storyMode.transform.localScale = new Vector3(storyMode.transform.localScale.x + 4f * scaleSpeed * Time.deltaTime,
+            storyMode.transform.localScale = new Vector3(storyMode.transform.localScale.x + 2f * scaleSpeed * Time.deltaTime,
                 storyMode.transform.localScale.y, 0);
             storyMode_icon.transform.localScale = new Vector3(storyMode_icon.transform.localScale.x + 1f * scaleSpeed * Time.deltaTime,
                 storyMode_icon.transform.localScale.y + 1f * scaleSpeed * Time.deltaTime, 0);
@@ -44,7 +44,7 @@ public class SceneChange : MonoBehaviour
                 storyMode.transform.localScale.y - 1f * scaleSpeed * Time.deltaTime, 0);
             storyMode_icon.transform.localScale = new Vector3(storyMode_icon.transform.localScale.x - 1f * scaleSpeed * Time.deltaTime,
                 storyMode_icon.transform.localScale.y - 1f * scaleSpeed * Time.deltaTime, 0);
-            integrationMode.transform.localScale = new Vector3(integrationMode.transform.localScale.x + 4f * scaleSpeed * Time.deltaTime,
+            integrationMode.transform.localScale = new Vector3(integrationMode.transform.localScale.x + 2f * scaleSpeed * Time.deltaTime,
                 integrationMode.transform.localScale.y, 0);
             integrationMode_icon.transform.localScale = new Vector3(integrationMode_icon.transform.localScale.x + 1f * scaleSpeed * Time.deltaTime,
                 integrationMode_icon.transform.localScale.y + 1f * scaleSpeed * Time.deltaTime, 0);

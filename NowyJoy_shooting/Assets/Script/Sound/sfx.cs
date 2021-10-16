@@ -10,10 +10,6 @@ public class sfx : MonoBehaviour
     [SerializeField]
     private string getcoin;
 
-    void Start()
-    {
-        
-    }
 
 
     public void coinSound()
