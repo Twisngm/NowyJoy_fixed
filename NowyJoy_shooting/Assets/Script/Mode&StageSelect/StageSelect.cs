@@ -1,21 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StageSelect : MonoBehaviour
 {
-    public GameObject stage1_1;
-    //float checkTime = 0f;
-
-    //[SerializeField] [Range(1f, 5f)] float scaleSpeed = 1f;
+    public string stage;
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Stage"))
+        if (collision.CompareTag("Player"))
         {
-            if (collision.name == "1-1")
+            switch (stage)
             {
-                Debug.Log("1-1과 닿았습니다.");
+                case "1":
+                    Debug.Log("1 스테이지로 이동합니다.");
+                    //SceneManager.LoadScene("stage1");
+                    break;
+                case "1-1":
+                    Debug.Log("1-1 스테이지로 이동합니다.");
+                    break;
+                case "2":
+                    Debug.Log("2 스테이지로 이동합니다.");
+                    break;
             }
         }
     }
