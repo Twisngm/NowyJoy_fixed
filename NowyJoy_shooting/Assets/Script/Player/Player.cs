@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     // 더블 탭에 사용되는 변수
     float lastTouchTime;
     const float doubleTapdelay = 0.5f;
+    public PlayerBullet Attacker;
 
     float transferspeed = 0.15f; // 크기 조정비율(inspector 기준)
 
@@ -70,7 +71,7 @@ public class Player : MonoBehaviour
 
                 if (Time.time - lastTouchTime < doubleTapdelay/* && currentshot<shotdelay*/)
                 {
-                    // Attack();
+                    Attacker.Attack();
                 }
             }
             else if (touchZero.phase == TouchPhase.Ended) // 첫번째 터치의 phase가 Ended(끝)이라면

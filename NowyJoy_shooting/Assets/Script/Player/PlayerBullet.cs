@@ -13,7 +13,8 @@ public class PlayerBullet : MonoBehaviour
     }
     private void Update()
     {
-        //if (collision.gameObject.tag)
+        /*if ((collision.gameObject.tag == boss) || (collision.gameObject.tag == wall)){
+        }*/
         
     }
 
