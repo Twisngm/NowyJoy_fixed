@@ -6,25 +6,54 @@ using UnityEngine.SceneManagement;
 public class StageSelect : MonoBehaviour
 {
     public string stage;
-    
+    public bool full_stay = false;
+    public bool changeScene = false;
+    float timecheck = 0;
     [SerializeField] [Range(1f, 5f)] float scaleSpeed = 1f;
+
+    private void Update()
+    {
+        SceneChange();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
+            if (!full_stay)
+            {
+                switch (stage)
+                {
+                    case "1":
+                        Debug.Log("1 스테이지로 이동합니다.");
+                        StartCoroutine("changing");
+                    break;
+                    case "1-1":
+                        Debug.Log("1-1 스테이지로 이동합니다.");
+                        StartCoroutine("changing");
+                        break;
+                    case "2":
+                        Debug.Log("2 스테이지로 이동합니다.");
+                        StartCoroutine("changing");
+                        break;
+                }
+            }
+        }
+    }
+    void SceneChange()
+    {
+        if (changeScene)
+        {
             switch (stage)
             {
                 case "1":
-                    Debug.Log("1 스테이지로 이동합니다.");
-                    //SceneManager.LoadScene("stage1");
-                    StartCoroutine("changing");
+                    SceneManager.LoadScene("stage1");
                     break;
                 case "1-1":
-                    Debug.Log("1-1 스테이지로 이동합니다.");
+                    //SceneManager.LoadScene("stage1-1");
                     break;
                 case "2":
-                    Debug.Log("2 스테이지로 이동합니다.");
+                    //SceneManager.LoadScene("stage2");
                     break;
             }
         }
@@ -32,9 +61,12 @@ public class StageSelect : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("나갔습니다.");
         StopCoroutine("changing");
-        StartCoroutine("changing_small");
+        if (!full_stay)
+        {
+            StartCoroutine("changing_small");
+        }
+        
     }
 
 
@@ -53,23 +85,25 @@ public class StageSelect : MonoBehaviour
     {
         float checkTime = 0f;
         
-        while (checkTime <= 4f)
+        while (checkTime < 4f)
         {
             yield return new WaitForSecondsRealtime(0.02f);
             checkTime += 0.1f;
             changed();
-            PlayerPrefs.SetFloat("checktime", checkTime);
+            timecheck = checkTime;
         }
         
-        if (checkTime > 4f)
+        if (checkTime >= 4f)
         {
+            changeScene = true;
+            full_stay = true;
             yield break;
         }
     }
 
     IEnumerator changing_small()
     {
-        float checkTime = PlayerPrefs.GetFloat("checktime", 0f);
+        float checkTime = timecheck;
         while (checkTime >= 0f && checkTime < 4f)
         {
             yield return new WaitForSecondsRealtime(0.02f);
@@ -80,8 +114,6 @@ public class StageSelect : MonoBehaviour
         {
             yield break;
         }
-
-
     }
 
 
