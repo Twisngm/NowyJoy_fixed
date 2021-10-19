@@ -341,6 +341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stage: 1
+  scaleSpeed: 3
 --- !u!212 &249611908
 SpriteRenderer:
   m_ObjectHideFlags: 0
