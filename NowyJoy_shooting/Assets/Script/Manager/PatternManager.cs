@@ -659,4 +659,17 @@ public class PatternManager : MonoBehaviour
 
 
     }
+
+    /*
+     * public GameObject Teledoor1;
+       public GameObject Teledoor2;
+       BoxCollider2D Telecoll1 = Teledoor1.collider;
+       BoxCollider2D Telecoll2 = Teledoor2.collider;
+       Transform Tetr1 = Teledoor1.Transform;
+       Transform Tetr2 = Teledoor2.Transform;
+     */
+    /*public void Teleporter{
+     * if (
+     }*/
+
 }
