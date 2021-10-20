@@ -13,6 +13,10 @@ public class PlayerBullet : MonoBehaviour
     }
     private void Update()
     {
+        if (collision.gameObject.name == "Wall")
+        {
+            Destroy(gameObject);
+        }
         /*if ((collision.gameObject.tag == boss) || (collision.gameObject.tag == wall)){
         }*/
         

@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public int HP;
+    public int stagenum;
     
     void Start()
     {
