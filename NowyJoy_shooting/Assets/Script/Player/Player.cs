@@ -27,7 +27,9 @@ public class Player : MonoBehaviour
     // 더블 탭에 사용되는 변수
     float lastTouchTime;
     const float doubleTapdelay = 0.5f;
-    public PlayerBullet Attacker;
+    public GameObject Attacker;
+    public float PBspeed;
+    Transform PBtr;
 
     float transferspeed = 0.15f; // 크기 조정비율(inspector 기준)
 
@@ -39,6 +41,7 @@ public class Player : MonoBehaviour
         Playercollider = GetComponent<PolygonCollider2D>();
         heart = transform.GetChild(0).GetComponent<Heart>();
         lastTouchTime = Time.time;
+        PBtr = Attacker.transform;
     }
 
     void Update()
@@ -71,7 +74,7 @@ public class Player : MonoBehaviour
 
                 if (Time.time - lastTouchTime < doubleTapdelay/* && currentshot<shotdelay*/)
                 {
-                    Attacker.Attack();
+                    PBFire();
                 }
             }
             else if (touchZero.phase == TouchPhase.Ended) // 첫번째 터치의 phase가 Ended(끝)이라면
@@ -131,7 +134,7 @@ public class Player : MonoBehaviour
                 target.position = m_prevPos = m_curPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.GetTouch(0).position.x * -1, Input.GetTouch(0).position.y * -1, Spacepos.z)); // 이동시키기
                 if (Time.time - lastTouchTime < doubleTapdelay/* && currentshot<shotdelay*/)
                 {
-                    // Attack();
+                    PBFire();
                 }
             }
             else if (touchZero.phase == TouchPhase.Ended) // 첫번째 터치의 phase가 Ended(끝)이라면
@@ -182,7 +185,16 @@ public class Player : MonoBehaviour
         Quaternion targetRotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: quaternionToTarget);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, anglespeed * Time.deltaTime);
     }
+    void PBFire() //탄환 발사
+    {
+        GameObject Playerprefeb = Instantiate(Attacker, transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f));
+        CapsuleCollider2D collision = Attacker.GetComponent<CapsuleCollider2D>();
+        Vector2 dir = (Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position) - gameObject.transform.position); //Vector계산
 
+        PlayerBullet PBscript = Playerprefeb.GetComponent<PlayerBullet>();
+        PBscript.Move(dir, PBspeed);
+        //PBtr.Translate(dir.normalized * PBspeed * Time.deltaTime); //전진부
+    }
    
 
 } // targetpos = gap?

@@ -2191,7 +2191,8 @@ MonoBehaviour:
   deltaMagnitudeDiff: 0
   target: {fileID: 1110261506}
   targetpos: {x: 0, y: 0}
-  Attacker: {fileID: -3681600653075748708, guid: cf2f36689b914bd4182e4596d0e5057f, type: 3}
+  Attacker: {fileID: 6825327782487484658, guid: cf2f36689b914bd4182e4596d0e5057f, type: 3}
+  PBspeed: 1
 --- !u!212 &667707129
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2685,6 +2686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 15
+  stagenum: 0
 --- !u!4 &753924843
 Transform:
   m_ObjectHideFlags: 0
