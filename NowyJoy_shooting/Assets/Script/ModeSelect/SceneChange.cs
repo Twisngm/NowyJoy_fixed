@@ -68,6 +68,7 @@ public class SceneChange : MonoBehaviour
         }
         if (checkTime > 2.4f)
         {
+            SceneManager.LoadScene("StageSelect");
             yield break;
         }
     }
