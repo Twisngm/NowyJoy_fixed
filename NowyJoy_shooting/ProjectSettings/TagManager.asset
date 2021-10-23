@@ -60,3 +60,6 @@ TagManager:
   - name: Player
     uniqueID: 2669896777
     locked: 0
+  - name: fadeScene
+    uniqueID: 1837090465
+    locked: 0

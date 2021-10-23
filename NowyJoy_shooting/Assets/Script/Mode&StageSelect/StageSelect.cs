@@ -47,15 +47,34 @@ public class StageSelect : MonoBehaviour
             switch (stage)
             {
                 case "1":
-                    SceneManager.LoadScene("stage1");
+                    SceneChangeManager.Instance.FadeOut();
+                    StartCoroutine("sceneLoading", 1);
                     break;
                 case "1-1":
-                    //SceneManager.LoadScene("stage1-1");
+                    
                     break;
                 case "2":
-                    //SceneManager.LoadScene("stage2");
+                    
                     break;
             }
+        }
+    }
+
+    IEnumerator sceneLoading(float stage_number)
+    {
+        yield return new WaitForSeconds(1.0f);
+
+        if (stage_number == 1)
+        {
+            SceneManager.LoadScene("stage1");
+        }
+        else if (stage_number == 1.5)
+        {
+            SceneManager.LoadScene("stage1-1");
+        }
+        else if (stage_number == 2)
+        {
+            SceneManager.LoadScene("stage2");
         }
     }
 

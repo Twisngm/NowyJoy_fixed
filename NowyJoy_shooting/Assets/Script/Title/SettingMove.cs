@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class SettingMove : MonoBehaviour
 {
-    Vector2 settingposdown = new Vector2(0, -1.5f);
+    Vector2 settingposdown = new Vector2(0, -2f);
     Vector2 settingposup = new Vector2(0, 3f);
-    public float speed = 7f;
+    public float speed = 10f;
     public Button btn, hidebtn;
     bool isMovedUp = false;
     bool isMovedDown = false;
