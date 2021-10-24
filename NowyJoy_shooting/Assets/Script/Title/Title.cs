@@ -28,6 +28,7 @@ public class Title : MonoBehaviour
     private FadeState fadeState;
     public AnimationCurve fadeCurve;
     public AnimationCurve fadeCurve2;
+
     public bool isSceneChanged = false;
     
 
