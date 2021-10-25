@@ -64,11 +64,11 @@ public class SceneChangeManager : MonoBehaviour
         }
         if (SceneManager.GetActiveScene().name == "ModeSelect")
         {
-            Debug.Log("모드 선택 창입니다.");
-            Invoke("FadeIn", 0.5f);
+            FadeIn();
         }
         if (SceneManager.GetActiveScene().name == "StageSelect")
         {
+            fadeObject.color = new Color(0, 0, 0, 1);
             FadeIn();
         }
     }
@@ -112,6 +112,7 @@ public class SceneChangeManager : MonoBehaviour
     {
         Debug.Log("화면이 어두워집니다.");
         StartCoroutine(FadeTest(0, 1)); // 화면이 점점 어두워짐
+        testimage.color = new Color(0, 0, 0, 0);
     }
 
     public void FadeInTest()
