@@ -7,10 +7,12 @@ public class ObjectManager : MonoBehaviour
     GameObject[] bulletA;
     GameObject[] bulletB;
     GameObject[] bulletC;
+    GameObject[] playerClone;
 
     public GameObject bulletA_Prefabs;
     public GameObject bulletB_Prefabs;
     public GameObject bulletC_Prefabs;
+    public GameObject player_Prefabs;
 
     GameObject[] targetPool;
 
@@ -19,6 +21,7 @@ public class ObjectManager : MonoBehaviour
         bulletA = new GameObject[20];
         bulletB = new GameObject[150];
         bulletC = new GameObject[70];
+        playerClone = new GameObject[1];
 
 
         Generate();
@@ -46,6 +49,8 @@ public class ObjectManager : MonoBehaviour
             bulletC[index] = Instantiate(bulletC_Prefabs);
             bulletC[index].SetActive(false);
         }
+        playerClone[0] = Instantiate(player_Prefabs);
+        playerClone[0].SetActive(false);
     }
 
     public GameObject MakeObj(string type)
@@ -63,6 +68,10 @@ public class ObjectManager : MonoBehaviour
 
             case "bulletC":
                 targetPool = bulletC;
+                break;
+
+            case "playerClone":
+                targetPool = playerClone;
                 break;
         }
 

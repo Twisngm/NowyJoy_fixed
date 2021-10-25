@@ -48,6 +48,7 @@ public class Player : MonoBehaviour
     {
         OnDrag();
         Update_LookRatation();
+        CameraIn();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -58,7 +59,25 @@ public class Player : MonoBehaviour
             heart.OnDamaged();
         }
     }
- 
+    
+    void CameraIn()
+    {
+        Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
+
+
+
+        if (pos.x < 0f) pos.x = 0;
+
+        if (pos.x > 1f) pos.x = 1;
+
+        if (pos.y < 0) pos.y = 0;
+
+        if (pos.y > 1) pos.y = 1;
+
+
+
+        transform.position = Camera.main.ViewportToWorldPoint(pos);
+    }
 
 
     public void OnDrag()
