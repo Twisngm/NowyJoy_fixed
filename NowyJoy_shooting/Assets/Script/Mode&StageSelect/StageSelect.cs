@@ -47,15 +47,16 @@ public class StageSelect : MonoBehaviour
             switch (stage)
             {
                 case "1":
-                    //SceneChangeManager.Instance.FadeOut();
-                    SceneChangeManager.Instance.FadeOutTest(); // ÀßµÈ´Ù!!
+                    SceneChangeManager.Instance.FadeOut();
                     StartCoroutine("sceneLoading", 1);
                     break;
                 case "1-1":
-                    
+                    SceneChangeManager.Instance.FadeOut();
+                    StartCoroutine("sceneLoading", 1.5f);
                     break;
                 case "2":
-                    
+                    SceneChangeManager.Instance.FadeOut();
+                    StartCoroutine("sceneLoading", 2);
                     break;
             }
         }

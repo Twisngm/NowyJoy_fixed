@@ -39,7 +39,6 @@ public class Title : MonoBehaviour
             SoundManager.Instance.ChangeBGM();
             logomove();
             Invoke("ChangeScene", 2f);
-            //Invoke("FadeIn", 2f);
             FadeOut();
         }
     }
@@ -58,16 +57,14 @@ public class Title : MonoBehaviour
         {
             image.gameObject.SetActive(true);
             image2.gameObject.SetActive(false);
-           
             FadeIn();
-            
         }
     }
     private void Start()
     {
         image = image.gameObject.GetComponent<Image>();
         image2 = image2.gameObject.GetComponent<Image>();
-        GM.SetActive(true);
+        //GM.SetActive(true); - gm ¾øÀ½
     }
 
     public void Add(int val)
@@ -166,38 +163,6 @@ public class Title : MonoBehaviour
         yield return new WaitForSeconds(1f);
     }
 
-    //public void OnFade(FadeState state)
-    //{
-    //    fadeState = state;
-
-    //    switch (fadeState)
-    //    {
-    //        case FadeState.FadeIn:
-    //            StartCoroutine(Fade(1, 0));
-    //            break;
-    //        case FadeState.FadeOut:
-    //            StartCoroutine(Fade(0, 1));
-    //            break;
-    //        case FadeState.FadeInOut:
-    //        case FadeState.FadeLoop:
-    //            StartCoroutine(FadeInOut());
-    //            break;
-    //    }
-    //}
-    //private IEnumerator FadeInOut()
-    //{
-    //    while (true)
-    //    {
-    //        yield return StartCoroutine(Fade(0, 1));
-
-    //        yield return StartCoroutine(Fade(1, 0));
-
-    //        if (fadeState == FadeState.FadeInOut)
-    //        {
-    //            break;
-    //        }
-    //    }
-    //}
 
     public void HideWindow()
     {

@@ -210,18 +210,29 @@ public class Player : MonoBehaviour
         Vector3 quaternionToTarget = Quaternion.Euler(0, 0, axis) * vectorToTarget; // 여기부터는 어떻게 구현되는건지 잘 모르겠음
 
         Quaternion targetRotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: quaternionToTarget);
+        /*
+         * if (targetRotation.z >= 30 && targetRotation.z <= 330)
+         * {
+         *     if (targetRotation.z <=180){
+         *     targetRotation.z = 30;
+         *     }
+         *     else{
+         *     targetRotation.z = 330;
+         *     }
+         * }
+         */
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, anglespeed * Time.deltaTime);
+
     }
     void PBFire() //탄환 발사
     {
         GameObject Playerprefeb = Instantiate(Attacker, transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f));
-        CapsuleCollider2D collision = Attacker.GetComponent<CapsuleCollider2D>();
-        Vector2 dir = (Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position) - gameObject.transform.position); //Vector계산
+        Rigidbody2D PBrigid = Attacker.GetComponent<Rigidbody2D>();
+        PBrigid.AddForce(Vector2.up * PBspeed, ForceMode2D.Impulse);
+        //Vector2 dir = (Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position) - gameObject.transform.position); //Vector계산
 
-        PlayerBullet PBscript = Playerprefeb.GetComponent<PlayerBullet>();
-        PBscript.Move(dir, PBspeed);
         //PBtr.Translate(dir.normalized * PBspeed * Time.deltaTime); //전진부
     }
-   
+
 
 } // targetpos = gap?

@@ -68,7 +68,15 @@ public class SceneChange : MonoBehaviour
         }
         if (checkTime > 2.4f)
         {
-            SceneManager.LoadScene("StageSelect");
+            if (mode == "story")
+            {
+                SceneManager.LoadScene("StageSelect");
+            }
+            else
+            {
+
+            }
+            
             yield break;
         }
     }
