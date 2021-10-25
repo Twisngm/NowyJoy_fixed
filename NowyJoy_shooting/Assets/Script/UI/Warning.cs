@@ -33,7 +33,7 @@ public class Warning : MonoBehaviour
         while(gauge.fillAmount <= 1)
         {
             gauge.fillAmount += 0.015f;
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.01f); // ¾à 0.66 ÃÊ
         }
     }
 }

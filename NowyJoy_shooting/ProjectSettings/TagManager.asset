@@ -16,6 +16,7 @@ TagManager:
   - Stage
   - Rabbit
   - Body
+  - Wiper
   layers:
   - Default
   - TransparentFX

@@ -51,6 +51,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   testobj:
   - {fileID: 0}
   - {fileID: 0}
@@ -95,4 +99,30 @@ MonoBehaviour:
   Warning_Pawn: {fileID: 0}
   WarnPawn: {fileID: 0}
   WarnUnderPawn: {fileID: 0}
+  cam: {fileID: 0}
+  camZ:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  player: {fileID: 0}
+  heart: {fileID: 0}
+  centerLine: {fileID: 0}
+  ClonePos: {x: 0, y: 2.6, z: 0}
+  PlayerPos: {x: 0, y: -2.6, z: 0}
+  Warning_Mirror: {fileID: 0}
+  Wiper_Ver: {fileID: 0}
+  Wiper_Hor: {fileID: 0}
+  Warning_Wiper_Ver: {fileID: 0}
+  Warning_Wiper_Hor: {fileID: 0}
+  Wiper_Speed: 2
   NowyJoy: {fileID: 0}

@@ -55,11 +55,19 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Thorn"))
         {
-            Debug.Log("닿음");
+           
             heart.OnDamaged();
         }
     }
-    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wiper"))
+        {
+            
+            heart.OnDamaged();
+        }
+    }
+
     void CameraIn()
     {
         Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);

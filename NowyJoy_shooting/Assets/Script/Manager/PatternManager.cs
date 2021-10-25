@@ -18,8 +18,7 @@ public class PatternManager : MonoBehaviour
     public Transform bulletPos;  
     public float BulletAspeed;
     public float shootSpeed_target;
-    bool isShooting = false;
-
+  
     // 스핀샷 패턴
   
     public float shootSpeed_spin;
@@ -79,6 +78,12 @@ public class PatternManager : MonoBehaviour
     public Vector3 PlayerPos;
     public GameObject Warning_Mirror;
 
+    // 와이퍼 패턴
+    public GameObject Wiper_Ver;
+    public GameObject Wiper_Hor;
+    public GameObject Warning_Wiper_Ver;
+    public GameObject Warning_Wiper_Hor;
+    public float Wiper_Speed;
 
     public GameObject NowyJoy;
     Title title;
@@ -105,6 +110,7 @@ public class PatternManager : MonoBehaviour
         StartCoroutine("Shooting");
         Invoke("DoPattern", 5f);
         DoPtn();
+
     }
     private void Update()
     {
@@ -132,7 +138,7 @@ public class PatternManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
-            Screen_Scale_Control();
+            startWiper(PatternPos[Random.Range(0,8)]);
         }
         if (Input.GetKeyDown(KeyCode.Z))
         {
@@ -195,8 +201,8 @@ public class PatternManager : MonoBehaviour
 
         do
         {
-            randPos[0] = Random.Range(0, 4);
-            randPos[1] = Random.Range(0, 4);
+            randPos[0] = Random.Range(0, 8);
+            randPos[1] = Random.Range(0, 8);
         }
         while (randPos[0] == randPos[1]);
 
@@ -205,8 +211,8 @@ public class PatternManager : MonoBehaviour
 
         do
         {
-            randPtn[0] = Random.Range(0, 8);
-            randPtn[1] = Random.Range(0, 8);
+            randPtn[0] = Random.Range(0, 3);
+            randPtn[1] = Random.Range(0, 3);
         }
         while (randPtn[0] == randPtn[1]);
 
@@ -222,7 +228,7 @@ public class PatternManager : MonoBehaviour
                 break;
 
             case 2:
-                StartCoroutine(test3(ptnPos[0]));
+                startWiper(ptnPos[0]);
                 break;
 
             case 3:
@@ -258,7 +264,7 @@ public class PatternManager : MonoBehaviour
                 break;
 
             case 2:
-                StartCoroutine(test3(ptnPos[1]));
+                startWiper(ptnPos[1]);
                 break;
 
             case 3:
@@ -750,6 +756,117 @@ public class PatternManager : MonoBehaviour
 
       //   Invoke("StartMirror", 10f);
     }
+   void startWiper(Transform Pos)
+    {
+        StartCoroutine(WiperPattern(Pos));
+    }
+    IEnumerator WiperPattern(Transform Pos)
+    {
+    
+        if((Pos.position == new Vector3(3.3f,0)) || (Pos.position == new Vector3(-3.3f, 0))) // 좌우 와이퍼
+        {
+            /// 경고표시
+            if (Pos.position.x > 0)
+                Warning[2].SetActive(true);
+            else
+                Warning[3].SetActive(true);
+            yield return new WaitForSeconds(1f);
+            if (Pos.position.x > 0)
+                Warning[2].SetActive(false);
+            else
+                Warning[3].SetActive(false);
+            ///
+            Warning_Wiper_Hor.SetActive(true); // 활성화
+            Wiper_Hor.SetActive(true);
+            yield return new WaitForSeconds(0.005f);
+            Wiper_Hor.transform.position = Pos.position; // 위치 설정
+            Wiper_Hor.transform.rotation = Quaternion.Euler(0, 0, 90);
+            iTween.RotateTo(Wiper_Hor, iTween.Hash("z", Pos.position.x > 0 ? 270 : -90 , "time", Wiper_Speed, "easeType", "Linear"));
+            yield return new WaitForSeconds(Wiper_Speed);
+            Wiper_Hor.SetActive(false); // 비활성화
+            Warning_Wiper_Hor.SetActive(false);
+
+        }
+        
+        else if(Pos.position.y != 0) // 상하 와이퍼
+        {
+            if (Pos.position.x == 0) // 중심
+            {
+                /// 경고표시
+                if (Pos.position.y > 0)
+                    Warning[0].SetActive(true);
+                else
+                    Warning[1].SetActive(true);
+                yield return new WaitForSeconds(1f);
+                if (Pos.position.y > 0)
+                    Warning[0].SetActive(false);
+                else
+                    Warning[1].SetActive(false);
+                ///
+               
+                Warning_Wiper_Ver.SetActive(true); // 활성화
+                Wiper_Ver.SetActive(true);
+                yield return new WaitForSeconds(0.005f);
+                Wiper_Ver.transform.position = Pos.position; // 위치 설정
+                Wiper_Ver.transform.rotation = Quaternion.Euler(0, 0, 180);
+                iTween.RotateTo(Wiper_Ver, iTween.Hash("z", Pos.position.y > 0 ? 360 : 0, "time", Wiper_Speed, "easeType", "Linear"));
+                yield return new WaitForSeconds(Wiper_Speed);
+                Wiper_Ver.SetActive(false); // 비활성화
+                Warning_Wiper_Ver.SetActive(false);
+            }
+            else // 모서리
+            {
+                /// 경고표시
+                if (Pos.position.x > 0)
+                {
+                    if (Pos.position.y > 0)
+                        Warning[4].SetActive(true);
+                    else
+                        Warning[5].SetActive(true);
+                }
+                else
+                {
+                    if (Pos.position.y > 0)
+                        Warning[6].SetActive(true);
+                    else
+                        Warning[7].SetActive(true);
+                }
+                    
+                yield return new WaitForSeconds(1f);
+                if (Pos.position.x > 0)
+                {
+                    if (Pos.position.y > 0)
+                        Warning[4].SetActive(false);
+                    else
+                        Warning[5].SetActive(false);
+                }
+                else
+                {
+                    if (Pos.position.y > 0)
+                        Warning[6].SetActive(false);
+                    else
+                        Warning[7].SetActive(false);
+                }
+
+                ///
+               
+                Warning_Wiper_Ver.SetActive(true); // 활성화
+                Wiper_Ver.SetActive(true);
+                yield return new WaitForSeconds(0.005f);
+                Wiper_Ver.transform.position = Pos.position; // 위치 설정
+                Wiper_Ver.transform.rotation = Quaternion.Euler(0, 0, Pos.position.x > 0 ? 180 : 0);
+                iTween.RotateTo(Wiper_Ver, iTween.Hash("z", (Pos.position.x > 0 ? 1 : 180) * (Pos.position.y > 0 ? -1 : 1) , "time", Wiper_Speed * 1.5f, "easeType", "Linear"));
+                yield return new WaitForSeconds(Wiper_Speed);
+                Wiper_Ver.SetActive(false); // 비활성화
+                Warning_Wiper_Ver.SetActive(false);
+            }
+        }
+        
+        
+        
+
+    }
+   
 
     /*
      *
