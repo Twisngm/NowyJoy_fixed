@@ -17,6 +17,7 @@ TagManager:
   - Rabbit
   - Body
   - Wiper
+  - curtein
   layers:
   - Default
   - TransparentFX

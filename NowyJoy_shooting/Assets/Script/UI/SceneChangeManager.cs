@@ -7,6 +7,17 @@ using UnityEngine.SceneManagement;
 public class SceneChangeManager : MonoBehaviour
 {
     public Image fadeObject;
+    public Image curtein_full;
+    public Image curtein_left;
+    public Image curtein_right;
+    Vector2 curteinposdown = new Vector2(0, -3f);
+    Vector2 curteinposup = new Vector2(0, 3f);
+    Vector2 curteinposleft = new Vector2(-2f,0);
+    Vector2 curteinposright = new Vector2(2f, 0);
+    public float speed = 6f;
+    bool isMovedUp = false;
+    bool isMovedDown = false;
+    float checkTime = 0f;
 
     [Range(0.01f, 10f)]
     public float fadeTime = 1f;
@@ -38,6 +49,85 @@ public class SceneChangeManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
     
+    public void curtein_down()
+    {
+        if (isMovedDown)
+        {
+            StartCoroutine("curteinUp");
+        }
+        else
+        {
+        StartCoroutine("curteinDown");
+        }
+    }
+
+    public void curtein_close()
+    {
+        StartCoroutine("curteinClosed");
+    }
+    public void curtein_move()
+    {
+        // 양 사이드의 커튼 가운데로 이동!
+        curtein_left.transform.position = new Vector2(Screen.width / 2 - (Screen.width/2), Screen.height / 2);
+        curtein_right.transform.position = new Vector2(Screen.width / 2 + (Screen.width / 2), Screen.height / 2);
+
+
+        //화면 가운데로 이동시킴
+        //curtein_full.transform.position = new Vector2(Screen.width/2, Screen.height/2);
+    }
+
+    IEnumerator curteinDown()
+    {
+        while (checkTime <2f)
+        {
+            isMovedDown = true;
+            checkTime += 0.1f;
+            yield return new WaitForSecondsRealtime(0.1f);
+            curtein_full.transform.Translate(curteinposdown * speed);
+        }
+        if (checkTime > 2f)
+        {
+            checkTime = 0f;
+            yield break;
+        }
+    }
+
+    IEnumerator curteinUp()
+    {
+        while (checkTime < 2f)
+        {
+            checkTime += 0.1f;
+            yield return new WaitForSecondsRealtime(0.1f);
+            curtein_full.transform.Translate(curteinposup * speed);
+        }
+        if (checkTime > 2f)
+        {
+            checkTime = 0f;
+            yield break;
+        }
+    }
+
+    IEnumerator curteinClosed()
+    {
+        while (checkTime < 2f)
+        {
+            checkTime += 0.1f;
+            yield return new WaitForSecondsRealtime(0.1f);
+            curtein_left.transform.Translate(curteinposright * speed);
+            curtein_left.transform.Translate(curteinposleft * speed);
+        }
+        if (checkTime > 2f)
+        {
+            checkTime = 0f;
+            yield break;
+        }
+    }
+
+
+
+
+
+
 
     public void FadeIn() // 화면이 보인다.
     {
