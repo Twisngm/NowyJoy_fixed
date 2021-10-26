@@ -85,12 +85,19 @@ public class PatternManager : MonoBehaviour
     public GameObject Warning_Wiper_Hor;
     public float Wiper_Speed;
 
+    // 레이저 패턴
+    public GameObject Laserer;
+    public GameObject Laser;
+    public GameObject Warning_Laser;
+    public float rotateSpeed;
+    public float LaserSpeed;
+
     public GameObject NowyJoy;
     Title title;
 
     private void Awake()
     {  
-        title = GameObject.Find("Trigger").GetComponent<Title>();
+     //   title = GameObject.Find("Trigger").GetComponent<Title>();
         target = GameObject.FindWithTag("Player");
         shapePos[0] = GameObject.Find("bulletPos_U");
         shapePos[1] = GameObject.Find("bulletPos_D");
@@ -134,7 +141,7 @@ public class PatternManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
-            StartCoroutine("PawnDrop");
+            StartCoroutine("LaserPattern");
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
@@ -211,8 +218,8 @@ public class PatternManager : MonoBehaviour
 
         do
         {
-            randPtn[0] = Random.Range(0, 3);
-            randPtn[1] = Random.Range(0, 3);
+            randPtn[0] = Random.Range(0, 4);
+            randPtn[1] = Random.Range(0, 4);
         }
         while (randPtn[0] == randPtn[1]);
 
@@ -232,7 +239,7 @@ public class PatternManager : MonoBehaviour
                 break;
 
             case 3:
-                StartCoroutine(test4(ptnPos[0]));
+                startLaser(ptnPos[0]);
                 break;
 
             case 4:
@@ -268,7 +275,7 @@ public class PatternManager : MonoBehaviour
                 break;
 
             case 3:
-                StartCoroutine(test4(ptnPos[1]));
+                startLaser(ptnPos[1]);
                 break;
 
             case 4:
@@ -861,12 +868,56 @@ public class PatternManager : MonoBehaviour
                 Warning_Wiper_Ver.SetActive(false);
             }
         }
-        
-        
-        
 
     }
-   
+    void startLaser(Transform Pos)
+    {
+        StartCoroutine(LaserPattern(Pos));
+    }
+    IEnumerator LaserPattern(Transform Pos)
+    {
+        float height = 0;
+        float time = 0;
+
+        Laser.transform.localScale = new Vector2(Laser.transform.localScale.x, 0);
+        Laserer.SetActive(true);
+        Warning_Laser.SetActive(true);
+        Laserer.transform.position = Pos.position;
+        while (time <= 1) /// 플레이어 조준 기능
+        {
+            
+            if (player != null)
+            {
+                Vector2 direction = new Vector2(
+                    Laserer.transform.position.x - player.transform.position.x,
+                    Laserer.transform.position.y - player.transform.position.y
+                );
+
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                Quaternion angleAxis = Quaternion.AngleAxis(angle - 90f, Vector3.forward);
+                Quaternion rotation = Quaternion.Slerp(Laserer.transform.rotation, angleAxis, rotateSpeed * Time.deltaTime);
+                Laserer.transform.rotation = rotation;
+                time += 0.01f;
+                yield return new WaitForSeconds(0.01f);
+            }
+
+
+        } ///
+        Warning_Laser.SetActive(false);
+
+        while (height <= 5) /// 레이저 발사 기능
+        {
+            height += LaserSpeed / 100;
+            Laser.transform.localScale = new Vector3(height, 2 , 1);
+            yield return new WaitForSeconds(0.001f);
+        } ///
+
+        yield return new WaitForSeconds(1f);
+        Laserer.SetActive(false);
+
+
+    }
+
 
     /*
      *
