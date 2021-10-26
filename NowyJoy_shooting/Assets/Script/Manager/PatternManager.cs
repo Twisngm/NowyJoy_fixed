@@ -74,6 +74,7 @@ public class PatternManager : MonoBehaviour
     public GameObject player;
     public GameObject heart;
     public GameObject centerLine;
+    public GameObject Mirror;
     public Vector3 ClonePos;
     public Vector3 PlayerPos;
     public GameObject Warning_Mirror;
@@ -115,9 +116,14 @@ public class PatternManager : MonoBehaviour
     {
 
         StartCoroutine("Shooting");
-        Invoke("DoPattern", 5f);
+    //    Invoke("DoPattern", 5f);
         DoPtn();
 
+    }
+
+    private void OnDisable()
+    {
+        CancelInvoke("DoPtn");
     }
     private void Update()
     {
@@ -218,8 +224,8 @@ public class PatternManager : MonoBehaviour
 
         do
         {
-            randPtn[0] = Random.Range(0, 4);
-            randPtn[1] = Random.Range(0, 4);
+            randPtn[0] = Random.Range(0, 3);
+            randPtn[1] = Random.Range(0, 5);
         }
         while (randPtn[0] == randPtn[1]);
 
@@ -235,11 +241,11 @@ public class PatternManager : MonoBehaviour
                 break;
 
             case 2:
-                startWiper(ptnPos[0]);
+                StartCoroutine("Flamingo");
                 break;
 
             case 3:
-                startLaser(ptnPos[0]);
+                StartCoroutine(test4(ptnPos[0]));
                 break;
 
             case 4:
@@ -263,23 +269,23 @@ public class PatternManager : MonoBehaviour
         switch (randPtn[1])
         {
             case 0:
-                Screen_Scale_Control();
-                break;
-
-            case 1:
-                StartMirror();
-                break;
-
-            case 2:
                 startWiper(ptnPos[1]);
                 break;
 
+            case 1:
+                StartCoroutine("spin");
+                break;
+
+            case 2:
+                shapeShooting();
+                break;
+
             case 3:
-                startLaser(ptnPos[1]);
+                StartCoroutine("PawnDrop");
                 break;
 
             case 4:
-                StartCoroutine(test5(ptnPos[1]));
+                startLaser(ptnPos[1]);
                 break;
 
             case 5:
@@ -371,7 +377,7 @@ public class PatternManager : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
             StopCoroutine("spinning");
               isPatterning = false;
-             Invoke("DoPattern", 5f);
+           
         
     }
 
@@ -565,14 +571,14 @@ public class PatternManager : MonoBehaviour
             cnt++;
         }
         isPatterning = false;
-        Invoke("DoPattern", 5f);
+       
 
     }
     public IEnumerator Flamingo()
     {
         int cnt = 0;
         isPatterning = true;
-        while (cnt < 4)
+        while (cnt < 2)
         {
             while (true)
             {
@@ -632,7 +638,7 @@ public class PatternManager : MonoBehaviour
 
         }
         isPatterning = false;
-        Invoke("DoPattern", 5f);
+       
     }
 
     IEnumerator PawnDrop()
@@ -690,7 +696,7 @@ public class PatternManager : MonoBehaviour
         yield return new WaitForSeconds(1.5f); 
         isPatterning = false;
 
-        Invoke("DoPattern", 5f);
+ 
 
 
     }
@@ -699,13 +705,14 @@ public class PatternManager : MonoBehaviour
     {
         int randSSC = Random.Range(0, 12); // 화면 크기 랜덤 추첨
         //   cam.transform.position = new Vector3(0,0,camZ[randSSC]);
-
+        isPatterning = true;
         iTween.MoveTo(cam, iTween.Hash("z", camZ[randSSC], "time", 0.5f, "easeType", "Linear"));
         Invoke("Screen_Scale_Init", 4f); // 초기화 함수 발동
     }
     void Screen_Scale_Init() // 화면 크기 초기화
     {
         iTween.MoveTo(cam, iTween.Hash("z", -1, "time", 0.5f, "easeType", "Linear"));
+        isPatterning = false;
     }
 
     void StartMirror()
@@ -716,7 +723,7 @@ public class PatternManager : MonoBehaviour
 
     IEnumerator mirrorPnt() // 거울 패턴
     {
-
+        isPatterning = true;
         // 경고표시
 
         Warning_Mirror.SetActive(true);
@@ -737,6 +744,7 @@ public class PatternManager : MonoBehaviour
         // 플레이어 활성화 및 분열
 
         yield return new WaitForSeconds(2f);
+        Mirror.SetActive(true);
         GameObject playerClone = objManager.MakeObj("playerClone"); // 클론 생성
         player.SetActive(true);
         playerClone.transform.position = ClonePos;
@@ -758,10 +766,10 @@ public class PatternManager : MonoBehaviour
         centerLine.SetActive(false);
         centerLine.transform.position = new Vector3(0, 0, -1.5f);
         playerClone.SetActive(false);
+        Mirror.SetActive(false);
+        isPatterning = false;
 
-
-
-      //   Invoke("StartMirror", 10f);
+        //   Invoke("StartMirror", 10f);
     }
    void startWiper(Transform Pos)
     {
@@ -769,7 +777,7 @@ public class PatternManager : MonoBehaviour
     }
     IEnumerator WiperPattern(Transform Pos)
     {
-    
+        isPatterning = true;
         if((Pos.position == new Vector3(3.3f,0)) || (Pos.position == new Vector3(-3.3f, 0))) // 좌우 와이퍼
         {
             /// 경고표시
@@ -866,6 +874,7 @@ public class PatternManager : MonoBehaviour
                 yield return new WaitForSeconds(Wiper_Speed);
                 Wiper_Ver.SetActive(false); // 비활성화
                 Warning_Wiper_Ver.SetActive(false);
+                isPatterning = false;
             }
         }
 
@@ -879,6 +888,7 @@ public class PatternManager : MonoBehaviour
         float height = 0;
         float time = 0;
 
+        isPatterning = true;
         Laser.transform.localScale = new Vector2(Laser.transform.localScale.x, 0);
         Laserer.SetActive(true);
         Warning_Laser.SetActive(true);
@@ -914,7 +924,7 @@ public class PatternManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         Laserer.SetActive(false);
-
+        isPatterning = false;
 
     }
 

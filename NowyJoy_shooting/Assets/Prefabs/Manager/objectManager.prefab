@@ -46,3 +46,4 @@ MonoBehaviour:
   bulletA_Prefabs: {fileID: 5082065322699837989, guid: 7221ac0be98afa04eb6cbdd68149b8b6, type: 3}
   bulletB_Prefabs: {fileID: 5082065322699837989, guid: d32189c3f6fa879448f224cbcfd3ab25, type: 3}
   bulletC_Prefabs: {fileID: 5082065322699837989, guid: 234924770d814284d9b7a9aea00073ac, type: 3}
+  player_Prefabs: {fileID: 0}

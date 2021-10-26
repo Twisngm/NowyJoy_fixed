@@ -83,6 +83,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   isAble_Shape: 01010101
   flamingo: {fileID: 0}
   thorn: {fileID: 0}
@@ -117,6 +121,7 @@ MonoBehaviour:
   player: {fileID: 0}
   heart: {fileID: 0}
   centerLine: {fileID: 0}
+  Mirror: {fileID: 0}
   ClonePos: {x: 0, y: 2.6, z: 0}
   PlayerPos: {x: 0, y: -2.6, z: 0}
   Warning_Mirror: {fileID: 0}
@@ -125,4 +130,9 @@ MonoBehaviour:
   Warning_Wiper_Ver: {fileID: 0}
   Warning_Wiper_Hor: {fileID: 0}
   Wiper_Speed: 2
+  Laserer: {fileID: 0}
+  Laser: {fileID: 0}
+  Warning_Laser: {fileID: 0}
+  rotateSpeed: 1000
+  LaserSpeed: 5
   NowyJoy: {fileID: 0}
