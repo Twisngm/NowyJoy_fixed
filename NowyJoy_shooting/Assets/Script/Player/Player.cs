@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     private float axis = 0;
     public Transform target;
     public Vector2 targetpos;
+    Vector3 quaternionToTarget;
 
     // 더블 탭에 사용되는 변수
     float lastTouchTime;
@@ -30,11 +31,11 @@ public class Player : MonoBehaviour
     public GameObject Attacker;
     public float PBspeed;
     Transform PBtr;
+    private PlayerBullet PlayerBulletcontoller;
 
     float transferspeed = 0.15f; // 크기 조정비율(inspector 기준)
 
     Heart heart;
-
     void Start()
     {
         Spacepos = Camera.main.ScreenToWorldPoint(transform.position);
@@ -206,8 +207,8 @@ public class Player : MonoBehaviour
         Vector3 targetPos = target.position; // target 오브젝트 위치
         targetPos.z = myPos.z;
 
-        Vector3 vectorToTarget = targetPos - myPos; // 위치 차 계산
-        Vector3 quaternionToTarget = Quaternion.Euler(0, 0, axis) * vectorToTarget; // 여기부터는 어떻게 구현되는건지 잘 모르겠음
+        Vector3 Dir = targetPos - myPos; // 위치 차 계산
+        quaternionToTarget = Quaternion.Euler(0, 0, axis) * Dir; // 여기부터는 어떻게 구현되는건지 잘 모르겠음
 
         Quaternion targetRotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: quaternionToTarget);
         /*
@@ -226,13 +227,9 @@ public class Player : MonoBehaviour
     }
     void PBFire() //탄환 발사
     {
-        GameObject Playerprefeb = Instantiate(Attacker, transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f));
-        Rigidbody2D PBrigid = Attacker.GetComponent<Rigidbody2D>();
-        PBrigid.AddForce(Vector2.up * PBspeed, ForceMode2D.Impulse);
-        //Vector2 dir = (Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position) - gameObject.transform.position); //Vector계산
-
-        //PBtr.Translate(dir.normalized * PBspeed * Time.deltaTime); //전진부
+        Vector2 launchdir = (Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position) - gameObject.transform.position); //Vector계산
+        GameObject PlayerBullet = Instantiate(Attacker, transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f));
+        PlayerBulletcontoller = PlayerBullet.GetComponent<PlayerBullet>();
+        PlayerBulletcontoller.Launch(launchdir.normalized, PBspeed);
     }
-
-
-} // targetpos = gap?
+}
