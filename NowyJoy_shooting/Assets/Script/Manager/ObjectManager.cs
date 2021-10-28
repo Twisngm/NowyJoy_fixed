@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class ObjectManager : MonoBehaviour
 {
+    public GameManager GM;
+
     GameObject[] bulletA;
     GameObject[] bulletB;
     GameObject[] bulletC;
     GameObject[] playerClone;
 
     public GameObject bulletA_Prefabs;
+
     public GameObject bulletB_Prefabs;
+
     public GameObject bulletC_Prefabs;
+
+
+
     public GameObject player_Prefabs;
 
     GameObject[] targetPool;
@@ -22,20 +29,22 @@ public class ObjectManager : MonoBehaviour
         bulletB = new GameObject[150];
         bulletC = new GameObject[70];
         playerClone = new GameObject[1];
-
-
         Generate();
+
     }
 
- 
+   
+
+
 
 
     void Generate()
     {
         for(int index=0; index < bulletA.Length; index++)
         {
-           bulletA[index] = Instantiate(bulletA_Prefabs);
-           bulletA[index].SetActive(false);
+            bulletA[index] = Instantiate(bulletA_Prefabs);
+            bulletA[index].SetActive(false);
+
         }
 
         for (int index = 0; index < bulletB.Length; index++)

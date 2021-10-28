@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PatternManager : MonoBehaviour
 {
+    GameManager GM;
     public ObjectManager objManager;
     public GameObject Spin_ptn;
     public bool isPatterning = false;
-
+  
     // ∆–≈œ
 
     public Transform[] PatternPos;
@@ -97,8 +98,9 @@ public class PatternManager : MonoBehaviour
     Title title;
 
     private void Awake()
-    {  
-     //   title = GameObject.Find("Trigger").GetComponent<Title>();
+    {
+        //   title = GameObject.Find("Trigger").GetComponent<Title>();
+        GM = GameObject.Find("gameManager").GetComponent<GameManager>();
         target = GameObject.FindWithTag("Player");
         shapePos[0] = GameObject.Find("bulletPos_U");
         shapePos[1] = GameObject.Find("bulletPos_D");
@@ -111,6 +113,8 @@ public class PatternManager : MonoBehaviour
         ShapeInit();
         InitCamZ();
     }
+
+
 
     private void OnEnable()
     {
@@ -167,6 +171,8 @@ public class PatternManager : MonoBehaviour
             Count = 0;
         }
     }
+
+
 
     void InitCamZ()
     {
@@ -269,7 +275,12 @@ public class PatternManager : MonoBehaviour
         switch (randPtn[1])
         {
             case 0:
-                startWiper(ptnPos[1]);
+                if(GM.stagenum != 1)
+                    startWiper(ptnPos[1]);
+
+                else
+                    shapeShooting();
+
                 break;
 
             case 1:
@@ -281,7 +292,13 @@ public class PatternManager : MonoBehaviour
                 break;
 
             case 3:
-                StartCoroutine("PawnDrop");
+
+                if(GM.stagenum != 1)
+                    StartCoroutine("PawnDrop");
+
+                else
+                    StartCoroutine("spin");
+
                 break;
 
             case 4:

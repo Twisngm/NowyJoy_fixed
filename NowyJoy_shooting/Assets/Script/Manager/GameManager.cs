@@ -7,14 +7,12 @@ public class GameManager : MonoBehaviour
     public int HP;
     public int stagenum;
     public GameObject ptnManager;
+
+
     void Start()
     {
         ptnManager.SetActive(true);
+       
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
