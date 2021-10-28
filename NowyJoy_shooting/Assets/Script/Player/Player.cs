@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     public Transform target;
     public Vector2 targetpos;
     Vector3 quaternionToTarget;
+    public Balloon balloon;
 
     // 더블 탭에 사용되는 변수
     float lastTouchTime;
@@ -212,18 +213,22 @@ public class Player : MonoBehaviour
 
         Quaternion targetRotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: quaternionToTarget);
         /*
-         * if (targetRotation.z >= 30 && targetRotation.z <= 330)
+         * if (targetRotation.z >= 30 || targetRotation.z <= -30)
          * {
-         *     if (targetRotation.z <=180){
+         *     if (targetRotation.z >=0){
          *     targetRotation.z = 30;
          *     }
          *     else{
-         *     targetRotation.z = 330;
+         *     targetRotation.z = -30;
          *     }
          * }
          */
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, anglespeed * Time.deltaTime);
 
+    }
+    IEnumerator RotationCouroutine()
+    {
+        yield return null;
     }
     void PBFire() //탄환 발사
     {
