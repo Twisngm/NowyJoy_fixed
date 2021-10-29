@@ -621,7 +621,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1357196940}
         m_TargetAssemblyTypeName: SceneChangeManager, Assembly-CSharp
-        m_MethodName: curtein_move
+        m_MethodName: curtein_Up
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -951,7 +951,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1357196940}
         m_TargetAssemblyTypeName: SceneChangeManager, Assembly-CSharp
-        m_MethodName: curtein_close
+        m_MethodName: curtein_Down
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1910,7 +1910,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: OpenClose
 --- !u!222 &779723100
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2864,7 +2864,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: position change
+  m_Text: DownUp
 --- !u!222 &1098764325
 CanvasRenderer:
   m_ObjectHideFlags: 0
