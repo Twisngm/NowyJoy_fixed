@@ -213,9 +213,9 @@ public class Player : MonoBehaviour
 
         Quaternion targetRotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: quaternionToTarget);
         /*
-         * if (targetRotation.z >= 30 || targetRotation.z <= -30)
+         * if (targetRotation.z => 30 || targetRotation.z =< -30)
          * {
-         *     if (targetRotation.z >=0){
+         *     if (targetRotation.z =>0){
          *     targetRotation.z = 30;
          *     }
          *     else{
@@ -225,10 +225,6 @@ public class Player : MonoBehaviour
          */
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, anglespeed * Time.deltaTime);
 
-    }
-    IEnumerator RotationCouroutine()
-    {
-        yield return null;
     }
     void PBFire() //탄환 발사
     {
