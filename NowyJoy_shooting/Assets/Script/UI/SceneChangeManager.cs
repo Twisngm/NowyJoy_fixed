@@ -10,6 +10,8 @@ public class SceneChangeManager : MonoBehaviour
     public Image curtein_full;
     public Image curtein_left;
     public Image curtein_right;
+    public Image curtein_left_close;
+    public Image curtein_right_colse;
     Vector2 curteinposdown = new Vector2(0, -3f);
     Vector2 curteinposup = new Vector2(0, 3f);
     Vector2 curteinposleft = new Vector2(-2f,0);
@@ -18,6 +20,7 @@ public class SceneChangeManager : MonoBehaviour
     bool isDown = false;
     bool isMovedDown = false;
     bool isClosed = false;
+    bool isColsed_close = false;
     float checkTime = 0f;
 
     [Range(0.01f, 10f)]
@@ -51,10 +54,12 @@ public class SceneChangeManager : MonoBehaviour
 
         curtein_transperent_OpenClose_0();
     }
+
     private void Start()
     {
-        curtein_Close();
+        curtein_open_place();
     }
+
     public void curtein_DownUp()
     {
         if (isMovedDown)
@@ -91,7 +96,6 @@ public class SceneChangeManager : MonoBehaviour
         {
             StartCoroutine("curteinUp");
         }
-        
     }
 
     public void curtein_Down()
@@ -102,12 +106,12 @@ public class SceneChangeManager : MonoBehaviour
         }   
     }
 
-    public void curtein_Down_replace()
+    void curtein_Down_replace()
     {
         Invoke("curtein_replace_UpDpwn", 0.1f);
         Invoke("curtein_Down_active", 2.2f);
     }
-    private void curtein_replace_UpDpwn()
+    void curtein_replace_UpDpwn()
     {
         Color full_color = curtein_full.color;
         full_color.a = 0f;
@@ -115,35 +119,53 @@ public class SceneChangeManager : MonoBehaviour
         isDown = false;
         StartCoroutine("curteinUp");
     }
-    private void curtein_Down_active()
+    void curtein_Down_active()
     {
         Color full_color = curtein_full.color;
         full_color.a = 1f;
         curtein_full.color = full_color;
     }
 
+    void curtein_Open_replace()
+    {
+        Invoke("curtein_open_re", 0.1f);
+    }
+    void curtein_open_re()
+    {
+        curtein_transperent_OpenClose_0();
+        StartCoroutine("curteinClose");
+        isClosed = true;
+    }
+    
+
     public void curtein_Open()
     {
         if (isClosed)
         {
+            curtein_transperent_OpenClose_100();
             StartCoroutine("curteinOpen");
-        }
-        else
-        {
-            Debug.Log("이미 열려있습니다.");
         }
         
     }
 
     public void curtein_Close()
     {
+        if (!isColsed_close)
+        {
+            curtein_transperent_Close_100();
+            StartCoroutine("curteinClose_close");
+        }   
+    }
+
+    void curtein_open_place()
+    {
         if (!isClosed)
         {
             StartCoroutine("curteinClose");
         }
-        
     }
-    public void curtein_transperent_OpenClose_0()
+
+    void curtein_transperent_OpenClose_0()
     {
         Color left_color = curtein_left.color;
         Color right_color = curtein_right.color;
@@ -153,7 +175,7 @@ public class SceneChangeManager : MonoBehaviour
         curtein_right.color = right_color;
     }
 
-    public void curtein_transperent_OpenClose_100()
+    void curtein_transperent_OpenClose_100()
     {
         Color left_color = curtein_left.color;
         Color right_color = curtein_right.color;
@@ -162,7 +184,7 @@ public class SceneChangeManager : MonoBehaviour
         curtein_left.color = left_color;
         curtein_right.color = right_color;
     }
-    public void curtein_move()
+    public void curtein_move_test()
     {
         // 양 사이드의 커튼 가운데로 이동!
         //curtein_left.transform.position = new Vector2(Screen.width / 2 - (Screen.width/2), Screen.height / 2);
@@ -231,7 +253,7 @@ public class SceneChangeManager : MonoBehaviour
     {
         while (checkTime < 2f)
         {
-
+            curtein_transperent_OpenClose_100();
             checkTime += 0.1f;
             yield return new WaitForSecondsRealtime(0.1f);
             curtein_right.transform.Translate(curteinposright * speed);
@@ -240,11 +262,82 @@ public class SceneChangeManager : MonoBehaviour
         if (checkTime > 2f)
         {
             isClosed = false;
+            Invoke("curtein_Open_replace",0.2f);
             checkTime = 0f;
             yield break;
         }
     }
 
+
+
+
+
+    IEnumerator curteinClose_close()
+    {
+        while (checkTime < 2f)
+        {
+            isColsed_close = true;
+            checkTime += 0.1f;
+            yield return new WaitForSecondsRealtime(0.1f);
+            curtein_left_close.transform.Translate(curteinposright * speed);
+            curtein_right_colse.transform.Translate(curteinposleft * speed);
+        }
+        if (checkTime > 2f)
+        {
+            checkTime = 0f;
+            Invoke("curtein_Close_replace", 0.2f);
+            yield break;
+        }
+    }
+
+    IEnumerator curteinOpen_close()
+    {
+        while (checkTime < 2f)
+        {
+
+            checkTime += 0.1f;
+            yield return new WaitForSecondsRealtime(0.1f);
+            curtein_right_colse.transform.Translate(curteinposright * speed);
+            curtein_left_close.transform.Translate(curteinposleft * speed);
+        }
+        if (checkTime > 2f)
+        {
+            isColsed_close = false;
+            checkTime = 0f;
+            yield break;
+        }
+    }
+    void curtein_Close_replace()
+    {
+        Invoke("curtein_Close_re", 0.1f);
+        Invoke("curtein_transperent_OpenClose_100", 3.2f);
+    }
+    void curtein_Close_re()
+    {
+        curtein_transperent_Close_0();
+        StartCoroutine("curteinOpen_close");
+        isColsed_close = false;
+    }
+
+    void curtein_transperent_Close_0()
+    {
+        Color left_color = curtein_left_close.color;
+        Color right_color = curtein_right_colse.color;
+        left_color.a = 0f;
+        right_color.a = 0f;
+        curtein_left_close.color = left_color;
+        curtein_right_colse.color = right_color;
+    }
+
+    void curtein_transperent_Close_100()
+    {
+        Color left_color = curtein_left_close.color;
+        Color right_color = curtein_right_colse.color;
+        left_color.a = 1f;
+        right_color.a = 1f;
+        curtein_left_close.color = left_color;
+        curtein_right_colse.color = right_color;
+    }
 
 
 
