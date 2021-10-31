@@ -16,13 +16,13 @@ public class Balloon : MonoBehaviour
     {
         
     }
-    public bool TransRotation(Quaternion targetRotation)
+    public void TransRotation(Quaternion targetRotation)
     {
         Quaternion tempRotation;
         tempRotation = targetRotation;
         if (targetRotation.z <= 15 && targetRotation.z >=-15) {
             transform.rotation = Quaternion.RotateTowards(transform.rotation, tempRotation, anglespeed * Time.deltaTime);
-            return false;
+            return;
         }
         else{
             if (targetRotation.z > 15)
@@ -35,7 +35,7 @@ public class Balloon : MonoBehaviour
                 tempRotation.z = -15;
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, tempRotation, anglespeed * Time.deltaTime);
             }
-            return true;
+            return;
         }
         
     }
