@@ -4,30 +4,55 @@ using UnityEngine;
 
 public class safeZone : MonoBehaviour
 {
-    GameObject safezone;
+    public GameObject safezone;
     float checktime = 0f;
-    float randomX = Random.Range(0f, 1440f);
-    float randomY = Random.Range(0f, 2960f);
-    Vector2 pos;
+    public float randomX;
+    public float randomY;
+    public float testX;
+    public float testY;
+    public float randomTime;
+    float time = 0f;
 
     private void Start()
+    {
+         randomX = Random.Range(0f, Screen.width);
+         randomY = Random.Range(0f, Screen.height);
+         randomTime = Random.Range(0f, 3f);
+        start_safezone();
+    }
+
+    public void start_safezone()
     {
         StartCoroutine("showsafeZone");
     }
 
-    IEnumerator showsafeZone()
+    IEnumerator createCorutine()
     {
-        while (checktime <= 10f)
+        while (randomTime > time)
         {
-            safezone.SetActive(true);
-            safezone.transform.position = new Vector2(randomX, randomY);
-            checktime += 1f;
+            time += Time.deltaTime;
             yield return null;
         }
-        if (checktime > 10f)
+        if (randomTime <time)
+        {
+            StartCoroutine("showsafeZone");
+            time = 0f;
+        }
+    }
+
+    IEnumerator showsafeZone()
+    {
+        while (checktime <= 3f)
+        {
+            safezone.SetActive(true);
+            checktime += 1f;
+            yield return new WaitForSeconds(1f);
+        }
+        if (checktime > 3f)
         {
             safezone.SetActive(false);
             checktime = 0f;
+            yield break;
         }
     }
 }

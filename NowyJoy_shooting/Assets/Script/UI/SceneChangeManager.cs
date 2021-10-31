@@ -23,6 +23,12 @@ public class SceneChangeManager : MonoBehaviour
     bool isColsed_close = false;
     float checkTime = 0f;
 
+    Vector2 Close_Left_Origin_Pos;
+    Vector2 Close_Right_Origin_Pos;
+    Vector2 Open_Left_Origin_Pos;
+    Vector2 Open_Right_Origin_Pos;
+    Vector2 Top_Origin_Pos;
+
     [Range(0.01f, 10f)]
     public float fadeTime = 1f;
     public Image testimage;
@@ -52,15 +58,21 @@ public class SceneChangeManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
 
-        curtein_transperent_OpenClose_0();
+        
     }
 
     private void Start()
     {
-        curtein_open_place();
+        Close_Left_Origin_Pos = curtein_left_close.transform.position;
+        Close_Right_Origin_Pos = curtein_right_colse.transform.position;
+        Open_Left_Origin_Pos = curtein_left.transform.position;
+        Open_Right_Origin_Pos = curtein_right.transform.position;
+        Top_Origin_Pos = curtein_full.transform.position;
+
+        curtein_transperent_Close_0();
     }
 
-    public void curtein_DownUp()
+     void curtein_DownUp()
     {
         if (isMovedDown)
         {
@@ -70,19 +82,6 @@ public class SceneChangeManager : MonoBehaviour
         {
             StartCoroutine("curteinDown");
         }
-    }
-
-    public void curtein_OpenClose()
-    {
-        if (isClosed)
-        {
-            StartCoroutine("curteinOpen");
-        }
-        else
-        {
-            StartCoroutine("curteinClose");
-        }
-        
     }
 
     public void curtein_Up()
@@ -100,91 +99,21 @@ public class SceneChangeManager : MonoBehaviour
 
     public void curtein_Down()
     {
-        if (!isMovedDown)
-        {
             StartCoroutine("curteinDown");
-        }   
     }
-
-    void curtein_Down_replace()
-    {
-        Invoke("curtein_replace_UpDpwn", 0.1f);
-        Invoke("curtein_Down_active", 2.2f);
-    }
-    void curtein_replace_UpDpwn()
-    {
-        Color full_color = curtein_full.color;
-        full_color.a = 0f;
-        curtein_full.color = full_color;
-        isDown = false;
-        StartCoroutine("curteinUp");
-    }
-    void curtein_Down_active()
-    {
-        Color full_color = curtein_full.color;
-        full_color.a = 1f;
-        curtein_full.color = full_color;
-    }
-
-    void curtein_Open_replace()
-    {
-        Invoke("curtein_open_re", 0.1f);
-    }
-    void curtein_open_re()
-    {
-        curtein_transperent_OpenClose_0();
-        StartCoroutine("curteinClose");
-        isClosed = true;
-    }
-    
 
     public void curtein_Open()
     {
-        if (isClosed)
-        {
-            curtein_transperent_OpenClose_100();
-            StartCoroutine("curteinOpen");
-        }
-        
+        curtein_transperent_Close_100();
+        StartCoroutine("curteinOpen");
     }
 
     public void curtein_Close()
     {
-        if (!isColsed_close)
-        {
-            curtein_transperent_Close_100();
-            StartCoroutine("curteinClose_close");
-        }   
+        StartCoroutine("curteinClose");
     }
 
-    void curtein_open_place()
-    {
-        if (!isClosed)
-        {
-            StartCoroutine("curteinClose");
-        }
-    }
-
-    void curtein_transperent_OpenClose_0()
-    {
-        Color left_color = curtein_left.color;
-        Color right_color = curtein_right.color;
-        left_color.a = 0f;
-        right_color.a = 0f;
-        curtein_left.color = left_color;
-        curtein_right.color = right_color;
-    }
-
-    void curtein_transperent_OpenClose_100()
-    {
-        Color left_color = curtein_left.color;
-        Color right_color = curtein_right.color;
-        left_color.a = 1f;
-        right_color.a = 1f;
-        curtein_left.color = left_color;
-        curtein_right.color = right_color;
-    }
-    public void curtein_move_test()
+    void curtein_move_test()
     {
         // 양 사이드의 커튼 가운데로 이동!
         //curtein_left.transform.position = new Vector2(Screen.width / 2 - (Screen.width/2), Screen.height / 2);
@@ -199,18 +128,16 @@ public class SceneChangeManager : MonoBehaviour
 
     IEnumerator curteinDown()
     {
-        while (checkTime <2f)
+        while (checkTime <2.1f)
         {
             isMovedDown = true;
             checkTime += 0.1f;
             yield return new WaitForSecondsRealtime(0.1f);
             curtein_full.transform.Translate(curteinposdown * speed);
         }
-        if (checkTime > 2f)
+        if (checkTime > 2.1f)
         {
-            isDown = true;
-            Invoke("curtein_Down_replace", 0.2f);
-            //curtein_Down_replace();
+            curtein_full.transform.position = Top_Origin_Pos;
             checkTime = 0f;
             yield break;
         }
@@ -244,6 +171,8 @@ public class SceneChangeManager : MonoBehaviour
         }
         if (checkTime > 2f)
         {
+            curtein_left.transform.position = Open_Left_Origin_Pos;
+            curtein_right.transform.position = Open_Right_Origin_Pos;
             checkTime = 0f;
             yield break;
         }
@@ -253,48 +182,7 @@ public class SceneChangeManager : MonoBehaviour
     {
         while (checkTime < 2f)
         {
-            curtein_transperent_OpenClose_100();
-            checkTime += 0.1f;
-            yield return new WaitForSecondsRealtime(0.1f);
-            curtein_right.transform.Translate(curteinposright * speed);
-            curtein_left.transform.Translate(curteinposleft * speed);
-        }
-        if (checkTime > 2f)
-        {
-            isClosed = false;
-            Invoke("curtein_Open_replace",0.2f);
-            checkTime = 0f;
-            yield break;
-        }
-    }
-
-
-
-
-
-    IEnumerator curteinClose_close()
-    {
-        while (checkTime < 2f)
-        {
-            isColsed_close = true;
-            checkTime += 0.1f;
-            yield return new WaitForSecondsRealtime(0.1f);
-            curtein_left_close.transform.Translate(curteinposright * speed);
-            curtein_right_colse.transform.Translate(curteinposleft * speed);
-        }
-        if (checkTime > 2f)
-        {
-            checkTime = 0f;
-            Invoke("curtein_Close_replace", 0.2f);
-            yield break;
-        }
-    }
-
-    IEnumerator curteinOpen_close()
-    {
-        while (checkTime < 2f)
-        {
-
+            curtein_transperent_Close_100();
             checkTime += 0.1f;
             yield return new WaitForSecondsRealtime(0.1f);
             curtein_right_colse.transform.Translate(curteinposright * speed);
@@ -302,22 +190,15 @@ public class SceneChangeManager : MonoBehaviour
         }
         if (checkTime > 2f)
         {
-            isColsed_close = false;
+            curtein_transperent_Close_0();
+            isClosed = false;
+            curtein_left_close.transform.position = Close_Left_Origin_Pos;
+            curtein_right_colse.transform.position = Close_Right_Origin_Pos;
             checkTime = 0f;
             yield break;
         }
     }
-    void curtein_Close_replace()
-    {
-        Invoke("curtein_Close_re", 0.1f);
-        Invoke("curtein_transperent_OpenClose_100", 3.2f);
-    }
-    void curtein_Close_re()
-    {
-        curtein_transperent_Close_0();
-        StartCoroutine("curteinOpen_close");
-        isColsed_close = false;
-    }
+
 
     void curtein_transperent_Close_0()
     {
