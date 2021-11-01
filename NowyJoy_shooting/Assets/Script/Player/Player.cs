@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
     const float doubleTapdelay = 0.5f;
     public GameObject Attacker;
     public float PBspeed;
+    public float shotdelay;
+    private float curshotdelay = 0;
     Transform PBtr;
     private PlayerBullet PlayerBulletcontoller;
 
@@ -51,6 +53,7 @@ public class Player : MonoBehaviour
         OnDrag();
         Update_LookRatation();
         CameraIn();
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -101,7 +104,7 @@ public class Player : MonoBehaviour
              
                 m_prevPos = m_curPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.GetTouch(0).position.x * -1, Input.GetTouch(0).position.y * -1, Spacepos.z)); // 이동시키기
 
-                if (Time.time - lastTouchTime < doubleTapdelay/* && currentshot<shotdelay*/)
+                if (Time.time - lastTouchTime < doubleTapdelay && curshotdelay<shotdelay)
                 {
                     PBFire();
                 }
@@ -161,7 +164,7 @@ public class Player : MonoBehaviour
             {
                 onTouch = true; // onTouch를 true로 (이동 o)
                 target.position = m_prevPos = m_curPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.GetTouch(0).position.x * -1, Input.GetTouch(0).position.y * -1, Spacepos.z)); // 이동시키기
-                if (Time.time - lastTouchTime < doubleTapdelay/* && currentshot<shotdelay*/)
+                if (Time.time - lastTouchTime < doubleTapdelay && curshotdelay < shotdelay)
                 {
                     PBFire();
                 }
@@ -235,5 +238,9 @@ public class Player : MonoBehaviour
         GameObject PlayerBullet = Instantiate(Attacker, transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f));
         PlayerBulletcontoller = PlayerBullet.GetComponent<PlayerBullet>();
         PlayerBulletcontoller.Launch(launchdir.normalized, PBspeed);
+    }
+    void Reload()
+    {
+        curshotdelay += Time.deltaTime;
     }
 }
