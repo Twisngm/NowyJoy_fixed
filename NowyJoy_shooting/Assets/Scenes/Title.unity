@@ -951,7 +951,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1357196940}
         m_TargetAssemblyTypeName: SceneChangeManager, Assembly-CSharp
-        m_MethodName: curtein_Down
+        m_MethodName: curtein_Up
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
