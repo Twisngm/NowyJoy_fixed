@@ -212,7 +212,7 @@ public class Player : MonoBehaviour
         quaternionToTarget = Quaternion.Euler(0, 0, axis) * Dir; // 여기부터는 어떻게 구현되는건지 잘 모르겠음
 
         Quaternion targetRotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: quaternionToTarget);
-        /*
+        
         if (targetRotation.z >= 30 || targetRotation.z <= -30) {
             if (targetRotation.z >= 30)
             {
@@ -223,8 +223,9 @@ public class Player : MonoBehaviour
                 targetRotation.z = -30;
             }
         }
+        
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, anglespeed * Time.deltaTime);
         balloon.TransRotation(targetRotation);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, anglespeed * Time.deltaTime);*/
 
 
     }
