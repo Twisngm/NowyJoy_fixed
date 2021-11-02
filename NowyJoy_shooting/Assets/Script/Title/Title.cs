@@ -171,6 +171,6 @@ public class Title : MonoBehaviour
 
     public void ChangeScene()
     {
-        SceneManager.LoadScene("STAGE");
+        SceneManager.LoadScene("Stage5");
     }
 }

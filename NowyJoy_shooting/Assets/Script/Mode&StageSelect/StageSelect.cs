@@ -36,6 +36,10 @@ public class StageSelect : MonoBehaviour
                         Debug.Log("2 스테이지로 이동합니다.");
                         StartCoroutine("changing");
                         break;
+                    case "5":
+                        Debug.Log("5 스테이지로 이동합니다.");
+                        StartCoroutine("changing");
+                        break;
                 }
             }
         }
@@ -58,6 +62,10 @@ public class StageSelect : MonoBehaviour
                     SceneChangeManager.Instance.FadeOut();
                     StartCoroutine("sceneLoading", 2);
                     break;
+                case "5":
+                    SceneChangeManager.Instance.FadeOut();
+                    StartCoroutine("sceneLoading", 5);
+                    break;
             }
         }
     }
@@ -77,6 +85,11 @@ public class StageSelect : MonoBehaviour
         else if (stage_number == 2)
         {
             SceneManager.LoadScene("stage2");
+        }
+
+        else if (stage_number == 5)
+        {
+            SceneManager.LoadScene("stage5");
         }
     }
 

@@ -932,7 +932,7 @@ public class PatternManager : MonoBehaviour
         } ///
         Warning_Laser.SetActive(false);
 
-        while (height <= 5) /// 레이저 발사 기능
+        while (height <= 6) /// 레이저 발사 기능
         {
             height += LaserSpeed / 100;
             Laser.transform.localScale = new Vector3(height, 2 , 1);
