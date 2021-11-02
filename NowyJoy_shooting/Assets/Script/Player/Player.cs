@@ -104,7 +104,7 @@ public class Player : MonoBehaviour
              
                 m_prevPos = m_curPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.GetTouch(0).position.x * -1, Input.GetTouch(0).position.y * -1, Spacepos.z)); // 이동시키기
 
-                if (Time.time - lastTouchTime < doubleTapdelay && curshotdelay<shotdelay)
+                if (Time.time - lastTouchTime < doubleTapdelay && curshotdelay > shotdelay)
                 {
                     PBFire();
                 }
@@ -164,7 +164,7 @@ public class Player : MonoBehaviour
             {
                 onTouch = true; // onTouch를 true로 (이동 o)
                 target.position = m_prevPos = m_curPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.GetTouch(0).position.x * -1, Input.GetTouch(0).position.y * -1, Spacepos.z)); // 이동시키기
-                if (Time.time - lastTouchTime < doubleTapdelay && curshotdelay < shotdelay)
+                if (Time.time - lastTouchTime < doubleTapdelay && curshotdelay > shotdelay)
                 {
                     PBFire();
                 }
@@ -215,17 +215,6 @@ public class Player : MonoBehaviour
         quaternionToTarget = Quaternion.Euler(0, 0, axis) * Dir; // 여기부터는 어떻게 구현되는건지 잘 모르겠음
 
         Quaternion targetRotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: quaternionToTarget);
-        
-        if (targetRotation.z >= 30 || targetRotation.z <= -30) {
-            if (targetRotation.z >= 30)
-            {
-                targetRotation.z = 30;
-            }
-            else if (targetRotation.z <= -30)
-            {
-                targetRotation.z = -30;
-            }
-        }
         
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, anglespeed * Time.deltaTime);
         balloon.TransRotation(targetRotation);
