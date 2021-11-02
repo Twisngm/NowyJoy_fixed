@@ -6,96 +6,63 @@ using UnityEngine.UI;
 public class safeZone : MonoBehaviour
 {
     public GameObject safezone;
-    Image safezone_img;
+    SpriteRenderer safezone_renderer;
     float checktime = 0f;
-    public float randomX;
-    public float randomY;
-    public float testX;
-    public float testY;
-    public float randomTime;
-    float time = 0f;
-    float testTIME = 0f;
-    float testerCount = 0f;
 
     private void Start()
     {
-         randomX = Random.Range(0f, Screen.width);
-         randomY = Random.Range(0f, Screen.height);
-         randomTime = Random.Range(0f, 3f);
-        //start_safezone();
-        safezone_img = safezone.GetComponent<Image>();
+        safezone_renderer = safezone.GetComponent<SpriteRenderer>();
+        safeZoneAlpha(0);
+        start_safezone();
     }
 
-    void testf()
-    {
-
-    }
-
-    IEnumerator tester()
-    {
-        time = 0f;
-        while (3f > time)
-        {
-            time += Time.deltaTime;
-            yield return null;
-        }
-        if (time > 3f)
-        {
-            safeZonAlpha(0);
-            time = 0f;
-        }
-    }
 
     public void start_safezone()
     {
-        testerCount += 1f;
-        safeZonAlpha(0);
         StartCoroutine("showsafeZone");
     }
 
-    void safeZonAlpha(int alphaCount)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Color safezone_color = safezone_img.color;
+        if (collision.CompareTag("Body"))
+        {
+            Debug.Log("주인공과 닿았습니다.");
+        }
+    }
+
+    void safeZoneAlpha(int alphaCount)
+    {
+        Color safezone_color = safezone_renderer.color;
         if (alphaCount == 1)
         {
             safezone_color.a = 1;
-            safezone_img.color = safezone_color;
+            safezone_renderer.color = safezone_color;
         }
         else
         {
             safezone_color.a = 0;
-            safezone_img.color = safezone_color;
+            safezone_renderer.color = safezone_color;
         }
     }
 
-    IEnumerator createCorutine()
+    void randomPos()
     {
-        while (randomTime > time)
-        {
-            time += Time.deltaTime;
-            yield return null;
-        }
-        if (randomTime <time)
-        {
-            StartCoroutine("showsafeZone");
-            time = 0f;
-        }
+        safezone.transform.position = new Vector2(Random.Range(-2f, 2f), Random.Range(-4f, 4f));
     }
-
     IEnumerator showsafeZone()
     {
-        while (checktime <= 3f)
+        float changeTime = 4f;
+        while (true)
         {
-            safeZonAlpha(1);
             checktime += 0.1f;
-            safezone.transform.position = new Vector2(Random.Range(0f, 5f), Random.Range(0f,5f));
+            if (checktime > changeTime)
+            {
+                safeZoneAlpha(1);
+                checktime = 0f;
+                randomPos();
+                changeTime = Random.Range(2f, 6f);
+            }
             yield return new WaitForSeconds(0.1f);
-        }
-        if (checktime > 3f)
-        {
-            safeZonAlpha(0);
-            checktime = 0f;
-            yield break;
         }
     }
 }
