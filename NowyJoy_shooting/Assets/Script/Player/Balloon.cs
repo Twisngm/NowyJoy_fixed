@@ -16,27 +16,12 @@ public class Balloon : MonoBehaviour
     {
         
     }
-    public bool TransRotation(Quaternion targetRotation)
+    public void TransRotation(Quaternion targetRotation)
     {
         Quaternion tempRotation;
         tempRotation = targetRotation;
-        if (targetRotation.z <= 15 && targetRotation.z >=-15) {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, tempRotation, anglespeed * Time.deltaTime);
-            return false;
-        }
-        else{
-            if (targetRotation.z > 15)
-            {
-                tempRotation.z = 15;
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, tempRotation, anglespeed * Time.deltaTime);
-            }
-            else
-            {
-                tempRotation.z = -15;
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, tempRotation, anglespeed * Time.deltaTime);
-            }
-            return true;
-        }
-        
+        tempRotation.z = tempRotation.z / 3.0f;
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, tempRotation, anglespeed * Time.deltaTime);
+
     }
 }
