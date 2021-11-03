@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     public Vector2 targetpos;
     Vector3 quaternionToTarget;
     public Balloon balloon;
+    Transform Ptransform;
 
     // 더블 탭에 사용되는 변수
     float lastTouchTime;
@@ -46,14 +47,15 @@ public class Player : MonoBehaviour
         heart = transform.GetChild(0).GetComponent<Heart>();
         lastTouchTime = Time.time;
         PBtr = Attacker.transform;
+        Ptransform = GetComponent<Transform>();
     }
 
     void Update()
     {
         OnDrag();
         Update_LookRatation();
+        Reload();
         CameraIn();
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -213,13 +215,10 @@ public class Player : MonoBehaviour
 
         Vector3 Dir = targetPos - myPos; // 위치 차 계산
         quaternionToTarget = Quaternion.Euler(0, 0, axis) * Dir; // 여기부터는 어떻게 구현되는건지 잘 모르겠음
-
         Quaternion targetRotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: quaternionToTarget);
-        
+
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, anglespeed * Time.deltaTime);
         balloon.TransRotation(targetRotation);
-
-
     }
     void PBFire() //탄환 발사
     {
