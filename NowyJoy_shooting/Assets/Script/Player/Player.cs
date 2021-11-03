@@ -215,11 +215,12 @@ public class Player : MonoBehaviour
 
         Vector3 Dir = targetPos - myPos; // 위치 차 계산
         quaternionToTarget = Quaternion.Euler(0, 0, axis) * Dir; // 여기부터는 어떻게 구현되는건지 잘 모르겠음
-        Quaternion targetRotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: quaternionToTarget);
+        Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, quaternionToTarget);
         if (Ptransform.rotation.z >= 30 || Ptransform.rotation.z <= -30)
         {
             return;
         }
+        //Mathf.Atan2(y, x);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, anglespeed * Time.deltaTime); // anglespeed만큼의 속도로 Rotation 변환
         //balloon.TransRotation(targetRotation);
     }
