@@ -12,10 +12,12 @@ public class SceneChangeManager : MonoBehaviour
     public Image curtein_right;
     public Image curtein_left_close;
     public Image curtein_right_colse;
-    Vector2 curteinposdown = new Vector2(0, -3f);
-    Vector2 curteinposup = new Vector2(0, 3f);
-    Vector2 curteinposleft = new Vector2(-2f,0);
-    Vector2 curteinposright = new Vector2(2f, 0);
+    public GameObject curtein_colse_L;
+    public GameObject curtein_close_R;
+    Vector2 curteinposdown = new Vector2(0, -7f);
+    Vector2 curteinposup = new Vector2(0, 8f);
+    Vector2 curteinposleft = new Vector2(-5f, 0);
+    Vector2 curteinposright = new Vector2(5f, 0);
     public float speed = 6f;
     bool isDown = false;
     bool isMovedDown = false;
@@ -68,7 +70,8 @@ public class SceneChangeManager : MonoBehaviour
         Open_Left_Origin_Pos = curtein_left.transform.position;
         Open_Right_Origin_Pos = curtein_right.transform.position;
         Top_Origin_Pos = curtein_full.transform.position;
-
+        curtein_colse_L.SetActive(true);
+        curtein_close_R.SetActive(true);
         curtein_transperent_Close_0();
     }
 
@@ -128,14 +131,14 @@ public class SceneChangeManager : MonoBehaviour
 
     IEnumerator curteinDown()
     {
-        while (checkTime <2.1f)
+        while (checkTime < 3.1f)
         {
             isMovedDown = true;
             checkTime += 0.1f;
             yield return new WaitForSecondsRealtime(0.1f);
             curtein_full.transform.Translate(curteinposdown * speed);
         }
-        if (checkTime > 2.1f)
+        if (checkTime > 3.1f)
         {
             curtein_full.transform.position = Top_Origin_Pos;
             checkTime = 0f;
@@ -145,13 +148,13 @@ public class SceneChangeManager : MonoBehaviour
 
     IEnumerator curteinUp()
     {
-        while (checkTime < 2f)
+        while (checkTime < 3f)
         {
             checkTime += 0.1f;
             yield return new WaitForSecondsRealtime(0.1f);
             curtein_full.transform.Translate(curteinposup * speed);
         }
-        if (checkTime > 2f)
+        if (checkTime > 3f)
         {
             isMovedDown = false;
             checkTime = 0f;
