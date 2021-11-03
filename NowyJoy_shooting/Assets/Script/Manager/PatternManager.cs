@@ -151,7 +151,7 @@ public class PatternManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
-            StartCoroutine("LaserPattern");
+            StartCoroutine(LaserPattern(PatternPos[Random.Range(0,8)]));
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
@@ -231,7 +231,7 @@ public class PatternManager : MonoBehaviour
         do
         {
             randPtn[0] = Random.Range(0, 3);
-            randPtn[1] = Random.Range(0, 5);
+            randPtn[1] = Random.Range(0, 1);
         }
         while (randPtn[0] == randPtn[1]);
 
@@ -932,10 +932,10 @@ public class PatternManager : MonoBehaviour
         } ///
         Warning_Laser.SetActive(false);
 
-        while (height <= 6) /// 레이저 발사 기능
+        while (height <= 1) /// 레이저 발사 기능
         {
             height += LaserSpeed / 100;
-            Laser.transform.localScale = new Vector3(height, 2 , 1);
+            Laser.transform.localScale = new Vector3(height, 1 , 1);
             yield return new WaitForSeconds(0.001f);
         } ///
 
