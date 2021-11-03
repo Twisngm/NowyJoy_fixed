@@ -15,7 +15,7 @@ public class PlayerBullet : MonoBehaviour
     }
     private void collide(Collision2D collision)
     {
-        if (collision.gameObject.name == "Wall")
+        if (collision.gameObject.tag == "BulletWall")
         {
             Destroy(gameObject);
         }
@@ -24,7 +24,7 @@ public class PlayerBullet : MonoBehaviour
     }
     public void Launch(Vector2 Dir, float Speed)
     {
-        rigidbody2D.AddForce(Dir * Speed);
-        // PBrigid.AddForce(Vector2.up * PBspeed, ForceMode2D.Impulse);
+        //rigidbody2D.AddForce(Dir * Speed, ForceMode2D.Impulse);
+        rigidbody2D.AddForce(Vector2.up * Speed, ForceMode2D.Impulse);
     }
 }

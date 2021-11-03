@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1110261505}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.3475046, y: 17.88593, z: -4.317969}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 3.333333, y: 3.333333, z: 3.333333}
   m_Children: []
   m_Father: {fileID: 5497408524359625682}
@@ -319,6 +319,7 @@ MonoBehaviour:
   balloon: {fileID: 1684908200}
   Attacker: {fileID: 6825327782487484658, guid: cf2f36689b914bd4182e4596d0e5057f, type: 3}
   PBspeed: 1
+  shotdelay: 0.5
 --- !u!60 &5497408524359625683
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     public Vector2 targetpos;
     Vector3 quaternionToTarget;
     public Balloon balloon;
+    Transform Ptransform;
 
     // 더블 탭에 사용되는 변수
     float lastTouchTime;
@@ -46,14 +47,15 @@ public class Player : MonoBehaviour
         heart = transform.GetChild(0).GetComponent<Heart>();
         lastTouchTime = Time.time;
         PBtr = Attacker.transform;
+        Ptransform = GetComponent<Transform>();
     }
 
     void Update()
     {
         OnDrag();
         Update_LookRatation();
+        Reload();
         CameraIn();
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -104,7 +106,7 @@ public class Player : MonoBehaviour
              
                 m_prevPos = m_curPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.GetTouch(0).position.x * -1, Input.GetTouch(0).position.y * -1, Spacepos.z)); // 이동시키기
 
-                if (Time.time - lastTouchTime < doubleTapdelay && curshotdelay<shotdelay)
+                if (Time.time - lastTouchTime < doubleTapdelay && curshotdelay > shotdelay)
                 {
                     PBFire();
                 }
@@ -164,7 +166,7 @@ public class Player : MonoBehaviour
             {
                 onTouch = true; // onTouch를 true로 (이동 o)
                 target.position = m_prevPos = m_curPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.GetTouch(0).position.x * -1, Input.GetTouch(0).position.y * -1, Spacepos.z)); // 이동시키기
-                if (Time.time - lastTouchTime < doubleTapdelay && curshotdelay < shotdelay)
+                if (Time.time - lastTouchTime < doubleTapdelay && curshotdelay > shotdelay)
                 {
                     PBFire();
                 }
@@ -213,31 +215,21 @@ public class Player : MonoBehaviour
 
         Vector3 Dir = targetPos - myPos; // 위치 차 계산
         quaternionToTarget = Quaternion.Euler(0, 0, axis) * Dir; // 여기부터는 어떻게 구현되는건지 잘 모르겠음
-
         Quaternion targetRotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: quaternionToTarget);
-        
-        if (targetRotation.z >= 30 || targetRotation.z <= -30) {
-            if (targetRotation.z >= 30)
-            {
-                targetRotation.z = 30;
-            }
-            else if (targetRotation.z <= -30)
-            {
-                targetRotation.z = -30;
-            }
+        if (Ptransform.rotation.z >= 30 || Ptransform.rotation.z <= -30)
+        {
+            return;
         }
-        
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, anglespeed * Time.deltaTime);
-        balloon.TransRotation(targetRotation);
-
-
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, anglespeed * Time.deltaTime); // anglespeed만큼의 속도로 Rotation 변환
+        //balloon.TransRotation(targetRotation);
     }
     void PBFire() //탄환 발사
     {
-        Vector2 launchdir = (Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position) - gameObject.transform.position); //Vector계산
         GameObject PlayerBullet = Instantiate(Attacker, transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f));
         PlayerBulletcontoller = PlayerBullet.GetComponent<PlayerBullet>();
+        Vector2 launchdir = (Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position) - gameObject.transform.position); //Vector계산
         PlayerBulletcontoller.Launch(launchdir.normalized, PBspeed);
+        curshotdelay = 0;
     }
     void Reload()
     {
