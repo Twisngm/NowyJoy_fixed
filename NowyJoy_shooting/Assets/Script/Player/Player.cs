@@ -216,16 +216,20 @@ public class Player : MonoBehaviour
         Vector3 Dir = targetPos - myPos; // 위치 차 계산
         quaternionToTarget = Quaternion.Euler(0, 0, axis) * Dir; // 여기부터는 어떻게 구현되는건지 잘 모르겠음
         Quaternion targetRotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: quaternionToTarget);
-
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, anglespeed * Time.deltaTime);
-        balloon.TransRotation(targetRotation);
+        if (Ptransform.rotation.z >= 30 || Ptransform.rotation.z <= -30)
+        {
+            return;
+        }
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, anglespeed * Time.deltaTime); // anglespeed만큼의 속도로 Rotation 변환
+        //balloon.TransRotation(targetRotation);
     }
     void PBFire() //탄환 발사
     {
-        Vector2 launchdir = (Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position) - gameObject.transform.position); //Vector계산
         GameObject PlayerBullet = Instantiate(Attacker, transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f));
         PlayerBulletcontoller = PlayerBullet.GetComponent<PlayerBullet>();
+        Vector2 launchdir = (Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position) - gameObject.transform.position); //Vector계산
         PlayerBulletcontoller.Launch(launchdir.normalized, PBspeed);
+        curshotdelay = 0;
     }
     void Reload()
     {

@@ -24,7 +24,7 @@ public class PlayerBullet : MonoBehaviour
     }
     public void Launch(Vector2 Dir, float Speed)
     {
-        rigidbody2D.AddForce(Dir * Speed, ForceMode2D.Impulse);
-        // PBrigid.AddForce(Vector2.up * PBspeed, ForceMode2D.Impulse);
+        //rigidbody2D.AddForce(Dir * Speed, ForceMode2D.Impulse);
+        rigidbody2D.AddForce(Vector2.up * Speed, ForceMode2D.Impulse);
     }
 }
