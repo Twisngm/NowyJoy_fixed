@@ -53,7 +53,7 @@ public class Title : MonoBehaviour
             image2.gameObject.SetActive(true);
             image.gameObject.SetActive(false);
         }
-        if (SceneManager.GetActiveScene().name == "SampleScene")
+        if (SceneManager.GetActiveScene().name == "stage1")
         {
             image.gameObject.SetActive(true);
             image2.gameObject.SetActive(false);
