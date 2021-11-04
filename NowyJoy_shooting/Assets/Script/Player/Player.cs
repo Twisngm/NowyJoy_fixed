@@ -23,7 +23,8 @@ public class Player : MonoBehaviour
     private float axis = 0;
     public Transform target;
     public Vector2 targetpos;
-    Vector3 quaternionToTarget;
+    //Vector3 quaternionToTarget;
+    float ToTarget;
     public Balloon balloon;
     Transform Ptransform;
 
@@ -214,14 +215,15 @@ public class Player : MonoBehaviour
         targetPos.z = myPos.z;
 
         Vector3 Dir = targetPos - myPos; // 위치 차 계산
-        quaternionToTarget = Quaternion.Euler(0, 0, axis) * Dir; // 여기부터는 어떻게 구현되는건지 잘 모르겠음
-        Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, quaternionToTarget);
+        //quaternionToTarget = Quaternion.Euler(0, 0, axis) * Dir; // 여기부터는 어떻게 구현되는건지 잘 모르겠음
+        ToTarget = Mathf.Atan2(Dir.y, Dir.x) * Mathf.Rad2Deg;
+        //Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, quaternionToTarget);
         if (Ptransform.rotation.z >= 30 || Ptransform.rotation.z <= -30)
         {
             return;
         }
-        //Mathf.Atan2(y, x);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, anglespeed * Time.deltaTime); // anglespeed만큼의 속도로 Rotation 변환
+        transform.rotation = Quaternion.AngleAxis(ToTarget, Vector3.forward);
+        //transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, anglespeed * Time.deltaTime); // anglespeed만큼의 속도로 Rotation 변환
         //balloon.TransRotation(targetRotation);
     }
     void PBFire() //탄환 발사
