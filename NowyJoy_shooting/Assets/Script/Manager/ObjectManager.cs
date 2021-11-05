@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ObjectManager : MonoBehaviour
 {
-    public GameManager GM;
-
     GameObject[] bulletA;
     GameObject[] bulletB;
     GameObject[] bulletC;

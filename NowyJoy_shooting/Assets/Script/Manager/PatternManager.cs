@@ -140,7 +140,7 @@ public class PatternManager : MonoBehaviour
         {
             shootSpeed_target = 5f;
         }
-
+        /*
         if (Input.GetKeyDown(KeyCode.T))
         {
             StartCoroutine("Flamingo");
@@ -161,6 +161,7 @@ public class PatternManager : MonoBehaviour
         {
             shapeShooting();
         }
+        */
         if(Count == 4)
         {
             for(int i = 0; i < isAble_Shape.Length; i++)

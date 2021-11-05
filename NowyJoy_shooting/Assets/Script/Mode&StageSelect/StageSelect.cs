@@ -11,6 +11,12 @@ public class StageSelect : MonoBehaviour
     float timecheck = 0;
     [SerializeField] [Range(1f, 5f)] float scaleSpeed = 1f;
 
+    GameManager gm;
+
+    private void Awake()
+    {
+        gm = FindObjectOfType<GameManager>();   
+    }
     private void Update()
     {
         SceneChange();
@@ -53,18 +59,22 @@ public class StageSelect : MonoBehaviour
                 case "1":
                     SceneChangeManager.Instance.FadeOut();
                     StartCoroutine("sceneLoading", 1);
+                  
                     break;
                 case "1-1":
                     SceneChangeManager.Instance.FadeOut();
                     StartCoroutine("sceneLoading", 1.5f);
+                    
                     break;
                 case "2":
                     SceneChangeManager.Instance.FadeOut();
                     StartCoroutine("sceneLoading", 2);
+
                     break;
                 case "5":
                     SceneChangeManager.Instance.FadeOut();
                     StartCoroutine("sceneLoading", 5);
+                   
                     break;
             }
         }
@@ -76,19 +86,23 @@ public class StageSelect : MonoBehaviour
 
         if (stage_number == 1)
         {
+           
             SceneManager.LoadScene("stage1");
         }
         else if (stage_number == 1.5)
         {
-            SceneManager.LoadScene("stage1-1");
+          
+            SceneManager.LoadScene("stage2");
         }
         else if (stage_number == 2)
         {
-            SceneManager.LoadScene("stage2");
+           
+            SceneManager.LoadScene("stage3");
         }
 
         else if (stage_number == 5)
         {
+         
             SceneManager.LoadScene("stage5");
         }
     }

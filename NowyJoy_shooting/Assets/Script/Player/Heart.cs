@@ -29,10 +29,7 @@ public class Heart : MonoBehaviour
 
     public void OnDamaged()
     {
-        Debug.Log("플레이어 체력 : " + gm.HP);
-
         gm.HP--;
-
         gameObject.layer = 7;
         transform.parent.gameObject.layer = 7;
         anim.SetTrigger("Hit");

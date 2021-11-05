@@ -246,7 +246,9 @@ public class SceneChangeManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "stage1")
         {
+            FadeIn();
             FadeImage(true);
+            
             //Invoke("FadeIn", 0.1f);
         }
         if (SceneManager.GetActiveScene().name == "ModeSelect")
