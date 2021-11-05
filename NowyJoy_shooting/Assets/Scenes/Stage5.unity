@@ -8961,6 +8961,10 @@ PrefabInstance:
       propertyPath: shotdelay
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5497408524359625680, guid: 7c658062d8b55444583256412605cd1a, type: 3}
+      propertyPath: anglespeed
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 5497408524359625682, guid: 7c658062d8b55444583256412605cd1a, type: 3}
       propertyPath: m_RootOrder
       value: 12
