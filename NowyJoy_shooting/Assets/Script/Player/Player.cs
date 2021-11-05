@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
     float transferspeed = 0.15f; // 크기 조정비율(inspector 기준)
 
     Heart heart;
+    public Animator anim;
     void Start()
     {
         Spacepos = Camera.main.ScreenToWorldPoint(transform.position);
@@ -49,6 +50,7 @@ public class Player : MonoBehaviour
         lastTouchTime = Time.time;
         PBtr = Attacker.transform;
         Ptransform = GetComponent<Transform>();
+        anim = transform.GetChild(4).GetComponent<Animator>();
     }
 
     void Update()
@@ -224,6 +226,7 @@ public class Player : MonoBehaviour
     }
     void PBFire() //탄환 발사
     {
+        anim.Play("ShotEffect");
         GameObject PlayerBullet = Instantiate(Attacker, transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f));
         PlayerBulletcontoller = PlayerBullet.GetComponent<PlayerBullet>();
         Vector2 launchdir = (Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position) - gameObject.transform.position); //Vector계산
