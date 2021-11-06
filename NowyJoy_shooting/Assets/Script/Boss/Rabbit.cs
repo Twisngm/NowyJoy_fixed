@@ -5,11 +5,15 @@ using UnityEngine;
 public class Rabbit : MonoBehaviour
 {
     public GameObject RushWarning;
-    PolygonCollider2D col;
+    CircleCollider2D col;
+    SpriteRenderer Renderer;
+    Animator anim;
 
     private void Awake()
     {
-        col = GetComponentInChildren<PolygonCollider2D>(); 
+        col = GetComponentInChildren<CircleCollider2D>();
+        anim = GetComponentInChildren<Animator>();
+        Renderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     void OnEnable()
@@ -88,8 +92,8 @@ public class Rabbit : MonoBehaviour
         int isDouble = Random.Range(0, 3);
 
         float DashSpeed = 2f;
-        float ReturnSpeed = 3.5f;
-
+        float ReturnSpeed = 3f;
+        float warningTime = 0.5f;
 
 
         switch (RandDir)
@@ -97,186 +101,298 @@ public class Rabbit : MonoBehaviour
             case 0: // 위
                 RushWarning.transform.rotation = Quaternion.Euler(0, 0, 90);
                 RushWarning.SetActive(true);
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(warningTime);
                 RushWarning.SetActive(false);
+                anim.SetBool("isRun", true);
+                anim.SetBool("isIdle", false);
                 iTween.MoveTo(this.gameObject, iTween.Hash("y", 7, "time", DashSpeed, "easeType", "EaseInOutBack"));
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(DashSpeed);
+                anim.SetBool("isRun", false);
+                anim.SetBool("isIdle", true);
                 if (isDouble == 0)
                 {
                     RushWarning.transform.rotation = Quaternion.Euler(0, 0, 90);
                     RushWarning.SetActive(true);
-                    yield return new WaitForSeconds(1f);
+                    yield return new WaitForSeconds(warningTime);
                     RushWarning.SetActive(false);
-                    iTween.MoveTo(this.gameObject, iTween.Hash("y", 0, "time", DashSpeed, "easeType", "EaseInOutBack"));
-                    yield return new WaitForSeconds(3f);
+                    anim.SetBool("isRun", true);
+                    anim.SetBool("isIdle", false);
+                    iTween.MoveTo(this.gameObject, iTween.Hash("y", 0.8f, "time", DashSpeed, "easeType", "EaseInOutBack"));
+                    yield return new WaitForSeconds(DashSpeed);
+                    anim.SetBool("isRun", false);
+                    anim.SetBool("isIdle", true);
                 }
                 else
                 {
-                    iTween.MoveTo(this.gameObject, iTween.Hash("y", 0, "time", ReturnSpeed, "easeType", "Linear"));
-                    yield return new WaitForSeconds(4f);
+                    anim.SetBool("isRun", true);
+                    anim.SetBool("isIdle", false);
+                    iTween.MoveTo(this.gameObject, iTween.Hash("y", 0.8f, "time", ReturnSpeed, "easeType", "Linear"));
+                    yield return new WaitForSeconds(ReturnSpeed);
+                    anim.SetBool("isRun", false);
+                    anim.SetBool("isIdle", true);
                 }
                 break;
 
             case 1: // 오른쪽
                 RushWarning.transform.rotation = Quaternion.Euler(0, 0, 0);
                 RushWarning.SetActive(true);
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(warningTime);
                 RushWarning.SetActive(false);
+                anim.SetBool("isRun", true);
+                anim.SetBool("isIdle", false);
+                Renderer.flipX = true;
                 iTween.MoveTo(this.gameObject, iTween.Hash("x", 5, "time", DashSpeed, "easeType", "EaseInOutBack"));
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(DashSpeed);
+                anim.SetBool("isRun", false);
+                anim.SetBool("isIdle", true);
                 if (isDouble == 0)
                 {
                     RushWarning.transform.rotation = Quaternion.Euler(0, 0, 0);
                     RushWarning.SetActive(true);
-                    yield return new WaitForSeconds(1f);
+                    yield return new WaitForSeconds(warningTime);
                     RushWarning.SetActive(false);
+                    anim.SetBool("isRun", true);
+                    anim.SetBool("isIdle", false);
+                    Renderer.flipX = false;
                     iTween.MoveTo(this.gameObject, iTween.Hash("x", 0, "time", DashSpeed, "easeType", "EaseInOutBack"));
-                    yield return new WaitForSeconds(3f);
+                    yield return new WaitForSeconds(DashSpeed);
+                    anim.SetBool("isRun", false);
+                    anim.SetBool("isIdle", true);
                 }
                 else
                 {
+                    anim.SetBool("isRun", true);
+                    anim.SetBool("isIdle", false);
+                    Renderer.flipX = false;
                     iTween.MoveTo(this.gameObject, iTween.Hash("x", 0, "time", ReturnSpeed, "easeType", "Linear"));
-                    yield return new WaitForSeconds(4f);
+                    yield return new WaitForSeconds(ReturnSpeed);
+                    anim.SetBool("isRun", false);
+                    anim.SetBool("isIdle", true);
                 }
                 break;
 
             case 2: // 아래
                 RushWarning.transform.rotation = Quaternion.Euler(0, 0, 270);
                 RushWarning.SetActive(true);
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(warningTime);
                 RushWarning.SetActive(false);
+                anim.SetBool("isRun", true);
+                anim.SetBool("isIdle", false);
                 iTween.MoveTo(this.gameObject, iTween.Hash("y", -7, "time", DashSpeed, "easeType", "EaseInOutBack"));
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(DashSpeed);
+                anim.SetBool("isRun", false);
+                anim.SetBool("isIdle", true);
                 if (isDouble == 0)
                 {
                     RushWarning.transform.rotation = Quaternion.Euler(0, 0, 270);
                     RushWarning.SetActive(true);
-                    yield return new WaitForSeconds(1f);
+                    yield return new WaitForSeconds(warningTime);
                     RushWarning.SetActive(false);
-                    iTween.MoveTo(this.gameObject, iTween.Hash("y", 0, "time", DashSpeed, "easeType", "EaseInOutBack"));
-                    yield return new WaitForSeconds(3f);
+                    anim.SetBool("isRun", true);
+                    anim.SetBool("isIdle", false);
+                    iTween.MoveTo(this.gameObject, iTween.Hash("y", 0.8f, "time", DashSpeed, "easeType", "EaseInOutBack"));
+                    yield return new WaitForSeconds(DashSpeed);
+                    anim.SetBool("isRun", false);
+                    anim.SetBool("isIdle", true);
                 }
                 else
                 {
-                    iTween.MoveTo(this.gameObject, iTween.Hash("y", 0, "time", ReturnSpeed, "easeType", "Linear"));
-                    yield return new WaitForSeconds(4f);
+                    anim.SetBool("isRun", true);
+                    anim.SetBool("isIdle", false);
+                    iTween.MoveTo(this.gameObject, iTween.Hash("y", 0.8f, "time", ReturnSpeed, "easeType", "Linear"));
+                    yield return new WaitForSeconds(ReturnSpeed);
+                    anim.SetBool("isRun", false);
+                    anim.SetBool("isIdle", true);
                 }
                 break;
 
             case 3: // 왼쪽
                 RushWarning.transform.rotation = Quaternion.Euler(0, 0, 180);
                 RushWarning.SetActive(true);
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(warningTime);
                 RushWarning.SetActive(false);
+                anim.SetBool("isRun", true);
+                anim.SetBool("isIdle", false);
+                Renderer.flipX = false;
                 iTween.MoveTo(this.gameObject, iTween.Hash("x", -5, "time", DashSpeed, "easeType", "EaseInOutBack"));
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(DashSpeed);
+                anim.SetBool("isRun", false);
+                anim.SetBool("isIdle", true);
                 if (isDouble == 0)
                 {
                     RushWarning.transform.rotation = Quaternion.Euler(0, 0, 180);
                     RushWarning.SetActive(true);
-                    yield return new WaitForSeconds(1f);
+                    yield return new WaitForSeconds(warningTime);
                     RushWarning.SetActive(false);
+                    anim.SetBool("isRun", true);
+                    anim.SetBool("isIdle", false);
+                    Renderer.flipX = true;
                     iTween.MoveTo(this.gameObject, iTween.Hash("x", 0, "time", DashSpeed, "easeType", "EaseInOutBack"));
-                    yield return new WaitForSeconds(3f);
+                    yield return new WaitForSeconds(DashSpeed);
+                    anim.SetBool("isRun", false);
+                    anim.SetBool("isIdle", true);
                 }
                 else
                 {
+                    anim.SetBool("isRun", true);
+                    anim.SetBool("isIdle", false);
+                    Renderer.flipX = true;
                     iTween.MoveTo(this.gameObject, iTween.Hash("x", 0, "time", ReturnSpeed, "easeType", "Linear"));
-                    yield return new WaitForSeconds(4f);
+                    yield return new WaitForSeconds(ReturnSpeed);
+                    anim.SetBool("isRun", false);
+                    anim.SetBool("isIdle", true);
                 }
                 break;
 
             case 4: // 오른쪽 위
                 RushWarning.transform.rotation = Quaternion.Euler(0, 0, 60);
                 RushWarning.SetActive(true);
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(warningTime);
                 RushWarning.SetActive(false);
+                anim.SetBool("isRun", true);
+                anim.SetBool("isIdle", false);
+                Renderer.flipX = true;
                 iTween.MoveTo(this.gameObject, iTween.Hash("position", new Vector3(3.3f, 6, 0), "time", DashSpeed, "easeType", "EaseInOutBack"));
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(DashSpeed);
+                anim.SetBool("isRun", false);
+                anim.SetBool("isIdle", true);
                 if (isDouble == 0)
                 {
                     RushWarning.transform.rotation = Quaternion.Euler(0, 0, 60);
                     RushWarning.SetActive(true);
-                    yield return new WaitForSeconds(1f);
+                    yield return new WaitForSeconds(warningTime);
                     RushWarning.SetActive(false);
-                    iTween.MoveTo(this.gameObject, iTween.Hash("position", new Vector3(0, 0, 0), "time", DashSpeed, "easeType", "EaseInOutBack"));
-                    yield return new WaitForSeconds(3f);
+                    anim.SetBool("isRun", true);
+                    anim.SetBool("isIdle", false);
+                    Renderer.flipX = false;
+                    iTween.MoveTo(this.gameObject, iTween.Hash("position", new Vector3(0, 0.8f, 0), "time", DashSpeed, "easeType", "EaseInOutBack"));
+                    yield return new WaitForSeconds(DashSpeed);
+                    anim.SetBool("isRun", false);
+                    anim.SetBool("isIdle", true);
                 }
                 else
                 {
-
-                    iTween.MoveTo(this.gameObject, iTween.Hash("position", new Vector3(0, 0, 0), "time", ReturnSpeed, "easeType", "Linear"));
-                    yield return new WaitForSeconds(4f);
+                    anim.SetBool("isRun", true);
+                    anim.SetBool("isIdle", false);
+                    Renderer.flipX = false;
+                    iTween.MoveTo(this.gameObject, iTween.Hash("position", new Vector3(0, 0.8f, 0), "time", ReturnSpeed, "easeType", "Linear"));
+                    yield return new WaitForSeconds(ReturnSpeed);
+                    anim.SetBool("isRun", false);
+                    anim.SetBool("isIdle", true);
                 }
                 break;
 
             case 5: // 오른쪽 아래
                 RushWarning.transform.rotation = Quaternion.Euler(0, 0, 300);
                 RushWarning.SetActive(true);
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(warningTime);
                 RushWarning.SetActive(false);
+                anim.SetBool("isRun", true);
+                anim.SetBool("isIdle", false);
+                Renderer.flipX = true;
                 iTween.MoveTo(this.gameObject, iTween.Hash("position", new Vector3(3.3f, -6, 0), "time", DashSpeed, "easeType", "EaseInOutBack"));
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(DashSpeed);
+                anim.SetBool("isRun", false);
+                anim.SetBool("isIdle", true);
                 if (isDouble == 0)
                 {
                     RushWarning.transform.rotation = Quaternion.Euler(0, 0, 300);
                     RushWarning.SetActive(true);
-                    yield return new WaitForSeconds(1f);
+                    yield return new WaitForSeconds(warningTime);
                     RushWarning.SetActive(false);
-                    iTween.MoveTo(this.gameObject, iTween.Hash("position", new Vector3(0, 0, 0), "time", DashSpeed, "easeType", "EaseInOutBack"));
-                    yield return new WaitForSeconds(3f);
+                    anim.SetBool("isRun", true);
+                    anim.SetBool("isIdle", false);
+                    Renderer.flipX = false;
+                    iTween.MoveTo(this.gameObject, iTween.Hash("position", new Vector3(0, 0.8f, 0), "time", DashSpeed, "easeType", "EaseInOutBack"));
+                    yield return new WaitForSeconds(DashSpeed);
+                    anim.SetBool("isRun", false);
+                    anim.SetBool("isIdle", true);
                 }
                 else
                 {
-
-                    iTween.MoveTo(this.gameObject, iTween.Hash("position", new Vector3(0, 0, 0), "time", ReturnSpeed, "easeType", "Linear"));
-                    yield return new WaitForSeconds(4f);
+                    anim.SetBool("isRun", true);
+                    anim.SetBool("isIdle", false);
+                    Renderer.flipX = false;
+                    iTween.MoveTo(this.gameObject, iTween.Hash("position", new Vector3(0, 0.8f, 0), "time", ReturnSpeed, "easeType", "Linear"));
+                    yield return new WaitForSeconds(ReturnSpeed);
+                    anim.SetBool("isRun", false);
+                    anim.SetBool("isIdle", true);
                 }
                 break;
 
             case 6: // 왼쪽 아래
                 RushWarning.transform.rotation = Quaternion.Euler(0, 0, 240);
                 RushWarning.SetActive(true);
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(warningTime);
                 RushWarning.SetActive(false);
+                anim.SetBool("isRun", true);
+                anim.SetBool("isIdle", false);
+                Renderer.flipX = false;
                 iTween.MoveTo(this.gameObject, iTween.Hash("position", new Vector3(-4f, -6, 0), "time", DashSpeed, "easeType", "EaseInOutBack"));
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(DashSpeed);
+                anim.SetBool("isRun", false);
+                anim.SetBool("isIdle", true);
                 if (isDouble == 0)
                 {
                     RushWarning.transform.rotation = Quaternion.Euler(0, 0, 240);
                     RushWarning.SetActive(true);
-                    yield return new WaitForSeconds(1f);
+                    yield return new WaitForSeconds(warningTime);
                     RushWarning.SetActive(false);
-                    iTween.MoveTo(this.gameObject, iTween.Hash("position", new Vector3(0, 0, 0), "time", DashSpeed, "easeType", "EaseInOutBack"));
-                    yield return new WaitForSeconds(3f);
+                    anim.SetBool("isRun", true);
+                    anim.SetBool("isIdle", false);
+                    Renderer.flipX = true;
+                    iTween.MoveTo(this.gameObject, iTween.Hash("position", new Vector3(0, 0.8f, 0), "time", DashSpeed, "easeType", "EaseInOutBack"));
+                    yield return new WaitForSeconds(DashSpeed);
+                    anim.SetBool("isRun", false);
+                    anim.SetBool("isIdle", true);
                 }
                 else
                 {
-                    iTween.MoveTo(this.gameObject, iTween.Hash("position", new Vector3(0, 0, 0), "time", ReturnSpeed, "easeType", "Linear"));
-                    yield return new WaitForSeconds(4f);
+                    anim.SetBool("isRun", true);
+                    anim.SetBool("isIdle", false);
+                    Renderer.flipX = true;
+                    iTween.MoveTo(this.gameObject, iTween.Hash("position", new Vector3(0, 0.8f, 0), "time", ReturnSpeed, "easeType", "Linear"));
+                    yield return new WaitForSeconds(ReturnSpeed);
+                    anim.SetBool("isRun", false);
+                    anim.SetBool("isIdle", true);
                 }
                 break;
 
             case 7: // 왼쪽 위
                 RushWarning.transform.rotation = Quaternion.Euler(0, 0, 120);
                 RushWarning.SetActive(true);
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(warningTime);
                 RushWarning.SetActive(false);
+                anim.SetBool("isRun", true);
+                anim.SetBool("isIdle", false);
+                Renderer.flipX = false;
                 iTween.MoveTo(this.gameObject, iTween.Hash("position", new Vector3(-3.5f, 6, 0), "time", DashSpeed, "easeType", "EaseInOutBack"));
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(DashSpeed);
+                anim.SetBool("isRun", false);
+                anim.SetBool("isIdle", true);
                 if (isDouble == 0)
                 {
                     RushWarning.transform.rotation = Quaternion.Euler(0, 0, 120);
                     RushWarning.SetActive(true);
-                    yield return new WaitForSeconds(1f);
+                    yield return new WaitForSeconds(warningTime);
                     RushWarning.SetActive(false);
-                    iTween.MoveTo(this.gameObject, iTween.Hash("position", new Vector3(0, 0, 0), "time", DashSpeed, "easeType", "EaseInOutBack"));
-                    yield return new WaitForSeconds(3f);
+                    anim.SetBool("isRun", true);
+                    anim.SetBool("isIdle", false);
+                    Renderer.flipX = true;
+                    iTween.MoveTo(this.gameObject, iTween.Hash("position", new Vector3(0, 0.8f, 0), "time", DashSpeed, "easeType", "EaseInOutBack"));
+                    yield return new WaitForSeconds(DashSpeed);
+                    anim.SetBool("isRun", false);
+                    anim.SetBool("isIdle", true);
                 }
                 else
                 {
-                    iTween.MoveTo(this.gameObject, iTween.Hash("position", new Vector3(0, 0, 0), "time", ReturnSpeed, "easeType", "Linear"));
-                    yield return new WaitForSeconds(4f);
+                    anim.SetBool("isRun", true);
+                    anim.SetBool("isIdle", false);
+                    Renderer.flipX = true;
+                    iTween.MoveTo(this.gameObject, iTween.Hash("position", new Vector3(0, 0.8f, 0), "time", ReturnSpeed, "easeType", "Linear"));
+                    yield return new WaitForSeconds(ReturnSpeed);
+                    anim.SetBool("isRun", false);
+                    anim.SetBool("isIdle", true);
                 }
                 break;
 
@@ -284,7 +400,7 @@ public class Rabbit : MonoBehaviour
                 break;
 
         }
-        Invoke("DoPattern", 3f);
+        Invoke("DoPattern", 1f);
     }
 
     IEnumerator CurveOut_R()
@@ -303,18 +419,17 @@ public class Rabbit : MonoBehaviour
 
     IEnumerator Jump()
     {
+        anim.SetBool("isRun", true);
+        anim.SetBool("isIdle", false);
         iTween.MoveTo(this.gameObject, iTween.Hash("position", new Vector3(0, 2.75f, 0), "time", 1.5f, "easeType", iTween.EaseType.linear));
-        yield return new WaitForSeconds(1f);
-        iTween.MoveTo(this.gameObject,
-        iTween.Hash("path",
-        iTweenPath.GetPath("Jump"),
-        "speed", 3f,
-        "delay", 2f,
-        "easeType", iTween.EaseType.easeOutBounce,  
-        "movetopath", false));
-        yield return new WaitForSeconds(5f);
-        iTween.MoveTo(this.gameObject, iTween.Hash("position", new Vector3(0, 0, 0), "time", 1f, "easeType", iTween.EaseType.linear));
-        Invoke("DoPattern", 3f);
+        yield return new WaitForSeconds(1.5f);
+        anim.SetTrigger("Jump");
+        iTween.MoveTo(this.gameObject,iTween.Hash("path",iTweenPath.GetPath("Jump"),"speed", 3f,"delay", 2f,"easeType", iTween.EaseType.easeOutBounce,"movetopath", false));    
+        yield return new WaitForSeconds(2.5f);
+        iTween.MoveTo(this.gameObject, iTween.Hash("position", new Vector3(0, 0.8f, 0), "time", 1f, "easeType", iTween.EaseType.linear));
+      //  anim.SetBool("isRun", false);
+      //  anim.SetBool("isIdle", true);
+        Invoke("DoPattern", 1f);
     }
 
  

@@ -43,14 +43,14 @@ public class StageManager : MonoBehaviour
 
     void GameClear()
     {
-
-        if (time.min == 3 && Clear != null)
-        {
-            pause.isPause = true;
-            Clear.SetActive(true);
-            GM.stageUnlock[GM.stagenum] = true;
-        }
-
+        
+            if (time.min < 0)
+            {
+                pause.isPause = true;
+                Clear.SetActive(true);
+                GM.stageUnlock[GM.stagenum] = true;
+            }
+     
 
     }
 
@@ -63,6 +63,15 @@ public class StageManager : MonoBehaviour
     public void GotoTitle()
     {
         pause.isPause = false;
+        ptnManager.SetActive(false);
         SceneManager.LoadScene("StageSelect");
+    }
+
+    public void nextStage()
+    {
+        pause.isPause = false;
+        ptnManager.SetActive(false);
+        SceneManager.LoadScene("stage" + (GM.stagenum + 1));
+        GM.stagenum += 1;
     }
 }

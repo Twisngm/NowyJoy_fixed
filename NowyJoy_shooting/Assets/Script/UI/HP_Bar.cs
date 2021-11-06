@@ -11,7 +11,11 @@ public class HP_Bar : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        gm = GameObject.Find("gameManager").GetComponent<GameManager>();
+       
+    }
+    private void Start()
+    {
+        gm = GameManager.GM_Instance;
         hp = gm.HP;
     }
 

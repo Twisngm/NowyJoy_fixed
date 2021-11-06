@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PatternManager : MonoBehaviour
 {
-    GameManager GM;
+    public GameManager GM;
     public ObjectManager objManager;
     public GameObject Spin_ptn;
     public bool isPatterning = false;
@@ -100,7 +100,7 @@ public class PatternManager : MonoBehaviour
     private void Awake()
     {
         //   title = GameObject.Find("Trigger").GetComponent<Title>();
-        GM = GameObject.Find("gameManager").GetComponent<GameManager>();
+        GM = GameManager.GM_Instance;    
         target = GameObject.FindWithTag("Player");
         shapePos[0] = GameObject.Find("bulletPos_U");
         shapePos[1] = GameObject.Find("bulletPos_D");
@@ -121,6 +121,7 @@ public class PatternManager : MonoBehaviour
 
         StartCoroutine("Shooting");
     //    Invoke("DoPattern", 5f);
+    if(GM.stagenum != 2)
         DoPtn();
 
     }
@@ -231,8 +232,27 @@ public class PatternManager : MonoBehaviour
 
         do
         {
-            randPtn[0] = Random.Range(0, 3);
-            randPtn[1] = Random.Range(0, 1);
+            if (GM.stagenum == 1) // 1스테이지 기믹
+                randPtn[0] = -1;
+            else if (GM.stagenum == 2) // 1.5스테이지 기믹
+                randPtn[0] = -1;
+            else if (GM.stagenum == 3) // 2스테이지 기믹
+                randPtn[0] = Random.Range(-1, 1);
+            else if (GM.stagenum == 4) // 3스테이지 기믹
+                randPtn[0] = Random.Range(0, 2);
+            else // 그 외
+                randPtn[0] = Random.Range(0, 3);
+
+            if (GM.stagenum == 1) // 1스테이지 패턴
+                randPtn[1] = Random.Range(0, 2);
+            else if (GM.stagenum == 2) // 1.5스테이지 패턴
+                randPtn[1] = -1;
+            else if (GM.stagenum == 3) // 2스테이지 패턴
+                randPtn[1] = Random.Range(0, 3);
+            else if (GM.stagenum == 4) // 3스테이지 패턴
+                randPtn[1] = Random.Range(0, 4);
+            else // 그 외
+                randPtn[1] = Random.Range(0, 5);
         }
         while (randPtn[0] == randPtn[1]);
 
@@ -240,15 +260,15 @@ public class PatternManager : MonoBehaviour
         switch (randPtn[0])
         {
             case 0:
-                Screen_Scale_Control();
+                StartCoroutine("Flamingo"); // 플라밍고 
                 break;
 
             case 1:
-                StartMirror();
+                StartMirror(); // 거울패턴
                 break;
 
             case 2:
-                StartCoroutine("Flamingo");
+                Screen_Scale_Control(); // 화면 확대 축소 패턴
                 break;
 
             case 3:
@@ -276,34 +296,23 @@ public class PatternManager : MonoBehaviour
         switch (randPtn[1])
         {
             case 0:
-                if(GM.stagenum != 1)
-                    startWiper(ptnPos[1]);
-
-                else
-                    shapeShooting();
-
+                shapeShooting(); // 5각형 탄막
                 break;
 
             case 1:
-                StartCoroutine("spin");
+                StartCoroutine("spin"); // 스핀샷
                 break;
 
             case 2:
-                shapeShooting();
+                startLaser(ptnPos[1]); // 레이저
                 break;
 
             case 3:
-
-                if(GM.stagenum != 1)
-                    StartCoroutine("PawnDrop");
-
-                else
-                    StartCoroutine("spin");
-
+                startWiper(ptnPos[1]); // 와이퍼
                 break;
 
             case 4:
-                startLaser(ptnPos[1]);
+                 StartCoroutine("PawnDrop"); // 체스 폰
                 break;
 
             case 5:
@@ -319,7 +328,10 @@ public class PatternManager : MonoBehaviour
                 break;
 
         }
-        Invoke("DoPtn", 10f);
+        if(GM.stagenum == 1)   
+            Invoke("DoPtn", 8f);
+        else
+            Invoke("DoPtn", 10f);
     }
 
     IEnumerator test1(Transform pos)
@@ -935,7 +947,7 @@ public class PatternManager : MonoBehaviour
 
         while (height <= 1) /// 레이저 발사 기능
         {
-            height += LaserSpeed / 100;
+            height += LaserSpeed / 500;
             Laser.transform.localScale = new Vector3(height, 1 , 1);
             yield return new WaitForSeconds(0.001f);
         } ///
