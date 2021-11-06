@@ -18,6 +18,7 @@ TagManager:
   - Body
   - Wiper
   - curtein
+  - safeZone
   layers:
   - Default
   - TransparentFX

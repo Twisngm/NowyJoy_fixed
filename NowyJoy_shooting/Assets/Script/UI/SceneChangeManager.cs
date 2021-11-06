@@ -87,6 +87,19 @@ public class SceneChangeManager : MonoBehaviour
         }
     }
 
+    public void gotostage1()
+    {
+        FadeOut();
+        Invoke("goto1", 1f);
+
+        
+    }
+    public void goto1()
+    {
+        SceneManager.LoadScene("stage1");
+        fadeObject.color = new Color(0, 0, 0, 0);
+    }
+
     public void curtein_Up()
     {
         if (!isMovedDown)
@@ -307,6 +320,7 @@ public class SceneChangeManager : MonoBehaviour
     public void FadeInTest()
     {
         Debug.Log("È­¸éÀÌ ¹à¾ÆÁý´Ï´Ù.");
+        testimage.color = new Color(0, 0, 0, 1);
         StartCoroutine(FadeTest(1, 0)); // È­¸éÀÌ Á¡Á¡ ¹à¾ÆÁü
     }
 
