@@ -21,10 +21,9 @@ public class safeZone : MonoBehaviour
     {
         StartCoroutine("showsafeZone");
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Body"))
+        if (collision.CompareTag("Player"))
         {
             Debug.Log("주인공과 닿았습니다.");
         }
@@ -51,7 +50,7 @@ public class safeZone : MonoBehaviour
     }
     IEnumerator showsafeZone()
     {
-        float changeTime = 4f;
+        float changeTime = 1f;
         while (true)
         {
             checktime += 0.1f;
