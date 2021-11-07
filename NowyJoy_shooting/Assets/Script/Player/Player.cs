@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     public Transform target;
     public Vector2 targetpos;
     //Vector3 quaternionToTarget;
-    float ToTarget;
+    public float ToTarget;
     public Balloon balloon;
     Transform Ptransform;
 
@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         OnDrag();
-        Update_LookRatation();
+        //Update_LookRatation();
         Reload();
         CameraIn();
     }
@@ -205,22 +205,24 @@ public class Player : MonoBehaviour
             gap = m_curPos - m_prevPos; // 기존 위치와 현재 위치 차 계산
 
             transform.position += gap; // position에 gap만큼을 추가해 이동시킴
+            Update_LookRatation();
             m_prevPos = m_curPos; // 값을 현재 위치값으로 변경
         }
 
     }
     private void Update_LookRatation()
     {
-        Vector3 myPos = transform.position; // 현재 위치
-        target.localPosition = gap;
-        Vector3 targetPos = target.position; // target 오브젝트 위치
+            Vector3 myPos = transform.position; // 현재 위치
+            target.localPosition = gap;
+            Vector3 targetPos = target.position; // target 오브젝트 위치
+
+            Vector3 Dir = targetPos - myPos; // 위치 차 계산
+            ToTarget = Mathf.Atan2(Dir.y, Dir.x) * Mathf.Rad2Deg;
+
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.AngleAxis(ToTarget, Vector3.forward), anglespeed * Time.deltaTime);
+
         //quaternionToTarget = Quaternion.Euler(0, 0, axis) * Dir; // 여기부터는 어떻게 구현되는건지 잘 모르겠음
         //Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, quaternionToTarget);
-
-        Vector3 Dir = targetPos - myPos; // 위치 차 계산
-        ToTarget = Mathf.Atan2(Dir.y, Dir.x) * Mathf.Rad2Deg;
-        
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.AngleAxis(ToTarget, Vector3.forward), anglespeed * Time.deltaTime);
         //transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, anglespeed * Time.deltaTime); // anglespeed만큼의 속도로 Rotation 변환
         //balloon.TransRotation(targetRotation);
     }

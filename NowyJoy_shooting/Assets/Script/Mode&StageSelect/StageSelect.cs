@@ -11,11 +11,13 @@ public class StageSelect : MonoBehaviour
     float timecheck = 0;
     [SerializeField] [Range(1f, 5f)] float scaleSpeed = 1f;
 
+    private SceneChangeManager sceneMG;
+
     GameManager gm;
 
     private void Awake()
     {
-        gm = FindObjectOfType<GameManager>();   
+        gm = FindObjectOfType<GameManager>();
     }
     private void Update()
     {
@@ -33,7 +35,7 @@ public class StageSelect : MonoBehaviour
                     case "1":
                         Debug.Log("1 스테이지로 이동합니다.");
                         StartCoroutine("changing");
-                    break;
+                        break;
                     case "2":
                         Debug.Log("2 스테이지로 이동합니다.");
                         StartCoroutine("changing");
@@ -61,65 +63,53 @@ public class StageSelect : MonoBehaviour
             switch (stage)
             {
                 case "1":
-                    SceneChangeManager.Instance.FadeOut();
-                    StartCoroutine("sceneLoading", 1);
-                  
+
+                    sceneLoading();
                     break;
                 case "2":
-                    SceneChangeManager.Instance.FadeOut();
-                    StartCoroutine("sceneLoading", 2);
-                    
+                    SceneChangeManager.Instance.curtein_Down();
                     break;
                 case "3":
-                    SceneChangeManager.Instance.FadeOut();
-                    StartCoroutine("sceneLoading", 3);
-
+                    SceneChangeManager.Instance.curtein_Down();
                     break;
 
                 case "4":
-                    SceneChangeManager.Instance.FadeOut();
-                    StartCoroutine("sceneLoading", 4);
-
+                    SceneChangeManager.Instance.curtein_Down();
                     break;
 
                 case "5":
-                    SceneChangeManager.Instance.FadeOut();
-                    StartCoroutine("sceneLoading", 5);
-                   
+                    SceneChangeManager.Instance.curtein_Down();
                     break;
             }
         }
     }
 
-    IEnumerator sceneLoading(float stage_number)
+    private void sceneLoading()
     {
-        yield return new WaitForSeconds(1.0f);
+        switch (stage)
+        {
+            case "1":
+                SceneManager.LoadScene("stage1");
 
-        if (stage_number == 1)
-        {
-           
-            SceneManager.LoadScene("stage1");
-        }
-        else if (stage_number == 2)
-        {
-          
-            SceneManager.LoadScene("stage2");
-        }
-        else if (stage_number == 3)
-        {
-           
-            SceneManager.LoadScene("stage3");
-        }
+                break;
+            case "2":
+                //SceneChangeManager.Instance.curtein_Down();
+                SceneManager.LoadScene("stage2");
+                break;
+            case "3":
+                //SceneChangeManager.Instance.curtein_Down();
+                SceneManager.LoadScene("stage3");
+                break;
 
-        else if (stage_number == 4)
-        {
-            SceneManager.LoadScene("stage4");
-        }
+            case "4":
+                //SceneChangeManager.Instance.curtein_Down();
+                SceneManager.LoadScene("stage4");
+                break;
 
-        else if (stage_number == 5)
-        {
-         
-            SceneManager.LoadScene("stage5");
+            case "5":
+                //SceneChangeManager.Instance.curtein_Down();
+                SceneManager.LoadScene("stage5");
+                break;
         }
     }
 
@@ -130,7 +120,7 @@ public class StageSelect : MonoBehaviour
         {
             StartCoroutine("changing_small");
         }
-        
+
     }
 
 
@@ -148,7 +138,7 @@ public class StageSelect : MonoBehaviour
     IEnumerator changing()
     {
         float checkTime = 0f;
-        
+
         while (checkTime < 4f)
         {
             yield return new WaitForSecondsRealtime(0.02f);
@@ -156,7 +146,7 @@ public class StageSelect : MonoBehaviour
             changed();
             timecheck = checkTime;
         }
-        
+
         if (checkTime >= 4f)
         {
             changeScene = true;
