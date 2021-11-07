@@ -19,6 +19,7 @@ TagManager:
   - Wiper
   - curtein
   - safeZone
+  - sceneChange
   layers:
   - Default
   - TransparentFX

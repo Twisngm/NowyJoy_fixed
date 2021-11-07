@@ -23,6 +23,16 @@ public class SceneChangeManager : MonoBehaviour
     bool isMovedDown = false;
     bool isClosed = false;
     bool isColsed_close = false;
+
+    public bool isCurtein_Up_finished = false;
+    public bool isCurtein_Down_finished = false;
+    public bool isCurtein_Open_finished = false;
+    public bool isCurtein_Close_finished = false;
+
+    bool isCurtein_Up_Moving = false;
+    bool isCurtein_Down_Moving = false;
+    bool isCurtein_Open_Moving = false;
+    bool isCurtein_Close_Moving = false;
     float checkTime = 0f;
 
     Vector2 Close_Left_Origin_Pos;
@@ -34,7 +44,6 @@ public class SceneChangeManager : MonoBehaviour
     [Range(0.01f, 10f)]
     public float fadeTime = 1f;
     public Image testimage;
-    private FadeState fadeState;
     public AnimationCurve fadeCurve;
 
     private static SceneChangeManager instance;
@@ -59,8 +68,6 @@ public class SceneChangeManager : MonoBehaviour
             Destroy(this.gameObject);
         }
         DontDestroyOnLoad(this.gameObject);
-
-        
     }
 
     private void Start()
@@ -73,31 +80,6 @@ public class SceneChangeManager : MonoBehaviour
         curtein_colse_L.SetActive(true);
         curtein_close_R.SetActive(true);
         curtein_transperent_Close_0();
-    }
-
-     void curtein_DownUp()
-    {
-        if (isMovedDown)
-        {
-            StartCoroutine("curteinUp");
-        }
-        else
-        {
-            StartCoroutine("curteinDown");
-        }
-    }
-
-    public void gotostage1()
-    {
-        FadeOut();
-        Invoke("goto1", 1f);
-
-        
-    }
-    public void goto1()
-    {
-        SceneManager.LoadScene("stage1");
-        fadeObject.color = new Color(0, 0, 0, 0);
     }
 
     public void curtein_Up()
@@ -115,7 +97,7 @@ public class SceneChangeManager : MonoBehaviour
 
     public void curtein_Down()
     {
-            StartCoroutine("curteinDown");
+        StartCoroutine("curteinDown");
     }
 
     public void curtein_Open()
@@ -129,36 +111,6 @@ public class SceneChangeManager : MonoBehaviour
         StartCoroutine("curteinClose");
     }
 
-    void curtein_move_test()
-    {
-        // 양 사이드의 커튼 가운데로 이동!
-        //curtein_left.transform.position = new Vector2(Screen.width / 2 - (Screen.width/2), Screen.height / 2);
-        //curtein_right.transform.position = new Vector2(Screen.width / 2 + (Screen.width / 2), Screen.height / 2);
-        //curtein_right.transform.position = new Vector2((Screen.width/2)-4f,Screen.height / 2);
-        //curtein_left.transform.position = new Vector2((Screen.width/2)+4f, Screen.height/2);
-
-
-        //화면 가운데로 이동시킴
-        //curtein_full.transform.position = new Vector2(Screen.width/2, Screen.height/2);
-    }
-
-    IEnumerator curteinDown()
-    {
-        while (checkTime < 3.1f)
-        {
-            isMovedDown = true;
-            checkTime += 0.1f;
-            yield return new WaitForSecondsRealtime(0.1f);
-            curtein_full.transform.Translate(curteinposdown * speed);
-        }
-        if (checkTime > 3.1f)
-        {
-            curtein_full.transform.position = Top_Origin_Pos;
-            checkTime = 0f;
-            yield break;
-        }
-    }
-
     IEnumerator curteinUp()
     {
         while (checkTime < 3f)
@@ -170,25 +122,24 @@ public class SceneChangeManager : MonoBehaviour
         if (checkTime > 3f)
         {
             isMovedDown = false;
+            isCurtein_Up_finished = true;
             checkTime = 0f;
             yield break;
         }
     }
 
-    IEnumerator curteinClose()
+    IEnumerator curteinDown()
     {
-        while (checkTime < 2f)
+        while (checkTime < 3.2f)
         {
-            isClosed = true;
+            isMovedDown = true;
             checkTime += 0.1f;
             yield return new WaitForSecondsRealtime(0.1f);
-            curtein_left.transform.Translate(curteinposright * speed);
-            curtein_right.transform.Translate(curteinposleft * speed);
+            curtein_full.transform.Translate(curteinposdown * speed);
         }
-        if (checkTime > 2f)
+        if (checkTime > 3.2f)
         {
-            curtein_left.transform.position = Open_Left_Origin_Pos;
-            curtein_right.transform.position = Open_Right_Origin_Pos;
+            curtein_full.transform.position = Top_Origin_Pos;
             checkTime = 0f;
             yield break;
         }
@@ -211,10 +162,30 @@ public class SceneChangeManager : MonoBehaviour
             curtein_left_close.transform.position = Close_Left_Origin_Pos;
             curtein_right_colse.transform.position = Close_Right_Origin_Pos;
             checkTime = 0f;
+            isCurtein_Down_finished = true;
             yield break;
         }
     }
 
+    IEnumerator curteinClose()
+    {
+        while (checkTime < 2f)
+        {
+            isClosed = true;
+            checkTime += 0.1f;
+            yield return new WaitForSecondsRealtime(0.1f);
+            curtein_left.transform.Translate(curteinposright * speed);
+            curtein_right.transform.Translate(curteinposleft * speed);
+        }
+        if (checkTime > 2f)
+        {
+            curtein_left.transform.position = Open_Left_Origin_Pos;
+            curtein_right.transform.position = Open_Right_Origin_Pos;
+            checkTime = 0f;
+            isCurtein_Close_finished = true;
+            yield break;
+        }
+    }
 
     void curtein_transperent_Close_0()
     {
@@ -237,8 +208,6 @@ public class SceneChangeManager : MonoBehaviour
     }
 
 
-
-
     public void FadeIn() // 화면이 보인다.
     {
         StartCoroutine(FadeImage(true));
@@ -259,19 +228,15 @@ public class SceneChangeManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "stage1")
         {
-            FadeIn();
-            FadeImage(true);
-            
-            //Invoke("FadeIn", 0.1f);
+            curtein_Open();
         }
         if (SceneManager.GetActiveScene().name == "ModeSelect")
         {
-            FadeIn();
+            curtein_Open();
         }
         if (SceneManager.GetActiveScene().name == "StageSelect")
         {
-            fadeObject.color = new Color(0, 0, 0, 1);
-            FadeIn();
+            curtein_Open();
         }
     }
 
@@ -307,7 +272,15 @@ public class SceneChangeManager : MonoBehaviour
         }
     }
 
+    public void fadeinscripttest()
+    {
+        FadeInOut.Instance.FadeIn();
+    }
 
+    public void fadeoutscripttest()
+    {
+        FadeInOut.Instance.FadeOut();
+    }
 
 
     public void FadeOutTest()
