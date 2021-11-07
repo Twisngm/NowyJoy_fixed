@@ -7,6 +7,14 @@ public class PatternManager : MonoBehaviour
     public GameManager GM;
     public ObjectManager objManager;
     public GameObject Spin_ptn;
+    public GameObject Spiral_ptn;
+    public GameObject FiveWay_ptn;
+    public GameObject Waving_ptn;
+    public GameObject RandRange_ptn;
+    public GameObject SinWave_ptn;
+    public GameObject thirtyWay_ptn;
+    public GameObject sevenWay_ptn;
+    public GameObject fourWay_ptn;
     public bool isPatterning = false;
   
     // 패턴
@@ -244,15 +252,15 @@ public class PatternManager : MonoBehaviour
                 randPtn[0] = Random.Range(0, 3);
 
             if (GM.stagenum == 1) // 1스테이지 패턴
-                randPtn[1] = Random.Range(0, 2);
+                randPtn[1] = 7; // Random.Range(0, 10);
             else if (GM.stagenum == 2) // 1.5스테이지 패턴
                 randPtn[1] = -1;
             else if (GM.stagenum == 3) // 2스테이지 패턴
-                randPtn[1] = Random.Range(0, 3);
+                randPtn[1] = Random.Range(0, 11);
             else if (GM.stagenum == 4) // 3스테이지 패턴
-                randPtn[1] = Random.Range(0, 4);
+                randPtn[1] = Random.Range(0, 12);
             else // 그 외
-                randPtn[1] = Random.Range(0, 5);
+                randPtn[1] = Random.Range(0, 13);
         }
         while (randPtn[0] == randPtn[1]);
 
@@ -272,11 +280,11 @@ public class PatternManager : MonoBehaviour
                 break;
 
             case 3:
-                StartCoroutine(test4(ptnPos[0]));
+                StartCoroutine(test6(ptnPos[0]));
                 break;
 
             case 4:
-                StartCoroutine(test5(ptnPos[0]));
+                StartCoroutine(test6(ptnPos[0]));
                 break;
 
             case 5:
@@ -304,74 +312,95 @@ public class PatternManager : MonoBehaviour
                 break;
 
             case 2:
-                startLaser(ptnPos[1]); // 레이저
+                StartCoroutine("SpiralShot");  // 나선샷 
                 break;
 
             case 3:
-                startWiper(ptnPos[1]); // 와이퍼
+                StartCoroutine("FiveWayShot"); // 파이브웨이샷
                 break;
 
             case 4:
-                 StartCoroutine("PawnDrop"); // 체스 폰
+                StartCoroutine("WavingShot"); // 웨이빙샷
                 break;
 
             case 5:
-                StartCoroutine(test6(ptnPos[1]));
+                StartCoroutine("RandRangeShot"); // 랜덤분사
                 break;
 
             case 6:
-                StartCoroutine(test7(ptnPos[1]));
+                StartCoroutine("SinWaveShot"); // 사인곡선샷
                 break;
 
             case 7:
-                StartCoroutine(test8(ptnPos[1]));
+                StartCoroutine("thirtyWayShot"); // 서티웨이샷
+                break;
+
+            case 8:
+                StartCoroutine("SevenWayShot"); // 세븐웨이샷
+                break;
+
+            case 9:
+                StartCoroutine("fourWayShot"); // 포웨이샷
+                break;
+
+            case 10:
+                startLaser(ptnPos[1]); // 레이저
+                break;
+
+            case 11:
+                startWiper(ptnPos[1]); // 와이퍼
+                break;
+
+            case 12:
+                StartCoroutine("PawnDrop"); // 체스 폰
                 break;
 
         }
-        if(GM.stagenum == 1)   
-            Invoke("DoPtn", 8f);
-        else
+        
             Invoke("DoPtn", 10f);
     }
 
-    IEnumerator test1(Transform pos)
+    IEnumerator SpiralShot()
     {
-        testobj[0].transform.position = pos.position;
-        testobj[0].SetActive(true);
-        yield return new WaitForSeconds(3f);
-        testobj[0].SetActive(false);
+        isPatterning = true;
+        Spiral_ptn.SetActive(true);
+        yield return new WaitForSeconds(4f);
+        Spiral_ptn.SetActive(false);
+        isPatterning = false;
     }
 
-    IEnumerator test2(Transform pos)
+    IEnumerator FiveWayShot()
     {
-        testobj[1].transform.position = pos.position;
-        testobj[1].SetActive(true);
-        yield return new WaitForSeconds(3f);
-        testobj[1].SetActive(false);
+        isPatterning = true;
+        FiveWay_ptn.SetActive(true);
+        yield return new WaitForSeconds(4f);
+        FiveWay_ptn.SetActive(false);
+        isPatterning = false;
+    }
+    IEnumerator WavingShot()
+    {
+        isPatterning = true;
+        Waving_ptn.SetActive(true);
+        yield return new WaitForSeconds(4f);
+        Waving_ptn.SetActive(false);
+        isPatterning = false;
+    }
+    IEnumerator RandRangeShot()
+    {
+        isPatterning = true;
+        RandRange_ptn.SetActive(true);
+        yield return new WaitForSeconds(4f);
+        RandRange_ptn.SetActive(false);
+        isPatterning = false;
     }
 
-    IEnumerator test3(Transform pos)
+    IEnumerator SinWaveShot()
     {
-        testobj[2].transform.position = pos.position;
-        testobj[2].SetActive(true);
-        yield return new WaitForSeconds(3f);
-        testobj[2].SetActive(false);
-    }
-
-    IEnumerator test4(Transform pos)
-    {
-        testobj[3].transform.position = pos.position;
-        testobj[3].SetActive(true);
-        yield return new WaitForSeconds(3f);
-        testobj[3].SetActive(false);
-    }
-
-    IEnumerator test5(Transform pos)
-    {
-        testobj[4].transform.position = pos.position;
-        testobj[4].SetActive(true);
-        yield return new WaitForSeconds(3f);
-        testobj[4].SetActive(false);
+        isPatterning = true;
+        SinWave_ptn.SetActive(true);
+        yield return new WaitForSeconds(4f);
+        SinWave_ptn.SetActive(false);
+        isPatterning = false;
     }
     IEnumerator test6(Transform pos)
     {
@@ -603,6 +632,103 @@ public class PatternManager : MonoBehaviour
         isPatterning = false;
        
 
+    }
+
+    IEnumerator thirtyWayShot()
+    {
+        isPatterning = true;
+        int cnt = 0;
+        while(cnt < 4)
+        {
+            while (true)
+            {
+
+                Direction = Random.Range(0, 4);
+
+                if (isAble_Shape[Direction] == true)
+                    break;
+
+            }
+
+            isAble_Shape[Direction] = false;
+
+            // Warning[Direction].transform.position = shapePos[Direction].transform.position;
+            Warning[Direction].SetActive(true);
+            yield return new WaitForSeconds(1.25f);
+            Warning[Direction].SetActive(false);
+
+            thirtyWay_ptn.transform.position = shapePos[Direction].transform.position;
+
+            thirtyWay_ptn.SetActive(true);
+            yield return new WaitForSeconds(1.25f);
+            thirtyWay_ptn.SetActive(false);
+            cnt++;
+        }
+        isPatterning = false;
+    }
+
+    IEnumerator SevenWayShot()
+    {
+        isPatterning = true;
+        int cnt = 0;
+        while (cnt < 4)
+        {
+            while (true)
+            {
+
+                Direction = Random.Range(0, 4);
+
+                if (isAble_Shape[Direction] == true)
+                    break;
+
+            }
+
+            isAble_Shape[Direction] = false;
+
+            // Warning[Direction].transform.position = shapePos[Direction].transform.position;
+            Warning[Direction].SetActive(true);
+            yield return new WaitForSeconds(1.25f);
+            Warning[Direction].SetActive(false);
+            sevenWay_ptn.transform.position = shapePos[Direction].transform.position;
+
+            sevenWay_ptn.SetActive(true);
+            yield return new WaitForSeconds(1.25f);
+            sevenWay_ptn.SetActive(false);
+            cnt++;
+        }
+        isPatterning = false;
+    }
+
+    IEnumerator fourWayShot()
+    {
+        isPatterning = true;
+        int cnt = 0;
+        while (cnt < 4)
+        {
+            while (true)
+            {
+
+                Direction = Random.Range(0, 4);
+
+                if (isAble_Shape[Direction] == true)
+                    break;
+
+            }
+
+            isAble_Shape[Direction] = false;
+
+            // Warning[Direction].transform.position = shapePos[Direction].transform.position;
+            Warning[Direction].SetActive(true);
+            yield return new WaitForSeconds(1.25f);
+            Warning[Direction].SetActive(false);
+            fourWay_ptn.transform.position = shapePos[Direction].transform.position;
+
+            fourWay_ptn.SetActive(true);
+            yield return new WaitForSeconds(1.25f);
+            fourWay_ptn.SetActive(false);
+            cnt++;
+        }
+        isPatterning = false;
     }
     public IEnumerator Flamingo()
     {
