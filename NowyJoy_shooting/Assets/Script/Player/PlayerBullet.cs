@@ -5,9 +5,13 @@ using UnityEngine;
 public class PlayerBullet : MonoBehaviour
 {
     Rigidbody2D rigidbody2D;
+    Quaternion roller;
+    public int rollangle;
+    public float rollspeed;
     private void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
+        roller.z = 0;
     }
     private void Update()
     {
@@ -30,6 +34,7 @@ public class PlayerBullet : MonoBehaviour
     }
     void Turn()
     {
-
+        roller.z += rollangle;
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, roller, rollspeed * Time.deltaTime);
     }
 }

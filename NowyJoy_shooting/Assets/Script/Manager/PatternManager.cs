@@ -61,6 +61,13 @@ public class PatternManager : MonoBehaviour
     public GameObject[] flaPos;
     public bool[] isAble_Flamingo;
 
+    // 차원문 패턴
+
+    public GameObject Teledoor1;
+    public GameObject Teledoor2;
+    public GameObject Player;
+    public GameObject dodo; //보스
+
     // 체스 폰 패턴
 
     public GameObject[] pawn;
@@ -1086,44 +1093,42 @@ public class PatternManager : MonoBehaviour
 
 
     /*
-     *
-     * public GameObject Teledoor1;
-       public GameObject Teledoor2;
-       public GameObject Player;
-       public GameObject dodo; //보스
-       // in Start()
-       BoxCollider2D Telecoll1 = Teledoor1.collider;
-       BoxCollider2D Telecoll2 = Teledoor2.collider;
-       Transform Tetr1 = Teledoor1.Transform;
-       Transform Tetr2 = Teledoor2.Transform;
-       Trnasform Pltr = Player.Transform;
-       Transform Bosstr = dodo.Transform;
-     */
-    /*public void Teleporter{
+     * BoxCollider2D Telecoll1 = Teledoor1.collider;
+    BoxCollider2D Telecoll2 = Teledoor2.collider;
+     * public void Teleporter{
      * int Gate = Random.Range(0, 4);
      * if (Gate == 0){
-     *      Tetr1.position = (a1, b1, c1);
-     *      Tetr2.position = (d1, e1, f1);
+     *      Teledoor1.transform.position = (a1, b1, c1);
+     *      Teledoor2.transform.position = (d1, e1, f1);
      * }
      * else if (Gate == 1){
-     *      Tetr1.position = (a2, b2, c2);
-     *      Tetr2.position = (d2, e2, f2);
+     *      Teledoor1.transform.position = (a2, b2, c2);
+     *      Teledoor2.transform.position = (d2, e2, f2);
      * }
      * else if (Gate == 2){
-     *      Tetr1.position = (a3, b3, c3);
-     *      Tetr2.position = (d3, e3, f3);
+     *      Teledoor1.transform.position = (a3, b3, c3);
+     *      Teledoor2.transform.position = (d3, e3, f3);
      * }
      * else if (Gate == 3){
-     *      Tetr1.position = (a4, b4, c4);
-     *      Tetr2.position = (d4, e4, f4);
+     *      Teledoor1.transform.position = (a4, b4, c4);
+     *      Teledoor2.transform.position = (d4, e4, f4);
      * }
      * 
-     * if (Telecoll1.gameObject.layer == 6){
-     *      Pltr.position = Tetr2.position;
+     * if (Teledoor1.collider.collision.gameObject.tag == "Body"){
+     *      Player.transform.position = Teledoor2.transform.position;
+     *      Player.Player.invinc();
      * }
-     * if (Telecoll2.gameObject.layer == 6){
-     *      Pltr.position = Tetr1.position;
+     * if (Teledoor2.collider.collision.gameObject.tag == "Body"){
+     *      Player.transform.position = Teledoor1.transform.position;
+     *      Player.Player.invinc();
      * }
+     * if (Teledoor.collider.collision.gameObject.tag == "Boss"){
+     *      
+     * }
+     * if (Teledoor.collider.collision.gameObject.tag == "Boss"){
+     * 
+     * }
+     * 
      * }
      */
 
