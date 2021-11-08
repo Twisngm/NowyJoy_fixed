@@ -21,13 +21,6 @@ public class safeZone : MonoBehaviour
     {
         StartCoroutine("showsafeZone");
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            Debug.Log("주인공과 닿았습니다.");
-        }
-    }
 
     void safeZoneAlpha(int alphaCount)
     {

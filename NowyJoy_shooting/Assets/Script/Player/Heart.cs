@@ -7,6 +7,7 @@ public class Heart : MonoBehaviour
     GameManager gm;
     public SpriteRenderer sprRend;
     Animator anim;
+    public bool safeZone;
     // Start is called before the first frame update
     void Awake()
     {
@@ -21,14 +22,30 @@ public class Heart : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("safeZone"))
+        {
+            safeZone = true;
+        }
         if (collision.CompareTag("Enemy") || collision.CompareTag("Rabbit"))
         {
             OnDamaged();
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("safeZone"))
+        {
+            safeZone = false;
+        }
+    }
+
     public void OnDamaged()
     {
+        if (safeZone)
+        {
+            return;
+        }
         gm.HP--;
         gameObject.layer = 7;
         transform.parent.gameObject.layer = 7;

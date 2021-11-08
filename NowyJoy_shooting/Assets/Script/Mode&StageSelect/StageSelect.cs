@@ -60,10 +60,11 @@ public class StageSelect : MonoBehaviour
     {
         if (changeScene)
         {
+            changeScene = false;
             switch (stage)
             {
                 case "1":
-
+                    SceneChangeManager.Instance.curtein_Down();
                     sceneLoading();
                     break;
                 case "2":
