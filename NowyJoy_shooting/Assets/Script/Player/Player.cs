@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     public float anglespeed;
     private float axis = 0;
     public Transform target;
-    public Vector2 targetpos;
+    public Vector3 targetPos;
     //Vector3 quaternionToTarget;
     public float ToTarget;
     public Balloon balloon;
@@ -177,6 +177,7 @@ public class Player : MonoBehaviour
             else if (touchZero.phase == TouchPhase.Ended) // 첫번째 터치의 phase가 Ended(끝)이라면
             {
                 onTouch = false; // onTouch를 false로 (이동 x)
+                targetPos = Vector3.zero;
                 lastTouchTime = Time.time; // 첫번째 손가락을 뗀 순간을 마지막 터치 시간으로 저장
             }
 
@@ -213,8 +214,8 @@ public class Player : MonoBehaviour
     private void Update_LookRatation()
     {
             Vector3 myPos = transform.position; // 현재 위치
-            target.localPosition = gap;
-            Vector3 targetPos = target.position; // target 오브젝트 위치
+            target.localPosition += gap;
+            targetPos = target.position; // target 오브젝트 위치
 
             Vector3 Dir = targetPos - myPos; // 위치 차 계산
             ToTarget = Mathf.Atan2(Dir.y, Dir.x) * Mathf.Rad2Deg;

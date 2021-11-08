@@ -11,7 +11,7 @@ public class PlayerBullet : MonoBehaviour
     }
     private void Update()
     {
-        
+        Turn();
     }
     private void collide(Collision2D collision)
     {
@@ -19,12 +19,17 @@ public class PlayerBullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        /*if (collision.gameObject.layer == boss)){ //보스와 닿았을때 작동할 코드.
-        }*/
+        if (collision.gameObject.tag == "Rabbit"){ //보스와 닿았을때 작동할 코드.
+            Destroy(gameObject);
+        }
     }
     public void Launch(Vector2 Dir, float Speed)
     {
         //rigidbody2D.AddForce(Dir * Speed, ForceMode2D.Impulse);
         rigidbody2D.AddForce(Vector2.up * Speed, ForceMode2D.Impulse);
+    }
+    void Turn()
+    {
+
     }
 }
