@@ -17,11 +17,20 @@ public class StageSelect : MonoBehaviour
 
     private void Awake()
     {
+        SceneChangeManager.Instance.isCurtein_Down_finished = false;
+        SceneChangeManager.Instance.isCurtein_Up_finished = false;
+        SceneChangeManager.Instance.isCurtein_Close_finished = false;
+        SceneChangeManager.Instance.isCurtein_Open_finished = false;
         gm = FindObjectOfType<GameManager>();
     }
+
     private void Update()
     {
         SceneChange();
+        if (SceneChangeManager.Instance.isCurtein_Down_finished)
+        {
+            Debug.Log("커튼이 다 내려갔습니다.");
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -56,61 +65,42 @@ public class StageSelect : MonoBehaviour
             }
         }
     }
+
     void SceneChange()
     {
         if (changeScene)
         {
             changeScene = false;
-            switch (stage)
-            {
-                case "1":
-                    SceneChangeManager.Instance.curtein_Down();
-                    sceneLoading();
-                    break;
-                case "2":
-                    SceneChangeManager.Instance.curtein_Down();
-                    break;
-                case "3":
-                    SceneChangeManager.Instance.curtein_Down();
-                    break;
-
-                case "4":
-                    SceneChangeManager.Instance.curtein_Down();
-                    break;
-
-                case "5":
-                    SceneChangeManager.Instance.curtein_Down();
-                    break;
-            }
+            SceneChangeManager.Instance.curtein_Down();
+            SceneManager.LoadScene("stage1");
         }
     }
 
     private void sceneLoading()
     {
-        switch (stage)
+        if (SceneChangeManager.Instance.isCurtein_Down_finished)
         {
-            case "1":
-                SceneManager.LoadScene("stage1");
+            SceneChangeManager.Instance.isCurtein_Down_finished = false;
+            switch (stage)
+            {
+                case "1":
+                    SceneManager.LoadScene("stage1");
+                    break;
+                case "2":
+                    SceneManager.LoadScene("stage2");
+                    break;
+                case "3":
+                    SceneManager.LoadScene("stage3");
+                    break;
 
-                break;
-            case "2":
-                //SceneChangeManager.Instance.curtein_Down();
-                SceneManager.LoadScene("stage2");
-                break;
-            case "3":
-                //SceneChangeManager.Instance.curtein_Down();
-                SceneManager.LoadScene("stage3");
-                break;
+                case "4":
+                    SceneManager.LoadScene("stage4");
+                    break;
 
-            case "4":
-                //SceneChangeManager.Instance.curtein_Down();
-                SceneManager.LoadScene("stage4");
-                break;
-
-            case "5":
-                //SceneChangeManager.Instance.curtein_Down();
-                SceneManager.LoadScene("stage5");
-                break;
+                case "5":
+                    SceneManager.LoadScene("stage5");
+                    break;
+            }
         }
     }
 
@@ -121,9 +111,7 @@ public class StageSelect : MonoBehaviour
         {
             StartCoroutine("changing_small");
         }
-
     }
-
 
     void changed()
     {

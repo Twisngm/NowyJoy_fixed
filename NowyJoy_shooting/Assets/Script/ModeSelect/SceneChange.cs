@@ -76,7 +76,6 @@ public class SceneChange : MonoBehaviour
             {
 
             }
-            
             yield break;
         }
     }

@@ -140,6 +140,7 @@ public class SceneChangeManager : MonoBehaviour
         if (checkTime > 3.2f)
         {
             curtein_full.transform.position = Top_Origin_Pos;
+            isCurtein_Down_finished = true;
             checkTime = 0f;
             yield break;
         }

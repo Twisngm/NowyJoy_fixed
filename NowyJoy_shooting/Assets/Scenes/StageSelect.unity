@@ -1330,7 +1330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b35c629943d094f91fcf8260f6ed80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage: 4
+  stage: 6
   full_stay: 0
   changeScene: 0
   scaleSpeed: 3
@@ -2001,7 +2001,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b35c629943d094f91fcf8260f6ed80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage: 4
+  stage: 5
   full_stay: 0
   changeScene: 0
   scaleSpeed: 3
