@@ -5,13 +5,13 @@ using UnityEngine;
 public class Rabbit : MonoBehaviour
 {
     public GameObject RushWarning;
-    CircleCollider2D col;
+    PolygonCollider2D col;
     SpriteRenderer Renderer;
     Animator anim;
 
     private void Awake()
     {
-        col = GetComponentInChildren<CircleCollider2D>();
+        col = GetComponentInChildren<PolygonCollider2D>();
         anim = GetComponentInChildren<Animator>();
         Renderer = GetComponentInChildren<SpriteRenderer>();
     }
