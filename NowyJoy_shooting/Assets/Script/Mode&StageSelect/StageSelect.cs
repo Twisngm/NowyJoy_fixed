@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class StageSelect : MonoBehaviour
 {
     public string stage;
+    public int nowStage = 0;
     public bool full_stay = false;
     public bool changeScene = false;
     float timecheck = 0;
@@ -27,10 +28,6 @@ public class StageSelect : MonoBehaviour
     private void Update()
     {
         SceneChange();
-        if (SceneChangeManager.Instance.isCurtein_Down_finished)
-        {
-            Debug.Log("커튼이 다 내려갔습니다.");
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -61,18 +58,27 @@ public class StageSelect : MonoBehaviour
                         Debug.Log("5 스테이지로 이동합니다.");
                         StartCoroutine("changing");
                         break;
+                    case "6":
+                        Debug.Log("6 스테이지로 이동합니다.");
+                        StartCoroutine("changing");
+                        break;
                 }
             }
         }
     }
-
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            sceneLoading();
+        }
+    }
     void SceneChange()
     {
         if (changeScene)
         {
             changeScene = false;
             SceneChangeManager.Instance.curtein_Down();
-            SceneManager.LoadScene("stage1");
         }
     }
 
@@ -92,13 +98,14 @@ public class StageSelect : MonoBehaviour
                 case "3":
                     SceneManager.LoadScene("stage3");
                     break;
-
                 case "4":
                     SceneManager.LoadScene("stage4");
                     break;
-
                 case "5":
                     SceneManager.LoadScene("stage5");
+                    break;
+                case "6":
+                    SceneManager.LoadScene("stage6");
                     break;
             }
         }

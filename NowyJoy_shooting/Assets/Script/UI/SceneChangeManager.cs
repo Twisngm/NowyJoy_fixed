@@ -129,20 +129,39 @@ public class SceneChangeManager : MonoBehaviour
     }
 
     IEnumerator curteinDown()
-    {
-        while (checkTime < 3.2f)
+    { 
+        if (SceneManager.GetActiveScene().name == "StageSelect")
         {
-            isMovedDown = true;
-            checkTime += 0.1f;
-            yield return new WaitForSecondsRealtime(0.1f);
-            curtein_full.transform.Translate(curteinposdown * speed);
+            while (checkTime < 3.1f)
+            {
+                isMovedDown = true;
+                checkTime += 0.1f;
+                yield return new WaitForSecondsRealtime(0.1f);
+                curtein_full.transform.Translate(curteinposdown * speed);
+            }
+            if (checkTime > 3.1f)
+            {
+                isCurtein_Down_finished = true;
+                checkTime = 0f;
+                yield break;
+            }
         }
-        if (checkTime > 3.2f)
+        else
         {
-            curtein_full.transform.position = Top_Origin_Pos;
-            isCurtein_Down_finished = true;
-            checkTime = 0f;
-            yield break;
+            while (checkTime < 3.2f)
+            {
+                isMovedDown = true;
+                checkTime += 0.1f;
+                yield return new WaitForSecondsRealtime(0.1f);
+                curtein_full.transform.Translate(curteinposdown * speed);
+            }
+            if (checkTime > 3.2f)
+            {
+                curtein_full.transform.position = Top_Origin_Pos;
+                isCurtein_Down_finished = true;
+                checkTime = 0f;
+                yield break;
+            }
         }
     }
 
@@ -163,7 +182,6 @@ public class SceneChangeManager : MonoBehaviour
             curtein_left_close.transform.position = Close_Left_Origin_Pos;
             curtein_right_colse.transform.position = Close_Right_Origin_Pos;
             checkTime = 0f;
-            isCurtein_Down_finished = true;
             yield break;
         }
     }
@@ -227,10 +245,6 @@ public class SceneChangeManager : MonoBehaviour
     // 체인을 걸어서 이 함수는 매 씬마다 호출된다.
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (SceneManager.GetActiveScene().name == "stage1")
-        {
-            curtein_Open();
-        }
         if (SceneManager.GetActiveScene().name == "ModeSelect")
         {
             curtein_Open();
@@ -238,6 +252,31 @@ public class SceneChangeManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "StageSelect")
         {
             curtein_Open();
+        }
+        if (SceneManager.GetActiveScene().name == "stage1")
+        {
+            curtein_Open();
+            curtein_full.transform.position = Top_Origin_Pos;
+        }
+        if (SceneManager.GetActiveScene().name == "stage2")
+        {
+            curtein_full.transform.position = Top_Origin_Pos;
+        }
+        if (SceneManager.GetActiveScene().name == "stage3")
+        {
+            curtein_full.transform.position = Top_Origin_Pos;
+        }
+        if (SceneManager.GetActiveScene().name == "stage4")
+        {
+            curtein_full.transform.position = Top_Origin_Pos;
+        }
+        if (SceneManager.GetActiveScene().name == "Stage5")
+        {
+            curtein_full.transform.position = Top_Origin_Pos;
+        }
+        if (SceneManager.GetActiveScene().name == "Stage6")
+        {
+            curtein_full.transform.position = Top_Origin_Pos;
         }
     }
 

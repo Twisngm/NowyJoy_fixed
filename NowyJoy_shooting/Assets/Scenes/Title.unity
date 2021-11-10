@@ -621,7 +621,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1357196940}
         m_TargetAssemblyTypeName: SceneChangeManager, Assembly-CSharp
-        m_MethodName: FadeOutTest
+        m_MethodName: FadeOut
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -951,7 +951,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1357196940}
         m_TargetAssemblyTypeName: SceneChangeManager, Assembly-CSharp
-        m_MethodName: gotostage1
+        m_MethodName: FadeIn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3817,57 +3817,6 @@ MonoBehaviour:
   currentValue: 0
   maxValue: 100
   GM: {fileID: 0}
-  fadeTime: 2
-  image: {fileID: 1095642316}
-  image2: {fileID: 1284670495}
-  fadeCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0.000541687
-      value: 0.003967285
-      inSlope: 1.1755856
-      outSlope: 1.1755856
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.05813645
-    - serializedVersion: 3
-      time: 0.99902344
-      value: 1.006897
-      inSlope: 0.7073997
-      outSlope: 0.7073997
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.05585848
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  fadeCurve2:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
   isSceneChanged: 0
 --- !u!58 &1207360123
 CircleCollider2D:
@@ -4254,6 +4203,10 @@ MonoBehaviour:
   curtein_colse_L: {fileID: 1260898042}
   curtein_close_R: {fileID: 1264475512}
   speed: 10
+  isCurtein_Up_finished: 0
+  isCurtein_Down_finished: 0
+  isCurtein_Open_finished: 0
+  isCurtein_Close_finished: 0
   fadeTime: 1
   testimage: {fileID: 551901546}
   fadeCurve:
