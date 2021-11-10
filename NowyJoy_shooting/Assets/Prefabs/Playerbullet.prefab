@@ -113,8 +113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4341ac3f4985944fb0d97c8681c9dd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rollangle: 0
-  rollspeed: 0
+  rollangle: 20
+  rollspeed: 100
 --- !u!50 &-1673422066817955951
 Rigidbody2D:
   serializedVersion: 4

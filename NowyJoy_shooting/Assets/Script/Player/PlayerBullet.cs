@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerBullet : MonoBehaviour
 {
     Rigidbody2D rigidbody2D;
-    Quaternion roller;
+    Vector3 roller;
     public int rollangle;
     public float rollspeed;
     ObjectManager obj;
@@ -37,9 +37,10 @@ public class PlayerBullet : MonoBehaviour
     void Turn()
     {
         roller.z += rollangle;
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, roller, rollspeed * Time.deltaTime);
+
+        transform.Rotate(roller);
     }
-     void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "BulletWall")
         {

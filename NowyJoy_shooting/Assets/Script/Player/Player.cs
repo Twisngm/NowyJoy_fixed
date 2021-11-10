@@ -23,8 +23,8 @@ public class Player : MonoBehaviour
     private float axis = 0;
     public Transform target;
     public Vector3 targetPos;
-    //Vector3 quaternionToTarget;
-    public float ToTarget;
+    Vector3 quaternionToTarget;
+    //public float ToTarget;
     public Balloon balloon;
     Transform Ptransform;
 
@@ -117,6 +117,9 @@ public class Player : MonoBehaviour
             else if (touchZero.phase == TouchPhase.Ended) // 첫번째 터치의 phase가 Ended(끝)이라면
             {
                 onTouch = false; // onTouch를 false로 (이동 x)
+                targetPos = Vector3.zero;
+                //ToTarget = 0;
+                quaternionToTarget = Vector3.zero;
                 lastTouchTime = Time.time; // 첫번째 손가락을 뗀 순간을 마지막 터치 시간으로 저장
             }
         }
@@ -178,6 +181,8 @@ public class Player : MonoBehaviour
             {
                 onTouch = false; // onTouch를 false로 (이동 x)
                 targetPos = Vector3.zero;
+                //ToTarget = 0;
+                quaternionToTarget = Vector3.zero;
                 lastTouchTime = Time.time; // 첫번째 손가락을 뗀 순간을 마지막 터치 시간으로 저장
             }
 
@@ -213,19 +218,26 @@ public class Player : MonoBehaviour
     }
     private void Update_LookRatation()
     {
-            Vector3 myPos = transform.position; // 현재 위치
+        if ((transform.rotation.z) >= 30)
+        {
+            return;
+        }
+        else if ((transform.rotation.z) <= -30)
+        {
+            return;
+        }
+
+        Vector3 myPos = transform.position; // 현재 위치
             target.localPosition += gap;
             targetPos = target.position; // target 오브젝트 위치
 
             Vector3 Dir = targetPos - myPos; // 위치 차 계산
-            ToTarget = Mathf.Atan2(Dir.y, Dir.x) * Mathf.Rad2Deg;
+            /*ToTarget = Mathf.Atan2(Dir.y, Dir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.AngleAxis(ToTarget, Vector3.forward), anglespeed * Time.deltaTime);*/
 
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.AngleAxis(ToTarget, Vector3.forward), anglespeed * Time.deltaTime);
-
-        //quaternionToTarget = Quaternion.Euler(0, 0, axis) * Dir; // 여기부터는 어떻게 구현되는건지 잘 모르겠음
-        //Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, quaternionToTarget);
-        //transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, anglespeed * Time.deltaTime); // anglespeed만큼의 속도로 Rotation 변환
-        //balloon.TransRotation(targetRotation);
+        quaternionToTarget = Quaternion.Euler(0, 0, axis) * Dir; // 여기부터는 어떻게 구현되는건지 잘 모르겠음
+        Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, quaternionToTarget);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, anglespeed * Time.deltaTime); // anglespeed만큼의 속도로 Rotation 변환
     }
     void PBFire() //탄환 발사
     {
