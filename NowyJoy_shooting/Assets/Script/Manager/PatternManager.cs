@@ -262,7 +262,7 @@ public class PatternManager : MonoBehaviour
                 randPtn[0] = Random.Range(0, 3);
 
             if (GM.stagenum == 1) // 1스테이지 패턴
-                randPtn[1] = 8; // Random.Range(0, 10);
+                randPtn[1] = Random.Range(0,8); // Random.Range(0, 10);
             else if (GM.stagenum == 2) // 1.5스테이지 패턴
                 randPtn[1] = -1;
             else if (GM.stagenum == 3) // 2스테이지 패턴

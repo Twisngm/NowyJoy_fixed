@@ -6703,57 +6703,6 @@ MonoBehaviour:
   currentValue: 0
   maxValue: 100
   GM: {fileID: 1331437831}
-  fadeTime: 2
-  image: {fileID: 294943661}
-  image2: {fileID: 825858608}
-  fadeCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 1.3267049
-      outSlope: 1.3267049
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.039961
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0.3126123
-      outSlope: 0.3126123
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.058479846
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  fadeCurve2:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1.0073242
-      inSlope: -0.47181898
-      outSlope: -0.47181898
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.06978164
-    - serializedVersion: 3
-      time: 0.99999434
-      value: -0.003657381
-      inSlope: -1.5337583
-      outSlope: -1.5337583
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.034056976
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
   isSceneChanged: 0
 --- !u!58 &1601360150
 CircleCollider2D:
@@ -10314,10 +10263,6 @@ PrefabInstance:
       propertyPath: anglespeed
       value: 300
       objectReference: {fileID: 0}
-    - target: {fileID: 5497408524359625681, guid: 7c658062d8b55444583256412605cd1a, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: df017f92e9fe58d4b80a60b5bc3c4fb9, type: 3}
     - target: {fileID: 5497408524359625682, guid: 7c658062d8b55444583256412605cd1a, type: 3}
       propertyPath: m_RootOrder
       value: 10
