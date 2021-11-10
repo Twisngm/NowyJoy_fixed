@@ -28,6 +28,10 @@ public class StageSelect : MonoBehaviour
     private void Update()
     {
         SceneChange();
+        if (full_stay)
+        {
+            sceneLoading();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -66,13 +70,6 @@ public class StageSelect : MonoBehaviour
             }
         }
     }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            sceneLoading();
-        }
-    }
     void SceneChange()
     {
         if (changeScene)
@@ -87,25 +84,32 @@ public class StageSelect : MonoBehaviour
         if (SceneChangeManager.Instance.isCurtein_Down_finished)
         {
             SceneChangeManager.Instance.isCurtein_Down_finished = false;
+            full_stay = false;
             switch (stage)
             {
                 case "1":
+                    Debug.Log("1스테이지로 이동");
                     SceneManager.LoadScene("stage1");
                     break;
                 case "2":
+                    Debug.Log("2스테이지로 이동");
                     SceneManager.LoadScene("stage2");
                     break;
                 case "3":
+                    Debug.Log("3스테이지로 이동");
                     SceneManager.LoadScene("stage3");
                     break;
                 case "4":
+                    Debug.Log("4스테이지로 이동");
                     SceneManager.LoadScene("stage4");
                     break;
                 case "5":
-                    SceneManager.LoadScene("stage5");
+                    Debug.Log("5스테이지로 이동");
+                    SceneManager.LoadScene("Stage5");
                     break;
                 case "6":
-                    SceneManager.LoadScene("stage6");
+                    Debug.Log("6스테이지로 이동");
+                    SceneManager.LoadScene("Stage6");
                     break;
             }
         }

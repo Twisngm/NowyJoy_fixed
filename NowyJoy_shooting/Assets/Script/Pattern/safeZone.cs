@@ -8,14 +8,27 @@ public class safeZone : MonoBehaviour
     public GameObject safezone;
     SpriteRenderer safezone_renderer;
     float checktime = 0f;
-
+    float startTtime = 0f;
+    float randomcreate;
     private void Start()
     {
         safezone_renderer = safezone.GetComponent<SpriteRenderer>();
         safeZoneAlpha(0);
-        start_safezone();
     }
+    private void Update()
+    {
+        startTtime += Time.deltaTime;
 
+        if (startTtime >1f)
+        {
+            randomcreate = Random.Range(1, 101);
+            startTtime = 0f;
+            if (randomcreate <=  1) // 몇 퍼센트 확률로 할것인지
+            {
+                start_safezone();
+            }
+        }
+    }
 
     public void start_safezone()
     {
@@ -43,18 +56,20 @@ public class safeZone : MonoBehaviour
     }
     IEnumerator showsafeZone()
     {
-        float changeTime = 1f;
+        //float changeTime = 1f; // changeTime 후에 처음 등장
+        randomPos();
+        safeZoneAlpha(1);
         while (true)
         {
-            checktime += 0.1f;
-            if (checktime > changeTime)
+            checktime += Time.deltaTime;
+            if (checktime > 10f)
             {
-                safeZoneAlpha(1);
                 checktime = 0f;
-                randomPos();
-                changeTime = Random.Range(2f, 6f);
+                safeZoneAlpha(0);
+                //changeTime = Random.Range(2f, 6f);
+                yield break;
             }
-            yield return new WaitForSeconds(0.1f);
+            yield return null;
         }
     }
 }
