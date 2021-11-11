@@ -217,7 +217,8 @@ public class Player : MonoBehaviour
             transform.position += gap; // position에 gap만큼을 추가해 이동시킴
             if (touchZero.phase != TouchPhase.Stationary)
             {
-                Update_LookRatation();
+                    Update_LookRatation();
+                
             }
             else
             {
@@ -233,14 +234,18 @@ public class Player : MonoBehaviour
     }
     private void Update_LookRatation()
     {
-        float currentangle = transform.rotation.z;
         Vector3 myPos = transform.position; // 현재 위치
-        if (currentangle < 30 && currentangle > -30)
-        {
+        float currentangle = transform.rotation.z;
 
+        if (currentangle > 0.25f || currentangle < -0.25f)
+        {
+            target.localScale = target.localScale;
+        }
+        else
+        {
+            target.localPosition += gap;
         }
 
-        target.localPosition += gap;
         targetPos = target.position; // target 오브젝트 위치
 
         //Vector3
