@@ -255,7 +255,7 @@ public class Player : MonoBehaviour
 
         quaternionToTarget = Quaternion.Euler(0, 0, axis) * rotateDir; // 여기부터는 어떻게 구현되는건지 잘 모르겠음
         //Quaternion
-            targetRotation = Quaternion.LookRotation(Vector3.forward, quaternionToTarget);
+        targetRotation = Quaternion.LookRotation(Vector3.forward, quaternionToTarget);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, anglespeed * Time.deltaTime); // anglespeed만큼의 속도로 Rotation 변환
         
     }
