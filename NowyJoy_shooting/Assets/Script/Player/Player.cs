@@ -19,16 +19,15 @@ public class Player : MonoBehaviour
     PolygonCollider2D Playercollider; // collider
 
     // 회전 관련 변수
-    public float anglespeed;
+    public float Anglespeed;
     private float axis = 0;
     public Transform target;
     public Vector3 targetPos;
     public Vector3 quaternionToTarget;
     //public float ToTarget;
     public Balloon balloon;
-    //Transform Ptransform;
-    public Vector3 rotateDir;
     public Quaternion targetRotation;
+    public float currentangle;
 
     // 더블 탭에 사용되는 변수
     float lastTouchTime;
@@ -120,7 +119,7 @@ public class Player : MonoBehaviour
             {
                 onTouch = false; // onTouch를 false로 (이동 x)
                 target.localPosition = Vector3.zero;
-                targetPos = Vector3.zero;
+                targetPos = target.localPosition;
                 //ToTarget = 0;
                 quaternionToTarget = Vector3.zero;
                 lastTouchTime = Time.time; // 첫번째 손가락을 뗀 순간을 마지막 터치 시간으로 저장
@@ -184,7 +183,7 @@ public class Player : MonoBehaviour
             {
                 onTouch = false; // onTouch를 false로 (이동 x)
                 target.localPosition = Vector3.zero;
-                targetPos = Vector3.zero;
+                targetPos = target.localPosition;
                 //ToTarget = 0;
                 quaternionToTarget = Vector3.zero;
                 lastTouchTime = Time.time; // 첫번째 손가락을 뗀 순간을 마지막 터치 시간으로 저장
@@ -215,48 +214,51 @@ public class Player : MonoBehaviour
             gap = m_curPos - m_prevPos; // 기존 위치와 현재 위치 차 계산
 
             transform.position += gap; // position에 gap만큼을 추가해 이동시킴
+
             if (touchZero.phase != TouchPhase.Stationary)
             {
-                    Update_LookRatation();
-                
+                Update_LookRatation();
             }
             else
             {
-                LookZero();
+                target.localPosition = Vector3.zero;
+                targetPos = target.localPosition;
+                //ToTarget = 0;
+                quaternionToTarget = Vector3.zero;
+                LookZero(Anglespeed);
             }
+
             m_prevPos = m_curPos; // 값을 현재 위치값으로 변경
         }
         else
         {
-            LookZero();
+            LookZero(Anglespeed);
         }
 
     }
     private void Update_LookRatation()
     {
         Vector3 myPos = transform.position; // 현재 위치
-        float currentangle = transform.rotation.z;
+        currentangle = transform.rotation.z;
 
-        if (currentangle > 0.25f || currentangle < -0.25f)
-        {
-            target.localScale = target.localScale;
-        }
-        else
-        {
-            target.localPosition += gap;
-        }
+        
+        target.localPosition += gap;
 
         targetPos = target.position; // target 오브젝트 위치
 
-        //Vector3
-        rotateDir = targetPos - myPos; // 위치 차 계산
+        Vector3 rotateDir = targetPos - myPos; // 위치 차 계산
         /*ToTarget = Mathf.Atan2(Dir.y, Dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.AngleAxis(ToTarget, Vector3.forward), anglespeed * Time.deltaTime);*/
 
         quaternionToTarget = Quaternion.Euler(0, 0, axis) * rotateDir; // 여기부터는 어떻게 구현되는건지 잘 모르겠음
         //Quaternion
         targetRotation = Quaternion.LookRotation(Vector3.forward, quaternionToTarget);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, anglespeed * Time.deltaTime); // anglespeed만큼의 속도로 Rotation 변환
+
+        if (currentangle > 0.25f || currentangle < -0.25f)
+        {
+             targetRotation.z = 0.0f;
+        }
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Anglespeed * Time.deltaTime); // anglespeed만큼의 속도로 Rotation 변환
         
     }
     void PBFire() //탄환 발사
@@ -272,8 +274,9 @@ public class Player : MonoBehaviour
     {
         curshotdelay += Time.deltaTime;
     }
-    void LookZero()
+    void LookZero(float anglespeed)
     {
+        currentangle = 0;
         targetRotation = Quaternion.LookRotation(Vector3.forward, Vector3.zero);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, anglespeed * Time.deltaTime); // anglespeed만큼의 속도로 Rotation 변환
     }

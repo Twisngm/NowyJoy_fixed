@@ -348,11 +348,13 @@ MonoBehaviour:
   m_prevPos: {x: 0, y: 0, z: 0}
   gap: {x: 0, y: 0, z: 0}
   deltaMagnitudeDiff: 0
-  anglespeed: 300
+  Anglespeed: 300
   target: {fileID: 1110261506}
   targetPos: {x: 0, y: 0, z: 0}
   quaternionToTarget: {x: 0, y: 0, z: 0}
   balloon: {fileID: 1684908200}
+  targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  currentangle: 0
   Attacker: {fileID: 6825327782487484658, guid: cf2f36689b914bd4182e4596d0e5057f, type: 3}
   PBspeed: 1
   shotdelay: 0.5
