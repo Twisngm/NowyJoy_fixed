@@ -19,14 +19,15 @@ public class Player : MonoBehaviour
     PolygonCollider2D Playercollider; // collider
 
     // 회전 관련 변수
-    public float anglespeed;
+    public float Anglespeed;
     private float axis = 0;
     public Transform target;
     public Vector3 targetPos;
-    Vector3 quaternionToTarget;
+    public Vector3 quaternionToTarget;
     //public float ToTarget;
     public Balloon balloon;
-    Transform Ptransform;
+    public Quaternion targetRotation;
+    public float currentangle;
 
     // 더블 탭에 사용되는 변수
     float lastTouchTime;
@@ -49,7 +50,7 @@ public class Player : MonoBehaviour
         heart = transform.GetChild(0).GetComponent<Heart>();
         lastTouchTime = Time.time;
         PBtr = Attacker.transform;
-        Ptransform = GetComponent<Transform>();
+        //Ptransform = GetComponent<Transform>();
         anim = transform.GetChild(4).GetComponent<Animator>();
     }
 
@@ -117,11 +118,12 @@ public class Player : MonoBehaviour
             else if (touchZero.phase == TouchPhase.Ended) // 첫번째 터치의 phase가 Ended(끝)이라면
             {
                 onTouch = false; // onTouch를 false로 (이동 x)
-                targetPos = Vector3.zero;
+                target.localPosition = Vector3.zero;
+                targetPos = target.localPosition;
                 //ToTarget = 0;
                 quaternionToTarget = Vector3.zero;
                 lastTouchTime = Time.time; // 첫번째 손가락을 뗀 순간을 마지막 터치 시간으로 저장
-            }
+                }
         }
         if (Input.touchCount == 2) // 터치 입력이 두개일 때
         {
@@ -171,7 +173,7 @@ public class Player : MonoBehaviour
             if (touchZero.phase == TouchPhase.Began) // 첫번째 터치의 phase가 Began(시작)이라면
             {
                 onTouch = true; // onTouch를 true로 (이동 o)
-                target.position = m_prevPos = m_curPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.GetTouch(0).position.x * -1, Input.GetTouch(0).position.y * -1, Spacepos.z)); // 이동시키기
+                m_prevPos = m_curPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.GetTouch(0).position.x * -1, Input.GetTouch(0).position.y * -1, Spacepos.z)); // 이동시키기
                 if (Time.time - lastTouchTime < doubleTapdelay && curshotdelay > shotdelay)
                 {
                     PBFire();
@@ -180,7 +182,8 @@ public class Player : MonoBehaviour
             else if (touchZero.phase == TouchPhase.Ended) // 첫번째 터치의 phase가 Ended(끝)이라면
             {
                 onTouch = false; // onTouch를 false로 (이동 x)
-                targetPos = Vector3.zero;
+                target.localPosition = Vector3.zero;
+                targetPos = target.localPosition;
                 //ToTarget = 0;
                 quaternionToTarget = Vector3.zero;
                 lastTouchTime = Time.time; // 첫번째 손가락을 뗀 순간을 마지막 터치 시간으로 저장
@@ -211,33 +214,52 @@ public class Player : MonoBehaviour
             gap = m_curPos - m_prevPos; // 기존 위치와 현재 위치 차 계산
 
             transform.position += gap; // position에 gap만큼을 추가해 이동시킴
-            Update_LookRatation();
+
+            if (touchZero.phase != TouchPhase.Stationary)
+            {
+                Update_LookRatation();
+            }
+            else
+            {
+                target.localPosition = Vector3.zero;
+                targetPos = target.localPosition;
+                //ToTarget = 0;
+                quaternionToTarget = Vector3.zero;
+                LookZero(Anglespeed);
+            }
+
             m_prevPos = m_curPos; // 값을 현재 위치값으로 변경
+        }
+        else
+        {
+            LookZero(Anglespeed);
         }
 
     }
     private void Update_LookRatation()
     {
-        if ((transform.rotation.z) >= 30)
-        {
-            return;
-        }
-        else if ((transform.rotation.z) <= -30)
-        {
-            return;
-        }
-
         Vector3 myPos = transform.position; // 현재 위치
-            target.localPosition += gap;
-            targetPos = target.position; // target 오브젝트 위치
+        currentangle = transform.rotation.z;
 
-            Vector3 Dir = targetPos - myPos; // 위치 차 계산
-            /*ToTarget = Mathf.Atan2(Dir.y, Dir.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.AngleAxis(ToTarget, Vector3.forward), anglespeed * Time.deltaTime);*/
+        
+        target.localPosition += gap;
 
-        quaternionToTarget = Quaternion.Euler(0, 0, axis) * Dir; // 여기부터는 어떻게 구현되는건지 잘 모르겠음
-        Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, quaternionToTarget);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, anglespeed * Time.deltaTime); // anglespeed만큼의 속도로 Rotation 변환
+        targetPos = target.position; // target 오브젝트 위치
+
+        Vector3 rotateDir = targetPos - myPos; // 위치 차 계산
+        /*ToTarget = Mathf.Atan2(Dir.y, Dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.AngleAxis(ToTarget, Vector3.forward), anglespeed * Time.deltaTime);*/
+
+        quaternionToTarget = Quaternion.Euler(0, 0, axis) * rotateDir; // 여기부터는 어떻게 구현되는건지 잘 모르겠음
+        //Quaternion
+        targetRotation = Quaternion.LookRotation(Vector3.forward, quaternionToTarget);
+
+        if (currentangle > 0.25f || currentangle < -0.25f)
+        {
+             targetRotation.z = 0.0f;
+        }
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Anglespeed * Time.deltaTime); // anglespeed만큼의 속도로 Rotation 변환
+        
     }
     void PBFire() //탄환 발사
     {
@@ -251,5 +273,11 @@ public class Player : MonoBehaviour
     void Reload()
     {
         curshotdelay += Time.deltaTime;
+    }
+    void LookZero(float anglespeed)
+    {
+        currentangle = 0;
+        targetRotation = Quaternion.LookRotation(Vector3.forward, Vector3.zero);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, anglespeed * Time.deltaTime); // anglespeed만큼의 속도로 Rotation 변환
     }
 }

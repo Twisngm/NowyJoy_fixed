@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Balloon : MonoBehaviour
 {
-    public float anglespeed = 500;
+    public float anglespeed;
     // Start is called before the first frame update
     void Start()
     {

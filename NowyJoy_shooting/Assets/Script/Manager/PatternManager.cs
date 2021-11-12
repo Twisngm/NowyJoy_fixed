@@ -65,10 +65,10 @@ public class PatternManager : MonoBehaviour
 
     // 차원문 패턴
 
-    public GameObject Teledoor1;
+    /*public GameObject Teledoor1;
     public GameObject Teledoor2;
     public GameObject Player;
-    public GameObject dodo; //보스
+    public GameObject dodo; //보스*/
 
     // 체스 폰 패턴
 

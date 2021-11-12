@@ -299,9 +299,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5497408524359625682}
+  - component: {fileID: 5497408524359625680}
   - component: {fileID: 5497408524359625681}
   - component: {fileID: 5497408524359625684}
-  - component: {fileID: 5497408524359625680}
   - component: {fileID: 667707133}
   - component: {fileID: 2840056212926221025}
   - component: {fileID: 1061444389273753798}
@@ -332,6 +332,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5497408524359625680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5497408524359625695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8463b56108dbf0f4d8fc627d16dc984f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_curPos: {x: 0, y: 0, z: 0}
+  m_prevPos: {x: 0, y: 0, z: 0}
+  gap: {x: 0, y: 0, z: 0}
+  deltaMagnitudeDiff: 0
+  Anglespeed: 300
+  target: {fileID: 1110261506}
+  targetPos: {x: 0, y: 0, z: 0}
+  quaternionToTarget: {x: 0, y: 0, z: 0}
+  balloon: {fileID: 1684908200}
+  targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  currentangle: 0
+  Attacker: {fileID: 6825327782487484658, guid: cf2f36689b914bd4182e4596d0e5057f, type: 3}
+  PBspeed: 1
+  shotdelay: 0.5
+  anim: {fileID: 0}
 --- !u!212 &5497408524359625681
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -404,30 +431,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &5497408524359625680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5497408524359625695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8463b56108dbf0f4d8fc627d16dc984f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_curPos: {x: 0, y: 0, z: 0}
-  m_prevPos: {x: 0, y: 0, z: 0}
-  gap: {x: 0, y: 0, z: 0}
-  deltaMagnitudeDiff: 0
-  anglespeed: 0
-  target: {fileID: 1110261506}
-  targetPos: {x: 0, y: 0, z: 0}
-  balloon: {fileID: 1684908200}
-  Attacker: {fileID: 6825327782487484658, guid: cf2f36689b914bd4182e4596d0e5057f, type: 3}
-  PBspeed: 1
-  shotdelay: 0.5
-  anim: {fileID: 0}
 --- !u!95 &667707133
 Animator:
   serializedVersion: 3
