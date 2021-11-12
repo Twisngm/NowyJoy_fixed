@@ -7256,57 +7256,6 @@ MonoBehaviour:
   currentValue: 0
   maxValue: 100
   GM: {fileID: 1331437831}
-  fadeTime: 2
-  image: {fileID: 294943661}
-  image2: {fileID: 825858608}
-  fadeCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 1.3267049
-      outSlope: 1.3267049
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.039961
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0.3126123
-      outSlope: 0.3126123
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.058479846
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  fadeCurve2:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1.0073242
-      inSlope: -0.47181898
-      outSlope: -0.47181898
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.06978164
-    - serializedVersion: 3
-      time: 0.99999434
-      value: -0.003657381
-      inSlope: -1.5337583
-      outSlope: -1.5337583
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.034056976
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
   isSceneChanged: 0
 --- !u!58 &1601360150
 CircleCollider2D:
@@ -9351,8 +9300,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2108241258}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.46369624, y: 0.5458101, z: 0.48406574}
+  m_LocalPosition: {x: -0.056, y: -0.041, z: 0}
+  m_LocalScale: {x: 0.55133486, y: 0.6489682, z: 0.5755542}
   m_Children: []
   m_Father: {fileID: 968310022}
   m_RootOrder: 0
