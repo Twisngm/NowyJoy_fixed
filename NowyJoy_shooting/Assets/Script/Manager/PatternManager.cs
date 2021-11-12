@@ -52,6 +52,7 @@ public class PatternManager : MonoBehaviour
     //생성위치
     public GameObject[] shapePos = new GameObject[4];
     public GameObject[] Warning = new GameObject[4];
+    public GameObject[] Warning_F = new GameObject[4];
     public  bool[] isAble_Shape = new bool[4];
     int Direction;
     int Count = 0;
@@ -93,6 +94,7 @@ public class PatternManager : MonoBehaviour
     public GameObject heart;
     public GameObject centerLine;
     public GameObject Mirror;
+    public GameObject[] Mirror_Safe;
     public Vector3 ClonePos;
     public Vector3 PlayerPos;
     public GameObject Warning_Mirror;
@@ -139,7 +141,7 @@ public class PatternManager : MonoBehaviour
 
         StartCoroutine("Shooting");
     //    Invoke("DoPattern", 5f);
-    if(GM.stagenum != 2)
+    
         DoPtn();
 
     }
@@ -150,14 +152,16 @@ public class PatternManager : MonoBehaviour
     }
     private void Update()
     {
-
-        if(isPatterning)
+        if (GM.stagenum != 2)
         {
-            shootSpeed_target = 2.5f;
-        }
-        else if(!isPatterning)
-        {
-            shootSpeed_target = 5f;
+            if (isPatterning)
+            {
+                shootSpeed_target = 2.5f;
+            }
+            else if (!isPatterning)
+            {
+                shootSpeed_target = 5f;
+            }
         }
         /*
         if (Input.GetKeyDown(KeyCode.T))
@@ -238,6 +242,11 @@ public class PatternManager : MonoBehaviour
         Transform[] ptnPos = new Transform[2];
         int[] randPtn = new int[8];
 
+        for (int i = 0; i < 4; i++)
+        {
+            Warning[i].SetActive(false);
+            Warning_F[i].SetActive(false);
+        }
         do
         {
             randPos[0] = Random.Range(0, 8);
@@ -264,13 +273,13 @@ public class PatternManager : MonoBehaviour
             if (GM.stagenum == 1) // 1스테이지 패턴
                 randPtn[1] = Random.Range(0,8); // Random.Range(0, 10);
             else if (GM.stagenum == 2) // 1.5스테이지 패턴
-                randPtn[1] = -1;
+                randPtn[1] = Random.Range(0,2);
             else if (GM.stagenum == 3) // 2스테이지 패턴
                 randPtn[1] = Random.Range(0, 9);
             else if (GM.stagenum == 4) // 3스테이지 패턴
                 randPtn[1] = Random.Range(0, 10);
             else // 그 외
-                randPtn[1] = Random.Range(0, 11);
+                randPtn[1] = Random.Range(0, 12);
         }
         while (randPtn[0] == randPtn[1]);
 
@@ -363,8 +372,10 @@ public class PatternManager : MonoBehaviour
 
 
         }
-        
-            Invoke("DoPtn", 10f);
+        if(GM.stagenum == 2)
+          Invoke("DoPtn", 20f);
+        else
+          Invoke("DoPtn", 10f);
     }
 
 
@@ -762,9 +773,9 @@ public class PatternManager : MonoBehaviour
 
             isAble_Flamingo[Direction] = false;
 
-            Warning[Direction].SetActive(true);
+            Warning_F[Direction].SetActive(true);
             yield return new WaitForSeconds(1f);
-            Warning[Direction].SetActive(false);
+            Warning_F[Direction].SetActive(false);
 
             flamingo.SetActive(true);
             thorn.SetActive(true);
@@ -829,9 +840,9 @@ public class PatternManager : MonoBehaviour
             cnt++;
             if (cnt == 3)
                 break;
-            yield return new WaitForSeconds(1.75f); // 다음 폰 떨구는 시간
+            yield return new WaitForSeconds(1f); // 다음 폰 떨구는 시간
         }
-        yield return new WaitForSeconds(1.5f); // 돌진 대기 시간
+        yield return new WaitForSeconds(0.75f); // 돌진 대기 시간
 
         int direction = Random.Range(0, 2);
 
@@ -850,7 +861,7 @@ public class PatternManager : MonoBehaviour
         for (int i = 0; i < 3; i++)
             WarnUnderPawn.Warning_UI[i].SetActive(true);
 
-        yield return new WaitForSeconds(1.5f); // 경고창 띄우는 시간
+        yield return new WaitForSeconds(1f); // 경고창 띄우는 시간
 
         for (int i = 0; i < 3; i++)
             WarnUnderPawn.Warning_UI[i].SetActive(false);
@@ -915,15 +926,19 @@ public class PatternManager : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
         Mirror.SetActive(true);
+        Mirror_Safe[0].SetActive(true);
+        Mirror_Safe[1].SetActive(true);
         GameObject playerClone = objManager.MakeObj("playerClone"); // 클론 생성
-        player.SetActive(true);
+        player.SetActive(true);      
         playerClone.transform.position = ClonePos;
         player.transform.position = PlayerPos;
 
         playerClone.GetComponent<Animator>().SetTrigger("In");
         player.GetComponent<Animator>().SetTrigger("In");
 
-
+        yield return new WaitForSeconds(1.5f);
+        Mirror_Safe[0].SetActive(false);
+        Mirror_Safe[1].SetActive(false);
         // 거울 패턴 종료
 
         yield return new WaitForSeconds(4f);

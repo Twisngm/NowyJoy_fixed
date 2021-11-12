@@ -8,12 +8,13 @@ public class Rabbit : MonoBehaviour
     PolygonCollider2D col;
     SpriteRenderer Renderer;
     Animator anim;
-
+   
     private void Awake()
     {
         col = GetComponentInChildren<PolygonCollider2D>();
         anim = GetComponentInChildren<Animator>();
         Renderer = GetComponentInChildren<SpriteRenderer>();
+       
     }
 
     void OnEnable()
@@ -432,5 +433,6 @@ public class Rabbit : MonoBehaviour
         Invoke("DoPattern", 1f);
     }
 
- 
+   
+
 }
