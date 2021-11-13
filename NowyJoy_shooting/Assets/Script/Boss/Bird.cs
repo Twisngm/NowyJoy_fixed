@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bird : MonoBehaviour
 {
     public GameObject RushWarning;
+    public GameObject[] SendSmoke;
     PolygonCollider2D col;
     SpriteRenderer Renderer;
     Animator anim;
@@ -34,7 +35,7 @@ public class Bird : MonoBehaviour
 
     void DoPattern()
     {
-        int rand = Random.Range(1, 101);
+        int rand = Random.Range(90, 101);
 
         if(rand >= 1 && rand <= 50)
             StartCoroutine("Dash");
@@ -170,8 +171,27 @@ public class Bird : MonoBehaviour
     {
         anim.SetTrigger("Send");
 
-        yield return new WaitForSeconds(2f);
-
+        for (int n = 0; n < 3; n++)
+        {
+            for (int i = 0; i < 30; i++)
+            {
+                SendSmoke[i].SetActive(false);
+                float posX = Random.Range(-2.6f, 2.6f);
+                float posY = Random.Range(-5, 5);
+                SendSmoke[i].transform.position = new Vector3(posX, posY, 0);
+                SendSmoke[i].SetActive(true);
+                yield return new WaitForSeconds(0.05f);
+            }
+            if(n==2)
+            {
+                break;
+            }
+            anim.SetTrigger("Send");
+        }
+        for (int i = 0; i < 30; i++)
+        {
+            SendSmoke[i].SetActive(false);
+        }
         Invoke("DoPattern", 3f);
     }
 

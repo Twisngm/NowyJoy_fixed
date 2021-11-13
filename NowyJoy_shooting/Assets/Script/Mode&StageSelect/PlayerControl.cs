@@ -11,7 +11,7 @@ public class PlayerControl : MonoBehaviour
     {
         float X = Input.GetAxisRaw("Horizontal");
         float Y = Input.GetAxisRaw("Vertical");
-        transform.Translate(new Vector2(X, Y) * Time.deltaTime * 1);
+        transform.Translate(new Vector2(X, Y) * Time.deltaTime * Speed);
 
         Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
         if (pos.x < 0f) pos.x = 0f;

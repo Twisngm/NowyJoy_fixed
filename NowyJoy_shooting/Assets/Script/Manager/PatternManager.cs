@@ -245,7 +245,8 @@ public class PatternManager : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             Warning[i].SetActive(false);
-            Warning_F[i].SetActive(false);
+            if(Warning_F[i] != null)
+               Warning_F[i].SetActive(false);
         }
         do
         {

@@ -9976,6 +9976,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1536817819}
     - target: {fileID: 5710001871153262703, guid: bb811f19bacba5042a86a3eed00e4e87, type: 3}
+      propertyPath: Warning_F.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5710001871153262703, guid: bb811f19bacba5042a86a3eed00e4e87, type: 3}
       propertyPath: flaPos.Array.data[0]
       value: 
       objectReference: {fileID: 1644269638}

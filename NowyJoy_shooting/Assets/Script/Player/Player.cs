@@ -42,7 +42,8 @@ public class Player : MonoBehaviour
     float transferspeed = 0.15f; // 크기 조정비율(inspector 기준)
 
     Heart heart;
-    public Animator anim;
+    Animator anim;
+    public GameObject shotEffect;
     void Start()
     {
         Spacepos = Camera.main.ScreenToWorldPoint(transform.position);
@@ -60,6 +61,9 @@ public class Player : MonoBehaviour
         //Update_LookRatation();
         Reload();
         CameraIn();
+        shotEffect.transform.rotation = Quaternion.Euler(0, 0, 0);
+      
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -262,7 +266,7 @@ public class Player : MonoBehaviour
         
     }
     void PBFire() //탄환 발사
-    {
+    {    
         anim.Play("ShotEffect");
         GameObject PlayerBullet = Instantiate(Attacker, transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f));
         PlayerBulletcontoller = PlayerBullet.GetComponent<PlayerBullet>();
