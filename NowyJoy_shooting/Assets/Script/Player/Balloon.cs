@@ -16,12 +16,9 @@ public class Balloon : MonoBehaviour
     {
         
     }
-    public void TransRotation(Quaternion targetRotation)
+    public void TransRotation(Quaternion tempRotation)
     {
-        Quaternion tempRotation;
-        tempRotation = targetRotation;
         tempRotation.z = tempRotation.z / 3.0f;
         transform.rotation = Quaternion.RotateTowards(transform.rotation, tempRotation, anglespeed * Time.deltaTime);
-
     }
 }

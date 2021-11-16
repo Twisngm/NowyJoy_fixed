@@ -258,9 +258,15 @@ public class Player : MonoBehaviour
         //Quaternion
         targetRotation = Quaternion.LookRotation(Vector3.forward, quaternionToTarget);
 
-        if (currentangle > 0.25f || currentangle < -0.25f)
+        
+
+        if ((currentangle < -0.25f && (targetRotation.z < 0.0f || targetRotation.z > 0.25f))||(currentangle > 0.25f && targetRotation.z > 0.0f))
         {
              targetRotation.z = 0.0f;
+        }
+        if ((currentangle > 0.1f) || (currentangle < -0.1f))
+        {
+            balloon.TransRotation(targetRotation);
         }
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Anglespeed * Time.deltaTime); // anglespeed만큼의 속도로 Rotation 변환
         
