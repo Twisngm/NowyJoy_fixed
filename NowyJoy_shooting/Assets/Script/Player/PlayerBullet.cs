@@ -25,9 +25,11 @@ public class PlayerBullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        if (collision.gameObject.tag == "Rabbit"){ //보스와 닿았을때 작동할 코드.
+        if (collision.gameObject.tag == "Rabbit" || collision.gameObject.tag == "Bird" || collision.gameObject.tag == "Owl")
+        { //보스와 닿았을때 작동할 코드.
             Destroy(gameObject);
         }
+
     }
     public void Launch(Vector2 Dir, float Speed)
     {

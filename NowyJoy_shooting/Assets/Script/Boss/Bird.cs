@@ -6,21 +6,25 @@ public class Bird : MonoBehaviour
 {
     public GameObject RushWarning;
     public GameObject[] SendSmoke;
+    public GameObject cam;
+    public GameObject rain;
     PolygonCollider2D col;
     SpriteRenderer Renderer;
     Animator anim;
-
+    UbhShotCtrl rainshot;
+    public PatternManager PM;
     private void Awake()
     {
         col = GetComponentInChildren<PolygonCollider2D>();
         anim = GetComponentInChildren<Animator>();
         Renderer = GetComponentInChildren<SpriteRenderer>();
+        rainshot = rain.GetComponent<UbhShotCtrl>();
+        
     }
 
     void OnEnable()
     {
-
-
+        PM.isBoss = true;
         Invoke("DoPattern", 2f);
     }
     private void Update()
@@ -35,7 +39,7 @@ public class Bird : MonoBehaviour
 
     void DoPattern()
     {
-        int rand = Random.Range(90, 101);
+        int rand = Random.Range(1, 10);
 
         if(rand >= 1 && rand <= 50)
             StartCoroutine("Dash");
@@ -43,7 +47,7 @@ public class Bird : MonoBehaviour
         else if(rand >= 51 && rand <= 75)
             StartCoroutine("Shake");
 
-        else
+        else if(rand >= 76 && rand <= 100)
             StartCoroutine("Send");
 
     }
@@ -170,7 +174,7 @@ public class Bird : MonoBehaviour
     IEnumerator Send()
     {
         anim.SetTrigger("Send");
-
+        iTween.MoveTo(cam, iTween.Hash("z", -1.2f, "time", 1f));
         for (int n = 0; n < 3; n++)
         {
             for (int i = 0; i < 30; i++)
@@ -192,15 +196,17 @@ public class Bird : MonoBehaviour
         {
             SendSmoke[i].SetActive(false);
         }
+        iTween.MoveTo(cam, iTween.Hash("z", -1f, "time", 1f));
         Invoke("DoPattern", 3f);
     }
 
     IEnumerator Shake()
     {
         anim.SetTrigger("Shake");
-
+        rainshot.StartShotRoutine();
 
         yield return new WaitForSeconds(2f);
+        rainshot.StopShotRoutineAndPlayingShot();
 
         Invoke("DoPattern", 3f);
     }

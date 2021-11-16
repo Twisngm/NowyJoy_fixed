@@ -26,7 +26,7 @@ public class Heart : MonoBehaviour
         {
             safeZone = true;
         }
-        if (collision.CompareTag("Enemy") || collision.CompareTag("Rabbit"))
+        if (collision.CompareTag("Enemy") || collision.CompareTag("Rabbit") || collision.tag == "Owl")
         {
             OnDamaged();
         }

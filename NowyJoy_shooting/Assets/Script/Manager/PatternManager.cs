@@ -16,6 +16,7 @@ public class PatternManager : MonoBehaviour
     public GameObject sevenWay_ptn;
 
     public bool isPatterning = false;
+    public bool isBoss = false;
 
 
 
@@ -265,20 +266,29 @@ public class PatternManager : MonoBehaviour
             else if (GM.stagenum == 2) // 1.5스테이지 기믹
                 randPtn[0] = -1;
             else if (GM.stagenum == 3) // 2스테이지 기믹
-                randPtn[0] = Random.Range(-1, 1);
+            {
+                if(isBoss == true)
+                    randPtn[0] = -1;
+                else
+                    randPtn[0] = Random.Range(-1, 1);
+            }
+     
             else if (GM.stagenum == 4) // 3스테이지 기믹
                 randPtn[0] = Random.Range(0, 2);
             else // 그 외
                 randPtn[0] = Random.Range(0, 3);
 
             if (GM.stagenum == 1) // 1스테이지 패턴
-                randPtn[1] = Random.Range(0,8); // Random.Range(0, 10);
+                randPtn[1] = Random.Range(0, 8); // Random.Range(0, 10);
             else if (GM.stagenum == 2) // 1.5스테이지 패턴
-                randPtn[1] = Random.Range(0,2);
+                randPtn[1] = Random.Range(0, 2);
             else if (GM.stagenum == 3) // 2스테이지 패턴
                 randPtn[1] = Random.Range(0, 9);
+            else if (GM.stagenum == 3 && isBoss == true) // 2스테이지 보스
+                randPtn[1] = Random.Range(2, 4);
             else if (GM.stagenum == 4) // 3스테이지 패턴
                 randPtn[1] = Random.Range(0, 10);
+           
             else // 그 외
                 randPtn[1] = Random.Range(0, 12);
         }

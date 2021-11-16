@@ -22,6 +22,8 @@ TagManager:
   - sceneChange
   - Rabbit_Heart
   - Player_Bullet
+  - Bird
+  - Owl
   layers:
   - Default
   - TransparentFX
