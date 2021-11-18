@@ -57,6 +57,7 @@ public class PatternManager : MonoBehaviour
     public  bool[] isAble_Shape = new bool[4];
     int Direction;
     int Count = 0;
+    int Count_F = 0;
 
     // 플라밍고 패턴
 
@@ -191,9 +192,17 @@ public class PatternManager : MonoBehaviour
             for(int i = 0; i < isAble_Shape.Length; i++)
             {
                 isAble_Shape[i] = true;
-                isAble_Flamingo[i] = true;
+                
             }
             Count = 0;
+        }
+        if(Count_F == 2)
+        {
+            for(int i = 0; i< isAble_Flamingo.Length; i++)
+            {
+                isAble_Flamingo[i] = true;
+            }
+            Count_F = 0;
         }
     }
 
@@ -822,7 +831,7 @@ public class PatternManager : MonoBehaviour
                 yield return new WaitForSeconds(0.1f);
                 iTween.MoveTo(flamingo, iTween.Hash("x", 3.5f, "time", 3.5f, "easeType", "Linear"));
             }
-            Count++;
+            Count_F++;
             cnt++;
             yield return new WaitForSeconds(3.5f);
             flamingo.SetActive(false);

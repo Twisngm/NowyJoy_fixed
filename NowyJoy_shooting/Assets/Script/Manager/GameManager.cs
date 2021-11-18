@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public int HP;
     public int stagenum;
     public bool[] stageUnlock;
- 
+  
 
     static GameManager GM_instance;
 
@@ -32,15 +32,18 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         }
         DontDestroyOnLoad(this.gameObject);
+
+        
     }
      
     void Start()
     {
         SceneManager.sceneLoaded += LoadedsceneEvent;
-
+        
     }
     void LoadedsceneEvent(Scene scene, LoadSceneMode mode)
     {
+     
         HP = MaxHP;
        switch(SceneManager.GetActiveScene().buildIndex) // stagenum √ ±‚»≠
         {
@@ -67,6 +70,7 @@ public class GameManager : MonoBehaviour
                 break;
         }
         Time.timeScale = 1;
+    
         /*
         if (stagenum != 0)
         {

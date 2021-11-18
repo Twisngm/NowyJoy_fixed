@@ -13,22 +13,24 @@ public class Bird : MonoBehaviour
     Animator anim;
     UbhShotCtrl rainshot;
     public PatternManager PM;
+   
     private void Awake()
     {
         col = GetComponentInChildren<PolygonCollider2D>();
         anim = GetComponentInChildren<Animator>();
         Renderer = GetComponentInChildren<SpriteRenderer>();
         rainshot = rain.GetComponent<UbhShotCtrl>();
+       
         
     }
 
     void OnEnable()
-    {
-        PM.isBoss = true;
-        Invoke("DoPattern", 2f);
+    {    
+        StartCoroutine("Appear");
     }
     private void Update()
     {
+   
         if (this.gameObject.transform.position.z < -0.15)
 
             OffCollider();
@@ -39,7 +41,7 @@ public class Bird : MonoBehaviour
 
     void DoPattern()
     {
-        int rand = Random.Range(1, 10);
+        int rand = Random.Range(1, 101);
 
         if(rand >= 1 && rand <= 50)
             StartCoroutine("Dash");
@@ -61,6 +63,14 @@ public class Bird : MonoBehaviour
     {
         col.enabled = false;
 
+    }
+
+    IEnumerator Appear()
+    {
+        PM.isBoss = true;
+        iTween.MoveTo(this.gameObject, iTween.Hash("y", 0.75f, "time", 3f,"easeType","Linear"));
+        yield return new WaitForSeconds(5f);
+        DoPattern();
     }
 
     IEnumerator Dash()

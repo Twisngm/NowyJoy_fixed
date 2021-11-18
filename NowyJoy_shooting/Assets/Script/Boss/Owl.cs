@@ -12,6 +12,7 @@ public class Owl : MonoBehaviour
     public float moveSpeed;
     public float cooltime;
 
+  
     bool isfly = false;
    
 
@@ -28,6 +29,7 @@ public class Owl : MonoBehaviour
 
     private void Update()
     {
+
         if(isfly)
         gameObject.transform.localPosition += gameObject.transform.up * moveSpeed * Time.deltaTime * -1;
     }

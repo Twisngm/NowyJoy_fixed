@@ -16,7 +16,7 @@ public class StageManager : MonoBehaviour
     private void Awake()
     {
         GM = GameManager.GM_Instance;
-     //   ptnManager.SetActive(true); 
+        Invoke("ptnManagerTrigger", 1f);
     }
 
     // Update is called once per frame
@@ -28,6 +28,11 @@ public class StageManager : MonoBehaviour
             GameOver();
             GameClear();
         }
+    }
+
+    void ptnManagerTrigger()
+    {
+        ptnManager.SetActive(true);
     }
 
     void GameOver()
@@ -53,7 +58,6 @@ public class StageManager : MonoBehaviour
      
 
     }
-
     public void ReStart()
     {
         pause.isPause = false;

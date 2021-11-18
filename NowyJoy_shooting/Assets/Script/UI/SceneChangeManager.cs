@@ -260,22 +260,27 @@ public class SceneChangeManager : MonoBehaviour
         }
         if (SceneManager.GetActiveScene().name == "stage2")
         {
+            curtein_Open();
             curtein_full.transform.position = Top_Origin_Pos;
         }
         if (SceneManager.GetActiveScene().name == "stage3")
         {
+            curtein_Open();
             curtein_full.transform.position = Top_Origin_Pos;
         }
         if (SceneManager.GetActiveScene().name == "stage4")
         {
+            curtein_Open();
             curtein_full.transform.position = Top_Origin_Pos;
         }
-        if (SceneManager.GetActiveScene().name == "Stage5")
+        if (SceneManager.GetActiveScene().name == "stage5")
         {
+            curtein_Open();
             curtein_full.transform.position = Top_Origin_Pos;
         }
-        if (SceneManager.GetActiveScene().name == "Stage6")
+        if (SceneManager.GetActiveScene().name == "stage6")
         {
+            curtein_Open();
             curtein_full.transform.position = Top_Origin_Pos;
         }
     }

@@ -35,5 +35,7 @@ public class Warning : MonoBehaviour
             gauge.fillAmount += 0.015f;
             yield return new WaitForSeconds(0.01f); // æ‡ 0.66 √ 
         }
+        yield return new WaitForSeconds(0.2f);
+        this.gameObject.SetActive(false);
     }
 }

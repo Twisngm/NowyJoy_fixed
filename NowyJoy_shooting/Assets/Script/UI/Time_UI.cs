@@ -20,6 +20,11 @@ public class Time_UI : MonoBehaviour
             min = 1;
             sec = 0;
         }
+        else if(gm.stagenum == 3)
+        {
+            min = 5;
+            sec = 0;
+        }
         else
         {
             min = 3;
