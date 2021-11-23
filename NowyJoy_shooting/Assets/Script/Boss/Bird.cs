@@ -75,7 +75,7 @@ public class Bird : MonoBehaviour
 
     IEnumerator Dash()
     {
-        int RandDir = Random.Range(0, 8);
+        int RandDir = Random.Range(0, 2);
 
         float DashSpeed = 2f;
      
@@ -87,6 +87,7 @@ public class Bird : MonoBehaviour
 
         switch (RandDir)
         {
+            /*
             case 0: // 위
                 RushWarning.transform.rotation = Quaternion.Euler(0, 0, 90);
                 RushWarning.SetActive(true);
@@ -107,8 +108,8 @@ public class Bird : MonoBehaviour
                 iTween.MoveTo(this.gameObject, iTween.Hash("x", 5, "time", DashSpeed, "easeType", "EaseInOutBack"));
                 yield return new WaitForSeconds(DashSpeed);       
                 break;
-
-            case 2: // 아래
+            */
+            case 0: // 아래
                 RushWarning.transform.rotation = Quaternion.Euler(0, 0, 270);
                 RushWarning.SetActive(true);
                 yield return new WaitForSeconds(warningTime);
@@ -116,7 +117,7 @@ public class Bird : MonoBehaviour
                 iTween.MoveTo(this.gameObject, iTween.Hash("y", -7, "time", DashSpeed, "easeType", "EaseInOutBack"));
                 yield return new WaitForSeconds(DashSpeed);      
                 break;
-
+/*
             case 3: // 왼쪽
                 RushWarning.transform.rotation = Quaternion.Euler(0, 0, 180);
                 RushWarning.SetActive(true);
@@ -137,8 +138,8 @@ public class Bird : MonoBehaviour
                 yield return new WaitForSeconds(DashSpeed);
                 Renderer.flipY = false;
                 break;
-
-            case 5: // 오른쪽 아래
+*/
+            case 1: // 오른쪽 아래
                 RushWarning.transform.rotation = Quaternion.Euler(0, 0, 300);
                 RushWarning.SetActive(true);
                 yield return new WaitForSeconds(warningTime);
@@ -148,7 +149,7 @@ public class Bird : MonoBehaviour
                 yield return new WaitForSeconds(DashSpeed);              
                 break;
 
-            case 6: // 왼쪽 아래
+            case 2: // 왼쪽 아래
                 RushWarning.transform.rotation = Quaternion.Euler(0, 0, 240);
                 RushWarning.SetActive(true);
                 yield return new WaitForSeconds(warningTime);
@@ -157,7 +158,7 @@ public class Bird : MonoBehaviour
                 iTween.MoveTo(this.gameObject, iTween.Hash("position", new Vector3(-4f, -6, 0), "time", DashSpeed, "easeType", "EaseInOutBack"));
                 yield return new WaitForSeconds(DashSpeed);
                 break;
-
+/*
             case 7: // 왼쪽 위
                 RushWarning.transform.rotation = Quaternion.Euler(0, 0, 120);
                 RushWarning.SetActive(true);
@@ -168,7 +169,7 @@ public class Bird : MonoBehaviour
                 yield return new WaitForSeconds(DashSpeed);
                 Renderer.flipY = false;
                 break;
-
+*/
             default:
                 break;
 
