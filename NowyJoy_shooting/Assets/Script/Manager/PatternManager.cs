@@ -1137,7 +1137,7 @@ public class PatternManager : MonoBehaviour
     /*
     BoxCollider2D Telecoll1 = Teledoor1.collider;
     BoxCollider2D Telecoll2 = Teledoor2.collider;
-    public void Teleporter{
+    IEnumerator Teleporter{
     int Gate = Random.Range(0, 4);
     if (Gate == 0){
          Teledoor1.transform.position = (a1, b1, c1);
@@ -1155,7 +1155,8 @@ public class PatternManager : MonoBehaviour
          Teledoor1.transform.position = (a4, b4, c4);
          Teledoor2.transform.position = (d4, e4, f4);
     }
-    
+    Teledoor1.SetActive(true);
+    Teledoor2.SetActive(true);
     if (Teledoor1.collider.collision.gameObject.tag == "Body"){
          Player.transform.position = Teledoor2.transform.position;
          Player.Player.invinc();
@@ -1165,12 +1166,13 @@ public class PatternManager : MonoBehaviour
          Player.Player.invinc();
     }
     if (Teledoor.collider.collision.gameObject.tag == "Boss"){
-         
+         dodo.transform.position = Teledoor2.transform.position;
     }
     if (Teledoor.collider.collision.gameObject.tag == "Boss"){
-    
+        dodo.transform.position = Teledoor1.transform.position;
     }
-    
+    yield return new WaitForSeconds(4f);
+
     }
     */
 
