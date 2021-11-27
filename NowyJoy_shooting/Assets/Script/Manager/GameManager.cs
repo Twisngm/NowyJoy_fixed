@@ -65,8 +65,23 @@ public class GameManager : MonoBehaviour
             case 5:
                 stagenum = 3; // 스테이지 3
                 break;
-            case 6:     // 스테이지 5 (임시)
+            case 6:     // 스테이지 4
+                stagenum = 4;
+                break;
+            case 7: // 스테이지 5
+                stagenum = 5;
+                break;
+            case 8:
                 stagenum = 6;
+                break;
+            case 9:
+                stagenum = 7;
+                break;
+            case 10:
+                stagenum = 8;
+                break;
+            case 11:
+                stagenum = 9;
                 break;
         }
         Time.timeScale = 1;

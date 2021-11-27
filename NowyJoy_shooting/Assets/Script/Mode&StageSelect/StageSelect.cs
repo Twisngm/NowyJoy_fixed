@@ -66,6 +66,18 @@ public class StageSelect : MonoBehaviour
                         Debug.Log("6 스테이지로 이동합니다.");
                         StartCoroutine("changing");
                         break;
+                    case "7":
+                        Debug.Log("7 스테이지로 이동합니다.");
+                        StartCoroutine("changing");
+                        break;
+                    case "8":
+                        Debug.Log("8 스테이지로 이동합니다.");
+                        StartCoroutine("changing");
+                        break;
+                    case "9":
+                        Debug.Log("9 스테이지로 이동합니다.");
+                        StartCoroutine("changing");
+                        break;
                 }
             }
         }
@@ -105,11 +117,23 @@ public class StageSelect : MonoBehaviour
                     break;
                 case "5":
                     Debug.Log("5스테이지로 이동");
-                    SceneManager.LoadScene("Stage5");
+                    SceneManager.LoadScene("stage5");
                     break;
                 case "6":
                     Debug.Log("6스테이지로 이동");
-                    SceneManager.LoadScene("Stage6");
+                    SceneManager.LoadScene("stage6");
+                    break;
+                case "7":
+                    Debug.Log("7스테이지로 이동");
+                    SceneManager.LoadScene("stage7");
+                    break;
+                case "8":
+                    Debug.Log("8스테이지로 이동");
+                    SceneManager.LoadScene("stage8");
+                    break;
+                case "9":
+                    Debug.Log("9스테이지로 이동");
+                    SceneManager.LoadScene("stage9");
                     break;
             }
         }

@@ -1464,7 +1464,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6717191100023976579, guid: f6c399f64f9e09142a56f57618aae781, type: 3}
       propertyPath: stagenum
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6717191100023976579, guid: f6c399f64f9e09142a56f57618aae781, type: 3}
       propertyPath: stageUnlock.Array.size

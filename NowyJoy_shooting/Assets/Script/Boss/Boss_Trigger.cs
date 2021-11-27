@@ -22,7 +22,7 @@ public class Boss_Trigger : MonoBehaviour
 
     void BossTrigger()
     {
-        if (time.min <= 2)
+        if (time.min <= 3)
         {
             bird.gameObject.SetActive(true);
             owl.gameObject.SetActive(true);

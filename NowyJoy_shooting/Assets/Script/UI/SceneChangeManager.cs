@@ -283,6 +283,21 @@ public class SceneChangeManager : MonoBehaviour
             curtein_Open();
             curtein_full.transform.position = Top_Origin_Pos;
         }
+        if (SceneManager.GetActiveScene().name == "stage7")
+        {
+            curtein_Open();
+            curtein_full.transform.position = Top_Origin_Pos;
+        }
+        if (SceneManager.GetActiveScene().name == "stage8")
+        {
+            curtein_Open();
+            curtein_full.transform.position = Top_Origin_Pos;
+        }
+        if (SceneManager.GetActiveScene().name == "stage9")
+        {
+            curtein_Open();
+            curtein_full.transform.position = Top_Origin_Pos;
+        }
     }
 
     void OnDisable()

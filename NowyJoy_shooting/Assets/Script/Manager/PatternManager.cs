@@ -294,7 +294,7 @@ public class PatternManager : MonoBehaviour
             else if (GM.stagenum == 3) // 2스테이지 패턴
                 randPtn[1] = Random.Range(0, 9);
             else if (GM.stagenum == 3 && isBoss == true) // 2스테이지 보스
-                randPtn[1] = Random.Range(2, 4);
+                randPtn[1] = Random.Range(4, 8);
             else if (GM.stagenum == 4) // 3스테이지 패턴
                 randPtn[1] = Random.Range(0, 10);
            

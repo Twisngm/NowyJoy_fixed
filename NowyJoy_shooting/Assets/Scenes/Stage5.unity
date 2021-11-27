@@ -1272,7 +1272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6717191100023976579, guid: f6c399f64f9e09142a56f57618aae781, type: 3}
       propertyPath: stagenum
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6717191100023976579, guid: f6c399f64f9e09142a56f57618aae781, type: 3}
       propertyPath: stageUnlock.Array.size
@@ -6305,7 +6305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8896671788853022478, guid: d791ccdf0fb80134fa7323b0cc4af6e3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 74.999985
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 8896671788853022478, guid: d791ccdf0fb80134fa7323b0cc4af6e3, type: 3}
       propertyPath: m_AnchoredPosition.y

@@ -22,7 +22,7 @@ public class Time_UI : MonoBehaviour
         }
         else if(gm.stagenum == 3)
         {
-            min = 5;
+            min = 6;
             sec = 0;
         }
         else
