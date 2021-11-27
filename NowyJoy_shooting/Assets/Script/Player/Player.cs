@@ -39,6 +39,8 @@ public class Player : MonoBehaviour
     Transform PBtr;
     private PlayerBullet PlayerBulletcontoller;
 
+    bool Invincible; // 무적판정 여하
+
     float transferspeed = 0.15f; // 크기 조정비율(inspector 기준)
 
     Heart heart;
@@ -290,4 +292,20 @@ public class Player : MonoBehaviour
         targetRotation = Quaternion.LookRotation(Vector3.forward, Vector3.zero);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, anglespeed * Time.deltaTime); // anglespeed만큼의 속도로 Rotation 변환
     }
+    public void Invinc() {
+        Invincible = true;
+        StartCoroutine("invinc");
+    }
+    IEnumerator invinc()
+    {
+        Playercollider.enabled = false;
+        if (Invincible == false)
+        {
+            Playercollider.enabled = true;
+            yield return null;
+        }
+        Invincible = false;
+        yield return new WaitForSeconds(0.5f);
+    }
+
 }
