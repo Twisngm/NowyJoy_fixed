@@ -13,6 +13,8 @@ public class Bird : MonoBehaviour
     Animator anim;
     UbhShotCtrl rainshot;
     public PatternManager PM;
+    public GameObject Smoke;
+    public GameObject Shadow;
    
     private void Awake()
     {
@@ -174,11 +176,16 @@ public class Bird : MonoBehaviour
                 break;
 
         }
+        Shadow.SetActive(true);
+        Shadow.GetComponent<Animator>().Play("Shadow");
         yield return new WaitForSeconds(1f);
         gameObject.transform.position = new Vector3(0, 0.75f, -0.8f);
-   
         iTween.MoveTo(this.gameObject, iTween.Hash("position", new Vector3(0, 0.75f, 0), "speed", 2f, "easeType", "EaseOutBack"));
-        yield return new WaitForSeconds(1f);
+        Shadow.SetActive(false);
+        yield return new WaitForSeconds(0.3f);
+        Smoke.GetComponent<Animator>().Play("Smoke");
+        yield return new WaitForSeconds(0.5f);
+
         Invoke("DoPattern", 3f);
     }
 

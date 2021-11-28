@@ -8,13 +8,14 @@ public class Rabbit : MonoBehaviour
     PolygonCollider2D col;
     SpriteRenderer Renderer;
     Animator anim;
+    public GameObject Smoke;
    
     private void Awake()
     {
         col = GetComponentInChildren<PolygonCollider2D>();
         anim = GetComponentInChildren<Animator>();
         Renderer = GetComponentInChildren<SpriteRenderer>();
-       
+        
     }
 
     void OnEnable()
@@ -425,8 +426,10 @@ public class Rabbit : MonoBehaviour
         iTween.MoveTo(this.gameObject, iTween.Hash("position", new Vector3(0, 2.75f, 0), "time", 1.5f, "easeType", iTween.EaseType.linear));
         yield return new WaitForSeconds(1.5f);
         anim.SetTrigger("Jump");
-        iTween.MoveTo(this.gameObject,iTween.Hash("path",iTweenPath.GetPath("Jump"),"speed", 3f,"delay", 2f,"easeType", iTween.EaseType.easeOutBounce,"movetopath", false));    
+        iTween.MoveTo(this.gameObject,iTween.Hash("path",iTweenPath.GetPath("Jump"),"speed", 3f,"delay", 2f,"easeType", iTween.EaseType.easeOutBounce,"movetopath", false));
         yield return new WaitForSeconds(2.5f);
+        Smoke.GetComponent<Animator>().Play("Smoke");
+       
         iTween.MoveTo(this.gameObject, iTween.Hash("position", new Vector3(0, 0.8f, 0), "time", 1f, "easeType", iTween.EaseType.linear));
       //  anim.SetBool("isRun", false);
       //  anim.SetBool("isIdle", true);

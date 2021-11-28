@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class SceneChangeManager : MonoBehaviour
 {
     public Image fadeObject;
-    public Image curtein_full;
-    public Image curtein_left;
-    public Image curtein_right;
-    public Image curtein_left_close;
-    public Image curtein_right_colse;
+    public GameObject curtein_full;
+    public GameObject curtein_left;
+    public GameObject curtein_right;
+    public GameObject curtein_left_close;
+    public GameObject curtein_right_colse;
     public GameObject curtein_colse_L;
     public GameObject curtein_close_R;
     Vector2 curteinposdown = new Vector2(0, -7f);
@@ -35,11 +36,11 @@ public class SceneChangeManager : MonoBehaviour
     bool isCurtein_Close_Moving = false;
     float checkTime = 0f;
 
-    Vector2 Close_Left_Origin_Pos;
-    Vector2 Close_Right_Origin_Pos;
-    Vector2 Open_Left_Origin_Pos;
-    Vector2 Open_Right_Origin_Pos;
-    Vector2 Top_Origin_Pos;
+    RectTransform Close_Left_Origin_Pos;
+    RectTransform Close_Right_Origin_Pos;
+    RectTransform Open_Left_Origin_Pos;
+    RectTransform Open_Right_Origin_Pos;
+    RectTransform Top_Origin_Pos;
 
     [Range(0.01f, 10f)]
     public float fadeTime = 1f;
@@ -72,11 +73,11 @@ public class SceneChangeManager : MonoBehaviour
 
     private void Start()
     {
-        Close_Left_Origin_Pos = curtein_left_close.transform.position;
-        Close_Right_Origin_Pos = curtein_right_colse.transform.position;
-        Open_Left_Origin_Pos = curtein_left.transform.position;
-        Open_Right_Origin_Pos = curtein_right.transform.position;
-        Top_Origin_Pos = curtein_full.transform.position;
+        Close_Left_Origin_Pos = curtein_left_close.GetComponent<RectTransform>();
+        Close_Right_Origin_Pos = curtein_right_colse.GetComponent<RectTransform>();
+        Open_Left_Origin_Pos = curtein_left.GetComponent<RectTransform>();
+        Open_Right_Origin_Pos = curtein_right.GetComponent<RectTransform>();
+        Top_Origin_Pos = curtein_full.GetComponent<RectTransform>();
         curtein_colse_L.SetActive(true);
         curtein_close_R.SetActive(true);
         curtein_transperent_Close_0();
@@ -113,6 +114,12 @@ public class SceneChangeManager : MonoBehaviour
 
     IEnumerator curteinUp()
     {
+        curtein_full.GetComponent<RectTransform>().DOAnchorPosY(-2211, 3f);
+        yield return new WaitForSeconds(3f);
+        isMovedDown = false;
+        isCurtein_Up_finished = true;
+        yield break;
+        /*
         while (checkTime < 3f)
         {
             checkTime += 0.1f;
@@ -126,12 +133,18 @@ public class SceneChangeManager : MonoBehaviour
             checkTime = 0f;
             yield break;
         }
+        */
     }
 
     IEnumerator curteinDown()
     { 
         if (SceneManager.GetActiveScene().name == "StageSelect")
         {
+            curtein_full.GetComponent<RectTransform>().DOAnchorPosY(5, 3f);
+            yield return new WaitForSeconds(3f);
+            isCurtein_Down_finished = true;
+            yield break;
+            /*
             while (checkTime < 3.1f)
             {
                 isMovedDown = true;
@@ -145,9 +158,17 @@ public class SceneChangeManager : MonoBehaviour
                 checkTime = 0f;
                 yield break;
             }
+            */
         }
         else
         {
+            isMovedDown = true;
+            curtein_full.GetComponent<RectTransform>().DOAnchorPosY(-2211, 3f);
+            yield return new WaitForSeconds(3f);
+            curtein_full.GetComponent<RectTransform>().anchoredPosition = Top_Origin_Pos.anchoredPosition;
+            isCurtein_Down_finished = true;
+            yield break;
+            /*
             while (checkTime < 3.2f)
             {
                 isMovedDown = true;
@@ -157,16 +178,30 @@ public class SceneChangeManager : MonoBehaviour
             }
             if (checkTime > 3.2f)
             {
-                curtein_full.transform.position = Top_Origin_Pos;
+                curtein_full = Top_Origin_Pos;
                 isCurtein_Down_finished = true;
                 checkTime = 0f;
                 yield break;
             }
+            */
         }
     }
 
     IEnumerator curteinOpen()
     {
+        curtein_transperent_Close_100();
+        curtein_full.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 3700);
+        curtein_left_close.GetComponent<RectTransform>().anchoredPosition = new Vector2(-525, 0);
+        curtein_right_colse.GetComponent<RectTransform>().anchoredPosition = new Vector2(525, 0);
+        curtein_left_close.GetComponent<RectTransform>().DOAnchorPosX(-1450, 3f);
+        curtein_right_colse.GetComponent<RectTransform>().DOAnchorPosX(1450, 3f);
+        yield return new WaitForSeconds(3f);
+        curtein_transperent_Close_0();
+        isClosed = false;
+        curtein_left_close.GetComponent<RectTransform>().anchoredPosition = Close_Left_Origin_Pos.anchoredPosition;
+        curtein_right_colse.GetComponent<RectTransform>().anchoredPosition = Close_Right_Origin_Pos.anchoredPosition;
+        yield break;
+        /*
         while (checkTime < 2f)
         {
             curtein_transperent_Close_100();
@@ -179,15 +214,25 @@ public class SceneChangeManager : MonoBehaviour
         {
             curtein_transperent_Close_0();
             isClosed = false;
-            curtein_left_close.transform.position = Close_Left_Origin_Pos;
-            curtein_right_colse.transform.position = Close_Right_Origin_Pos;
+            curtein_left_close = Close_Left_Origin_Pos;
+            curtein_right_colse = Close_Right_Origin_Pos;
             checkTime = 0f;
             yield break;
         }
+        */
     }
 
     IEnumerator curteinClose()
     {
+        Debug.Log("sdf");
+        isClosed = true;
+        curtein_left_close.GetComponent<RectTransform>().DOAnchorPosX(-525, 3f);
+        curtein_right_colse.GetComponent<RectTransform>().DOAnchorPosX(525, 3f);
+        yield return new WaitForSeconds(3f);
+        curtein_left.GetComponent<RectTransform>().anchoredPosition = Open_Left_Origin_Pos.anchoredPosition;
+        isCurtein_Close_finished = true;
+        yield break;
+        /*
         while (checkTime < 2f)
         {
             isClosed = true;
@@ -198,32 +243,36 @@ public class SceneChangeManager : MonoBehaviour
         }
         if (checkTime > 2f)
         {
-            curtein_left.transform.position = Open_Left_Origin_Pos;
-            curtein_right.transform.position = Open_Right_Origin_Pos;
+            curtein_left = Open_Left_Origin_Pos;
+            curtein_right = Open_Right_Origin_Pos;
             checkTime = 0f;
             isCurtein_Close_finished = true;
             yield break;
         }
+        */
     }
 
     void curtein_transperent_Close_0()
     {
-        Color left_color = curtein_left_close.color;
-        Color right_color = curtein_right_colse.color;
+       
+        /*
+        Color left_color = curtein_left_close.GetComponent<Image>().color;
+        Color right_color = curtein_right_colse.GetComponent<Image>().color;
         left_color.a = 0f;
         right_color.a = 0f;
-        curtein_left_close.color = left_color;
-        curtein_right_colse.color = right_color;
+        curtein_left_close.GetComponent<Image>().color = left_color;
+        curtein_right_colse.GetComponent<Image>().color = right_color;
+        */
     }
 
     void curtein_transperent_Close_100()
     {
-        Color left_color = curtein_left_close.color;
-        Color right_color = curtein_right_colse.color;
+        Color left_color = curtein_left_close.GetComponent<Image>().color;
+        Color right_color = curtein_right_colse.GetComponent<Image>().color;
         left_color.a = 1f;
         right_color.a = 1f;
-        curtein_left_close.color = left_color;
-        curtein_right_colse.color = right_color;
+        curtein_left_close.GetComponent<Image>().color = left_color;
+        curtein_right_colse.GetComponent<Image>().color = right_color;
     }
 
 
@@ -256,47 +305,47 @@ public class SceneChangeManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "stage1")
         {
             curtein_Open();
-            curtein_full.transform.position = Top_Origin_Pos;
+            curtein_full.GetComponent<RectTransform>().anchoredPosition = Top_Origin_Pos.anchoredPosition;
         }
         if (SceneManager.GetActiveScene().name == "stage2")
         {
             curtein_Open();
-            curtein_full.transform.position = Top_Origin_Pos;
+            curtein_full.GetComponent<RectTransform>().anchoredPosition = Top_Origin_Pos.anchoredPosition;
         }
         if (SceneManager.GetActiveScene().name == "stage3")
         {
             curtein_Open();
-            curtein_full.transform.position = Top_Origin_Pos;
+            curtein_full.GetComponent<RectTransform>().anchoredPosition = Top_Origin_Pos.anchoredPosition;
         }
         if (SceneManager.GetActiveScene().name == "stage4")
         {
             curtein_Open();
-            curtein_full.transform.position = Top_Origin_Pos;
+            curtein_full.GetComponent<RectTransform>().anchoredPosition = Top_Origin_Pos.anchoredPosition;
         }
         if (SceneManager.GetActiveScene().name == "stage5")
         {
             curtein_Open();
-            curtein_full.transform.position = Top_Origin_Pos;
+            curtein_full.GetComponent<RectTransform>().anchoredPosition = Top_Origin_Pos.anchoredPosition;
         }
         if (SceneManager.GetActiveScene().name == "stage6")
         {
             curtein_Open();
-            curtein_full.transform.position = Top_Origin_Pos;
+            curtein_full.GetComponent<RectTransform>().anchoredPosition = Top_Origin_Pos.anchoredPosition;
         }
         if (SceneManager.GetActiveScene().name == "stage7")
         {
             curtein_Open();
-            curtein_full.transform.position = Top_Origin_Pos;
+            curtein_full.GetComponent<RectTransform>().anchoredPosition = Top_Origin_Pos.anchoredPosition;
         }
         if (SceneManager.GetActiveScene().name == "stage8")
         {
             curtein_Open();
-            curtein_full.transform.position = Top_Origin_Pos;
+            curtein_full.GetComponent<RectTransform>().anchoredPosition = Top_Origin_Pos.anchoredPosition;
         }
         if (SceneManager.GetActiveScene().name == "stage9")
         {
             curtein_Open();
-            curtein_full.transform.position = Top_Origin_Pos;
+            curtein_full.GetComponent<RectTransform>().anchoredPosition = Top_Origin_Pos.anchoredPosition;
         }
     }
 

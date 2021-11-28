@@ -16,7 +16,7 @@ public class StageManager : MonoBehaviour
     private void Awake()
     {
         GM = GameManager.GM_Instance;
-        Invoke("ptnManagerTrigger", 1f);
+  //      Invoke("ptnManagerTrigger", 1f);
     }
 
     // Update is called once per frame

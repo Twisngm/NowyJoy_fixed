@@ -17,6 +17,7 @@ public class MadHatter : MonoBehaviour
     public bool isAble = false; 
     public int rand;
     public int[] randPos;
+    public GameObject Smoke;
     List<float> PosIndex = new List<float>() { 0, -1.7f, 1.7f };
     GameObject Player;
     GameObject Effect;
@@ -54,7 +55,7 @@ public class MadHatter : MonoBehaviour
     }
     void DoPattern()
     {
-        int rand = Random.Range(1, 101);
+        int rand = Random.Range(1, 100);
 
         if (rand >= 1 && rand <= 50)
             StartCoroutine("Hat_In");
@@ -205,16 +206,34 @@ public class MadHatter : MonoBehaviour
 
     IEnumerator Jump()
     {
+        float next = 2.75f;
+
         iTween.MoveTo(this.gameObject, iTween.Hash("path", iTweenPath.GetPath("Jump1"), "speed", 2f,"delay", 2f, "easeType", iTween.EaseType.easeOutBounce, "movetopath", false));
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(next + 0.5f);
+        Smoke.transform.position = this.gameObject.transform.position;
+        Smoke.transform.position += new Vector3(0,0.5f,0);
+        Smoke.GetComponent<Animator>().Play("Smoke");
         iTween.MoveTo(this.gameObject, iTween.Hash("path", iTweenPath.GetPath("Jump2"), "speed", 3f, "delay", 2f, "easeType", iTween.EaseType.easeOutBounce, "movetopath", false));
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(next);
+        Smoke.transform.position = this.gameObject.transform.position;
+        Smoke.transform.position += new Vector3(0, 0.5f, 0);
+        Smoke.GetComponent<Animator>().Play("Smoke");
         iTween.MoveTo(this.gameObject, iTween.Hash("path", iTweenPath.GetPath("Jump3"), "speed", 3f, "delay", 2f, "easeType", iTween.EaseType.easeOutBounce, "movetopath", false));
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(next);
+        Smoke.transform.position = this.gameObject.transform.position;
+        Smoke.transform.position += new Vector3(0, 0.5f, 0);
+        Smoke.GetComponent<Animator>().Play("Smoke");
         iTween.MoveTo(this.gameObject, iTween.Hash("path", iTweenPath.GetPath("Jump4"), "speed", 3f, "delay", 2f, "easeType", iTween.EaseType.easeOutBounce, "movetopath", false));
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(next);
+        Smoke.transform.position = this.gameObject.transform.position;
+        Smoke.transform.position += new Vector3(0, 0.5f, 0);
+        Smoke.GetComponent<Animator>().Play("Smoke");
         iTween.MoveTo(this.gameObject, iTween.Hash("path", iTweenPath.GetPath("Jump5"), "speed", 2f, "delay", 2f, "easeType", iTween.EaseType.easeOutBounce, "movetopath", false));
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(next);
+        Smoke.transform.position = this.gameObject.transform.position;
+        Smoke.transform.position += new Vector3(0, 0.5f, 0);
+        Smoke.GetComponent<Animator>().Play("Smoke");
+        yield return new WaitForSeconds(next);
         DoPattern();
     }
     void startFollow()
