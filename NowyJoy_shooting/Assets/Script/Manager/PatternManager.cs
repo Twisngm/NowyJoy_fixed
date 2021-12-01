@@ -1137,7 +1137,12 @@ public class PatternManager : MonoBehaviour
     /*
     BoxCollider2D Telecoll1 = Teledoor1.collider;
     BoxCollider2D Telecoll2 = Teledoor2.collider;
+    bool dooraccess = true; // 순간이동 문 실행 전 true로 값을 바꿔줄 것
     IEnumerator Teleporter{
+    if (!dooraccess){
+    yield return null;
+    }
+
     int Gate = Random.Range(0, 4);
     if (Gate == 0){
          Teledoor1.transform.position = (a1, b1, c1);
@@ -1171,8 +1176,9 @@ public class PatternManager : MonoBehaviour
     if (Teledoor.collider.collision.gameObject.tag == "Boss"){
         dodo.transform.position = Teledoor1.transform.position;
     }
+    dooraccess = false;
     yield return new WaitForSeconds(4f);
-
+    
     }
     */
 
