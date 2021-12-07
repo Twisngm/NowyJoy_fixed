@@ -5006,6 +5006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RushWarning: {fileID: 871747495}
+  Smoke: {fileID: 0}
 --- !u!4 &1035016807
 Transform:
   m_ObjectHideFlags: 0
@@ -10202,6 +10203,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause
       objectReference: {fileID: 0}
+    - target: {fileID: 6262770082105142894, guid: 366eae843edeb16428f026eca2c0fd84, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6262770082666679732, guid: 366eae843edeb16428f026eca2c0fd84, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -10212,11 +10217,11 @@ PrefabInstance:
       objectReference: {fileID: 6524356814023110285}
     - target: {fileID: 6262770082714458192, guid: 366eae843edeb16428f026eca2c0fd84, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: nextStage
+      value: GotoTitle
       objectReference: {fileID: 0}
     - target: {fileID: 6262770082714458194, guid: 366eae843edeb16428f026eca2c0fd84, type: 3}
       propertyPath: m_Name
-      value: nextStage
+      value: Main
       objectReference: {fileID: 0}
     - target: {fileID: 6262770082899415986, guid: 366eae843edeb16428f026eca2c0fd84, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
