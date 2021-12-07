@@ -6,6 +6,7 @@ public class Boss_Trigger : MonoBehaviour
 {
 
     public Time_UI time;
+    public GameObject[] Boss;
     public GameObject bird;
     public GameObject owl;
     // Start is called before the first frame update
@@ -24,8 +25,11 @@ public class Boss_Trigger : MonoBehaviour
     {
         if (time.min <= 3)
         {
-            bird.gameObject.SetActive(true);
-            owl.gameObject.SetActive(true);
+            for(int i = 0; i< Boss.Length; i++)
+            {
+                Boss[i].gameObject.SetActive(true);
+            }
+           
         }
     }
 }

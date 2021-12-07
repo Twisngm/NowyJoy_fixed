@@ -19,6 +19,7 @@ public class MadHatter : MonoBehaviour
     public int[] randPos;
     public GameObject Smoke;
     List<float> PosIndex = new List<float>() { 0, -1.7f, 1.7f };
+    public PatternManager PM;
     GameObject Player;
     GameObject Effect;
     Animator anim;
@@ -27,13 +28,23 @@ public class MadHatter : MonoBehaviour
     void Start()
     {
         // StartCoroutine("Jump");
-        DoPattern();
+     //  DoPattern();
         Player = GameObject.FindGameObjectWithTag("Player");
         Effect = GameObject.Find("Blood");
         anim = Effect.GetComponent<Animator>();
         col = GetComponentInChildren<PolygonCollider2D>();
     }
-
+    private void OnEnable()
+    {
+        StartCoroutine("Appear");
+    }
+    IEnumerator Appear()
+    {
+        PM.isBoss = true;
+        iTween.MoveTo(this.gameObject, iTween.Hash("y", 0.5f, "time", 3f, "easeType", "Linear"));
+        yield return new WaitForSeconds(5f);
+        DoPattern();
+    }
     private void Update()
     {
        

@@ -276,14 +276,23 @@ public class PatternManager : MonoBehaviour
                 randPtn[0] = -1;
             else if (GM.stagenum == 3) // 2스테이지 기믹
             {
-                if(isBoss == true)
+                if (isBoss == true)
                     randPtn[0] = -1;
                 else
                     randPtn[0] = Random.Range(-1, 1);
             }
-     
+
             else if (GM.stagenum == 4) // 3스테이지 기믹
                 randPtn[0] = Random.Range(0, 2);
+            else if (GM.stagenum == 6) // 4스테이지 기믹
+            {
+                if (isBoss == true)
+                  randPtn[0] = -1;
+                else
+                  randPtn[0] = Random.Range(0, 2);
+            }
+            else if (GM.stagenum == 8) // 5.5스테이지 기믹
+                randPtn[0] = -1;
             else // 그 외
                 randPtn[0] = Random.Range(0, 3);
 
@@ -295,9 +304,13 @@ public class PatternManager : MonoBehaviour
                 randPtn[1] = Random.Range(0, 9);
             else if (GM.stagenum == 3 && isBoss == true) // 2스테이지 보스
                 randPtn[1] = Random.Range(4, 8);
-            else if (GM.stagenum == 4) // 3스테이지 패턴
+            else if (GM.stagenum == 6) // 4스테이지 패턴
                 randPtn[1] = Random.Range(0, 10);
-           
+            else if (GM.stagenum == 6 && isBoss == true) // 4스테이지 보스
+                randPtn[1] = Random.Range(4, 8);
+            else if (GM.stagenum == 8) // 5.5 스테이지 보스
+                randPtn[1] = Random.Range(2, 8);
+
             else // 그 외
                 randPtn[1] = Random.Range(0, 12);
         }

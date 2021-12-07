@@ -12,16 +12,18 @@ public class Card_Soldier : MonoBehaviour
 
     public void Execute()
     {
+        gameObject.transform.position = new Vector3(4.4f, 0.4f, 0);
+        gameObject.SetActive(true);
         StartCoroutine("Execution");
     }
 
     IEnumerator Execution()
-    {
-        float moveTime = 1.5f;
+    { 
+        float moveTime = 2.5f;
         transform.DOMove(vec, moveTime);
         yield return new WaitForSeconds(moveTime);
         Smoke.GetComponent<Animator>().Play("Smoke");
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.5f);
         gameObject.SetActive(false);
         Card.GetComponent<UbhShotCtrl>().StartShotRoutine();
         yield return new WaitForSeconds(0.1f);
