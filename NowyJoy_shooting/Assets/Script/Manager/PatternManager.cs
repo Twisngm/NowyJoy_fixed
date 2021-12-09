@@ -68,10 +68,10 @@ public class PatternManager : MonoBehaviour
 
     // 차원문 패턴
 
-    /*public GameObject Teledoor1;
+    public GameObject Teledoor1;
     public GameObject Teledoor2;
-    public GameObject Player;
-    public GameObject dodo; //보스*/
+    public GameObject dodo; //보스
+    public int doortime;
 
     // 체스 폰 패턴
 
@@ -114,6 +114,13 @@ public class PatternManager : MonoBehaviour
     public GameObject Warning_Laser;
     public float rotateSpeed;
     public float LaserSpeed;
+
+    // 크로켓(게이트볼) 패턴
+    public GameObject background;
+    public GameObject Gate;
+    public GameObject Gateball;
+    public float changetime;
+    public float croquetime;
 
     public GameObject NowyJoy;
     Title title;
@@ -1146,62 +1153,78 @@ public class PatternManager : MonoBehaviour
 
     }
 
+    IEnumerator Teleporter(BoxCollider2D Telecoll1, BoxCollider2D Telecoll2){
 
-    /*
-   BoxCollider2D Telecoll1 = Teledoor1.collider;
-   BoxCollider2D Telecoll2 = Teledoor2.collider;
-   bool dooraccess = true; // 순간이동 문 실행 전 true로 값을 바꿔줄 것
-    public int doortime;
-   if (!dooraccess){
-       StopCoroutine("Teleporter");
-   }
-   IEnumerator Teleporter{
-
-    time = doortime;
-   isPatterning = true;
-   int Gate = Random.Range(0, 4);
-   if (Gate == 0){
+    //BoxCollider2D Telecoll1 = Teledoor1.GetComponent<BoxCollider2D>(); //실행할때 불러오게 할것
+    //BoxCollider2D Telecoll2 = Teledoor2.GetComponent<BoxCollider2D>();
+    int time = doortime;
+    isPatterning = true;
+    int Gate = Random.Range(0, 4);
+    /*if (Gate == 0){
         Teledoor1.transform.position = (a1, b1, c1);
         Teledoor2.transform.position = (d1, e1, f1);
-   }
-   else if (Gate == 1){
+    }
+    else if (Gate == 1){
         Teledoor1.transform.position = (a2, b2, c2);
         Teledoor2.transform.position = (d2, e2, f2);
-   }
-   else if (Gate == 2){
+    }
+    else if (Gate == 2){
         Teledoor1.transform.position = (a3, b3, c3);
         Teledoor2.transform.position = (d3, e3, f3);
-   }
-   else if (Gate == 3){
+    }
+    else if (Gate == 3){
         Teledoor1.transform.position = (a4, b4, c4);
         Teledoor2.transform.position = (d4, e4, f4);
-   }
-   Teledoor1.SetActive(true);
-   Teledoor2.SetActive(true);
+    }*/
+    Teledoor1.SetActive(true);
+    Teledoor2.SetActive(true);
 
     while(time>0){
-   if (Teledoor1.collider.collision.gameObject.tag == "Body"){
-        Player.transform.position = Teledoor2.transform.position;
-        Player.Player.invinc();
-   }
-   if (Teledoor2.collider.collision.gameObject.tag == "Body"){
-        Player.transform.position = Teledoor1.transform.position;
-        Player.Player.invinc();
-   }
-   if (Teledoor.collider.collision.gameObject.tag == "Boss"){
-        dodo.transform.position = Teledoor2.transform.position;
-   }
-   if (Teledoor.collider.collision.gameObject.tag == "Boss"){
-       dodo.transform.position = Teledoor1.transform.position;
-   }
-    time--;
-   yield return new WaitForSeconds(1);
+    if (Telecoll1.gameObject.tag == "Body"){
+        player.transform.position = Teledoor2.transform.position;
+        //player.Player.invinc();
     }
-   isPatterning = false;
-   Teledoor1.SetActive(false);
-   Teledoor2.SetActive(false);
+    if (Telecoll2.gameObject.tag == "Body"){
+        player.transform.position = Teledoor1.transform.position;
+        //Player.Player.invinc();
+    }
+    if (Telecoll1.gameObject.tag == "Boss"){
+        dodo.transform.position = Teledoor2.transform.position;
+    }
+    if (Telecoll2.gameObject.tag == "Boss"){
+       dodo.transform.position = Teledoor1.transform.position;
+    }
+    time--;
+    yield return new WaitForSeconds(1);
+    }
+    isPatterning = false;
+    Teledoor1.SetActive(false);
+    Teledoor2.SetActive(false);
+    }
+    
+    void groundchanger(GameObject background)
+    {
+        SpriteRenderer renderer = background.GetComponent<SpriteRenderer>();
+        Color color = renderer.color;
+        if (color.a == 1)
+        {
+            StartCoroutine(backgroundchange(changetime, renderer, 0.0f, color.a));
+        }
+        else
+        {
+            StartCoroutine(backgroundchange(changetime, renderer, 1.0f, color.a));
+        }
+    }
 
-   }
-   */
+    IEnumerator backgroundchange(float changetime, SpriteRenderer renderer, float targeta, float currenta)
+    {
+        Color color = renderer.color;
 
+        for (float i = currenta; i >= targeta; i -= 0.01f)
+        {
+            color.a = i;
+            renderer.color = color;
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
 }
