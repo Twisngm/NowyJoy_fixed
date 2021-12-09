@@ -1148,51 +1148,60 @@ public class PatternManager : MonoBehaviour
 
 
     /*
-    BoxCollider2D Telecoll1 = Teledoor1.collider;
-    BoxCollider2D Telecoll2 = Teledoor2.collider;
-    bool dooraccess = true; // 순간이동 문 실행 전 true로 값을 바꿔줄 것
-    IEnumerator Teleporter{
-    if (!dooraccess){
-    yield return null;
-    }
+   BoxCollider2D Telecoll1 = Teledoor1.collider;
+   BoxCollider2D Telecoll2 = Teledoor2.collider;
+   bool dooraccess = true; // 순간이동 문 실행 전 true로 값을 바꿔줄 것
+    public int doortime;
+   if (!dooraccess){
+       StopCoroutine("Teleporter");
+   }
+   IEnumerator Teleporter{
 
-    int Gate = Random.Range(0, 4);
-    if (Gate == 0){
-         Teledoor1.transform.position = (a1, b1, c1);
-         Teledoor2.transform.position = (d1, e1, f1);
+    time = doortime;
+   isPatterning = true;
+   int Gate = Random.Range(0, 4);
+   if (Gate == 0){
+        Teledoor1.transform.position = (a1, b1, c1);
+        Teledoor2.transform.position = (d1, e1, f1);
+   }
+   else if (Gate == 1){
+        Teledoor1.transform.position = (a2, b2, c2);
+        Teledoor2.transform.position = (d2, e2, f2);
+   }
+   else if (Gate == 2){
+        Teledoor1.transform.position = (a3, b3, c3);
+        Teledoor2.transform.position = (d3, e3, f3);
+   }
+   else if (Gate == 3){
+        Teledoor1.transform.position = (a4, b4, c4);
+        Teledoor2.transform.position = (d4, e4, f4);
+   }
+   Teledoor1.SetActive(true);
+   Teledoor2.SetActive(true);
+
+    while(time>0){
+   if (Teledoor1.collider.collision.gameObject.tag == "Body"){
+        Player.transform.position = Teledoor2.transform.position;
+        Player.Player.invinc();
+   }
+   if (Teledoor2.collider.collision.gameObject.tag == "Body"){
+        Player.transform.position = Teledoor1.transform.position;
+        Player.Player.invinc();
+   }
+   if (Teledoor.collider.collision.gameObject.tag == "Boss"){
+        dodo.transform.position = Teledoor2.transform.position;
+   }
+   if (Teledoor.collider.collision.gameObject.tag == "Boss"){
+       dodo.transform.position = Teledoor1.transform.position;
+   }
+    time--;
+   yield return new WaitForSeconds(1);
     }
-    else if (Gate == 1){
-         Teledoor1.transform.position = (a2, b2, c2);
-         Teledoor2.transform.position = (d2, e2, f2);
-    }
-    else if (Gate == 2){
-         Teledoor1.transform.position = (a3, b3, c3);
-         Teledoor2.transform.position = (d3, e3, f3);
-    }
-    else if (Gate == 3){
-         Teledoor1.transform.position = (a4, b4, c4);
-         Teledoor2.transform.position = (d4, e4, f4);
-    }
-    Teledoor1.SetActive(true);
-    Teledoor2.SetActive(true);
-    if (Teledoor1.collider.collision.gameObject.tag == "Body"){
-         Player.transform.position = Teledoor2.transform.position;
-         Player.Player.invinc();
-    }
-    if (Teledoor2.collider.collision.gameObject.tag == "Body"){
-         Player.transform.position = Teledoor1.transform.position;
-         Player.Player.invinc();
-    }
-    if (Teledoor.collider.collision.gameObject.tag == "Boss"){
-         dodo.transform.position = Teledoor2.transform.position;
-    }
-    if (Teledoor.collider.collision.gameObject.tag == "Boss"){
-        dodo.transform.position = Teledoor1.transform.position;
-    }
-    dooraccess = false;
-    yield return new WaitForSeconds(4f);
-    
-    }
-    */
+   isPatterning = false;
+   Teledoor1.SetActive(false);
+   Teledoor2.SetActive(false);
+
+   }
+   */
 
 }
