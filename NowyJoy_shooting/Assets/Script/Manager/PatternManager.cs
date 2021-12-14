@@ -115,14 +115,6 @@ public class PatternManager : MonoBehaviour
     public float rotateSpeed;
     public float LaserSpeed;
 
-    // 크로켓(게이트볼) 패턴
-
-    public GameObject background;
-    public GameObject Gate;
-    public GameObject Gateball;
-    public float changetime;
-    public float croquetime;
-
     public GameObject NowyJoy;
     Title title;
 
@@ -1160,8 +1152,9 @@ public class PatternManager : MonoBehaviour
 
     IEnumerator Teleporter(BoxCollider2D Telecoll1, BoxCollider2D Telecoll2){
 
-    //BoxCollider2D Telecoll1 = Teledoor1.GetComponent<BoxCollider2D>(); //실행할때 불러오게 할것
-    //BoxCollider2D Telecoll2 = Teledoor2.GetComponent<BoxCollider2D>();
+        //BoxCollider2D Telecoll1 = Teledoor1.GetComponent<BoxCollider2D>(); //실행할때 불러오게 할것
+        //BoxCollider2D Telecoll2 = Teledoor2.GetComponent<BoxCollider2D>();
+        
     int time = doortime;
     isPatterning = true;
     int Gate = Random.Range(0, 4);
@@ -1187,11 +1180,11 @@ public class PatternManager : MonoBehaviour
     while(time>0){
     if (Telecoll1.gameObject.tag == "Body"){
         player.transform.position = Teledoor2.transform.position;
-        //player.Player.invinc();
+        player.GetComponent<Player>().Invinc();
     }
     if (Telecoll2.gameObject.tag == "Body"){
         player.transform.position = Teledoor1.transform.position;
-        //Player.Player.invinc();
+        player.GetComponent<Player>().Invinc();
     }
     if (Telecoll1.gameObject.tag == "Boss"){
         dodo.transform.position = Teledoor2.transform.position;
@@ -1202,34 +1195,8 @@ public class PatternManager : MonoBehaviour
     time--;
     yield return new WaitForSeconds(1);
     }
-    isPatterning = false;
-    Teledoor1.SetActive(false);
-    Teledoor2.SetActive(false);
-    }
-    
-    void groundchanger(GameObject background)
-    {
-        SpriteRenderer renderer = background.GetComponent<SpriteRenderer>();
-        Color color = renderer.color;
-        if (color.a == 1)
-        {
-            StartCoroutine(backgroundchange(changetime, renderer, 0.0f, color.a));
-        }
-        else
-        {
-            StartCoroutine(backgroundchange(changetime, renderer, 1.0f, color.a));
-        }
-    }
-
-    IEnumerator backgroundchange(float changetime, SpriteRenderer renderer, float targeta, float currenta)
-    {
-        Color color = renderer.color;
-
-        for (float i = currenta; i >= targeta; i -= 0.01f)
-        {
-            color.a = i;
-            renderer.color = color;
-            yield return new WaitForSeconds(0.1f);
-        }
+        Teledoor1.SetActive(false);
+        Teledoor2.SetActive(false);
+        isPatterning = false;
     }
 }
