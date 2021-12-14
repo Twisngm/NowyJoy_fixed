@@ -1,18 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-public class MadHatter_TImer : MonoBehaviour
+
+public class Goal : MonoBehaviour
 {
-    public MadHatter MH;
-    public Text txt;
     public GateBall GB;
     // Start is called before the first frame update
     void Start()
-    {
-      
-    }
-    private void OnEnable()
     {
         
     }
@@ -20,13 +14,14 @@ public class MadHatter_TImer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time();
-      
+        
     }
-    void time()
-    {
-       
-        txt.text = string.Format("{0}", GB.limitTime);
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Ball")
+        {
+            GB.isGoal = true;
+        }
     }
 }

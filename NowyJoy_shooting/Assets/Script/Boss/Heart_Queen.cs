@@ -7,16 +7,18 @@ public class Heart_Queen : MonoBehaviour
 
     public GameObject[] card_Soldier;
     public GameObject RushCard;
-    // Start is called before the first frame update
-    void Start()
+    public GameObject Hedgehog;
+    public GateBall GB;
+
+
+    private void OnEnable()
     {
-        Invoke("DoPattern", 3f);
+        Invoke("DoPattern", 10f);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        
+        CancelInvoke("DoPattern");
     }
     void DoPattern()
     {
@@ -25,11 +27,14 @@ public class Heart_Queen : MonoBehaviour
         if (rand >= 1 && rand <= 50)
             Execute();
 
-        else if (rand >= 51 && rand <= 75)
+        else if (rand >= 51 && rand <= 70)
             CardRush();
 
-        else if (rand >= 76 && rand <= 100)
-            CardRush();
+        else if (rand >= 71 && rand <= 90)
+            HedgehogRush();
+            
+        else
+            StartGateBall();
 
     }
 
@@ -45,5 +50,24 @@ public class Heart_Queen : MonoBehaviour
     {
         RushCard.GetComponent<RushCard>().Rush();
         Invoke("DoPattern", 10f);
+    }
+
+    void HedgehogRush()
+    {
+        StartCoroutine("HedgehogRushing");
+    }
+
+    IEnumerator HedgehogRushing()
+    {
+        Hedgehog.SetActive(true);
+        Hedgehog.transform.position = new Vector3(0, 1.35f, 0);
+        yield return new WaitForSeconds(12f);
+        Hedgehog.SetActive(false);
+        Invoke("DoPattern", 3f);
+    }
+
+    void StartGateBall()
+    {
+        GB.FadeIN();
     }
 }

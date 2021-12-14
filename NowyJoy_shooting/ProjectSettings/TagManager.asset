@@ -27,6 +27,8 @@ TagManager:
   - Hat
   - MadHatter
   - HeartQueen
+  - Ball
+  - Gate
   layers:
   - Default
   - TransparentFX

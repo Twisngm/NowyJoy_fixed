@@ -7,11 +7,13 @@ public class Warning : MonoBehaviour
 {
     GameObject gaugeObj;
     Image gauge;
+    PatternManager PM;
 
     private void Awake()
     {
         gaugeObj = transform.Find("!").gameObject;
         gauge = gaugeObj.GetComponent<Image>();
+        PM = GameObject.Find("Managers").transform.Find("patternManager").GetComponent<PatternManager>();
     }
     void Start()
     {
@@ -24,7 +26,10 @@ public class Warning : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(PM.gameObject.activeSelf == false)
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 
     IEnumerator fillGauge()

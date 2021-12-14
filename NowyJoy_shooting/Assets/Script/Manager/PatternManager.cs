@@ -116,6 +116,7 @@ public class PatternManager : MonoBehaviour
     public float LaserSpeed;
 
     // 크로켓(게이트볼) 패턴
+
     public GameObject background;
     public GameObject Gate;
     public GameObject Gateball;
@@ -158,6 +159,7 @@ public class PatternManager : MonoBehaviour
     private void OnDisable()
     {
         CancelInvoke("DoPtn");
+        
     }
     private void Update()
     {
@@ -316,7 +318,10 @@ public class PatternManager : MonoBehaviour
             else if (GM.stagenum == 6 && isBoss == true) // 4스테이지 보스
                 randPtn[1] = Random.Range(4, 8);
             else if (GM.stagenum == 8) // 5.5 스테이지 보스
-                randPtn[1] = Random.Range(2, 8);
+            {
+                    randPtn[1] = Random.Range(5, 8);
+               
+            }
 
             else // 그 외
                 randPtn[1] = Random.Range(0, 12);
