@@ -17,15 +17,18 @@ public class GateBall : MonoBehaviour
     public GameObject Wall;
     public GameObject ball;
     public GameObject[] gates;
+    public Vector3[] GateVec;
     public GameObject Goal;
     public GameObject timer;
     public GameObject Player;
+    public Animator anim;
 
     public Heart_Queen HQ;
     // Start is called before the first frame update
     void Start()
     {
         HQ = GameObject.Find("Heart_Queen").GetComponent<Heart_Queen>();
+        StartCoroutine("GoalFail");
     }
 
     // Update is called once per frame
@@ -33,6 +36,7 @@ public class GateBall : MonoBehaviour
     {
         CountDown();
         FadeOUT();
+       
     }
 
     public void FadeIN()
@@ -72,11 +76,18 @@ public class GateBall : MonoBehaviour
 
         for (int i = 0; i < gates.Length; i++)
         {
-            gates[i].SetActive(true);
+            gates[i].SetActive(true);            
         }
+
         Player.transform.position = new Vector3(0, -3.5f, 0);
 
         fade.DOFade(0, 1f);
+
+        for (int i = 0; i < gates.Length; i++)
+        {
+            gates[i].transform.DOMove(GateVec[i], 1.5f).SetEase(Ease.OutBounce);    
+        }
+
         isGate = true;
     }
 
@@ -103,6 +114,7 @@ public class GateBall : MonoBehaviour
 
         for (int i = 0; i < gates.Length; i++)
         {
+            gates[i].transform.position = new Vector3(gates[i].transform.position.x, gates[i].transform.position.y + 5, gates[i].transform.position.z); 
             gates[i].SetActive(false);
         }
         Player.transform.position = new Vector3(0, -3.5f, 0);
@@ -118,6 +130,22 @@ public class GateBall : MonoBehaviour
         if(isGate && limitTime >= 0)
         {
             limitTime -= Time.deltaTime;
+        }
+    }
+
+    IEnumerator GoalFail()
+    {
+        if(limitTime <= 0 && !isGoal)
+        {
+            anim.Play("SmokeFX4");
+            yield return new WaitForSeconds(0.45f);
+            GameManager.GM_Instance.HP -= 100;
+            Debug.Log("게임오버");
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.1f);
+            StartCoroutine("GoalFail");
         }
     }
 }

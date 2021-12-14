@@ -22,7 +22,7 @@ public class Heart_Queen : MonoBehaviour
     }
     void DoPattern()
     {
-        int rand = Random.Range(1, 101);
+        int rand = Random.Range(95, 101);
 
         if (rand >= 1 && rand <= 50)
             Execute();

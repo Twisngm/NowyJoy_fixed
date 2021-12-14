@@ -19,7 +19,7 @@ public class Goal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Ball")
+        if(collision.tag == "Ball" && GB.goalCnt >= 3)
         {
             GB.isGoal = true;
         }

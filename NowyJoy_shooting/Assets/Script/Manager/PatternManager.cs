@@ -319,7 +319,7 @@ public class PatternManager : MonoBehaviour
                 randPtn[1] = Random.Range(4, 8);
             else if (GM.stagenum == 8) // 5.5 스테이지 보스
             {
-                    randPtn[1] = Random.Range(5, 8);
+                    randPtn[1] = Random.Range(4, 7);
                
             }
 
@@ -715,11 +715,11 @@ public class PatternManager : MonoBehaviour
 
       
             Warning[Direction].SetActive(true);
-            yield return new WaitForSeconds(1.25f);
+            yield return new WaitForSeconds(1.5f);
             Warning[Direction].SetActive(false);
             sevenWay_ptn.transform.position = shapePos[Direction].transform.position;
             sevenWay_ptn.GetComponent<UbhShotCtrl>().StartShotRoutine();
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.2f);
             sevenWay_ptn.GetComponent<UbhShotCtrl>().StopShotRoutineAndPlayingShot();
             Count++;
             cnt++;
