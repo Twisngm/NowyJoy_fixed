@@ -24,8 +24,9 @@ public class Title : MonoBehaviour
         if (isFull)
         {
             SoundManager.Instance.ChangeBGM();
-            logomove();
-            Invoke("ChangeScene", 2f);
+            //logomove(); - °ü»ó¿ë
+            ChangeScene();
+            //Invoke("ChangeScene", 2f);
         }
     }
 

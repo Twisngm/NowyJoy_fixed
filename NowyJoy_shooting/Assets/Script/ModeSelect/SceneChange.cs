@@ -72,9 +72,9 @@ public class SceneChange : MonoBehaviour
             {
                 SceneManager.LoadScene("StageSelect");
             }
-            else
+            else if(mode == "integration")
             {
-
+                SceneManager.LoadScene("IntegratedMode");
             }
             yield break;
         }
