@@ -15,10 +15,13 @@ EditorBuildSettings:
     path: Assets/Scenes/StageSelect.unity
     guid: d8532c57665d719488e9f4477452d149
   - enabled: 1
+    path: Assets/Scenes/IntegratedMode.unity
+    guid: 98fa2b3c7e1bcc54e80209d7ef0e6e45
+  - enabled: 1
     path: Assets/Scenes/stage1.unity
     guid: 674c9e3b985dc1b4883a4f9184bcaa79
   - enabled: 1
-    path: Assets/Scenes/stage2.unity
+    path: Assets/Scenes/Stage2.unity
     guid: 04e0e330d1daf654c9061df550776637
   - enabled: 1
     path: Assets/Scenes/stage3.unity
@@ -27,10 +30,10 @@ EditorBuildSettings:
     path: Assets/Scenes/stage4.unity
     guid: 476c35037c9a1b64189a79e8b36778b4
   - enabled: 1
-    path: Assets/Scenes/stage5.unity
+    path: Assets/Scenes/Stage5.unity
     guid: e29d078690a610a438bc5b412367bb21
   - enabled: 1
-    path: Assets/Scenes/stage6.unity
+    path: Assets/Scenes/Stage6.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/stage7.unity

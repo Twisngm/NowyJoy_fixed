@@ -20,28 +20,27 @@ public class GaugeMove : MonoBehaviour
             ChangeScenes();
         }
     }
-
     public void ChangeScenes()
     {
         switch (GotoScene)
         {
             case 1:
-                SceneManager.LoadScene(3);
-                break;
-            case 2:
                 SceneManager.LoadScene(4);
                 break;
-            case 3:
+            case 2:
                 SceneManager.LoadScene(5);
                 break;
-            case 4:
+            case 3:
                 SceneManager.LoadScene(6);
                 break;
-            case 5:
+            case 4:
                 SceneManager.LoadScene(7);
                 break;
-            case 6:
+            case 5:
                 SceneManager.LoadScene(8);
+                break;
+            case 6:
+                SceneManager.LoadScene(9);
                 break;
         }
     }

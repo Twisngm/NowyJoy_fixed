@@ -65,4 +65,5 @@ public class SettingMove : MonoBehaviour
             transform.Translate(settingposdown * speed);
         }
     }
+
 }

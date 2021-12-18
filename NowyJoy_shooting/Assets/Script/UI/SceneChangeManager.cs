@@ -138,7 +138,7 @@ public class SceneChangeManager : MonoBehaviour
 
     IEnumerator curteinDown()
     { 
-        if (SceneManager.GetActiveScene().name == "StageSelect")
+        if (SceneManager.GetActiveScene().name == "StageSelect" || SceneManager.GetActiveScene().name == "IntegratedMode")
         {
             curtein_full.GetComponent<RectTransform>().DOAnchorPosY(5, 3f);
             yield return new WaitForSeconds(3f);
@@ -299,6 +299,10 @@ public class SceneChangeManager : MonoBehaviour
             curtein_Open();
         }
         if (SceneManager.GetActiveScene().name == "StageSelect")
+        {
+            curtein_Open();
+        }
+        if (SceneManager.GetActiveScene().name == "IntegratedMode")
         {
             curtein_Open();
         }

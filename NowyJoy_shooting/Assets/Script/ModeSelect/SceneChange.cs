@@ -63,6 +63,7 @@ public class SceneChange : MonoBehaviour
             }
             else if (mode == "integration")
             {
+                Debug.Log("changeIntegration");
                 ChangeSize("integration");
             }
         }
@@ -74,6 +75,7 @@ public class SceneChange : MonoBehaviour
             }
             else if(mode == "integration")
             {
+                Debug.Log("changeIntegration");
                 SceneManager.LoadScene("IntegratedMode");
             }
             yield break;
