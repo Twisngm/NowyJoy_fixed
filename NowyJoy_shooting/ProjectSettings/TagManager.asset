@@ -29,6 +29,7 @@ TagManager:
   - HeartQueen
   - Ball
   - Gate
+  - Thistle
   layers:
   - Default
   - TransparentFX

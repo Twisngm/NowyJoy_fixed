@@ -27,7 +27,7 @@ public class ObjectManager : MonoBehaviour
 
     private void Awake()
     {
-        bulletA = new GameObject[20];
+        bulletA = new GameObject[100];
         bulletB = new GameObject[150];
         bulletC = new GameObject[70];
         bulletFire = new GameObject[5];

@@ -117,7 +117,7 @@ public class PatternManager : MonoBehaviour
 
     public GameObject NowyJoy;
     Title title;
-
+        
     private void Awake()
     {
         //   title = GameObject.Find("Trigger").GetComponent<Title>();
@@ -285,12 +285,14 @@ public class PatternManager : MonoBehaviour
 
             else if (GM.stagenum == 4) // 3스테이지 기믹
                 randPtn[0] = Random.Range(0, 2);
+            else if (GM.stagenum == 5) // 3.5스테잊 기믹 (보스)
+                randPtn[0] = -1;
             else if (GM.stagenum == 6) // 4스테이지 기믹
             {
                 if (isBoss == true)
-                  randPtn[0] = -1;
+                    randPtn[0] = -1;
                 else
-                  randPtn[0] = Random.Range(0, 2);
+                    randPtn[0] = Random.Range(0, 2);
             }
             else if (GM.stagenum == 8) // 5.5스테이지 기믹
                 randPtn[0] = -1;
@@ -305,14 +307,18 @@ public class PatternManager : MonoBehaviour
                 randPtn[1] = Random.Range(0, 9);
             else if (GM.stagenum == 3 && isBoss == true) // 2스테이지 보스
                 randPtn[1] = Random.Range(4, 8);
-            else if (GM.stagenum == 6) // 4스테이지 패턴
+            else if (GM.stagenum == 4) // 3스테이지
                 randPtn[1] = Random.Range(0, 10);
+            else if (GM.stagenum == 5)
+                randPtn[1] = Random.Range(4, 8); // 3.5스테이지
+            else if (GM.stagenum == 6) // 4스테이지 패턴
+                randPtn[1] = Random.Range(0, 11);
             else if (GM.stagenum == 6 && isBoss == true) // 4스테이지 보스
                 randPtn[1] = Random.Range(4, 8);
             else if (GM.stagenum == 8) // 5.5 스테이지 보스
             {
-                    randPtn[1] = Random.Range(4, 7);
-               
+                randPtn[1] = Random.Range(4, 7);
+
             }
 
             else // 그 외
@@ -328,11 +334,11 @@ public class PatternManager : MonoBehaviour
                 break;
 
             case 1:
-                StartMirror(); // 거울패턴
+                Screen_Scale_Control(); // 화면 확대 축소 패턴
                 break;
 
-            case 2:
-                Screen_Scale_Control(); // 화면 확대 축소 패턴
+            case 2:      
+                StartMirror(); // 거울패턴
                 break;
 
             case 3:
