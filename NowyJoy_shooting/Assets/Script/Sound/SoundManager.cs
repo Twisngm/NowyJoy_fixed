@@ -76,6 +76,7 @@ public class SoundManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         ChangeBGM(); // 브금 변경하는 함수
+
     }
 
     void OnDisable()
@@ -160,6 +161,20 @@ public class SoundManager : MonoBehaviour
 
     public void ChangeMasterVolume(Slider slider)
     {
+        float ExtraVolume;
+        ExtraVolume = slider.value - masterValue;
+
+        bgmPlayer.volume += ExtraVolume;
+        bgmValue += ExtraVolume;
+        PlayerPrefs.SetFloat("bgmvolume", bgmValue);
+
+        for (int i = 0; i < AudioSourceEfects.Length; i++)
+        {
+            AudioSourceEfects[i].volume += ExtraVolume;
+        }
+        sfxValue += ExtraVolume;
+        PlayerPrefs.SetFloat("sfxvolume", sfxValue);
+
         AudioListener.volume = slider.value;
         masterValue = slider.value;
         PlayerPrefs.SetFloat("mastervolume", masterValue);

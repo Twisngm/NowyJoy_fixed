@@ -9,7 +9,7 @@ public class BgmSound : MonoBehaviour
     public Slider bgmVolume; //브금 볼륨 슬라이더
     public Slider sfxVolume; //효과음 볼륨 슬라이더
 
-    private void Start()
+    private void FixedUpdate()
     {
         masterVolume.value = PlayerPrefs.GetFloat("mastervolume", 0.5f);
         bgmVolume.value = PlayerPrefs.GetFloat("bgmvolume", 0.5f);
