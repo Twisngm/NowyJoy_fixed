@@ -141,7 +141,10 @@ public class PatternManager : MonoBehaviour
     private void OnEnable()
     {
         isBoss = false;
-        StartCoroutine("Shooting");
+
+        if(GM.stagenum != 5)
+          StartCoroutine("Shooting");
+
     //    Invoke("DoPattern", 5f);
     
         DoPtn();
@@ -166,6 +169,7 @@ public class PatternManager : MonoBehaviour
                 shootSpeed_target = 5f;
             }
         }
+      
         /*
         if (Input.GetKeyDown(KeyCode.T))
         {

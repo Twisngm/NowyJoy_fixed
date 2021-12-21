@@ -10,6 +10,7 @@ public class Dog : MonoBehaviour
     public GameObject ThistleTri;
     public GameObject Player;
     public ObjectManager objManager;
+    public GameObject[] Rains;
     Rigidbody2D rigid;
     bool isCol = false;
     public bool isRush = false;
@@ -17,7 +18,7 @@ public class Dog : MonoBehaviour
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
-        StartCoroutine("Rush");
+        DoPattern();
         StartCoroutine("Return");
     }
 
@@ -43,6 +44,25 @@ public class Dog : MonoBehaviour
         }
     }
 
+    void DoPattern()
+    {
+        int index;
+        index = Random.Range(0, 2);
+
+        switch(index)
+        {
+            case 0:
+                StartCoroutine("Rush");
+                break;
+
+            case 1:
+                StartCoroutine("Shake");
+                break;
+           
+                    
+        }
+    }
+
     IEnumerator Rush()
     {
         transform.DOMoveY(6, 1.5f).SetEase(Ease.InBack);
@@ -52,7 +72,7 @@ public class Dog : MonoBehaviour
         ThistleTri.transform.position = new Vector2(Random.Range(-2,2), Random.Range(2,-3.5f));
         StartCoroutine("BulletShot");
         yield return new WaitForSeconds(10f);
-        StartCoroutine("Rush");
+        StartCoroutine("DoPattern");
     }
    public  void SetThistle()
     {
@@ -97,5 +117,36 @@ public class Dog : MonoBehaviour
             yield return new WaitForSeconds(0.1f);      
         }
         StartCoroutine("Return");
+    }
+
+    IEnumerator Shake()
+    {
+        int fir;
+        int[] sec = new int[2];
+
+        fir = Random.Range(0, 2);
+        if(fir == 0)
+        {
+            sec[0] = Random.Range(0, 5);
+            do
+            {
+                sec[1] = Random.Range(0, 5);
+            }
+            while (sec[0] == sec[1]);
+            Rains[sec[0]].GetComponent<UbhShotCtrl>().StartShotRoutine();
+            Rains[sec[1]].GetComponent<UbhShotCtrl>().StartShotRoutine();
+            yield return new WaitForSeconds(5f);
+            Rains[sec[0]].GetComponent<UbhShotCtrl>().StopShotRoutineAndPlayingShot();
+            Rains[sec[1]].GetComponent<UbhShotCtrl>().StopShotRoutineAndPlayingShot();
+        }
+        else if(fir == 1)
+        {
+            sec[0] = Random.Range(5, 7);
+            Rains[sec[0]].GetComponent<UbhShotCtrl>().StartShotRoutine();
+            yield return new WaitForSeconds(5f);
+            Rains[sec[0]].GetComponent<UbhShotCtrl>().StopShotRoutineAndPlayingShot();
+        }
+        yield return new WaitForSeconds(3f);
+        StartCoroutine("DoPattern");
     }
 }
