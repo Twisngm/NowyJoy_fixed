@@ -6,7 +6,7 @@ using DG.Tweening;
 
 public class GateBall : MonoBehaviour
 {
-    public float limitTime = 10;
+    public float limitTime = 15;
     public bool isGate = false;
     public bool isGoal = false;
     public int goalCnt = 0;
@@ -120,7 +120,7 @@ public class GateBall : MonoBehaviour
         Player.transform.position = new Vector3(0, -3.5f, 0);
 
         isGate = false;
-        limitTime = 10;
+        limitTime = 15;
         fade.DOFade(0, 1f);
         
     }

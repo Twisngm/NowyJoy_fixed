@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Gate : MonoBehaviour
 {
-    public GameObject[] flame;
+    public GameObject flame;
     public GateBall GB;
     // Start is called before the first frame update
     void Start()
@@ -15,8 +15,7 @@ public class Gate : MonoBehaviour
     private void OnEnable()
     {
         
-            for (int i = 0; i < 3; i++)
-                flame[i].GetComponent<SpriteRenderer>().color = Color.white;
+        flame.GetComponent<SpriteRenderer>().color = Color.white;
 
     }
     // Update is called once per frame
@@ -29,8 +28,7 @@ public class Gate : MonoBehaviour
     {
         if(collision.tag == "Ball")
         {
-            for (int i = 0; i < 3; i++)
-                flame[i].GetComponent<SpriteRenderer>().color = Color.green;
+            flame.GetComponent<SpriteRenderer>().color = Color.green;
 
             GB.goalCnt++;
         }

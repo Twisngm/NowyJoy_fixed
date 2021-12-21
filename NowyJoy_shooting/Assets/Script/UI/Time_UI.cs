@@ -15,24 +15,34 @@ public class Time_UI : MonoBehaviour
     }
     private void Start()
     {
-        if(gm.stagenum == 1)
+        if (gm.stagenum == 1 || gm.stagenum == 2)
         {
             min = 1;
             sec = 0;
         }
-        else if(gm.stagenum == 3)
+        else if (gm.stagenum == 3)
         {
-            min = 6;
+            min = 2;
+            sec = 0;
+        }
+        else if (gm.stagenum == 4 || gm.stagenum == 5)
+        {
+            min = 2;
             sec = 0;
         }
         else if (gm.stagenum == 6)
         {
-            min = 6;
+            min = 4;
+            sec = 0;
+        }
+        else if (gm.stagenum == 7 || gm.stagenum == 8)
+        {
+            min = 2;
             sec = 0;
         }
         else
         {
-            min = 3;
+            min = 5;
             sec = 0;
         }
     }

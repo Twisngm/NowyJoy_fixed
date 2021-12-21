@@ -2,21 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class MadHatter_TImer : MonoBehaviour
+public class GateBallTimer : MonoBehaviour
 {
-    public MadHatter MH;
+    
     public Text txt;
     public GateBall GB;
-    // Start is called before the first frame update
-    void Start()
-    {
-      
-    }
-    private void OnEnable()
-    {
-        
-    }
-
+  
     // Update is called once per frame
     void Update()
     {

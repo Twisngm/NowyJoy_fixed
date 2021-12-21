@@ -140,7 +140,7 @@ public class PatternManager : MonoBehaviour
 
     private void OnEnable()
     {
-
+        isBoss = false;
         StartCoroutine("Shooting");
     //    Invoke("DoPattern", 5f);
     
@@ -284,8 +284,8 @@ public class PatternManager : MonoBehaviour
             }
 
             else if (GM.stagenum == 4) // 3스테이지 기믹
-                randPtn[0] = Random.Range(0, 2);
-            else if (GM.stagenum == 5) // 3.5스테잊 기믹 (보스)
+                randPtn[0] = Random.Range(-1, 2);
+            else if (GM.stagenum == 5) // 3.5스테이지 기믹 (보스)
                 randPtn[0] = -1;
             else if (GM.stagenum == 6) // 4스테이지 기믹
             {
@@ -294,6 +294,8 @@ public class PatternManager : MonoBehaviour
                 else
                     randPtn[0] = Random.Range(0, 2);
             }
+            else if (GM.stagenum == 7)
+                randPtn[0] = Random.Range(0, 3);
             else if (GM.stagenum == 8) // 5.5스테이지 기믹
                 randPtn[0] = -1;
             else // 그 외
@@ -304,17 +306,22 @@ public class PatternManager : MonoBehaviour
             else if (GM.stagenum == 2) // 1.5스테이지 패턴
                 randPtn[1] = Random.Range(0, 2);
             else if (GM.stagenum == 3) // 2스테이지 패턴
-                randPtn[1] = Random.Range(0, 9);
-            else if (GM.stagenum == 3 && isBoss == true) // 2스테이지 보스
-                randPtn[1] = Random.Range(4, 8);
+                if (isBoss)
+                    randPtn[1] = Random.Range(4, 8); // 2스테이지 보스
+                else
+                    randPtn[1] = Random.Range(0, 9); // 2스테이지 일반              
             else if (GM.stagenum == 4) // 3스테이지
-                randPtn[1] = Random.Range(0, 10);
-            else if (GM.stagenum == 5)
-                randPtn[1] = Random.Range(4, 8); // 3.5스테이지
-            else if (GM.stagenum == 6) // 4스테이지 패턴
-                randPtn[1] = Random.Range(0, 11);
-            else if (GM.stagenum == 6 && isBoss == true) // 4스테이지 보스
+                randPtn[1] = Random.Range(4, 10);
+            else if (GM.stagenum == 5)// 3.5스테이지
                 randPtn[1] = Random.Range(4, 8);
+            else if (GM.stagenum == 6) // 4스테이지 패턴
+                if (isBoss)
+                    randPtn[1] = Random.Range(4, 8); // 4스테이지 보스
+                else
+                    randPtn[1] = Random.Range(5, 11); // 4스테이지 일반
+            else if (GM.stagenum == 7)
+                randPtn[1] = Random.Range(6, 12);
+
             else if (GM.stagenum == 8) // 5.5 스테이지 보스
             {
                 randPtn[1] = Random.Range(4, 7);

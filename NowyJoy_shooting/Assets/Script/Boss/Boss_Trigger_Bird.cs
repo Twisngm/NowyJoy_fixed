@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss_Trigger : MonoBehaviour
+public class Boss_Trigger_Bird : MonoBehaviour
 {
 
     public Time_UI time;
     public GameObject[] Boss;
     public GameObject bird;
     public GameObject owl;
+    public PatternManager PM;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,13 +24,13 @@ public class Boss_Trigger : MonoBehaviour
 
     void BossTrigger()
     {
-        if (time.min <= 3)
-        {
-            for(int i = 0; i< Boss.Length; i++)
+        if (time.min <= 0)
+        {        
+          for(int i = 0; i < Boss.Length; i++)
             {
-                Boss[i].gameObject.SetActive(true);
+                Boss[i].SetActive(true);
+                PM.isBoss = true;
             }
-           
         }
     }
 }

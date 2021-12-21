@@ -808,6 +808,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5902231214970041419, guid: 7cd28c03a2c4eba4fa9db28212da804b, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6939306912115773277, guid: 7cd28c03a2c4eba4fa9db28212da804b, type: 3}
+      propertyPath: MH
+      value: 
+      objectReference: {fileID: 1035016806}
     - target: {fileID: 7352588330826416992, guid: 7cd28c03a2c4eba4fa9db28212da804b, type: 3}
       propertyPath: m_RootOrder
       value: 23
@@ -1407,6 +1415,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5902231214970041419, guid: 7cd28c03a2c4eba4fa9db28212da804b, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6939306912115773277, guid: 7cd28c03a2c4eba4fa9db28212da804b, type: 3}
+      propertyPath: MH
+      value: 
+      objectReference: {fileID: 1035016806}
     - target: {fileID: 6939306912115773277, guid: 7cd28c03a2c4eba4fa9db28212da804b, type: 3}
       propertyPath: isRight
       value: 1
@@ -5270,7 +5286,7 @@ PrefabInstance:
     - target: {fileID: 11400000, guid: 341a5acb5c42f4e7f845c90877fc08cb, type: 3}
       propertyPath: m_bulletPrefab
       value: 
-      objectReference: {fileID: 7848938808768732537, guid: 6808ac5fe0e80ed4eb16ec81db09ae64, type: 3}
+      objectReference: {fileID: 7848938808768732537, guid: 435765bf2e5a6e847958734f5a8aa805, type: 3}
     - target: {fileID: 11400000, guid: 341a5acb5c42f4e7f845c90877fc08cb, type: 3}
       propertyPath: m_paintCenterAngle
       value: 230
@@ -7848,7 +7864,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: f4361995adc10480ba6005c0f0ef9a45, type: 3}
       propertyPath: m_centerAngle
-      value: 235
+      value: 227
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: f4361995adc10480ba6005c0f0ef9a45, type: 3}
       propertyPath: m_bulletPrefab
@@ -9932,12 +9948,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2087643606}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6d08f1816d23844ca70c8f36c100e61, type: 3}
+  m_Script: {fileID: 11500000, guid: aabd14fd795fb3244af5685285bdf268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MH: {fileID: 1035016806}
   txt: {fileID: 1154637977}
-  GB: {fileID: 0}
 --- !u!95 &2087643609
 Animator:
   serializedVersion: 3
@@ -10240,13 +10255,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2123801987}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc33cce32e18b2c4ea154c84b25c0c4c, type: 3}
+  m_Script: {fileID: 11500000, guid: ed948d814cd26c0498ed803185979bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   time: {fileID: 22460002}
-  Boss: []
-  bird: {fileID: 1035016803}
-  owl: {fileID: 0}
+  Boss: {fileID: 1035016803}
+  PM: {fileID: 1331437832}
 --- !u!4 &2123801989
 Transform:
   m_ObjectHideFlags: 0
@@ -11554,6 +11568,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3891408854527635510, guid: 7cd28c03a2c4eba4fa9db28212da804b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5902231214970041419, guid: 7cd28c03a2c4eba4fa9db28212da804b, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6939306912115773277, guid: 7cd28c03a2c4eba4fa9db28212da804b, type: 3}
+      propertyPath: MH
+      value: 
+      objectReference: {fileID: 1035016806}
     - target: {fileID: 7352588330826416992, guid: 7cd28c03a2c4eba4fa9db28212da804b, type: 3}
       propertyPath: m_RootOrder
       value: 21
@@ -11832,6 +11858,14 @@ PrefabInstance:
     - target: {fileID: 8666031448854229703, guid: 931885ef4ba80334685920982d2572ab, type: 3}
       propertyPath: m_Name
       value: RaidBoss_MadHatter
+      objectReference: {fileID: 0}
+    - target: {fileID: 8666031448854229703, guid: 931885ef4ba80334685920982d2572ab, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8666031450049166814, guid: 931885ef4ba80334685920982d2572ab, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 931885ef4ba80334685920982d2572ab, type: 3}
