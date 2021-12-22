@@ -184,7 +184,7 @@ public class StageSelect : MonoBehaviour
         float checkTime = timecheck;
         while (checkTime >= 0f && checkTime < 4f)
         {
-            yield return new WaitForSecondsRealtime(0.02f);
+            yield return new WaitForSecondsRealtime(0.01f);
             checkTime -= 0.1f;
             changed_small();
         }
