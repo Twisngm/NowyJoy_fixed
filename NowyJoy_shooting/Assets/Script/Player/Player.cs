@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     public Vector3 targetPos;
     public Vector3 quaternionToTarget;
     //public float ToTarget;
+    public GameObject Balloonobj;
     public Balloon balloon;
     public Quaternion targetRotation;
     public float currentangle;
@@ -55,6 +56,7 @@ public class Player : MonoBehaviour
         PBtr = Attacker.transform;
         //Ptransform = GetComponent<Transform>();
         anim = transform.GetChild(4).GetComponent<Animator>();
+        balloon = Balloonobj.GetComponent<Balloon>();
     }
 
     void Update()
@@ -64,7 +66,7 @@ public class Player : MonoBehaviour
         Reload();
         CameraIn();
         shotEffect.transform.rotation = Quaternion.Euler(0, 0, 0);
-      
+
 
     }
 
@@ -72,7 +74,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Thorn"))
         {
-           
+
             heart.OnDamaged();
         }
     }
@@ -80,7 +82,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wiper") || collision.gameObject.CompareTag("Rabbit") || collision.gameObject.CompareTag("Bird"))
         {
-            
+
             heart.OnDamaged();
         }
     }
@@ -113,7 +115,7 @@ public class Player : MonoBehaviour
             if (touchZero.phase == TouchPhase.Began) // 첫번째 터치의 phase가 Began(시작)이라면
             {
                 onTouch = true; // onTouch를 true로 (이동 o)
-             
+
                 m_prevPos = m_curPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.GetTouch(0).position.x * -1, Input.GetTouch(0).position.y * -1, Spacepos.z)); // 이동시키기
 
                 if (Time.time - lastTouchTime < doubleTapdelay && curshotdelay > shotdelay)
@@ -129,7 +131,7 @@ public class Player : MonoBehaviour
                 //ToTarget = 0;
                 quaternionToTarget = Vector3.zero;
                 lastTouchTime = Time.time; // 첫번째 손가락을 뗀 순간을 마지막 터치 시간으로 저장
-                }
+            }
         }
         if (Input.touchCount == 2) // 터치 입력이 두개일 때
         {
@@ -247,7 +249,7 @@ public class Player : MonoBehaviour
         Vector3 myPos = transform.position; // 현재 위치
         currentangle = transform.rotation.z;
 
-        
+
         target.localPosition += gap;
 
         targetPos = target.position; // target 오브젝트 위치
@@ -260,21 +262,25 @@ public class Player : MonoBehaviour
         //Quaternion
         targetRotation = Quaternion.LookRotation(Vector3.forward, quaternionToTarget);
 
-        
 
-        if ((currentangle < -0.25f && (targetRotation.z < 0.0f || targetRotation.z > 0.25f))||(currentangle > 0.25f && targetRotation.z > 0.0f))
+
+        if (currentangle < -0.25f && (targetRotation.z < 0.0f || targetRotation.z > 0.25f))
         {
-             targetRotation.z = 0.0f;
+            targetRotation.z = 0.0f;
+        }
+        else if (currentangle > 0.25f && (targetRotation.z > 0.0f || targetRotation.z < -0.25f))
+        {
+            targetRotation.z = 0.0f;
         }
         if ((currentangle > 0.1f) || (currentangle < -0.1f))
         {
             balloon.TransRotation(targetRotation);
         }
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Anglespeed * Time.deltaTime); // anglespeed만큼의 속도로 Rotation 변환
-        
+
     }
     void PBFire() //탄환 발사
-    {    
+    {
         anim.Play("ShotEffect");
         GameObject PlayerBullet = Instantiate(Attacker, transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f));
         PlayerBulletcontoller = PlayerBullet.GetComponent<PlayerBullet>();
@@ -290,9 +296,11 @@ public class Player : MonoBehaviour
     {
         currentangle = 0;
         targetRotation = Quaternion.LookRotation(Vector3.forward, Vector3.zero);
+        balloon.TransRotation(targetRotation);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, anglespeed * Time.deltaTime); // anglespeed만큼의 속도로 Rotation 변환
     }
-    public void Invinc() {
+    public void Invinc()
+    {
         Invincible = true;
         StartCoroutine("invinc");
     }
