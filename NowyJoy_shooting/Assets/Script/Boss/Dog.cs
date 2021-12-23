@@ -11,6 +11,8 @@ public class Dog : MonoBehaviour
     public GameObject Player;
     public ObjectManager objManager;
     public GameObject[] Rains;
+    public GameObject BackSmoke;
+    public GameObject Back;
     Rigidbody2D rigid;
     bool isCol = false;
     public bool isRush = false;
@@ -31,7 +33,14 @@ public class Dog : MonoBehaviour
         }
         if(isRush)
         {
-            rigid.AddForce(Vector3.down * 1 * Time.deltaTime, ForceMode2D.Impulse);    
+            rigid.AddForce(Vector3.down * 1 * Time.deltaTime, ForceMode2D.Impulse);
+            BackSmoke.SetActive(true);
+            Back.SetActive(true);
+        }
+        else
+        {
+            BackSmoke.SetActive(false);
+            Back.SetActive(false);
         }
         
     }
