@@ -12,6 +12,6 @@ public class sceneChange : MonoBehaviour
 
     public void ChangeToModeSelect()
     {
-        SceneManager.LoadScene("ModeSelect");
+        SceneManager.LoadScene("StageSelect");
     }
 }

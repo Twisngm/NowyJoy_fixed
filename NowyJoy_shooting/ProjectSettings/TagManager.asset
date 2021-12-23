@@ -30,6 +30,7 @@ TagManager:
   - Ball
   - Gate
   - Thistle
+  - Boss_Heart
   layers:
   - Default
   - TransparentFX

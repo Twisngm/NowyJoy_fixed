@@ -444,7 +444,7 @@ PrefabInstance:
     - target: {fileID: 11400000, guid: 41426f3b60f193143b6f9a8012d3c832, type: 3}
       propertyPath: m_bulletPrefab
       value: 
-      objectReference: {fileID: 7848938808768732537, guid: 6808ac5fe0e80ed4eb16ec81db09ae64, type: 3}
+      objectReference: {fileID: 7848938808768732537, guid: 29432d3c9cda831418f8320f87e8d51e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41426f3b60f193143b6f9a8012d3c832, type: 3}
 --- !u!4 &94604683 stripped
@@ -852,7 +852,7 @@ PrefabInstance:
     - target: {fileID: 11400000, guid: c8193c9477b82c547a794ffda432b66b, type: 3}
       propertyPath: m_bulletPrefab
       value: 
-      objectReference: {fileID: 7848938808768732537, guid: 6808ac5fe0e80ed4eb16ec81db09ae64, type: 3}
+      objectReference: {fileID: 7848938808768732537, guid: 29432d3c9cda831418f8320f87e8d51e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8193c9477b82c547a794ffda432b66b, type: 3}
 --- !u!4 &141202176 stripped
@@ -2831,7 +2831,7 @@ PrefabInstance:
     - target: {fileID: 11400000, guid: 81a4e133c74be144d9707277f7b9e0e3, type: 3}
       propertyPath: m_bulletPrefab
       value: 
-      objectReference: {fileID: 7848938808768732537, guid: 6808ac5fe0e80ed4eb16ec81db09ae64, type: 3}
+      objectReference: {fileID: 8705371411919132871, guid: 5a12b24d5f327674e9e7c73ffa7b0a7f, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81a4e133c74be144d9707277f7b9e0e3, type: 3}
 --- !u!4 &600103841 stripped
@@ -4099,7 +4099,7 @@ PrefabInstance:
     - target: {fileID: 11400000, guid: 5b4291c1b6e96e4408dcb91efd5bf320, type: 3}
       propertyPath: m_bulletPrefab
       value: 
-      objectReference: {fileID: 7848938808768732537, guid: 6808ac5fe0e80ed4eb16ec81db09ae64, type: 3}
+      objectReference: {fileID: 7848938808768732537, guid: 29432d3c9cda831418f8320f87e8d51e, type: 3}
     - target: {fileID: 11400000, guid: 5b4291c1b6e96e4408dcb91efd5bf320, type: 3}
       propertyPath: m_nextLineDelay
       value: 0.25
@@ -5351,6 +5351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RushWarning: {fileID: 871747495}
+  Smoke: {fileID: 0}
 --- !u!4 &1035016807
 Transform:
   m_ObjectHideFlags: 0
@@ -5521,7 +5522,7 @@ GameObject:
   - component: {fileID: 1048649704}
   - component: {fileID: 1048649703}
   m_Layer: 5
-  m_Name: GotoTitle
+  m_Name: Next
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5593,7 +5594,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1436016671}
         m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
-        m_MethodName: GotoTitle
+        m_MethodName: nextStage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6167,7 +6168,7 @@ GameObject:
   - component: {fileID: 1277080180}
   - component: {fileID: 1277080179}
   m_Layer: 5
-  m_Name: GotoTittle
+  m_Name: Next
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6424,7 +6425,7 @@ PrefabInstance:
     - target: {fileID: 11400000, guid: 8f89e3dd032bd3845b6a3a6aa154ed53, type: 3}
       propertyPath: m_bulletPrefab
       value: 
-      objectReference: {fileID: 7848938808768732537, guid: 6808ac5fe0e80ed4eb16ec81db09ae64, type: 3}
+      objectReference: {fileID: 8705371411919132871, guid: 5a12b24d5f327674e9e7c73ffa7b0a7f, type: 3}
     - target: {fileID: 11400000, guid: 8f89e3dd032bd3845b6a3a6aa154ed53, type: 3}
       propertyPath: m_randomDelayMax
       value: 0.1
@@ -7689,7 +7690,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &1720224109
@@ -7750,7 +7751,7 @@ PrefabInstance:
     - target: {fileID: 11400000, guid: 330f8c42834520341b0d2dddc0518b79, type: 3}
       propertyPath: m_bulletPrefab
       value: 
-      objectReference: {fileID: 7848938808768732537, guid: 6808ac5fe0e80ed4eb16ec81db09ae64, type: 3}
+      objectReference: {fileID: 7848938808768732537, guid: 29432d3c9cda831418f8320f87e8d51e, type: 3}
     - target: {fileID: 11400000, guid: 330f8c42834520341b0d2dddc0518b79, type: 3}
       propertyPath: m_nextLineDelay
       value: 0.5
@@ -8704,7 +8705,7 @@ PrefabInstance:
     - target: {fileID: 11400000, guid: 330f8c42834520341b0d2dddc0518b79, type: 3}
       propertyPath: m_bulletPrefab
       value: 
-      objectReference: {fileID: 7848938808768732537, guid: 6808ac5fe0e80ed4eb16ec81db09ae64, type: 3}
+      objectReference: {fileID: 8705371411919132871, guid: 5a12b24d5f327674e9e7c73ffa7b0a7f, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 330f8c42834520341b0d2dddc0518b79, type: 3}
 --- !u!4 &1962141302 stripped
@@ -9194,12 +9195,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: f4361995adc10480ba6005c0f0ef9a45, type: 3}
       propertyPath: m_centerAngle
-      value: 227
+      value: 235
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: f4361995adc10480ba6005c0f0ef9a45, type: 3}
       propertyPath: m_bulletPrefab
       value: 
-      objectReference: {fileID: 7848938808768732537, guid: 6808ac5fe0e80ed4eb16ec81db09ae64, type: 3}
+      objectReference: {fileID: 8705371411919132871, guid: 5a12b24d5f327674e9e7c73ffa7b0a7f, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4361995adc10480ba6005c0f0ef9a45, type: 3}
 --- !u!4 &2054100357 stripped
@@ -9700,15 +9701,15 @@ PrefabInstance:
     - target: {fileID: 2050100253318456374, guid: f43a0db9b9f87bf41adbef7ff7631cc2, type: 3}
       propertyPath: bulletA_Prefabs
       value: 
-      objectReference: {fileID: 5991896943028014372, guid: 4e4bd9a948f9c7340872a8639e0c43e5, type: 3}
+      objectReference: {fileID: 5991896943028014372, guid: 2cf3f9496c196674782f2b119f9e4d43, type: 3}
     - target: {fileID: 2050100253318456374, guid: f43a0db9b9f87bf41adbef7ff7631cc2, type: 3}
       propertyPath: bulletB_Prefabs
       value: 
-      objectReference: {fileID: 7848938808768732537, guid: 6808ac5fe0e80ed4eb16ec81db09ae64, type: 3}
+      objectReference: {fileID: 7848938808768732537, guid: 29432d3c9cda831418f8320f87e8d51e, type: 3}
     - target: {fileID: 2050100253318456374, guid: f43a0db9b9f87bf41adbef7ff7631cc2, type: 3}
       propertyPath: bulletC_Prefabs
       value: 
-      objectReference: {fileID: 8705371411919132871, guid: dc35539124f733f4dbc7a8f6d2a3c3c4, type: 3}
+      objectReference: {fileID: 8705371411919132871, guid: 5a12b24d5f327674e9e7c73ffa7b0a7f, type: 3}
     - target: {fileID: 2050100253318456375, guid: f43a0db9b9f87bf41adbef7ff7631cc2, type: 3}
       propertyPath: m_Name
       value: objectManager

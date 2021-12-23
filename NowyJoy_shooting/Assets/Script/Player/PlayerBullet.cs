@@ -46,14 +46,17 @@ public class PlayerBullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "BulletWall")
         {
-            Destroy(gameObject);
+            //  Destroy(gameObject);
+            gameObject.SetActive(false);
         }
-        if (collision.gameObject.tag == "Rabbit_Heart")
+        if (collision.gameObject.tag == "Boss_Heart")
         { //보스와 닿았을때 작동할 코드.
             GameObject bulletFire = obj.MakeObj("bulletFire");
+            GameObject MinusTime = obj.MakeObj("minusTime");
             bulletFire.transform.position = gameObject.transform.position;
-            Destroy(gameObject);
-            
+            gameObject.SetActive(false);
+            // Destroy(gameObject);
+
         }
     }
 }

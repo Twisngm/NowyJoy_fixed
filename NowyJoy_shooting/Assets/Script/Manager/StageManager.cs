@@ -48,7 +48,6 @@ public class StageManager : MonoBehaviour
 
     void GameClear()
     {
-        
             if (time.min < 0)
             {
                 pause.isPause = true;
@@ -61,21 +60,22 @@ public class StageManager : MonoBehaviour
     public void ReStart()
     {
         pause.isPause = false;
-        SceneManager.LoadScene("stage" + GM.stagenum);
+        SceneManager.LoadScene("stage" + (GM.stagenum));
     }
 
     public void GotoTitle()
     {
         pause.isPause = false;
         ptnManager.SetActive(false);
-        SceneManager.LoadScene("StageSelect");
+        SceneManager.LoadScene("Title");
     }
 
     public void nextStage()
     {
         pause.isPause = false;
         ptnManager.SetActive(false);
+        GM.CurrentStage = GM.stagenum+1;
         SceneManager.LoadScene("stage" + (GM.stagenum + 1));
-        GM.stagenum += 1;
+       // GM.stagenum += 1;
     }
 }

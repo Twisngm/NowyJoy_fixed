@@ -84,7 +84,7 @@ public class Title : MonoBehaviour
         {
             yield return new WaitForSecondsRealtime(0.1f);
 
-            Add(2);
+            Add(5);
         }
     }
     public void logomove()
@@ -100,6 +100,6 @@ public class Title : MonoBehaviour
 
     public void ChangeScene()
     {
-        SceneManager.LoadScene("Stage5");
+        SceneManager.LoadScene("Stage"+GameManager.GM_Instance.CurrentStage);
     }
 }

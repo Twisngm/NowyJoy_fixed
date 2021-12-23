@@ -7,6 +7,6 @@ public class back : MonoBehaviour
 {
     public void backtoModeSelect()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 }

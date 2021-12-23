@@ -3181,7 +3181,7 @@ GameObject:
   - component: {fileID: 707370337}
   - component: {fileID: 707370336}
   m_Layer: 5
-  m_Name: GotoTittle
+  m_Name: Next
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4534,7 +4534,7 @@ GameObject:
   - component: {fileID: 988857670}
   - component: {fileID: 988857669}
   m_Layer: 5
-  m_Name: GotoTitle
+  m_Name: Next
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4606,7 +4606,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6524356814023110285}
         m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
-        m_MethodName: GotoTitle
+        m_MethodName: nextStage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7338,7 +7338,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1723308678

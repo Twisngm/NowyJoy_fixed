@@ -9,12 +9,13 @@ public class StageSelect : MonoBehaviour
     public int nowStage = 0;
     public bool full_stay = false;
     public bool changeScene = false;
+    public bool isNext = false;
     float timecheck = 0;
     [SerializeField] [Range(1f, 5f)] float scaleSpeed = 1f;
 
     private SceneChangeManager sceneMG;
 
-    GameManager gm;
+   
 
     private void Awake()
     {
@@ -22,7 +23,7 @@ public class StageSelect : MonoBehaviour
         SceneChangeManager.Instance.isCurtein_Up_finished = false;
         SceneChangeManager.Instance.isCurtein_Close_finished = false;
         SceneChangeManager.Instance.isCurtein_Open_finished = false;
-        gm = FindObjectOfType<GameManager>();
+       
     }
 
     private void Update()
@@ -43,40 +44,67 @@ public class StageSelect : MonoBehaviour
                 switch (stage)
                 {
                     case "1":
-                        Debug.Log("1 스테이지로 이동합니다.");
-                        StartCoroutine("changing");
+                        if (GameManager.GM_Instance.stageUnlock[0])
+                        {
+                            Debug.Log("1 스테이지로 이동합니다.");
+                            StartCoroutine("changing");
+                        }
                         break;
                     case "2":
-                        Debug.Log("2 스테이지로 이동합니다.");
-                        StartCoroutine("changing");
+                        if (GameManager.GM_Instance.stageUnlock[1])
+                        {
+                            Debug.Log("2 스테이지로 이동합니다.");
+                            StartCoroutine("changing");
+                        }
                         break;
                     case "3":
-                        Debug.Log("3 스테이지로 이동합니다.");
-                        StartCoroutine("changing");
+                        if (GameManager.GM_Instance.stageUnlock[2])
+                        {
+                            Debug.Log("3 스테이지로 이동합니다.");
+                            StartCoroutine("changing");
+                        }
                         break;
                     case "4":
-                        Debug.Log("4 스테이지로 이동합니다.");
-                        StartCoroutine("changing");
+                        if (GameManager.GM_Instance.stageUnlock[3])
+                        {
+                            Debug.Log("4 스테이지로 이동합니다.");
+                            StartCoroutine("changing");
+                        }
                         break;
                     case "5":
-                        Debug.Log("5 스테이지로 이동합니다.");
-                        StartCoroutine("changing");
+                        if (GameManager.GM_Instance.stageUnlock[4])
+                        {
+                            Debug.Log("5 스테이지로 이동합니다.");
+                            StartCoroutine("changing");
+                        }
                         break;
                     case "6":
-                        Debug.Log("6 스테이지로 이동합니다.");
-                        StartCoroutine("changing");
+                        if (GameManager.GM_Instance.stageUnlock[5])
+                        {
+                            Debug.Log("6 스테이지로 이동합니다.");
+                            StartCoroutine("changing");
+                        }
                         break;
                     case "7":
-                        Debug.Log("7 스테이지로 이동합니다.");
-                        StartCoroutine("changing");
+                        if (GameManager.GM_Instance.stageUnlock[6])
+                        {
+                            Debug.Log("7 스테이지로 이동합니다.");
+                            StartCoroutine("changing");
+                        }
                         break;
                     case "8":
-                        Debug.Log("8 스테이지로 이동합니다.");
-                        StartCoroutine("changing");
+                        if (GameManager.GM_Instance.stageUnlock[7])
+                        {
+                            Debug.Log("8 스테이지로 이동합니다.");
+                            StartCoroutine("changing");
+                        }
                         break;
                     case "9":
-                        Debug.Log("9 스테이지로 이동합니다.");
-                        StartCoroutine("changing");
+                        if (GameManager.GM_Instance.stageUnlock[8])
+                        {
+                            Debug.Log("9 스테이지로 이동합니다.");
+                            StartCoroutine("changing");
+                        }
                         break;
                 }
             }
@@ -99,41 +127,60 @@ public class StageSelect : MonoBehaviour
             full_stay = false;
             switch (stage)
             {
-                case "1":
-                    Debug.Log("1스테이지로 이동");
-                    SceneManager.LoadScene("stage1");
+                case "1": 
+                        Debug.Log("1스테이지로 이동");
+                        SceneManager.LoadScene("stage1");
+                        GameManager.GM_Instance.CurrentStage = 1;
+                    
                     break;
                 case "2":
-                    Debug.Log("2스테이지로 이동");
-                    SceneManager.LoadScene("stage2");
+                        Debug.Log("2스테이지로 이동");
+                        SceneManager.LoadScene("stage2");
+                    GameManager.GM_Instance.CurrentStage = 2;
                     break;
                 case "3":
-                    Debug.Log("3스테이지로 이동");
-                    SceneManager.LoadScene("stage3");
+   
+                        Debug.Log("3스테이지로 이동");
+                        SceneManager.LoadScene("stage3");
+                    GameManager.GM_Instance.CurrentStage = 3;
+
                     break;
+                    
                 case "4":
-                    Debug.Log("4스테이지로 이동");
-                    SceneManager.LoadScene("stage4");
+
+                        Debug.Log("4스테이지로 이동");
+                        SceneManager.LoadScene("stage4");
+                    GameManager.GM_Instance.CurrentStage = 4;
                     break;
                 case "5":
-                    Debug.Log("5스테이지로 이동");
-                    SceneManager.LoadScene("stage5");
+    
+                        Debug.Log("5스테이지로 이동");
+                        SceneManager.LoadScene("stage5");
+                    GameManager.GM_Instance.CurrentStage = 5;
                     break;
                 case "6":
-                    Debug.Log("6스테이지로 이동");
-                    SceneManager.LoadScene("stage6");
+
+                        Debug.Log("6스테이지로 이동");
+                        SceneManager.LoadScene("stage6");
+                    GameManager.GM_Instance.CurrentStage = 6;
                     break;
                 case "7":
-                    Debug.Log("7스테이지로 이동");
-                    SceneManager.LoadScene("stage7");
+            
+                        Debug.Log("7스테이지로 이동");
+                        SceneManager.LoadScene("stage7");
+                    GameManager.GM_Instance.CurrentStage = 7;
                     break;
                 case "8":
-                    Debug.Log("8스테이지로 이동");
-                    SceneManager.LoadScene("stage8");
+         
+                        Debug.Log("8스테이지로 이동");
+                        SceneManager.LoadScene("stage8");
+                    GameManager.GM_Instance.CurrentStage = 8;
                     break;
                 case "9":
-                    Debug.Log("9스테이지로 이동");
-                    SceneManager.LoadScene("stage9");
+             
+                        Debug.Log("9스테이지로 이동");
+                        SceneManager.LoadScene("stage9");
+                    GameManager.GM_Instance.CurrentStage = 9;
                     break;
             }
         }

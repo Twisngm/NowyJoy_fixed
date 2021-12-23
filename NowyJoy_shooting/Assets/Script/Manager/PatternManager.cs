@@ -298,8 +298,8 @@ public class PatternManager : MonoBehaviour
                 else
                     randPtn[0] = Random.Range(0, 2);
             }
-            else if (GM.stagenum == 7)
-                randPtn[0] = Random.Range(0, 3);
+            else if (GM.stagenum == 7) // 5스테이지 기믹
+                randPtn[0] = Random.Range(-1, 3);
             else if (GM.stagenum == 8) // 5.5스테이지 기믹
                 randPtn[0] = -1;
             else // 그 외
@@ -323,8 +323,8 @@ public class PatternManager : MonoBehaviour
                     randPtn[1] = Random.Range(4, 8); // 4스테이지 보스
                 else
                     randPtn[1] = Random.Range(5, 11); // 4스테이지 일반
-            else if (GM.stagenum == 7)
-                randPtn[1] = Random.Range(6, 12);
+            else if (GM.stagenum == 7) // 5스테이지 
+                randPtn[1] = Random.Range(8, 12);
 
             else if (GM.stagenum == 8) // 5.5 스테이지 보스
             {
@@ -946,7 +946,10 @@ public class PatternManager : MonoBehaviour
     }
     void Screen_Scale_Init() // 화면 크기 초기화
     {
-        iTween.MoveTo(cam, iTween.Hash("z", -1, "time", 0.5f, "easeType", "Linear"));
+        if(GM.stagenum == 7)
+            iTween.MoveTo(cam, iTween.Hash("z", -1.2f, "time", 0.5f, "easeType", "Linear"));
+        else
+            iTween.MoveTo(cam, iTween.Hash("z", -1, "time", 0.5f, "easeType", "Linear"));
         isPatterning = false;
     }
 

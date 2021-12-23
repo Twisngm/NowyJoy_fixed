@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public int MaxHP;
     public int HP;
     public int stagenum;
+    public int CurrentStage = 1;
     public bool[] stageUnlock;
   
 
