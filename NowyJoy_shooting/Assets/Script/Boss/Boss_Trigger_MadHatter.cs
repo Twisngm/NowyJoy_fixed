@@ -15,7 +15,7 @@ public class Boss_Trigger_MadHatter : MonoBehaviour
 
     void BossTrigger()
     {
-        if (time.min <= 4)
+        if (time.min <= 1)
         {
           
                 Boss.SetActive(true);

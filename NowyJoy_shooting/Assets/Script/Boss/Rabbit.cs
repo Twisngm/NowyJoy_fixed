@@ -114,9 +114,9 @@ public class Rabbit : MonoBehaviour
                 if (isDouble == 0)
                 {
                     RushWarning.transform.rotation = Quaternion.Euler(0, 0, 90);
-                    RushWarning.SetActive(true);
+               //     RushWarning.SetActive(true);
                     yield return new WaitForSeconds(warningTime);
-                    RushWarning.SetActive(false);
+               //     RushWarning.SetActive(false);
                     anim.SetBool("isRun", true);
                     anim.SetBool("isIdle", false);
                     iTween.MoveTo(this.gameObject, iTween.Hash("y", 0.8f, "time", DashSpeed, "easeType", "EaseInOutBack"));
@@ -150,9 +150,9 @@ public class Rabbit : MonoBehaviour
                 if (isDouble == 0)
                 {
                     RushWarning.transform.rotation = Quaternion.Euler(0, 0, 0);
-                    RushWarning.SetActive(true);
+        //            RushWarning.SetActive(true);
                     yield return new WaitForSeconds(warningTime);
-                    RushWarning.SetActive(false);
+        //            RushWarning.SetActive(false);
                     anim.SetBool("isRun", true);
                     anim.SetBool("isIdle", false);
                     Renderer.flipX = false;
@@ -187,9 +187,9 @@ public class Rabbit : MonoBehaviour
                 if (isDouble == 0)
                 {
                     RushWarning.transform.rotation = Quaternion.Euler(0, 0, 270);
-                    RushWarning.SetActive(true);
+          //          RushWarning.SetActive(true);
                     yield return new WaitForSeconds(warningTime);
-                    RushWarning.SetActive(false);
+          //          RushWarning.SetActive(false);
                     anim.SetBool("isRun", true);
                     anim.SetBool("isIdle", false);
                     iTween.MoveTo(this.gameObject, iTween.Hash("y", 0.8f, "time", DashSpeed, "easeType", "EaseInOutBack"));
@@ -223,9 +223,9 @@ public class Rabbit : MonoBehaviour
                 if (isDouble == 0)
                 {
                     RushWarning.transform.rotation = Quaternion.Euler(0, 0, 180);
-                    RushWarning.SetActive(true);
+          //          RushWarning.SetActive(true);
                     yield return new WaitForSeconds(warningTime);
-                    RushWarning.SetActive(false);
+          //         RushWarning.SetActive(false);
                     anim.SetBool("isRun", true);
                     anim.SetBool("isIdle", false);
                     Renderer.flipX = true;
@@ -261,9 +261,9 @@ public class Rabbit : MonoBehaviour
                 if (isDouble == 0)
                 {
                     RushWarning.transform.rotation = Quaternion.Euler(0, 0, 60);
-                    RushWarning.SetActive(true);
+          //          RushWarning.SetActive(true);
                     yield return new WaitForSeconds(warningTime);
-                    RushWarning.SetActive(false);
+          //          RushWarning.SetActive(false);
                     anim.SetBool("isRun", true);
                     anim.SetBool("isIdle", false);
                     Renderer.flipX = false;
@@ -299,9 +299,9 @@ public class Rabbit : MonoBehaviour
                 if (isDouble == 0)
                 {
                     RushWarning.transform.rotation = Quaternion.Euler(0, 0, 300);
-                    RushWarning.SetActive(true);
+         //           RushWarning.SetActive(true);
                     yield return new WaitForSeconds(warningTime);
-                    RushWarning.SetActive(false);
+          //          RushWarning.SetActive(false);
                     anim.SetBool("isRun", true);
                     anim.SetBool("isIdle", false);
                     Renderer.flipX = false;
@@ -337,9 +337,9 @@ public class Rabbit : MonoBehaviour
                 if (isDouble == 0)
                 {
                     RushWarning.transform.rotation = Quaternion.Euler(0, 0, 240);
-                    RushWarning.SetActive(true);
+       //             RushWarning.SetActive(true);
                     yield return new WaitForSeconds(warningTime);
-                    RushWarning.SetActive(false);
+       //             RushWarning.SetActive(false);
                     anim.SetBool("isRun", true);
                     anim.SetBool("isIdle", false);
                     Renderer.flipX = true;
@@ -375,9 +375,9 @@ public class Rabbit : MonoBehaviour
                 if (isDouble == 0)
                 {
                     RushWarning.transform.rotation = Quaternion.Euler(0, 0, 120);
-                    RushWarning.SetActive(true);
+           //         RushWarning.SetActive(true);
                     yield return new WaitForSeconds(warningTime);
-                    RushWarning.SetActive(false);
+           //         RushWarning.SetActive(false);
                     anim.SetBool("isRun", true);
                     anim.SetBool("isIdle", false);
                     Renderer.flipX = true;
