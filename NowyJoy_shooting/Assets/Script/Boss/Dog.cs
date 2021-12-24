@@ -53,6 +53,7 @@ public class Dog : MonoBehaviour
         }
     }
 
+
     void DoPattern()
     {
         int index;

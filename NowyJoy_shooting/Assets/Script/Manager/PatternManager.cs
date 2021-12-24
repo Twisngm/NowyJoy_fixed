@@ -1161,7 +1161,7 @@ public class PatternManager : MonoBehaviour
         {
             height += LaserSpeed / 500;
             Laser.transform.localScale = new Vector3(height, 1 , 1);
-            yield return new WaitForSeconds(0.001f);
+            yield return new WaitForSeconds(0.001f * Time.deltaTime);
         } ///
 
         yield return new WaitForSeconds(1f);

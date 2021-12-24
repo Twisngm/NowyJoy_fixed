@@ -29,6 +29,7 @@ public class StageSelect : MonoBehaviour
     private void Update()
     {
         SceneChange();
+        StageUnlock();
         if (full_stay)
         {
             sceneLoading();
@@ -197,7 +198,7 @@ public class StageSelect : MonoBehaviour
 
     void changed()
     {
-        gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x + 1f * scaleSpeed * Time.deltaTime, gameObject.transform.localScale.y + 1f * scaleSpeed * Time.deltaTime, 0);
+        gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x + 0.2f * scaleSpeed * Time.deltaTime, gameObject.transform.localScale.y + 0.2f * scaleSpeed * Time.deltaTime, 0);
     }
 
     void changed_small()
@@ -240,6 +241,95 @@ public class StageSelect : MonoBehaviour
             yield break;
         }
     }
+
+    void StageUnlock()
+    {
+        switch(stage)
+        {
+            case "1":
+                if(GameManager.GM_Instance.stageUnlock[0] == false)
+                {
+                    this.transform.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0.75f);
+
+                }
+                else
+                {
+                    this.transform.GetComponent<SpriteRenderer>().color = Color.white;
+                }
+                break;
+            case "2":
+                if (GameManager.GM_Instance.stageUnlock[1] == false)
+                {
+                    this.transform.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0.75f);
+                }
+                else
+                {
+                    this.transform.GetComponent<SpriteRenderer>().color = Color.white;
+                }
+                break;
+            case "3":
+                if (GameManager.GM_Instance.stageUnlock[2] == false)
+                {
+                    this.transform.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0.75f);
+                }
+                else
+                {
+                    this.transform.GetComponent<SpriteRenderer>().color = Color.white;
+                }
+                break;
+            case "4":
+                if (GameManager.GM_Instance.stageUnlock[3] == false)
+                {
+                    this.transform.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0.75f);
+                }
+                else
+                {
+                    this.transform.GetComponent<SpriteRenderer>().color = Color.white;
+                }
+                break;
+            case "5":
+                if (GameManager.GM_Instance.stageUnlock[4] == false)
+                {
+                    this.transform.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0.75f);
+                }
+                else
+                {
+                    this.transform.GetComponent<SpriteRenderer>().color = Color.white;
+                }
+                break;
+            case "6":
+                if (GameManager.GM_Instance.stageUnlock[5] == false)
+                {
+                    this.transform.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0.75f);
+                }
+                else
+                {
+                    this.transform.GetComponent<SpriteRenderer>().color = Color.white;
+                }
+                break;
+            case "7":
+                if (GameManager.GM_Instance.stageUnlock[6] == false)
+                {
+                    this.transform.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0.75f);
+                }
+                else
+                {
+                    this.transform.GetComponent<SpriteRenderer>().color = Color.white;
+                }
+                break;
+            case "8":
+                if (GameManager.GM_Instance.stageUnlock[7] == false)
+                {
+                    this.transform.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0.75f);
+                }
+                else
+                {
+                    this.transform.GetComponent<SpriteRenderer>().color = Color.white;
+                }
+                break;
+        }    
+    }
+
 
 
 }

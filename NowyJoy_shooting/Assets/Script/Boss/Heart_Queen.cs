@@ -26,10 +26,10 @@ public class Heart_Queen : MonoBehaviour
     {
         int rand = Random.Range(1, 101);
 
-        if (rand >= 1 && rand <= 30)
+        if (rand >= 1 && rand <= 25)
             Execute();
 
-        else if (rand >= 31 && rand <= 60)
+        else if (rand >= 26 && rand <= 60)
             StartCoroutine("CardRush");
 
         else if (rand >= 61 && rand <= 90)

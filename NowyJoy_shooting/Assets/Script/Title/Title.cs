@@ -9,7 +9,7 @@ public class Title : MonoBehaviour
     public Image fill;
     public GameObject logo;
     public GameObject TitleWindow;
-    public int currentValue, maxValue;
+    public float currentValue, maxValue;
     Vector3 logopoint = new Vector3(0, 0, 1);
     private bool isFull = false;
     Rigidbody2D rb_logo;
@@ -47,7 +47,7 @@ public class Title : MonoBehaviour
         //GM.SetActive(true); - gm ¾øÀ½
     }
 
-    public void Add(int val)
+    public void Add(float val)
     {
         currentValue += val;
 
@@ -82,9 +82,9 @@ public class Title : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSecondsRealtime(0.1f);
+            yield return new WaitForSecondsRealtime(0.001f);
 
-            Add(5);
+            Add(0.5f);
         }
     }
     public void logomove()
@@ -100,6 +100,7 @@ public class Title : MonoBehaviour
 
     public void ChangeScene()
     {
-        SceneManager.LoadScene("Stage"+GameManager.GM_Instance.CurrentStage);
+        SceneManager.LoadScene("StageSelect");
+     //   SceneManager.LoadScene("Stage"+GameManager.GM_Instance.CurrentStage);
     }
 }

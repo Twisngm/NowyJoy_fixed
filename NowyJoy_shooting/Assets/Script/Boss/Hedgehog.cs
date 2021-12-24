@@ -37,7 +37,7 @@ public class Hedgehog : MonoBehaviour
             Quaternion rotation = Quaternion.Slerp(transform.rotation, angleAxis, rotateSpeed * Time.deltaTime);
             transform.rotation = rotation;
             time -= 0.01f;
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.01f * Time.deltaTime);
         }
         transform.DOMove(target.transform.position, 1.5f);
         yield return new WaitForSeconds(3f);

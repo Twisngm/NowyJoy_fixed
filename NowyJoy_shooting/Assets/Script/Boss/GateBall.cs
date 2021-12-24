@@ -22,6 +22,7 @@ public class GateBall : MonoBehaviour
     public GameObject timer;
     public GameObject Player;
     public Animator anim;
+    public PolygonCollider2D PlayerCol;
 
     public Heart_Queen HQ;
     // Start is called before the first frame update
@@ -59,14 +60,14 @@ public class GateBall : MonoBehaviour
         yield return new WaitForSeconds(1f);
         goalCnt = 0;
         backGrounds[0].SetActive(false);
-
+   
         Wall.SetActive(true);
 
         for (int i = 0; i < Units.Length; i++)
         {
             Units[i].SetActive(false);
         }
-
+        PlayerCol.isTrigger = false;
         timer.SetActive(true);
 
         ball.SetActive(true);
@@ -95,7 +96,7 @@ public class GateBall : MonoBehaviour
     {
         isGoal = false;
         fade.DOFade(1, 1f);
-
+      
         yield return new WaitForSeconds(1f);
         backGrounds[0].SetActive(true);
 
@@ -106,6 +107,7 @@ public class GateBall : MonoBehaviour
             Units[i].SetActive(true);
         }
 
+        PlayerCol.isTrigger = true;
         timer.SetActive(false);
 
         ball.SetActive(false);
@@ -139,8 +141,20 @@ public class GateBall : MonoBehaviour
         {
             anim.Play("SmokeFX4");
             yield return new WaitForSeconds(0.45f);
-            GameManager.GM_Instance.HP -= 100;
-            Debug.Log("게임오버");
+
+            if(goalCnt == 0)
+                GameManager.GM_Instance.HP -= 15;
+
+            else if(goalCnt == 1)
+                GameManager.GM_Instance.HP -= 12 ;
+
+            else if (goalCnt == 2)
+                GameManager.GM_Instance.HP -= 8;
+
+            else if (goalCnt == 3)
+                GameManager.GM_Instance.HP -= 4;
+
+            StartCoroutine("FadeOut");
         }
         else
         {
