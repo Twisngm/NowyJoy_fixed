@@ -20,7 +20,7 @@ public class MadHatter : MonoBehaviour
     public GameObject Smoke;
     List<float> PosIndex = new List<float>() { 0, -1.7f, 1.7f };
     public PatternManager PM;
-    GameObject Player;
+    public GameObject Player;
     GameObject Effect;
     Animator anim;
     PolygonCollider2D col;
@@ -29,7 +29,7 @@ public class MadHatter : MonoBehaviour
     {
         // StartCoroutine("Jump");
      //  DoPattern();
-        Player = GameObject.FindGameObjectWithTag("Player");
+        
         Effect = GameObject.Find("Blood");
         anim = Effect.GetComponent<Animator>();
         col = GetComponentInChildren<PolygonCollider2D>();
