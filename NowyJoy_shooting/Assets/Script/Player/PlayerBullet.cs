@@ -17,7 +17,10 @@ public class PlayerBullet : MonoBehaviour
     }
     private void Update()
     {
-        Turn();
+        if (Time.timeScale != 0)
+        {
+            Turn();
+        }
     }
     private void collide(Collision2D collision)
     {
@@ -46,8 +49,8 @@ public class PlayerBullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "BulletWall")
         {
-            //  Destroy(gameObject);
             gameObject.SetActive(false);
+            Destroy(gameObject);
         }
         if (collision.gameObject.tag == "Boss_Heart")
         { //보스와 닿았을때 작동할 코드.

@@ -68,10 +68,10 @@ public class PatternManager : MonoBehaviour
 
     // 차원문 패턴
 
-    public GameObject Teledoor1;
+    /*public GameObject Teledoor1;
     public GameObject Teledoor2;
     public GameObject dodo; //보스
-    public int doortime;
+    public int doortime;*/
 
     // 체스 폰 패턴
 
@@ -1170,7 +1170,7 @@ public class PatternManager : MonoBehaviour
 
     }
 
-    IEnumerator Teleporter(BoxCollider2D Telecoll1, BoxCollider2D Telecoll2){
+    /*IEnumerator Teleporter(BoxCollider2D Telecoll1, BoxCollider2D Telecoll2){
 
         //BoxCollider2D Telecoll1 = Teledoor1.GetComponent<BoxCollider2D>(); //실행할때 불러오게 할것
         //BoxCollider2D Telecoll2 = Teledoor2.GetComponent<BoxCollider2D>();
@@ -1178,7 +1178,7 @@ public class PatternManager : MonoBehaviour
     int time = doortime;
     isPatterning = true;
     int Gate = Random.Range(0, 4);
-    /*if (Gate == 0){
+    if (Gate == 0){
         Teledoor1.transform.position = (a1, b1, c1);
         Teledoor2.transform.position = (d1, e1, f1);
     }
@@ -1193,7 +1193,7 @@ public class PatternManager : MonoBehaviour
     else if (Gate == 3){
         Teledoor1.transform.position = (a4, b4, c4);
         Teledoor2.transform.position = (d4, e4, f4);
-    }*/
+    }
     Teledoor1.SetActive(true);
     Teledoor2.SetActive(true);
 
@@ -1218,5 +1218,5 @@ public class PatternManager : MonoBehaviour
         Teledoor1.SetActive(false);
         Teledoor2.SetActive(false);
         isPatterning = false;
-    }
+    }*/
 }
