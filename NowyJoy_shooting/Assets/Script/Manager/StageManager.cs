@@ -12,6 +12,9 @@ public class StageManager : MonoBehaviour
 
     public GameObject Over;
     public GameObject Clear;
+    public GameObject Clearstar_yellow;
+    public GameObject Clearstar_blue;
+    float hpcounter;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -48,6 +51,16 @@ public class StageManager : MonoBehaviour
             {
                 pause.isPause = true;
                 Clear.SetActive(true);
+            
+                if (GM.HP > GM.MaxHP * 0.8f)
+                {
+                Clearstar_blue.SetActive(true);
+                
+                }
+                else
+                {
+                Clearstar_yellow.SetActive(true);
+            }
                 GM.stageUnlock[GM.stagenum] = true;
             }
      

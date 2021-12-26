@@ -57,17 +57,16 @@ public class Player : MonoBehaviour
         //Ptransform = GetComponent<Transform>();
         anim = transform.GetChild(4).GetComponent<Animator>();
         balloon = Balloonobj.GetComponent<Balloon>();
+        StartCoroutine("StartFire");
     }
 
     void Update()
     {
         OnDrag();
         //Update_LookRatation();
-        Reload();
+        //Reload();
         CameraIn();
         shotEffect.transform.rotation = Quaternion.Euler(0, 0, 0);
-
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -118,10 +117,10 @@ public class Player : MonoBehaviour
 
                 m_prevPos = m_curPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.GetTouch(0).position.x * -1, Input.GetTouch(0).position.y * -1, Spacepos.z)); // 이동시키기
 
-                if (Time.time - lastTouchTime < doubleTapdelay && curshotdelay > shotdelay)
+                /*if (Time.time - lastTouchTime < doubleTapdelay && curshotdelay > shotdelay)
                 {
                     PBFire();
-                }
+                }*/
             }
             else if (touchZero.phase == TouchPhase.Ended) // 첫번째 터치의 phase가 Ended(끝)이라면
             {
@@ -180,12 +179,12 @@ public class Player : MonoBehaviour
             }
             if (touchZero.phase == TouchPhase.Began) // 첫번째 터치의 phase가 Began(시작)이라면
             {
-                onTouch = true; // onTouch를 true로 (이동 o)
+                    onTouch = true; // onTouch를 true로 (이동 o)
                 m_prevPos = m_curPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.GetTouch(0).position.x * -1, Input.GetTouch(0).position.y * -1, Spacepos.z)); // 이동시키기
-                if (Time.time - lastTouchTime < doubleTapdelay && curshotdelay > shotdelay)
+                /*if (Time.time - lastTouchTime < doubleTapdelay && curshotdelay > shotdelay)
                 {
                     PBFire();
-                }
+                }*/
             }
             else if (touchZero.phase == TouchPhase.Ended) // 첫번째 터치의 phase가 Ended(끝)이라면
             {
@@ -214,7 +213,7 @@ public class Player : MonoBehaviour
                 */
             }
         }
-        if (onTouch)
+        if (onTouch && Time.timeScale != 0)
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.GetTouch(0).position.x * -1, Input.GetTouch(0).position.y * -1, Spacepos.z));
 
@@ -229,10 +228,6 @@ public class Player : MonoBehaviour
             }
             else
             {
-                target.localPosition = Vector3.zero;
-                targetPos = target.localPosition;
-                //ToTarget = 0;
-                quaternionToTarget = Vector3.zero;
                 LookZero(Anglespeed);
             }
 
@@ -249,8 +244,18 @@ public class Player : MonoBehaviour
         Vector3 myPos = transform.position; // 현재 위치
         currentangle = transform.rotation.z;
 
-
-        target.localPosition += gap;
+        // 타겟갭 초기화가 안돼서 안돌아가니 수정 필요
+        
+            target.localPosition += gap;
+        if (target.localPosition.x > 1.0f)
+        {
+            target.localPosition = new Vector3(1.0f, 1, 0);
+        }
+        else if (target.localPosition.x < -1.0f)
+        {
+            target.localPosition = new Vector3(-1.0f, 1, 0);
+        }
+        
 
         targetPos = target.position; // target 오브젝트 위치
 
@@ -266,13 +271,13 @@ public class Player : MonoBehaviour
 
         if (currentangle < -0.25f && (targetRotation.z < 0.0f || targetRotation.z > 0.25f))
         {
-            targetRotation.z = 0.0f;
+            return;
         }
-        else if (currentangle > 0.25f && (targetRotation.z > 0.0f || targetRotation.z < -0.25f))
+        else if (currentangle > 0.25f && targetRotation.z > 0.0f)
         {
-            targetRotation.z = 0.0f;
+            return;
         }
-        if ((currentangle > 0.1f) || (currentangle < -0.1f))
+        if (currentangle > 0.15f || currentangle < -0.15f)
         {
             balloon.TransRotation(targetRotation);
         }
@@ -282,24 +287,27 @@ public class Player : MonoBehaviour
     void PBFire() //탄환 발사
     {
         anim.Play("ShotEffect");
-        GameObject PlayerBullet = Instantiate(Attacker, transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f));
+        GameObject PlayerBullet = Instantiate(Attacker, new Vector3(transform.position.x, transform.position.y+0.8f, transform.position.z), Quaternion.Euler(0.0f, 0.0f, 0.0f));
         PlayerBulletcontoller = PlayerBullet.GetComponent<PlayerBullet>();
-        Vector2 launchdir = (Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position) - gameObject.transform.position); //Vector계산
-        PlayerBulletcontoller.Launch(launchdir.normalized, PBspeed);
-        curshotdelay = 0;
+        
+        PlayerBulletcontoller.Launch(Vector2.up, PBspeed);
+        //curshotdelay = 0;
     }
-    void Reload()
+    /*void Reload()
     {
         curshotdelay += Time.deltaTime;
-    }
+    }*/
     void LookZero(float anglespeed)
     {
+        target.localPosition = new Vector3(0, 1, 0);
+        targetPos = target.localPosition;
+        quaternionToTarget = Vector3.zero;
         currentangle = 0;
         targetRotation = Quaternion.LookRotation(Vector3.forward, Vector3.zero);
         balloon.TransRotation(targetRotation);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, anglespeed * Time.deltaTime); // anglespeed만큼의 속도로 Rotation 변환
     }
-    public void Invinc()
+    /*public void Invinc()
     {
         Invincible = true;
         StartCoroutine("invinc");
@@ -314,6 +322,20 @@ public class Player : MonoBehaviour
         }
         Invincible = false;
         yield return new WaitForSeconds(0.5f);
+    }*/
+    IEnumerator StartFire()
+    {
+        for (; ; )
+        {
+            if (Time.timeScale == 0)
+            {
+                yield return null;
+            }
+            else
+            {
+                PBFire();
+            }
+            yield return new WaitForSeconds(.5f);
+        }
     }
-
 }

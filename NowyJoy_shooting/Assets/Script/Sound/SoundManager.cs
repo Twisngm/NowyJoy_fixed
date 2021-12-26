@@ -125,13 +125,19 @@ public class SoundManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "stage1")
         { //1스테이지 브금
             bgmPlayer = GameObject.Find("BGMSoundPlayer").GetComponent<AudioSource>();
-            bgmPlayer.clip = BgmAudioClip_5stage; // 아직 안정해짐
+            bgmPlayer.clip = BgmAudioClip_1stage; 
             bgmPlayer.Play();
         }
-        else if (SceneManager.GetActiveScene().name == "stage3" || SceneManager.GetActiveScene().name == "stage4" || SceneManager.GetActiveScene().name == "stage5")
+        else if (SceneManager.GetActiveScene().name == "stage2")
         { //2,3스테이지 브금
             bgmPlayer = GameObject.Find("BGMSoundPlayer").GetComponent<AudioSource>();
             bgmPlayer.clip = BgmAudioClip_2stage;
+            bgmPlayer.Play();
+        }
+        else if ( SceneManager.GetActiveScene().name == "stage3" || SceneManager.GetActiveScene().name == "stage4" || SceneManager.GetActiveScene().name == "stage5")
+        { //2,3스테이지 브금
+            bgmPlayer = GameObject.Find("BGMSoundPlayer").GetComponent<AudioSource>();
+            bgmPlayer.clip = BgmAudioClip_3stage;
             bgmPlayer.Play();
         }
         else if (SceneManager.GetActiveScene().name == "Stage6")
