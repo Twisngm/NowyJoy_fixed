@@ -2259,7 +2259,7 @@ RectTransform:
   - {fileID: 787800632}
   - {fileID: 1134598634}
   m_Father: {fileID: 1253080501}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3238,7 +3238,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1712928591}
   - {fileID: 2034725804}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -3643,7 +3642,7 @@ MonoBehaviour:
   - name: getcoin
     clip: {fileID: 8300000, guid: a8305388339511c4489474c8cd25a6fe, type: 3}
   - name: click
-    clip: {fileID: 8300000, guid: e400bce51cd4df547b7b4ff4c63a108a, type: 3}
+    clip: {fileID: 8300000, guid: 6e9427374344abe4788434822b95bf77, type: 3}
   AudioSourceEfects:
   - {fileID: 1136271714}
   - {fileID: 1136271713}
@@ -3653,8 +3652,8 @@ MonoBehaviour:
   bgmPlayer: {fileID: 0}
   mainBgmAudioClip: {fileID: 8300000, guid: 92172f61803b1b541977c960ab040981, type: 3}
   TitleBgmAudioClip: {fileID: 8300000, guid: 4076d4cf4c170fa4ba9dbf40bdcfb305, type: 3}
-  BgmAudioClip_1stage: {fileID: 0}
-  BgmAudioClip_2stage: {fileID: 8300000, guid: 06f3f2f6725ce234cacb4252ce0df914, type: 3}
+  BgmAudioClip_1stage: {fileID: 8300000, guid: 34f76d6adb9769c47888d15b11c68dfd, type: 3}
+  BgmAudioClip_2stage: {fileID: 8300000, guid: 254ec0d830574484a917d32b227be08d, type: 3}
   BgmAudioClip_3stage: {fileID: 8300000, guid: 06f3f2f6725ce234cacb4252ce0df914, type: 3}
   BgmAudioClip_4stage: {fileID: 8300000, guid: a673b3a62e5a2d04dae9daf693225d7d, type: 3}
   BgmAudioClip_5stage: {fileID: 8300000, guid: 57a2e491a0d5e124ea441338fd6422dc, type: 3}
@@ -3892,6 +3891,7 @@ Transform:
   m_LocalPosition: {x: 0.57329446, y: -1.3346777, z: -10.901165}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1712928591}
   - {fileID: 946753944}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -4716,11 +4716,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1712928589}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.57329446, y: 1.3346777, z: 10.901165}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1136271710}
+  m_Father: {fileID: 1253080501}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1767927960
@@ -5343,7 +5343,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1136271710}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &2034725805
 AudioSource:
