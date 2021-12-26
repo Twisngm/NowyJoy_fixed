@@ -3653,6 +3653,12 @@ MonoBehaviour:
   bgmPlayer: {fileID: 0}
   mainBgmAudioClip: {fileID: 8300000, guid: 92172f61803b1b541977c960ab040981, type: 3}
   TitleBgmAudioClip: {fileID: 8300000, guid: 4076d4cf4c170fa4ba9dbf40bdcfb305, type: 3}
+  BgmAudioClip_1stage: {fileID: 0}
+  BgmAudioClip_2stage: {fileID: 8300000, guid: 06f3f2f6725ce234cacb4252ce0df914, type: 3}
+  BgmAudioClip_3stage: {fileID: 8300000, guid: 06f3f2f6725ce234cacb4252ce0df914, type: 3}
+  BgmAudioClip_4stage: {fileID: 8300000, guid: a673b3a62e5a2d04dae9daf693225d7d, type: 3}
+  BgmAudioClip_5stage: {fileID: 8300000, guid: 57a2e491a0d5e124ea441338fd6422dc, type: 3}
+  BgmAudioClip_6stage: {fileID: 8300000, guid: 57a2e491a0d5e124ea441338fd6422dc, type: 3}
   ModeSelectBgmAudioClip: {fileID: 8300000, guid: 66f3b1a5bc280614ea1f91744773868a, type: 3}
 --- !u!1 &1187567185
 GameObject:

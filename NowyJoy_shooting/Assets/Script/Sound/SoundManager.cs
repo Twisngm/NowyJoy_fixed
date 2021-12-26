@@ -44,6 +44,19 @@ public class SoundManager : MonoBehaviour
     private AudioClip TitleBgmAudioClip; //다른 씬에서 사용할 BGM test
 
     [SerializeField]
+    private AudioClip BgmAudioClip_1stage;
+    [SerializeField]
+    private AudioClip BgmAudioClip_2stage;
+    [SerializeField]
+    private AudioClip BgmAudioClip_3stage;
+    [SerializeField]
+    private AudioClip BgmAudioClip_4stage;
+    [SerializeField]
+    private AudioClip BgmAudioClip_5stage;
+    [SerializeField]
+    private AudioClip BgmAudioClip_6stage;
+
+    [SerializeField]
     private AudioClip ModeSelectBgmAudioClip; //다른 씬에서 사용할 BGM
 
 
@@ -109,12 +122,31 @@ public class SoundManager : MonoBehaviour
 
     public void ChangeBGM()
     {
-        if (SceneManager.GetActiveScene().name == "SampleScene")
-        {
+        if (SceneManager.GetActiveScene().name == "stage1")
+        { //1스테이지 브금
             bgmPlayer = GameObject.Find("BGMSoundPlayer").GetComponent<AudioSource>();
-            bgmPlayer.clip = mainBgmAudioClip;
+            bgmPlayer.clip = BgmAudioClip_5stage; // 아직 안정해짐
             bgmPlayer.Play();
-        }else if (SceneManager.GetActiveScene().name == "ModeSelect")
+        }
+        else if (SceneManager.GetActiveScene().name == "stage3" || SceneManager.GetActiveScene().name == "stage4" || SceneManager.GetActiveScene().name == "stage5")
+        { //2,3스테이지 브금
+            bgmPlayer = GameObject.Find("BGMSoundPlayer").GetComponent<AudioSource>();
+            bgmPlayer.clip = BgmAudioClip_2stage;
+            bgmPlayer.Play();
+        }
+        else if (SceneManager.GetActiveScene().name == "Stage6")
+        { // 4스테이지 브금
+            bgmPlayer = GameObject.Find("BGMSoundPlayer").GetComponent<AudioSource>();
+            bgmPlayer.clip = BgmAudioClip_4stage;
+            bgmPlayer.Play();
+        }
+        else if (SceneManager.GetActiveScene().name == "stage7" || SceneManager.GetActiveScene().name == "stage8" || SceneManager.GetActiveScene().name == "stage9")
+        { //5,6스테이지 브금
+            bgmPlayer = GameObject.Find("BGMSoundPlayer").GetComponent<AudioSource>();
+            bgmPlayer.clip = BgmAudioClip_5stage;
+            bgmPlayer.Play();
+        }
+        else if (SceneManager.GetActiveScene().name == "ModeSelect")
         {
             bgmPlayer = GameObject.Find("BGMSoundPlayer").GetComponent<AudioSource>();
             bgmPlayer.clip = ModeSelectBgmAudioClip;
@@ -144,7 +176,7 @@ public class SoundManager : MonoBehaviour
     public void PlayBGMSound()
     {
         bgmPlayer.loop = true; //BGM 사운드이므로 루프설정
-        bgmPlayer.volume = PlayerPrefs.GetFloat("bgmvolume",0.5f);
+        bgmPlayer.volume = PlayerPrefs.GetFloat("bgmvolume", 0.5f);
         bgmPlayer.clip = TitleBgmAudioClip;
         bgmPlayer.Play();
         //if (scenemanager.getactivescene().buildindex == 1)
