@@ -3337,6 +3337,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &701799402
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 701799403}
+  - component: {fileID: 701799404}
+  m_Layer: 0
+  m_Name: sfxPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &701799403
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701799402}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -193.36096}
+  m_LocalScale: {x: 1.9531411, y: 1.9531411, z: 1.9531411}
+  m_Children: []
+  m_Father: {fileID: 903654889}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &701799404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701799402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da74200bacbcace4ebcaeca6d2aacfcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  click: click
+  getcoin: getcoin
 --- !u!1 &707370334
 GameObject:
   m_ObjectHideFlags: 0
@@ -4373,6 +4418,7 @@ RectTransform:
   - {fileID: 1171583602}
   - {fileID: 290313828}
   - {fileID: 793617151}
+  - {fileID: 701799403}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11311,26 +11357,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 903654889}
     m_Modifications:
-    - target: {fileID: 6262770081595959377, guid: d791ccdf0fb80134fa7323b0cc4af6e3, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 2883490752812006715, guid: d791ccdf0fb80134fa7323b0cc4af6e3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 701799404}
     - target: {fileID: 6262770081824765527, guid: d791ccdf0fb80134fa7323b0cc4af6e3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6524356814023110285}
     - target: {fileID: 6262770081824765527, guid: d791ccdf0fb80134fa7323b0cc4af6e3, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ReStart
-      objectReference: {fileID: 0}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 701799404}
     - target: {fileID: 6262770081880794035, guid: d791ccdf0fb80134fa7323b0cc4af6e3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6524356814023110285}
     - target: {fileID: 6262770081880794035, guid: d791ccdf0fb80134fa7323b0cc4af6e3, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: GotoTitle
-      objectReference: {fileID: 0}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 701799404}
     - target: {fileID: 8896671788853022473, guid: d791ccdf0fb80134fa7323b0cc4af6e3, type: 3}
       propertyPath: m_Name
       value: PauseButton
@@ -11419,6 +11465,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8896671788853022479, guid: d791ccdf0fb80134fa7323b0cc4af6e3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 701799404}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d791ccdf0fb80134fa7323b0cc4af6e3, type: 3}
 --- !u!1001 &9182085144732143945
