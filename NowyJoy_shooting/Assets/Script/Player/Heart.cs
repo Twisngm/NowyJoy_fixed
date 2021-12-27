@@ -48,7 +48,7 @@ public class Heart : MonoBehaviour
         {
             return;
         }
-        else if (GM.Perfectmode = true && GM.HP <= GM.MaxHP * 0.8f)
+        else if (GM.Perfectmode == true && GM.HP <= GM.MaxHP * 0.8f)
         {
             return;
         }

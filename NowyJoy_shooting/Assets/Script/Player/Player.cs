@@ -44,7 +44,10 @@ public class Player : MonoBehaviour
 
     float transferspeed = 0.15f; // 크기 조정비율(inspector 기준)
 
+    public GameObject Manager;
     public GameManager GM;
+    public GameObject ptnManage;
+    public bool ptntof;
 
     Heart heart;
     Animator anim;
@@ -59,16 +62,22 @@ public class Player : MonoBehaviour
         //Ptransform = GetComponent<Transform>();
         anim = transform.GetChild(4).GetComponent<Animator>();
         balloon = Balloonobj.GetComponent<Balloon>();
-        StartCoroutine("StartFire");
+        
         GM = GameManager.GM_Instance;
+        Manager = GameObject.Find("Managers");
+        ptnManage = Manager.transform.Find("patternManager").gameObject;
     }
-
+    private void OnEnable()
+    {
+        StartCoroutine("StartFire");
+    }
     void Update()
     {
         OnDrag();
         //Update_LookRatation();
         //Reload();
         CameraIn();
+        ptntof = checkptn();
         shotEffect.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
@@ -244,8 +253,6 @@ public class Player : MonoBehaviour
     {
         Vector3 myPos = transform.position; // 현재 위치
         currentangle = transform.rotation.z;
-
-        // 타겟갭 초기화가 안돼서 안돌아가니 수정 필요
         
             target.localPosition += gap;
         if (target.localPosition.x > 1.0f)
@@ -294,10 +301,6 @@ public class Player : MonoBehaviour
         PlayerBulletcontoller.Launch(Vector2.up, PBspeed);
         //curshotdelay = 0;
     }
-    /*void Reload()
-    {
-        curshotdelay += Time.deltaTime;
-    }*/
     void LookZero(float anglespeed)
     {
         target.localPosition = new Vector3(0, 1, 0);
@@ -308,6 +311,40 @@ public class Player : MonoBehaviour
         balloon.TransRotation(targetRotation);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, anglespeed * Time.deltaTime); // anglespeed만큼의 속도로 Rotation 변환
     }
+    bool checkptn()
+    {
+       if (ptnManage.activeSelf)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    IEnumerator StartFire()
+    {
+        for (; ; )
+        {
+            if (Time.timeScale == 0)
+            {
+                yield return null;
+            }
+            else if (!ptntof)
+            {
+                yield return null;
+            }
+            else
+            {
+                PBFire();
+            }
+            yield return new WaitForSeconds(.5f);
+        }
+    }
+    /*void Reload()
+    {
+        curshotdelay += Time.deltaTime;
+    }*/
     /*public void Invinc()
     {
         Invincible = true;
@@ -324,19 +361,6 @@ public class Player : MonoBehaviour
         Invincible = false;
         yield return new WaitForSeconds(0.5f);
     }*/
-    IEnumerator StartFire()
-    {
-        for (; ; )
-        {
-            if (Time.timeScale == 0)
-            {
-                yield return null;
-            }
-            else
-            {
-                PBFire();
-            }
-            yield return new WaitForSeconds(.5f);
-        }
-    }
+
+
 }
