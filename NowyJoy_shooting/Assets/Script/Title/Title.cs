@@ -23,6 +23,7 @@ public class Title : MonoBehaviour
     {
         if (isFull)
         {
+            GameManager.GM_Instance.StageUnlockLoad();
             SoundManager.Instance.ChangeBGM();
             //logomove(); - °ü»ó¿ë
             ChangeScene();
@@ -49,7 +50,7 @@ public class Title : MonoBehaviour
 
     public void Add(float val)
     {
-        currentValue += val;
+        currentValue += val * Time.deltaTime;
 
         if (currentValue > maxValue)
         {
@@ -84,7 +85,7 @@ public class Title : MonoBehaviour
         {
             yield return new WaitForSecondsRealtime(0.001f);
 
-            Add(0.5f);
+            Add(60f);
         }
     }
     public void logomove()

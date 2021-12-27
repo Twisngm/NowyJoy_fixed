@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
  
     void LoadedsceneEvent(Scene scene, LoadSceneMode mode)
     {
-     
+        Load();
         HP = MaxHP;
        switch(SceneManager.GetActiveScene().buildIndex) // stagenum 초기화
         {
@@ -127,5 +127,31 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void Save()
+    {
+        Debug.Log("저장");
+        PlayerPrefs.SetInt("StageDate", CurrentStage);
+
+    }
+
+    public void Load()
+    {
+        
+        if(PlayerPrefs.HasKey("StageDate"))
+        {
+            CurrentStage = PlayerPrefs.GetInt("StageDate");
+        }
+
+    }
+
+    public void StageUnlockLoad()
+    {
+        Load();
+        Debug.Log("로드 완료");
+        for(int i = 0; i < CurrentStage; i++)
+        {
+            stageUnlock[i] = true;
+        }
+    }
 
 }
