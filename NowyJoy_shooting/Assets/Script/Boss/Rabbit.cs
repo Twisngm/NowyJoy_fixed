@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Rabbit : MonoBehaviour
 {
@@ -9,12 +10,14 @@ public class Rabbit : MonoBehaviour
     SpriteRenderer Renderer;
     Animator anim;
     public GameObject Smoke;
+    public StageManager SM;
    
     private void Awake()
     {
         col = GetComponentInChildren<PolygonCollider2D>();
         anim = GetComponentInChildren<Animator>();
         Renderer = GetComponentInChildren<SpriteRenderer>();
+        SM = GameObject.Find("Managers").transform.Find("stageManager").GetComponent<StageManager>();
         
     }
 
@@ -33,6 +36,12 @@ public class Rabbit : MonoBehaviour
         
         else
             OnCollider();
+
+        if(SM.bossClear)
+        {
+            StopAllCoroutines();
+
+        }
     }
 
     void DoPattern()
@@ -436,6 +445,5 @@ public class Rabbit : MonoBehaviour
         Invoke("DoPattern", 1f);
     }
 
-   
-
+    
 }

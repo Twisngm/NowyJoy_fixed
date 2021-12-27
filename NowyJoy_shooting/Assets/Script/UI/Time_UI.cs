@@ -79,17 +79,19 @@ public class Time_UI : MonoBehaviour
     }
 
     void time()
-    {
-        sec -= Time.deltaTime;
-        GaugeValue -= Time.deltaTime;
-        if (sec <= 0)
-        {
-            sec = 60;
-            min -= 1;
-            
-        }
-        txt.text = string.Format("{0}:{1:D2}", min, (int)sec);
+    {   
+            sec -= Time.deltaTime;
+          GaugeValue = sec;
+            if (sec <= 0)
+            {
+                sec = 60;
+                min -= 1;
 
+            }
+        if (min >= 0 && sec >= 0)
+        {
+            txt.text = string.Format("{0}:{1:D2}", min, (int)sec);
+        }
 
 
     }

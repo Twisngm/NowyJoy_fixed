@@ -10,6 +10,7 @@ public class SceneChangeManager : MonoBehaviour
     public GameObject GameExitWindow;
     Pause pause;
     public Image fadeObject;
+    public GameObject Wall;
     public GameObject curtein_full;
     public GameObject curtein_left;
     public GameObject curtein_right;
@@ -148,9 +149,11 @@ public class SceneChangeManager : MonoBehaviour
     { 
         if (SceneManager.GetActiveScene().name == "StageSelect" || SceneManager.GetActiveScene().name == "IntegratedMode")
         {
+           // Wall.SetActive(true);
             curtein_full.GetComponent<RectTransform>().DOAnchorPosY(5, 3f);
             yield return new WaitForSeconds(3f);
             isCurtein_Down_finished = true;
+           // Wall.SetActive(false);
             yield break;
             /*
             while (checkTime < 3.1f)

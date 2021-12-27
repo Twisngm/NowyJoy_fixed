@@ -9,6 +9,7 @@ public class StageManager : MonoBehaviour
     public GameObject ptnManager;
     public Time_UI time;
     public Pause pause;
+    public bool bossClear = false;
 
     public GameObject Over;
     public GameObject Clear;
@@ -17,7 +18,7 @@ public class StageManager : MonoBehaviour
     public GameObject Clearstar_blue;
     float hpcounter;
     // Start is called before the first frame update
-    private void Awake()
+    private void Start()
     {
         GM = GameManager.GM_Instance;
         pause = Pause.Instance;
@@ -30,7 +31,7 @@ public class StageManager : MonoBehaviour
         if (pause != null)
         {
             GameOver();
-            GameClear();
+            StartCoroutine("GameClear");
         }
     }
 
@@ -46,10 +47,18 @@ public class StageManager : MonoBehaviour
 
     }
 
-    void GameClear()
+    IEnumerator GameClear()
     {
+        
         if (time.min < 0)
         {
+        
+            if(GM.stagenum == 2 || GM.stagenum == 3 || GM.stagenum == 5 || GM.stagenum == 6 || GM.stagenum == 8)
+            {
+                bossClear = true;
+                yield return new WaitForSeconds(7.5f);
+            }
+      
             GM.Save();
             pause.isPause = true;
             Clear.SetActive(true);

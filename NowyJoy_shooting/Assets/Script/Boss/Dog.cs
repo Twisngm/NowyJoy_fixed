@@ -16,12 +16,16 @@ public class Dog : MonoBehaviour
     Rigidbody2D rigid;
     bool isCol = false;
     public bool isRush = false;
+    public StageManager SM;
+    Animator anim;
     // Start is called before the first frame update
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
-        DoPattern();
+        Invoke("DoPattern", 3f);
         StartCoroutine("Return");
+        SM = GameObject.Find("Managers").transform.Find("stageManager").GetComponent<StageManager>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -42,7 +46,12 @@ public class Dog : MonoBehaviour
             BackSmoke.SetActive(false);
             Back.SetActive(false);
         }
-        
+
+        if (SM.bossClear)
+        {
+            StopAllCoroutines();
+            CancelInvoke("DoPattern");
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -134,6 +143,7 @@ public class Dog : MonoBehaviour
         int fir;
         int[] sec = new int[2];
 
+        anim.SetBool("isShake", true);
         fir = Random.Range(0, 2);
         if(fir == 0)
         {
@@ -156,6 +166,8 @@ public class Dog : MonoBehaviour
             yield return new WaitForSeconds(5f);
             Rains[sec[0]].GetComponent<UbhShotCtrl>().StopShotRoutineAndPlayingShot();
         }
+        anim.SetBool("isShake", false);
+
         yield return new WaitForSeconds(3f);
         StartCoroutine("DoPattern");
     }

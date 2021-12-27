@@ -15,15 +15,16 @@ public class Bird : MonoBehaviour
     public PatternManager PM;
     public GameObject Smoke;
     public GameObject Shadow;
-   
+    public StageManager SM;
+
     private void Awake()
     {
         col = GetComponentInChildren<PolygonCollider2D>();
         anim = GetComponentInChildren<Animator>();
         Renderer = GetComponentInChildren<SpriteRenderer>();
         rainshot = rain.GetComponent<UbhShotCtrl>();
-       
-        
+        SM = GameObject.Find("Managers").transform.Find("stageManager").GetComponent<StageManager>();
+
     }
 
     void OnEnable()
@@ -39,6 +40,12 @@ public class Bird : MonoBehaviour
 
         else
             OnCollider();
+        
+        if(SM.bossClear)
+        {
+            StopAllCoroutines();
+            CancelInvoke("DoPattern");
+        }
     }
 
     void DoPattern()

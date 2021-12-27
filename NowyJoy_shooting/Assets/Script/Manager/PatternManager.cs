@@ -142,7 +142,7 @@ public class PatternManager : MonoBehaviour
     {
         isBoss = false;
 
-        if(GM.stagenum != 5)
+       // if(GM.stagenum != 5)
           StartCoroutine("Shooting");
 
     //    Invoke("DoPattern", 5f);

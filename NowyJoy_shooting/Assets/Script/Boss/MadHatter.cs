@@ -21,8 +21,10 @@ public class MadHatter : MonoBehaviour
     List<float> PosIndex = new List<float>() { 0, -1.7f, 1.7f };
     public PatternManager PM;
     public GameObject Player;
+    public StageManager SM;
     GameObject Effect;
     Animator anim;
+    Animator Anim;
     PolygonCollider2D col;
 
     void Start()
@@ -32,7 +34,9 @@ public class MadHatter : MonoBehaviour
         
         Effect = GameObject.Find("Blood");
         anim = Effect.GetComponent<Animator>();
+        Anim = GetComponentInChildren<Animator>();
         col = GetComponentInChildren<PolygonCollider2D>();
+        SM = GameObject.Find("Managers").transform.Find("stageManager").GetComponent<StageManager>();
     }
     private void OnEnable()
     {
@@ -47,22 +51,29 @@ public class MadHatter : MonoBehaviour
     }
     private void Update()
     {
-       
-        FollowTimeCount();
+        if (!SM.bossClear)
+        {
+            FollowTimeCount();
 
-        StopFollow();
+            StopFollow();
 
-        DeathCount();
+            DeathCount();
 
-        stopDeathCount();
+            stopDeathCount();
 
-        SetArrow();
-
+            SetArrow();
+        }
         if (this.gameObject.transform.position.z < -0.05)
             OffCollider();
 
         else
             OnCollider();
+
+        if (SM.bossClear)
+        {
+            StopAllCoroutines();
+            CancelInvoke("DoPattern");
+        }
     }
     void DoPattern()
     {
@@ -115,7 +126,7 @@ public class MadHatter : MonoBehaviour
     {
         isStart = true;
         CreateUnDuplicateRandom();
-
+        Anim.SetTrigger("Smile");
         iTween.MoveTo(gameObject, iTween.Hash("y", 2f, "time", 1f, "easeType", "Linear"));
         
         yield return new WaitForSeconds(1f);
@@ -251,7 +262,7 @@ public class MadHatter : MonoBehaviour
     {
         isFollow = true;
         Timer.SetActive(true);
-
+        Anim.SetTrigger("Follow");
     }
 
     void FollowTimeCount()
