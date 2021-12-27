@@ -12,6 +12,7 @@ public class StageManager : MonoBehaviour
 
     public GameObject Over;
     public GameObject Clear;
+    public GameObject PerfectClear;
     public GameObject Clearstar_yellow;
     public GameObject Clearstar_blue;
     float hpcounter;
@@ -51,17 +52,18 @@ public class StageManager : MonoBehaviour
             {
                 pause.isPause = true;
                 Clear.SetActive(true);
-            
-                if (GM.HP > GM.MaxHP * 0.8f)
-                {
+
+            if (GM.HP >= GM.MaxHP * 0.8f)
+            {
+                PerfectClear.SetActive(true);
                 Clearstar_blue.SetActive(true);
-                
-                }
-                else
-                {
+            }
+            else
+            {
+                Clear.SetActive(true);
                 Clearstar_yellow.SetActive(true);
             }
-                GM.stageUnlock[GM.stagenum] = true;
+            GM.stageUnlock[GM.stagenum] = true;
             }
      
 

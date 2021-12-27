@@ -1514,7 +1514,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 545114840}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1631672964}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: UnlockMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &545114840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2034,7 +2046,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 642514419}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1631672964}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: PerfectMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &642514419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4694,6 +4718,17 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1631672964 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6717191100023976579, guid: f6c399f64f9e09142a56f57618aae781, type: 3}
+  m_PrefabInstance: {fileID: 1095651446}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fea53b09e07f664996dbb522c104b4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1639761631
 GameObject:
   m_ObjectHideFlags: 0
