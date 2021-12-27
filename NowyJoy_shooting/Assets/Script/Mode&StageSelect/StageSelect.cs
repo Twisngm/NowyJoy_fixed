@@ -219,15 +219,15 @@ public class StageSelect : MonoBehaviour
     {
         float checkTime = 0f;
 
-        while (checkTime < 4f)
+        while (checkTime < 2f)
         {
-            yield return new WaitForSecondsRealtime(0.02f);
-            checkTime += 0.1f * Time.deltaTime;
+            yield return new WaitForSeconds(0.1f);
+            checkTime += 0.1f;
             changed();
             timecheck = checkTime;
         }
 
-        if (checkTime >= 4f)
+        if (checkTime >= 2f)
         {
             changeScene = true;
             full_stay = true;
@@ -238,10 +238,10 @@ public class StageSelect : MonoBehaviour
     IEnumerator changing_small()
     {
         float checkTime = timecheck;
-        while (checkTime >= 0f && checkTime < 4f)
+        while (checkTime >= 0f && checkTime < 2f)
         {
-            yield return new WaitForSecondsRealtime(0.1f);
-            checkTime -= 0.1f * Time.deltaTime;
+            yield return new WaitForSeconds(0.1f);
+            checkTime -= 0.1f;
             changed_small();
         }
         if (checkTime < 0f)
