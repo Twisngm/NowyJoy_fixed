@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using DG.Tweening;
 
 public class SettingMove : MonoBehaviour
 {
@@ -50,20 +50,33 @@ public class SettingMove : MonoBehaviour
     }
     IEnumerator settingMovingUp()
     {
+
+        this.gameObject.GetComponent<RectTransform>().DOAnchorPosY(2000f, 1f);
+
+
+        yield return null;
+
+        /*
         while (true)
         {
             yield return new WaitForSecondsRealtime(0f);
             transform.Translate(settingposup * speed);
         }
+        */
     }
 
     IEnumerator settingMovingdown()
     {
+        this.gameObject.GetComponent<RectTransform>().DOAnchorPosY(0f, 1f);
+
+        yield return null;
+        /*
         while (true)
         {
             yield return new WaitForSecondsRealtime(0f);
             transform.Translate(settingposdown * speed);
         }
+        */
     }
 
 }

@@ -10,8 +10,9 @@ public class GameManager : MonoBehaviour
     public int stagenum;
     public int CurrentStage = 1;
     public bool[] stageUnlock;
-    
+    public bool isUnlock = false;
     public bool Perfectmode;
+    
 
     static GameManager GM_instance;
 
@@ -43,6 +44,7 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded += LoadedsceneEvent;
         
     }
+ 
     void LoadedsceneEvent(Scene scene, LoadSceneMode mode)
     {
      
@@ -105,14 +107,25 @@ public class GameManager : MonoBehaviour
     }
     public void PerfectMode()
     {
-        Perfectmode = true;
+        if (!Perfectmode)
+            Perfectmode = true;
+        else if (Perfectmode)
+            Perfectmode = false;
     }
     public void UnlockMode()
     {
-        for (int i=0; i<stageUnlock.Length; i++)
-        {
-            stageUnlock[i] = true;
-        }
+        if (!isUnlock)
+            isUnlock = true;
+
+        else if (isUnlock)
+            isUnlock = false;
+
+            for (int i = 1; i < stageUnlock.Length; i++)
+            {
+                stageUnlock[i] = isUnlock;
+            }
+        
     }
+
 
 }

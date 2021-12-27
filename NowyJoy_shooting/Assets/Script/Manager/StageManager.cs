@@ -20,7 +20,7 @@ public class StageManager : MonoBehaviour
     private void Awake()
     {
         GM = GameManager.GM_Instance;
-      
+        pause = Pause.Instance;
     }
 
     // Update is called once per frame

@@ -322,7 +322,7 @@ public class PatternManager : MonoBehaviour
                 if (isBoss)
                     randPtn[1] = Random.Range(4, 8); // 4스테이지 보스
                 else
-                    randPtn[1] = Random.Range(5, 11); // 4스테이지 일반
+                    randPtn[1] = Random.Range(10, 11); // 4스테이지 일반
             else if (GM.stagenum == 7) // 5스테이지 
                 randPtn[1] = Random.Range(8, 12);
 
@@ -1027,7 +1027,9 @@ public class PatternManager : MonoBehaviour
                 Warning[2].SetActive(true);
             else
                 Warning[3].SetActive(true);
+
             yield return new WaitForSeconds(1f);
+
             if (Pos.position.x > 0)
                 Warning[2].SetActive(false);
             else
@@ -1106,12 +1108,13 @@ public class PatternManager : MonoBehaviour
                 }
 
                 ///
-               
-                Warning_Wiper_Ver.SetActive(true); // 활성화
-                Wiper_Ver.SetActive(true);
-                yield return new WaitForSeconds(0.005f);
                 Wiper_Ver.transform.position = Pos.position; // 위치 설정
                 Wiper_Ver.transform.rotation = Quaternion.Euler(0, 0, Pos.position.x > 0 ? 180 : 0);
+                Warning_Wiper_Ver.SetActive(true); // 활성화
+                Wiper_Ver.SetActive(true);
+
+                yield return new WaitForSeconds(0.01f);
+               
                 iTween.RotateTo(Wiper_Ver, iTween.Hash("z", (Pos.position.x > 0 ? 1 : 180) * (Pos.position.y > 0 ? -1 : 1) , "time", Wiper_Speed * 1.5f, "easeType", "Linear"));
                 yield return new WaitForSeconds(Wiper_Speed);
                 Wiper_Ver.SetActive(false); // 비활성화

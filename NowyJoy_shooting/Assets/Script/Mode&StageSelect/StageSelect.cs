@@ -203,7 +203,7 @@ public class StageSelect : MonoBehaviour
 
     void changed_small()
     {
-        gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x - 1f * scaleSpeed * Time.deltaTime, gameObject.transform.localScale.y - 1f * scaleSpeed * Time.deltaTime, 0);
+        gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x - 0.2f * scaleSpeed * Time.deltaTime, gameObject.transform.localScale.y - 0.2f * scaleSpeed * Time.deltaTime, 0);
     }
 
 
@@ -232,7 +232,7 @@ public class StageSelect : MonoBehaviour
         float checkTime = timecheck;
         while (checkTime >= 0f && checkTime < 4f)
         {
-            yield return new WaitForSecondsRealtime(0.01f);
+            yield return new WaitForSecondsRealtime(0.1f);
             checkTime -= 0.1f;
             changed_small();
         }

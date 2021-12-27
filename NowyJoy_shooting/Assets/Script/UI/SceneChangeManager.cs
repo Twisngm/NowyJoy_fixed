@@ -7,6 +7,8 @@ using DG.Tweening;
 
 public class SceneChangeManager : MonoBehaviour
 {
+    public GameObject GameExitWindow;
+    Pause pause;
     public Image fadeObject;
     public GameObject curtein_full;
     public GameObject curtein_left;
@@ -69,6 +71,7 @@ public class SceneChangeManager : MonoBehaviour
             Destroy(this.gameObject);
         }
         DontDestroyOnLoad(this.gameObject);
+        pause = Pause.Instance;
     }
 
     private void Start()
@@ -81,6 +84,11 @@ public class SceneChangeManager : MonoBehaviour
         curtein_colse_L.SetActive(true);
         curtein_close_R.SetActive(true);
         curtein_transperent_Close_0();
+    }
+
+    private void Update()
+    {
+        ExitGame();
     }
 
     public void curtein_Up()
@@ -428,4 +436,48 @@ public class SceneChangeManager : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
     }
+
+    public void ExitGame()
+    {
+        if (Input.GetKey("escape"))
+        {
+#if UNITY_EDITOR
+            {
+                GameExitWindow.SetActive(true);
+                OnPause();
+            }
+            //  UnityEditor.EditorApplication.isPlaying = false;
+#else
+{
+ GameExitWindow.SetActive(true);
+ OnPause();
+ }
+       // Application.Quit(); // 어플리케이션 종료
+#endif
+
+
+        }
+    }
+
+    public void Exit()
+    {
+#if UNITY_EDITOR
+     UnityEditor.EditorApplication.isPlaying = false;
+
+#else
+    Application.Quit(); // 어플리케이션 종료
+
+#endif
+    }
+
+    public void OnPause()
+    {
+        pause.OnPause();
+    }
+
+    public void OffPause()
+    {
+        pause.OffPause();
+    }
+
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class ModeManager : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -14,5 +14,14 @@ public class NewBehaviourScript : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void PerfectMode()
+    {
+        GameManager.GM_Instance.PerfectMode();
+    }
+    public void UnlockMode()
+    {
+        GameManager.GM_Instance.UnlockMode();
     }
 }

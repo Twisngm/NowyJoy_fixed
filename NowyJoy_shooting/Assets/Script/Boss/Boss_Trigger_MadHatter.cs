@@ -43,7 +43,7 @@ public class Boss_Trigger_MadHatter : MonoBehaviour
 
     IEnumerator Appear()
     {
-        if (time.min <= 3 && time.sec <= 50)
+        if (time.min <= 1)
             StartCoroutine("Appearance");
         else
         {
@@ -80,7 +80,7 @@ public class Boss_Trigger_MadHatter : MonoBehaviour
         BossName.DOFade(0, 0.5f);
         direction[0].DOAnchorPosY(128, 0.5f);
         direction[1].DOAnchorPosY(-128, 0.5f);
-        // pause.isPause = false;
+        //       pause.isPause = false;
 
     }
 }
