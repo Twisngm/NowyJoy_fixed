@@ -305,6 +305,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprRend: {fileID: 5497408524359625681}
   safeZone: 0
+  GM: {fileID: 0}
 --- !u!1 &5497408524359625695
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,7 +337,7 @@ Transform:
   m_GameObject: {fileID: 5497408524359625695}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.255, y: 0.255, z: 0.255}
   m_Children:
   - {fileID: 5497408524034208234}
   - {fileID: 5335166002741434184}
@@ -374,6 +375,10 @@ MonoBehaviour:
   Attacker: {fileID: 6825327782487484658, guid: cf2f36689b914bd4182e4596d0e5057f, type: 3}
   PBspeed: 1
   shotdelay: 0.5
+  Manager: {fileID: 0}
+  GM: {fileID: 0}
+  ptnManage: {fileID: 0}
+  ptntof: 0
   shotEffect: {fileID: 389454210}
 --- !u!212 &5497408524359625681
 SpriteRenderer:

@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public bool[] stageUnlock;
     public bool isUnlock = false;
     public bool Perfectmode;
+    public int[] starnum;
+    public bool Reset;
     
 
     static GameManager GM_instance;
@@ -36,6 +38,10 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
 
+        if (Reset)
+        {
+            PlayerPrefs.DeleteAll();
+        }
         
     }
      
@@ -48,6 +54,7 @@ public class GameManager : MonoBehaviour
     void LoadedsceneEvent(Scene scene, LoadSceneMode mode)
     {
         Load();
+        Loadstar();
         HP = MaxHP;
        switch(SceneManager.GetActiveScene().buildIndex) // stagenum 초기화
         {
@@ -153,5 +160,113 @@ public class GameManager : MonoBehaviour
             stageUnlock[i] = true;
         }
     }
-
+    public void starSaver(int stagenum, int Starnum)
+    {
+        if (stagenum == 1)
+        {
+            Debug.Log("별 저장1");
+            PlayerPrefs.SetInt("Star1", Starnum);
+        }
+        else if (stagenum == 2)
+        {
+            Debug.Log("별 저장2");
+            PlayerPrefs.SetInt("Star2", Starnum);
+        }
+        else if (stagenum == 3)
+        {
+            Debug.Log("별 저장3");
+            PlayerPrefs.SetInt("Star3", Starnum);
+        }
+        else if (stagenum == 4)
+        {
+            Debug.Log("별 저장4");
+            PlayerPrefs.SetInt("Star4", Starnum);
+        }
+        else if (stagenum == 5)
+        {
+            Debug.Log("별 저장5");
+            PlayerPrefs.SetInt("Star5", Starnum);
+        }
+        else if (stagenum == 6)
+        {
+            Debug.Log("별 저장6");
+            PlayerPrefs.SetInt("Star6", Starnum);
+        }
+        else if (stagenum == 7)
+        {
+            Debug.Log("별 저장7");
+            PlayerPrefs.SetInt("Star7", Starnum);
+        }
+        else if (stagenum == 8)
+        {
+            Debug.Log("별 저장8");
+            PlayerPrefs.SetInt("Star8", Starnum);
+        }
+    }
+    public void Loadstar()
+    {
+        if (PlayerPrefs.HasKey("Star1"))
+        {
+            if (CurrentStage == 1)
+            {
+                starnum[1] = PlayerPrefs.GetInt("Star1");
+            }
+            else if (CurrentStage == 2)
+            {
+                starnum[1] = PlayerPrefs.GetInt("Star1");
+                starnum[2] = PlayerPrefs.GetInt("Star2");
+            }
+            else if (CurrentStage == 3)
+            {
+                starnum[1] = PlayerPrefs.GetInt("Star1");
+                starnum[2] = PlayerPrefs.GetInt("Star2");
+                starnum[3] = PlayerPrefs.GetInt("Star3");
+            }
+            else if (CurrentStage == 4)
+            {
+                starnum[1] = PlayerPrefs.GetInt("Star1");
+                starnum[2] = PlayerPrefs.GetInt("Star2");
+                starnum[3] = PlayerPrefs.GetInt("Star3");
+                starnum[4] = PlayerPrefs.GetInt("Star4");
+            }
+            else if (CurrentStage == 5)
+            {
+                starnum[1] = PlayerPrefs.GetInt("Star1");
+                starnum[2] = PlayerPrefs.GetInt("Star2");
+                starnum[3] = PlayerPrefs.GetInt("Star3");
+                starnum[4] = PlayerPrefs.GetInt("Star4");
+                starnum[1] = PlayerPrefs.GetInt("Star5");
+            }
+            else if (CurrentStage == 6)
+            {
+                starnum[1] = PlayerPrefs.GetInt("Star1");
+                starnum[2] = PlayerPrefs.GetInt("Star2");
+                starnum[3] = PlayerPrefs.GetInt("Star3");
+                starnum[4] = PlayerPrefs.GetInt("Star4");
+                starnum[1] = PlayerPrefs.GetInt("Star5");
+                starnum[1] = PlayerPrefs.GetInt("Star6");
+            }
+            else if (CurrentStage == 7)
+            {
+                starnum[1] = PlayerPrefs.GetInt("Star1");
+                starnum[2] = PlayerPrefs.GetInt("Star2");
+                starnum[3] = PlayerPrefs.GetInt("Star3");
+                starnum[4] = PlayerPrefs.GetInt("Star4");
+                starnum[1] = PlayerPrefs.GetInt("Star5");
+                starnum[1] = PlayerPrefs.GetInt("Star6");
+                starnum[1] = PlayerPrefs.GetInt("Star7");
+            }
+            else if (CurrentStage == 8)
+            {
+                starnum[1] = PlayerPrefs.GetInt("Star1");
+                starnum[2] = PlayerPrefs.GetInt("Star2");
+                starnum[3] = PlayerPrefs.GetInt("Star3");
+                starnum[4] = PlayerPrefs.GetInt("Star4");
+                starnum[1] = PlayerPrefs.GetInt("Star5");
+                starnum[1] = PlayerPrefs.GetInt("Star6");
+                starnum[1] = PlayerPrefs.GetInt("Star7");
+                starnum[1] = PlayerPrefs.GetInt("Star8");
+            }
+        }
+    }
 }
