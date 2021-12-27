@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour
     public int stagenum;
     public int CurrentStage = 1;
     public bool[] stageUnlock;
-  
+    
+    public bool Perfectmode;
 
     static GameManager GM_instance;
 
@@ -101,6 +102,17 @@ public class GameManager : MonoBehaviour
         Debug.Log("¹¹¾ß");
         */
 
+    }
+    public void PerfectMode()
+    {
+        Perfectmode = true;
+    }
+    public void UnlockMode()
+    {
+        for (int i=0; i<stageUnlock.Length; i++)
+        {
+            stageUnlock[i] = true;
+        }
     }
 
 }

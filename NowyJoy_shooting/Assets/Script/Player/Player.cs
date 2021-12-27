@@ -44,6 +44,8 @@ public class Player : MonoBehaviour
 
     float transferspeed = 0.15f; // 크기 조정비율(inspector 기준)
 
+    public GameManager GM;
+
     Heart heart;
     Animator anim;
     public GameObject shotEffect;
@@ -58,6 +60,7 @@ public class Player : MonoBehaviour
         anim = transform.GetChild(4).GetComponent<Animator>();
         balloon = Balloonobj.GetComponent<Balloon>();
         StartCoroutine("StartFire");
+        GM = GameManager.GM_Instance;
     }
 
     void Update()
@@ -73,7 +76,6 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Thorn"))
         {
-
             heart.OnDamaged();
         }
     }
@@ -81,7 +83,6 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wiper") || collision.gameObject.CompareTag("Rabbit") || collision.gameObject.CompareTag("Bird"))
         {
-
             heart.OnDamaged();
         }
     }

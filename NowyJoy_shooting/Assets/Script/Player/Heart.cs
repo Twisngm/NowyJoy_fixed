@@ -8,11 +8,13 @@ public class Heart : MonoBehaviour
     public SpriteRenderer sprRend;
     Animator anim;
     public bool safeZone;
+    public GameManager GM;
     // Start is called before the first frame update
     void Awake()
     {
         gm = GameObject.Find("gameManager").GetComponent<GameManager>();
         anim = GetComponentInParent<Animator>();
+        GM = GameManager.GM_Instance;
     }
 
     // Update is called once per frame
@@ -43,6 +45,10 @@ public class Heart : MonoBehaviour
     public void OnDamaged()
     {
         if (safeZone)
+        {
+            return;
+        }
+        else if (GM.Perfectmode = true && GM.HP <= GM.MaxHP * 0.8f)
         {
             return;
         }
