@@ -36,7 +36,7 @@ public class Fade : MonoBehaviour
         Txt.spacing = -10;
         while(Txt.spacing <= 20)
         {
-            Txt.spacing += 0.075f;
+            Txt.spacing += 0.075f * Time.deltaTime;
             yield return new WaitForSeconds(0.001f * Time.deltaTime);
         }
         yield return new WaitForSeconds(0.5f);

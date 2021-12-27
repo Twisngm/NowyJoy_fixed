@@ -25,6 +25,7 @@ public class Pause : MonoBehaviour
 
     private void Start()
     {
+        if(GameManager.GM_Instance.stagenum > 0)
         PauseWindow = GameObject.Find("UI").transform.Find("Pause").gameObject;
     }
 

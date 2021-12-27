@@ -48,10 +48,11 @@ public class StageManager : MonoBehaviour
 
     void GameClear()
     {
-            if (time.min < 0)
-            {
-                pause.isPause = true;
-                Clear.SetActive(true);
+        if (time.min < 0)
+        {
+            GM.Save();
+            pause.isPause = true;
+            Clear.SetActive(true);
 
             if (GM.HP >= GM.MaxHP * 0.8f)
             {
@@ -64,8 +65,8 @@ public class StageManager : MonoBehaviour
                 Clearstar_yellow.SetActive(true);
             }
             GM.stageUnlock[GM.stagenum] = true;
-            }
-     
+            
+        }
 
     }
     public void ReStart()

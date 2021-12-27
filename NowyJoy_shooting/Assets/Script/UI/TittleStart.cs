@@ -20,6 +20,6 @@ public class TittleStart : MonoBehaviour
 
     public void GoUP()
     {
-        player.DOAnchorPosY(5, 1f);
+        player.DOAnchorPos(new Vector2(0,10), 1f);
     }
 }
