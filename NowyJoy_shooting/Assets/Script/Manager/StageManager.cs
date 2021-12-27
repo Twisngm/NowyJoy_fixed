@@ -61,18 +61,24 @@ public class StageManager : MonoBehaviour
       
             GM.Save();
             pause.isPause = true;
-            Clear.SetActive(true);
-
-            if (GM.HP >= GM.MaxHP * 0.8f)
+            if (GM.HP >= (GM.MaxHP * 0.8))
             {
                 PerfectClear.SetActive(true);
                 Clearstar_blue.SetActive(true);
+                GM.starSaver(GM.stagenum, 2);
             }
             else
             {
                 Clear.SetActive(true);
                 Clearstar_yellow.SetActive(true);
+                if (GM.starnum[GM.stagenum] != 2)
+                {
+                    GM.starSaver(GM.stagenum, 1);
+                }
             }
+            //Clear.SetActive(true);
+
+            
             GM.stageUnlock[GM.stagenum] = true;
             
         }

@@ -142,7 +142,7 @@ public class Player : MonoBehaviour
                 lastTouchTime = Time.time; // 첫번째 손가락을 뗀 순간을 마지막 터치 시간으로 저장
             }
         }
-        if (Input.touchCount == 2) // 터치 입력이 두개일 때
+        /*if (Input.touchCount == 2) // 터치 입력이 두개일 때
         {
             touchZero = Input.GetTouch(0); // 첫번째 터치를 저장
             touchOne = Input.GetTouch(1); // 두번째 터치를 저장
@@ -167,12 +167,12 @@ public class Player : MonoBehaviour
                     transform.localScale.y - 1.0f * (transferspeed * Time.deltaTime),
                     0.3f); //x, y값을 줄이고 z값은 그대로
 
-                /*
-                Playercollider.size = new Vector2(
-                    Playercollider.size.x - (transferspeed * 13 * Time.deltaTime),
-                    Playercollider.size.y - (transferspeed * 16 * Time.deltaTime)
-                    );//콜라이더도 작게
-                */
+                
+                //Playercollider.size = new Vector2(
+                  //  Playercollider.size.x - (transferspeed * 13 * Time.deltaTime),
+                    //Playercollider.size.y - (transferspeed * 16 * Time.deltaTime)
+                    //);//콜라이더도 작게
+                
             }
             else if (deltaMagnitudeDiff < 0 && transform.localScale.x <= 0.45f)
             { // 손가락을 서로 멀리 떨어뜨리면
@@ -180,21 +180,21 @@ public class Player : MonoBehaviour
                     transform.localScale.x + 1.0f * (transferspeed * Time.deltaTime),
                     transform.localScale.y + 1.0f * (transferspeed * Time.deltaTime),
                     0.3f); // 플레이어 사이즈를 크게
-                /*
-                Playercollider.size = new Vector2(
-                    Playercollider.size.x + (transferspeed * 13 * Time.deltaTime),
-                    Playercollider.size.y + (transferspeed * 16 * Time.deltaTime)
-                    );
-                */
+                
+                //Playercollider.size = new Vector2(
+                    //Playercollider.size.x + (transferspeed * 13 * Time.deltaTime),
+                    //Playercollider.size.y + (transferspeed * 16 * Time.deltaTime)
+                  //  );
+                
             }
             if (touchZero.phase == TouchPhase.Began) // 첫번째 터치의 phase가 Began(시작)이라면
             {
                     onTouch = true; // onTouch를 true로 (이동 o)
                 m_prevPos = m_curPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.GetTouch(0).position.x * -1, Input.GetTouch(0).position.y * -1, Spacepos.z)); // 이동시키기
-                /*if (Time.time - lastTouchTime < doubleTapdelay && curshotdelay > shotdelay)
-                {
-                    PBFire();
-                }*/
+                //if (Time.time - lastTouchTime < doubleTapdelay && curshotdelay > shotdelay)
+                //{
+                  //  PBFire();
+                //}
             }
             else if (touchZero.phase == TouchPhase.Ended) // 첫번째 터치의 phase가 Ended(끝)이라면
             {
@@ -215,14 +215,14 @@ public class Player : MonoBehaviour
                     transform.localScale.x + (transferspeed * Time.deltaTime),
                     transform.localScale.y + (transferspeed * Time.deltaTime),
                     0.3f);
-                /*
-                Playercollider.size = new Vector2(
-                    Playercollider.size.x + (transferspeed * 13 * Time.deltaTime),
-                    Playercollider.size.y + (transferspeed * 16 * Time.deltaTime)
-                    );
-                */
+                
+                    //Playercollider.size = new Vector2(
+                    //Playercollider.size.x + (transferspeed * 13 * Time.deltaTime),
+                    //Playercollider.size.y + (transferspeed * 16 * Time.deltaTime)
+                    //);
+                
             }
-        }
+        }*/
         if (onTouch && Time.timeScale != 0)
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.GetTouch(0).position.x * -1, Input.GetTouch(0).position.y * -1, Spacepos.z));
@@ -361,6 +361,4 @@ public class Player : MonoBehaviour
         Invincible = false;
         yield return new WaitForSeconds(0.5f);
     }*/
-
-
 }
