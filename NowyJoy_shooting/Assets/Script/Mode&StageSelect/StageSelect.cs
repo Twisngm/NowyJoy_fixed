@@ -133,7 +133,7 @@ public class StageSelect : MonoBehaviour
             {
                 case "1": 
                         Debug.Log("1스테이지로 이동");
-                        SceneManager.LoadScene(3);
+                        SceneManager.LoadScene(13);
                     if(GameManager.GM_Instance.CurrentStage < 2)
                         GameManager.GM_Instance.CurrentStage = 1;
                     
@@ -184,7 +184,7 @@ public class StageSelect : MonoBehaviour
                 case "8":
          
                         Debug.Log("8스테이지로 이동");
-                        SceneManager.LoadScene(10);
+                        SceneManager.LoadScene(14);
                     if (GameManager.GM_Instance.CurrentStage < 9)
                         GameManager.GM_Instance.CurrentStage = 8;
                     break;

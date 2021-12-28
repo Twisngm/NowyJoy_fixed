@@ -6,24 +6,17 @@ public class Gate : MonoBehaviour
 {
     public GameObject flame;
     public GateBall GB;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
+
 
     private void OnEnable()
     {
         
         flame.GetComponent<SpriteRenderer>().color = Color.white;
-
-    }
-    // Update is called once per frame
-    void Update()
-    {
         
-    }
 
+    }
+  
     private void OnTriggerExit2D(Collider2D collision)
     {
         if(collision.tag == "Ball")

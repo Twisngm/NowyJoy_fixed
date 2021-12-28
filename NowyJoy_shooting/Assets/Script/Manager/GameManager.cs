@@ -235,7 +235,7 @@ public class GameManager : MonoBehaviour
                 starnum[2] = PlayerPrefs.GetInt("Star2");
                 starnum[3] = PlayerPrefs.GetInt("Star3");
                 starnum[4] = PlayerPrefs.GetInt("Star4");
-                starnum[1] = PlayerPrefs.GetInt("Star5");
+                starnum[5] = PlayerPrefs.GetInt("Star5");
             }
             else if (CurrentStage == 6)
             {
@@ -243,8 +243,8 @@ public class GameManager : MonoBehaviour
                 starnum[2] = PlayerPrefs.GetInt("Star2");
                 starnum[3] = PlayerPrefs.GetInt("Star3");
                 starnum[4] = PlayerPrefs.GetInt("Star4");
-                starnum[1] = PlayerPrefs.GetInt("Star5");
-                starnum[1] = PlayerPrefs.GetInt("Star6");
+                starnum[5] = PlayerPrefs.GetInt("Star5");
+                starnum[6] = PlayerPrefs.GetInt("Star6");
             }
             else if (CurrentStage == 7)
             {
@@ -252,9 +252,9 @@ public class GameManager : MonoBehaviour
                 starnum[2] = PlayerPrefs.GetInt("Star2");
                 starnum[3] = PlayerPrefs.GetInt("Star3");
                 starnum[4] = PlayerPrefs.GetInt("Star4");
-                starnum[1] = PlayerPrefs.GetInt("Star5");
-                starnum[1] = PlayerPrefs.GetInt("Star6");
-                starnum[1] = PlayerPrefs.GetInt("Star7");
+                starnum[5] = PlayerPrefs.GetInt("Star5");
+                starnum[6] = PlayerPrefs.GetInt("Star6");
+                starnum[7] = PlayerPrefs.GetInt("Star7");
             }
             else if (CurrentStage == 8)
             {
@@ -262,10 +262,10 @@ public class GameManager : MonoBehaviour
                 starnum[2] = PlayerPrefs.GetInt("Star2");
                 starnum[3] = PlayerPrefs.GetInt("Star3");
                 starnum[4] = PlayerPrefs.GetInt("Star4");
-                starnum[1] = PlayerPrefs.GetInt("Star5");
-                starnum[1] = PlayerPrefs.GetInt("Star6");
-                starnum[1] = PlayerPrefs.GetInt("Star7");
-                starnum[1] = PlayerPrefs.GetInt("Star8");
+                starnum[5] = PlayerPrefs.GetInt("Star5");
+                starnum[6] = PlayerPrefs.GetInt("Star6");
+                starnum[7] = PlayerPrefs.GetInt("Star7");
+                starnum[8] = PlayerPrefs.GetInt("Star8");
             }
         }
     }

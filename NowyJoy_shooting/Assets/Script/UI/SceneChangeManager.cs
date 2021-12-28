@@ -316,17 +316,21 @@ public class SceneChangeManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "IntegratedMode")
         {
             curtein_Open();
+      
         }
+        /*
         if (SceneManager.GetActiveScene().name == "stage1")
         {
             curtein_Open();
             curtein_full.GetComponent<RectTransform>().anchoredPosition = Top_Origin_Pos.anchoredPosition;
         }
+        */
         if (SceneManager.GetActiveScene().name == "stage2")
         {
             curtein_Open();
             curtein_full.GetComponent<RectTransform>().anchoredPosition = Top_Origin_Pos.anchoredPosition;
         }
+   
         if (SceneManager.GetActiveScene().name == "stage3")
         {
             curtein_Open();
@@ -362,6 +366,23 @@ public class SceneChangeManager : MonoBehaviour
             curtein_Open();
             curtein_full.GetComponent<RectTransform>().anchoredPosition = Top_Origin_Pos.anchoredPosition;
         }
+        if (SceneManager.GetActiveScene().name == "CutScene_1")
+        {
+            curtein_Open();
+            curtein_full.GetComponent<RectTransform>().anchoredPosition = Top_Origin_Pos.anchoredPosition;
+        }
+        if (SceneManager.GetActiveScene().name == "CutScene_2")
+        {
+            curtein_Open();
+            curtein_full.GetComponent<RectTransform>().anchoredPosition = Top_Origin_Pos.anchoredPosition;
+        }
+        /*
+        if (SceneManager.GetActiveScene().name == "CutScene_3")
+        {
+            curtein_Open();
+            curtein_full.GetComponent<RectTransform>().anchoredPosition = Top_Origin_Pos.anchoredPosition;
+        }
+        */
     }
 
     void OnDisable()

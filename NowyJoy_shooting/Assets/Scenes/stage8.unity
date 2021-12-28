@@ -1046,6 +1046,10 @@ MonoBehaviour:
   - {fileID: 752769086214683301}
   - {fileID: 872582445}
   - {fileID: 701561027}
+  Triggers:
+  - {fileID: 987937362}
+  - {fileID: 1700699757}
+  - {fileID: 1841489451}
   GateVec:
   - {x: 0.08, y: -1, z: 0}
   - {x: 1.1, y: 1.5, z: 0}
@@ -7416,6 +7420,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 975714068}
   m_CullTransparentMesh: 1
+--- !u!1 &987937362 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3051142880442567133, guid: 7685c5413cb6caf4ba3963335e1cc0a2, type: 3}
+  m_PrefabInstance: {fileID: 752769086214683300}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &988008039
 GameObject:
   m_ObjectHideFlags: 0
@@ -12594,6 +12603,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38496e6b1846ca5489343fe977dc27cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1700699757 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3051142880442567133, guid: 7685c5413cb6caf4ba3963335e1cc0a2, type: 3}
+  m_PrefabInstance: {fileID: 872582444}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1701643083
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13881,6 +13895,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1841489451 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3051142880442567133, guid: 7685c5413cb6caf4ba3963335e1cc0a2, type: 3}
+  m_PrefabInstance: {fileID: 701561026}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1849523737
 GameObject:
   m_ObjectHideFlags: 0

@@ -49,8 +49,10 @@ public class Dog : MonoBehaviour
 
         if (SM.bossClear)
         {
+            transform.position = new Vector3(0.07f, 2.5f, 0);
             StopAllCoroutines();
             CancelInvoke("DoPattern");
+           
         }
     }
 

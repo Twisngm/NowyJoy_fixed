@@ -17,6 +17,7 @@ public class GateBall : MonoBehaviour
     public GameObject Wall;
     public GameObject ball;
     public GameObject[] gates;
+    public GameObject[] Triggers;
     public Vector3[] GateVec;
     public GameObject Goal;
     public GameObject timer;
@@ -26,7 +27,7 @@ public class GateBall : MonoBehaviour
 
     public Heart_Queen HQ;
 
-   
+    GameObject[] Gate_Units;
     // Start is called before the first frame update
     void Start()
     {
@@ -79,7 +80,8 @@ public class GateBall : MonoBehaviour
 
         for (int i = 0; i < gates.Length; i++)
         {
-            gates[i].SetActive(true);            
+            gates[i].SetActive(true);
+            Triggers[i].SetActive(true);
         }
 
         Player.transform.position = new Vector3(0, -3.5f, 0);
@@ -153,7 +155,7 @@ public class GateBall : MonoBehaviour
             else if (goalCnt == 2)
                 GameManager.GM_Instance.HP -= 8;
 
-            else if (goalCnt == 3)
+            else 
                 GameManager.GM_Instance.HP -= 4;
 
             StartCoroutine("FadeOut");

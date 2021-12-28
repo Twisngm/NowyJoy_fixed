@@ -731,6 +731,8 @@ public class PatternManager : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
             sevenWay_ptn.GetComponent<UbhShotCtrl>().StopShotRoutineAndPlayingShot();
             Count++;
+
+            yield return new WaitForSeconds(1f);
             cnt++;
         }
         isPatterning = false;
@@ -767,6 +769,8 @@ public class PatternManager : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             Spiral_ptn.GetComponent<UbhShotCtrl>().StopShotRoutineAndPlayingShot();
             Count++;
+
+            yield return new WaitForSeconds(1f);
             cnt++;
         }
         isPatterning = false;
@@ -802,6 +806,8 @@ public class PatternManager : MonoBehaviour
             yield return new WaitForSeconds(0.3f);
             Circle_ptn.GetComponent<UbhShotCtrl>().StopShotRoutineAndPlayingShot();
             Count++;
+
+            yield return new WaitForSeconds(1f);
             cnt++;
         }
         isPatterning = false;
@@ -1068,8 +1074,8 @@ public class PatternManager : MonoBehaviour
                 yield return new WaitForSeconds(0.005f);
                 Wiper_Ver.transform.position = Pos.position; // 위치 설정
                 Wiper_Ver.transform.rotation = Quaternion.Euler(0, 0, 180);
-                iTween.RotateTo(Wiper_Ver, iTween.Hash("z", Pos.position.y > 0 ? 360 : 0, "time", Wiper_Speed, "easeType", "Linear"));
-                yield return new WaitForSeconds(Wiper_Speed);
+                iTween.RotateTo(Wiper_Ver, iTween.Hash("z", Pos.position.y > 0 ? 360 : 1, "time", 2, "easeType", "Linear"));
+                yield return new WaitForSeconds(2);
                 Wiper_Ver.SetActive(false); // 비활성화
                 Warning_Wiper_Ver.SetActive(false);
             }
@@ -1109,14 +1115,23 @@ public class PatternManager : MonoBehaviour
 
                 ///
                 Wiper_Ver.transform.position = Pos.position; // 위치 설정
-                Wiper_Ver.transform.rotation = Quaternion.Euler(0, 0, Pos.position.x > 0 ? 180 : 0);
+                yield return new WaitForSeconds(0.2f);
+               
                 Warning_Wiper_Ver.SetActive(true); // 활성화
                 Wiper_Ver.SetActive(true);
 
-                yield return new WaitForSeconds(0.01f);
-               
-                iTween.RotateTo(Wiper_Ver, iTween.Hash("z", (Pos.position.x > 0 ? 1 : 180) * (Pos.position.y > 0 ? -1 : 1) , "time", Wiper_Speed * 1.5f, "easeType", "Linear"));
-                yield return new WaitForSeconds(Wiper_Speed);
+                yield return new WaitForSeconds(0.05f);
+
+                Wiper_Ver.transform.rotation = Quaternion.Euler(0, 0, Pos.position.x > 0 ? 180 : 1);
+                yield return new WaitForSeconds(0.2f);
+                /*
+                if (Pos.position.y > 0)
+                    Wiper_Ver.transform.GetComponentInChildren<SpriteRenderer>().flipX = true;
+                else if (Pos.position.y < 0)
+                    Wiper_Ver.transform.GetComponentInChildren<SpriteRenderer>().flipX = false;
+             */
+               iTween.RotateTo(Wiper_Ver, iTween.Hash("z", ((Pos.position.x > 0 ? 180 : 0) + (Pos.position.y > 0 ? 90 : -90)) * (Pos.position.x > 0 ? 1 : -1) , "time", 2 * 1.5f, "easeType", "Linear"));
+                yield return new WaitForSeconds(2 * 1.5f);
                 Wiper_Ver.SetActive(false); // 비활성화
                 Warning_Wiper_Ver.SetActive(false);
                 isPatterning = false;
