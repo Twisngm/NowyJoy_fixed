@@ -25,6 +25,8 @@ public class GateBall : MonoBehaviour
     public PolygonCollider2D PlayerCol;
 
     public Heart_Queen HQ;
+
+   
     // Start is called before the first frame update
     void Start()
     {

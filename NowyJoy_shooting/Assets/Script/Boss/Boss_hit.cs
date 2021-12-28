@@ -12,6 +12,7 @@ public class Boss_hit : MonoBehaviour
         if (collision.tag == "Player_Bullet")
         {
             time.sec -= 0.5f;
+            time.GaugeValue -= 0.5f;
         }
     }
 }
