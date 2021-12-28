@@ -267,6 +267,26 @@ public class StageSelect : MonoBehaviour
                 {
                     this.transform.GetComponent<SpriteRenderer>().color = Color.white;
 
+                    if (GameManager.GM_Instance.starnum[0] == 1)
+                    {
+                        yellowstar.SetActive(true);
+                    }
+                    else if (GameManager.GM_Instance.starnum[0] == 2)
+                    {
+                        bluestar.SetActive(true);
+                        yellowstar.SetActive(false);
+                    }
+                }
+                break;
+            case "2":
+                if (GameManager.GM_Instance.stageUnlock[1] == false)
+                {
+                    this.transform.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0.75f);
+                }
+                else
+                {
+                    this.transform.GetComponent<SpriteRenderer>().color = Color.white;
+
                     if (GameManager.GM_Instance.starnum[1] == 1)
                     {
                         yellowstar.SetActive(true);
@@ -278,8 +298,8 @@ public class StageSelect : MonoBehaviour
                     }
                 }
                 break;
-            case "2":
-                if (GameManager.GM_Instance.stageUnlock[1] == false)
+            case "3":
+                if (GameManager.GM_Instance.stageUnlock[2] == false)
                 {
                     this.transform.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0.75f);
                 }
@@ -298,8 +318,8 @@ public class StageSelect : MonoBehaviour
                     }
                 }
                 break;
-            case "3":
-                if (GameManager.GM_Instance.stageUnlock[2] == false)
+            case "4":
+                if (GameManager.GM_Instance.stageUnlock[3] == false)
                 {
                     this.transform.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0.75f);
                 }
@@ -318,8 +338,8 @@ public class StageSelect : MonoBehaviour
                     }
                 }
                 break;
-            case "4":
-                if (GameManager.GM_Instance.stageUnlock[3] == false)
+            case "5":
+                if (GameManager.GM_Instance.stageUnlock[4] == false)
                 {
                     this.transform.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0.75f);
                 }
@@ -338,8 +358,8 @@ public class StageSelect : MonoBehaviour
                     }
                 }
                 break;
-            case "5":
-                if (GameManager.GM_Instance.stageUnlock[4] == false)
+            case "6":
+                if (GameManager.GM_Instance.stageUnlock[5] == false)
                 {
                     this.transform.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0.75f);
                 }
@@ -358,8 +378,8 @@ public class StageSelect : MonoBehaviour
                     }
                 }
                 break;
-            case "6":
-                if (GameManager.GM_Instance.stageUnlock[5] == false)
+            case "7":
+                if (GameManager.GM_Instance.stageUnlock[6] == false)
                 {
                     this.transform.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0.75f);
                 }
@@ -378,8 +398,8 @@ public class StageSelect : MonoBehaviour
                     }
                 }
                 break;
-            case "7":
-                if (GameManager.GM_Instance.stageUnlock[6] == false)
+            case "8":
+                if (GameManager.GM_Instance.stageUnlock[7] == false)
                 {
                     this.transform.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0.75f);
                 }
@@ -392,26 +412,6 @@ public class StageSelect : MonoBehaviour
                         yellowstar.SetActive(true);
                     }
                     else if (GameManager.GM_Instance.starnum[7] == 2)
-                    {
-                        bluestar.SetActive(true);
-                        yellowstar.SetActive(false);
-                    }
-                }
-                break;
-            case "8":
-                if (GameManager.GM_Instance.stageUnlock[7] == false)
-                {
-                    this.transform.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0.75f);
-                }
-                else
-                {
-                    this.transform.GetComponent<SpriteRenderer>().color = Color.white;
-
-                    if (GameManager.GM_Instance.starnum[8] == 1)
-                    {
-                        yellowstar.SetActive(true);
-                    }
-                    else if (GameManager.GM_Instance.starnum[8] == 2)
                     {
                         bluestar.SetActive(true);
                         yellowstar.SetActive(false);

@@ -3230,7 +3230,7 @@ MonoBehaviour:
   changeScene: 0
   isNext: 0
   yellowstar: {fileID: 1522636115}
-  bluestar: {fileID: 250587915}
+  bluestar: {fileID: 198215290}
   scaleSpeed: 3
 --- !u!212 &1583012131
 SpriteRenderer:
