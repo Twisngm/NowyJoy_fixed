@@ -84,13 +84,15 @@ public class StageManager : MonoBehaviour
                 {
                     PerfectClear.SetActive(true);
                     Clearstar_blue.SetActive(true);
+                    GM.CurrentStage = GM.stagenum + 1;
                     GM.starSaver(GM.stagenum, 2);
                 }
                 else
                 {
                     Clear.SetActive(true);
                     Clearstar_yellow.SetActive(true);
-                    if (GM.starnum[GM.stagenum] != 2)
+                    GM.CurrentStage = GM.stagenum + 1;
+                    if (GM.starnum[GM.stagenum-1] != 2)
                     {
                         GM.starSaver(GM.stagenum, 1);
                     }
@@ -121,7 +123,7 @@ public class StageManager : MonoBehaviour
     {
         pause.isPause = false;
         ptnManager.SetActive(false);
-        GM.CurrentStage = GM.stagenum+1;
+        
         SceneManager.LoadScene("stage" + (GM.stagenum + 1));
        // GM.stagenum += 1;
     }
