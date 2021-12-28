@@ -31,6 +31,7 @@ public class PlayerBullet : MonoBehaviour
         if (collision.gameObject.tag == "Rabbit" || collision.gameObject.tag == "Bird" || collision.gameObject.tag == "Owl")
         { //보스와 닿았을때 작동할 코드.
             Destroy(gameObject);
+
         }
 
     }
@@ -44,6 +45,8 @@ public class PlayerBullet : MonoBehaviour
         roller.z += rollangle;
 
         transform.Rotate(roller);
+
+        SoundManager.Instance.PlayattackSE("attack"); //플레이어 공격 소리
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -58,6 +61,7 @@ public class PlayerBullet : MonoBehaviour
             GameObject MinusTime = obj.MakeObj("minusTime");
             bulletFire.transform.position = gameObject.transform.position;
             gameObject.SetActive(false);
+            SoundManager.Instance.PlaySE("explode"); // 보스에게 맞을때 사운드 - 임시로
             // Destroy(gameObject);
 
         }

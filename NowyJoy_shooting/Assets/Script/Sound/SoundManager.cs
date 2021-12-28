@@ -32,6 +32,10 @@ public class SoundManager : MonoBehaviour
     public AudioSource[] AudioSourceEfects;// 효과음들을 동시에 여러개 재생 될 수 있음
     public string[] playSoundName; //재생 중인 효과음 사운드 이름 배열
 
+    public Sound[] attackEffectSounds; //공격 효과음 오디오 클립들
+    public AudioSource[] attackAudioSourceEfects;//공격 효과음들을 동시에 여러개 재생 될 수 있음
+    public string[] attackPlaySoundName; //재생 중인 공격 효과음 사운드 이름 배열
+
     float masterValue; //마스터 볼륨 값
     float bgmValue; //브금 볼륨 값
     float sfxValue; //효과음 볼륨 값
@@ -77,6 +81,7 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         playSoundName = new string[AudioSourceEfects.Length];
+        attackPlaySoundName = new string[attackAudioSourceEfects.Length];
     }
 
     void OnEnable()
@@ -110,6 +115,29 @@ public class SoundManager : MonoBehaviour
                         AudioSourceEfects[j].clip = effectSounds[i].clip;
                         AudioSourceEfects[j].Play();
                         playSoundName[j] = effectSounds[i].name;
+                        return;
+                    }
+                }
+                Debug.Log("모든 가용 AudioSource가 사용 중입니다.");
+                return;
+            }
+        }
+        Debug.Log(_name + "사운드가 SoundManager에 등록되지 않았습니다.");
+    }
+
+    public void PlayattackSE(string _name) // 공격 효과음 전용 
+    {
+        for (int i = 0; i < attackEffectSounds.Length; i++)
+        {
+            if (_name == attackEffectSounds[i].name)
+            {
+                for (int j = 0; j < attackAudioSourceEfects.Length; j++)
+                {
+                    if (!attackAudioSourceEfects[j].isPlaying)
+                    {
+                        attackAudioSourceEfects[j].clip = attackEffectSounds[i].clip;
+                        attackAudioSourceEfects[j].Play();
+                        attackPlaySoundName[j] = attackEffectSounds[i].name;
                         return;
                     }
                 }
@@ -232,6 +260,11 @@ public class SoundManager : MonoBehaviour
         for (int i = 0; i < AudioSourceEfects.Length; i++)
         {
             AudioSourceEfects[i].volume = slider.value;
+        }
+
+        for (int i = 0; i < attackAudioSourceEfects.Length; i++)
+        {
+            attackAudioSourceEfects[i].volume = slider.value;
         }
         sfxValue = slider.value;
         PlayerPrefs.SetFloat("sfxvolume", sfxValue);

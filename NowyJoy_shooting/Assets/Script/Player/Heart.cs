@@ -56,8 +56,8 @@ public class Heart : MonoBehaviour
         gameObject.layer = 7;
         transform.parent.gameObject.layer = 7;
         anim.SetTrigger("Hit");
-      //  sprRend.color = new Color(1, 1, 1, 0.4f);
-
+        //  sprRend.color = new Color(1, 1, 1, 0.4f);
+        SoundManager.Instance.PlaySE("damaged"); // 플레이어 피격음
         Invoke("OffDamaged", 1.5f);
     }
 
