@@ -149,11 +149,11 @@ public class SceneChangeManager : MonoBehaviour
     { 
         if (SceneManager.GetActiveScene().name == "StageSelect" || SceneManager.GetActiveScene().name == "IntegratedMode")
         {
-           // Wall.SetActive(true);
+            Wall.SetActive(true);
             curtein_full.GetComponent<RectTransform>().DOAnchorPosY(5, 3f);
             yield return new WaitForSeconds(3f);
             isCurtein_Down_finished = true;
-           // Wall.SetActive(false);
+            Wall.SetActive(false);
             yield break;
             /*
             while (checkTime < 3.1f)
