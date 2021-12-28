@@ -44,6 +44,7 @@ public class Gate : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
             flame.GetComponent<SpriteRenderer>().DOFade(0, 0.2f);
         }
+        gameObject.SetActive(false);
 
 
     }

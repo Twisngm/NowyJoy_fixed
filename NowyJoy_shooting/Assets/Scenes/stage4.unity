@@ -2064,7 +2064,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1436016671}
         m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
         m_MethodName: nextStage
         m_Mode: 1
@@ -5587,6 +5587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RushWarning: {fileID: 871747495}
   Smoke: {fileID: 0}
+  SM: {fileID: 0}
 --- !u!4 &1035016807
 Transform:
   m_ObjectHideFlags: 0

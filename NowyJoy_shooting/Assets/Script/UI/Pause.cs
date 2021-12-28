@@ -47,6 +47,12 @@ public class Pause : MonoBehaviour
             Time.timeScale = 0;
         else if(!isPause)
             Time.timeScale = 1;
+
+
+        if(GameManager.GM_Instance.stagenum == 0)
+        {
+            OffPause();
+        }
     }
 
    public void OnPause()

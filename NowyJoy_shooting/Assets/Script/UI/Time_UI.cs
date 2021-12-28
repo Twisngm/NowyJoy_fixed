@@ -81,7 +81,7 @@ public class Time_UI : MonoBehaviour
     void time()
     {   
             sec -= Time.deltaTime;
-          GaugeValue = sec;
+        GaugeValue -= Time.deltaTime;
             if (sec <= 0)
             {
                 sec = 60;
