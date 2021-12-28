@@ -24,6 +24,7 @@ public class GateBall : MonoBehaviour
     public GameObject Player;
     public Animator anim;
     public PolygonCollider2D PlayerCol;
+    public GameObject PlayerEffect;
 
     public Heart_Queen HQ;
 
@@ -63,7 +64,9 @@ public class GateBall : MonoBehaviour
         yield return new WaitForSeconds(1f);
         goalCnt = 0;
         backGrounds[0].SetActive(false);
-   
+
+        PlayerEffect.SetActive(false);
+
         Wall.SetActive(true);
 
         for (int i = 0; i < Units.Length; i++)
@@ -124,7 +127,7 @@ public class GateBall : MonoBehaviour
             gates[i].SetActive(false);
         }
         Player.transform.position = new Vector3(0, -3.5f, 0);
-
+        PlayerEffect.SetActive(true);
         isGate = false;
         limitTime = 15;
         fade.DOFade(0, 1f);

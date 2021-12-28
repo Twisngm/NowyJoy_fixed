@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Pause : MonoBehaviour
 {
     public bool isPause = false;
@@ -48,8 +48,7 @@ public class Pause : MonoBehaviour
         else if(!isPause)
             Time.timeScale = 1;
 
-
-        if(GameManager.GM_Instance.stagenum == 0)
+        if(GameManager.GM_Instance.stagenum == 0 || SceneManager.GetActiveScene().buildIndex == 13 || SceneManager.GetActiveScene().buildIndex == 14 || SceneManager.GetActiveScene().buildIndex == 15)
         {
             OffPause();
         }

@@ -125,4 +125,11 @@ public class StageManager : MonoBehaviour
         SceneManager.LoadScene("stage" + (GM.stagenum + 1));
        // GM.stagenum += 1;
     }
+    public void GoToEndStage()
+    {
+        pause.isPause = false;
+        ptnManager.SetActive(false);
+        GM.CurrentStage = GM.stagenum + 1;
+        SceneManager.LoadScene(14);
+    }
 }

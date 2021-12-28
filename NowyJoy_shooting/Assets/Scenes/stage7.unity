@@ -719,7 +719,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 596337997}
         m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
-        m_MethodName: nextStage
+        m_MethodName: GoToEndStage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9275,7 +9275,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 596337997}
         m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
-        m_MethodName: nextStage
+        m_MethodName: GoToEndStage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -32,6 +32,7 @@ TagManager:
   - Thistle
   - Boss_Heart
   - Back
+  - BallWall
   layers:
   - Default
   - TransparentFX
@@ -42,7 +43,7 @@ TagManager:
   - Player
   - Invincibility
   - Enemy
-  - 
+  - BallWall
   - 
   - 
   - 
