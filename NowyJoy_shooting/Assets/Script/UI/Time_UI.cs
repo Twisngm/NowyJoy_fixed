@@ -17,43 +17,54 @@ public class Time_UI : MonoBehaviour
     }
     private void Start()
     {
-        if (gm.stagenum == 1 || gm.stagenum == 2)
+        if (gm.stagenum == 1)
         {
             min = 1;
-            sec = 0;
-
-            
+            sec = 0;         
         }
+
+        else if(gm.stagenum == 2)
+        {
+            min = 2;
+            sec = 30;
+        }
+
         else if (gm.stagenum == 3)
         {
             min = 2;
             sec = 0;
         }
+
         else if (gm.stagenum == 4 || gm.stagenum == 5)
         {
             min = 2;
             sec = 0;
         }
+
         else if (gm.stagenum == 6)
         {
             min = 3;
             sec = 0;
         }
+
         else if (gm.stagenum == 7)
         {
             min = 2;
             sec = 0;
         }
+
         else if (gm.stagenum == 8)
         {
             min = 3;
             sec = 0;
         }
+
         else
         {
             min = 5;
             sec = 0;
         }
+
         GaugeValue = min * 60;
     }
 
@@ -61,9 +72,13 @@ public class Time_UI : MonoBehaviour
     {
         time();
 
-        if (gm.stagenum == 1 || gm.stagenum == 2)
+        if (gm.stagenum == 1)
         {
             Gauge.fillAmount =  GaugeValue / 60;
+        }
+        else if(gm.stagenum == 2)
+        {
+            Gauge.fillAmount = GaugeValue / 120;
         }
         else if (gm.stagenum == 3)
         {

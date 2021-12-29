@@ -63,8 +63,8 @@ public class StageManager : MonoBehaviour
             GM.Save();
 
             if (GM.stagenum == 8)
-            {
-                GM.stageUnlock[GM.stagenum] = true;
+            {   
+               
                 if (GM.HP >= (GM.MaxHP * 0.8))
                 {                
                     GM.starSaver(GM.stagenum, 2);

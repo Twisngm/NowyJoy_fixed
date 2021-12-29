@@ -842,7 +842,7 @@ public class PatternManager : MonoBehaviour
 
             float randPosX = Random.Range(-0.75f, 0.75f);
             float randPosY = Random.Range(-3.2f, 3.2f);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.01f);
             if (Direction == 0)
             {
                 flamingo.transform.position = new Vector2(randPosX, flaPos[Direction].transform.position.y);
@@ -1050,7 +1050,6 @@ public class PatternManager : MonoBehaviour
             yield return new WaitForSeconds(Wiper_Speed);
             Wiper_Hor.SetActive(false); // 비활성화
             Warning_Wiper_Hor.SetActive(false);
-
         }
         
         else if(Pos.position.y != 0) // 상하 와이퍼
@@ -1062,7 +1061,9 @@ public class PatternManager : MonoBehaviour
                     Warning[0].SetActive(true);
                 else
                     Warning[1].SetActive(true);
+
                 yield return new WaitForSeconds(1f);
+
                 if (Pos.position.y > 0)
                     Warning[0].SetActive(false);
                 else
