@@ -168,7 +168,7 @@ public class SoundManager : MonoBehaviour
             bgmPlayer.clip = BgmAudioClip_3stage;
             bgmPlayer.Play();
         }
-        else if (SceneManager.GetActiveScene().name == "Stage6")
+        else if (SceneManager.GetActiveScene().name == "stage6")
         { // 4스테이지 브금
             bgmPlayer = GameObject.Find("BGMSoundPlayer").GetComponent<AudioSource>();
             bgmPlayer.clip = BgmAudioClip_4stage;

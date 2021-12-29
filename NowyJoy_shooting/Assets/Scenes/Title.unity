@@ -4293,7 +4293,7 @@ MonoBehaviour:
   playSoundName: []
   attackEffectSounds:
   - name: attack
-    clip: {fileID: 8300000, guid: 090c73e280e8e7f4fa5fd3a76adf1ea8, type: 3}
+    clip: {fileID: 8300000, guid: 6f648f34d4014764ca66de475dd95e47, type: 3}
   attackAudioSourceEfects:
   - {fileID: 1136271718}
   - {fileID: 1136271717}
