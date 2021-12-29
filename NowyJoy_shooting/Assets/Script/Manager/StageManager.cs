@@ -71,7 +71,7 @@ public class StageManager : MonoBehaviour
                 }
                 else
                 {
-                    if (GM.starnum[GM.stagenum] != 2)
+                    if (GM.starnum[GM.stagenum - 1] != 2)
                     {
                         GM.starSaver(GM.stagenum, 1);
                     }

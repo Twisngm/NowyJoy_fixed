@@ -724,7 +724,7 @@ public class PatternManager : MonoBehaviour
 
       
             Warning[Direction].SetActive(true);
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1.25f);
             Warning[Direction].SetActive(false);
             sevenWay_ptn.transform.position = shapePos[Direction].transform.position;
             sevenWay_ptn.GetComponent<UbhShotCtrl>().StartShotRoutine();
@@ -732,7 +732,7 @@ public class PatternManager : MonoBehaviour
             sevenWay_ptn.GetComponent<UbhShotCtrl>().StopShotRoutineAndPlayingShot();
             Count++;
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1.25f);
             cnt++;
         }
         isPatterning = false;
@@ -770,7 +770,7 @@ public class PatternManager : MonoBehaviour
             Spiral_ptn.GetComponent<UbhShotCtrl>().StopShotRoutineAndPlayingShot();
             Count++;
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1.25f);
             cnt++;
         }
         isPatterning = false;
@@ -803,11 +803,11 @@ public class PatternManager : MonoBehaviour
             Warning[Direction].SetActive(false);
             Circle_ptn.transform.position = shapePos[Direction].transform.position;
             Circle_ptn.GetComponent<UbhShotCtrl>().StartShotRoutine();
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.2f);
             Circle_ptn.GetComponent<UbhShotCtrl>().StopShotRoutineAndPlayingShot();
             Count++;
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1.25f);
             cnt++;
         }
         isPatterning = false;
