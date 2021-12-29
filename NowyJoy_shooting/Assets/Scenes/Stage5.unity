@@ -12186,7 +12186,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1536305144849961176, guid: 27ce6e1305dbe154f842a41ae8d9b3b8, type: 3}
       propertyPath: m_Text
-      value: "\uCC3D\uD638"
+      value: "\uC870\uC774"
       objectReference: {fileID: 0}
     - target: {fileID: 1536305144849961177, guid: 27ce6e1305dbe154f842a41ae8d9b3b8, type: 3}
       propertyPath: m_AnchoredPosition.y

@@ -983,7 +983,7 @@ public class PatternManager : MonoBehaviour
         // 중앙선 드랍
 
         centerLine.SetActive(true);
-        iTween.MoveTo(centerLine, iTween.Hash("z", 0, "time", 1.5f, "easeType", "EaseOutBounce"));
+        iTween.MoveTo(centerLine, iTween.Hash("z", 0, "time", 1f, "easeType", "EaseOutBounce"));
 
         // 플레이어 활성화 및 분열
 
@@ -1177,7 +1177,7 @@ public class PatternManager : MonoBehaviour
 
         while (height <= 1) /// 레이저 발사 기능
         {
-            height += LaserSpeed / 500;
+            height += (LaserSpeed / 5) * Time.deltaTime;
             Laser.transform.localScale = new Vector3(height, 1 , 1);
             yield return new WaitForSeconds(0.001f * Time.deltaTime);
         } ///
