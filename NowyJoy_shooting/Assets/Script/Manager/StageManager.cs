@@ -65,19 +65,18 @@ public class StageManager : MonoBehaviour
             if (GM.stagenum == 8)
             {
                 GM.stageUnlock[GM.stagenum] = true;
-                GM.CurrentStage = GM.stagenum + 1;
                 if (GM.HP >= (GM.MaxHP * 0.8))
                 {                
                     GM.starSaver(GM.stagenum, 2);
                 }
                 else
                 {
-                    GM.CurrentStage = GM.stagenum + 1;
                     if (GM.starnum[GM.stagenum - 1] != 2)
                     {          
                         GM.starSaver(GM.stagenum, 1);
                     }
                 }
+                GM.Loadstar();
                 SceneManager.LoadScene(15);
             }
             else

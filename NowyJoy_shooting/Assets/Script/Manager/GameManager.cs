@@ -205,8 +205,6 @@ public class GameManager : MonoBehaviour
     }
     public void Loadstar()
     {
-        if (PlayerPrefs.HasKey("Star1"))
-        {
             if (CurrentStage == 1)
             {
                 starnum[0] = PlayerPrefs.GetInt("Star1");
@@ -267,6 +265,5 @@ public class GameManager : MonoBehaviour
                 starnum[6] = PlayerPrefs.GetInt("Star7");
                 starnum[7] = PlayerPrefs.GetInt("Star8");
             }
-        }
     }
 }
