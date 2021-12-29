@@ -623,7 +623,6 @@ public class PatternManager : MonoBehaviour
 
     public void shapeShooting()
     {
-      
         StartCoroutine("shapeSht");
 
       
@@ -695,7 +694,8 @@ public class PatternManager : MonoBehaviour
         int cnt = 0;
         while (cnt < 4)
         {
-            StartCoroutine("shapeShoot");   
+            SoundManager.Instance.PlaySE("explode"); // ½ÇÇè
+            StartCoroutine("shapeShoot");
             yield return new WaitForSeconds(1.25f);
             cnt++;
         }
