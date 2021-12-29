@@ -149,17 +149,20 @@ public class GateBall : MonoBehaviour
             anim.Play("SmokeFX4");
             yield return new WaitForSeconds(0.45f);
 
-            if(goalCnt == 0)
-                GameManager.GM_Instance.HP -= 15;
+            if (GameManager.GM_Instance.Perfectmode == false)
+            {
+                if (goalCnt == 0)
+                    GameManager.GM_Instance.HP -= 15;
 
-            else if(goalCnt == 1)
-                GameManager.GM_Instance.HP -= 12 ;
+                else if (goalCnt == 1)
+                    GameManager.GM_Instance.HP -= 12;
 
-            else if (goalCnt == 2)
-                GameManager.GM_Instance.HP -= 8;
+                else if (goalCnt == 2)
+                    GameManager.GM_Instance.HP -= 8;
 
-            else 
-                GameManager.GM_Instance.HP -= 4;
+                else
+                    GameManager.GM_Instance.HP -= 4;
+            }
 
             StartCoroutine("FadeOut");
         }

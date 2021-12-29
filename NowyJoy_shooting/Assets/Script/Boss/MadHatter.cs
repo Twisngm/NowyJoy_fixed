@@ -220,7 +220,10 @@ public class MadHatter : MonoBehaviour
             RightStart();
             Effect.transform.position = Player.transform.position;
             anim.Play("SmokeFX4");
-            GameManager.GM_Instance.HP -= 5;
+            if (GameManager.GM_Instance.Perfectmode == false)
+            {
+                GameManager.GM_Instance.HP -= 5;
+            }
             time = 0;
            
         }
