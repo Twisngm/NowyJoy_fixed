@@ -275,7 +275,10 @@ public class Player : MonoBehaviour
         //Quaternion
         targetRotation = Quaternion.LookRotation(Vector3.forward, quaternionToTarget);
 
-
+        if (targetRotation.z <0.1f && targetRotation.z > -0.1f)
+        {
+            return;
+        }
 
         if (currentangle < -0.25f && (targetRotation.z < 0.0f || targetRotation.z > 0.25f))
         {
@@ -296,6 +299,7 @@ public class Player : MonoBehaviour
     {
         anim.Play("ShotEffect");
         GameObject PlayerBullet = Instantiate(Attacker, new Vector3(transform.position.x, transform.position.y+0.8f, transform.position.z), Quaternion.Euler(0.0f, 0.0f, 0.0f));
+        SoundManager.Instance.PlayattackSE("attack"); //플레이어 공격 소리
         PlayerBulletcontoller = PlayerBullet.GetComponent<PlayerBullet>();
         
         PlayerBulletcontoller.Launch(Vector2.up, PBspeed);

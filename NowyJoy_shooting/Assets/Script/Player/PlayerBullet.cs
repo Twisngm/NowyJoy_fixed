@@ -46,7 +46,7 @@ public class PlayerBullet : MonoBehaviour
 
         transform.Rotate(roller);
 
-        SoundManager.Instance.PlayattackSE("attack"); //플레이어 공격 소리
+        //SoundManager.Instance.PlayattackSE("attack"); //플레이어 공격 소리
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -60,9 +60,9 @@ public class PlayerBullet : MonoBehaviour
             GameObject bulletFire = obj.MakeObj("bulletFire");
             GameObject MinusTime = obj.MakeObj("minusTime");
             bulletFire.transform.position = gameObject.transform.position;
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
             SoundManager.Instance.PlaySE("explode"); // 보스에게 맞을때 사운드 - 임시로
-            // Destroy(gameObject);
+            Destroy(gameObject);
 
         }
     }
