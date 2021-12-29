@@ -55,7 +55,7 @@ public class StageManager : MonoBehaviour
         
             if(GM.stagenum == 2 || GM.stagenum == 3 || GM.stagenum == 5 || GM.stagenum == 6 || GM.stagenum == 8)
             {
-                SoundManager.Instance.PlaySE("gameClear"); // 게임 클리어 사운드
+                //SoundManager.Instance.PlaySE("gameClear");  게임 클리어 사운드
                 bossClear = true;
                 yield return new WaitForSeconds(7.5f);
             }
