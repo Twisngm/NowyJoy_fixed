@@ -39,9 +39,14 @@ public class Time_UI : MonoBehaviour
             min = 3;
             sec = 0;
         }
-        else if (gm.stagenum == 7 || gm.stagenum == 8)
+        else if (gm.stagenum == 7)
         {
             min = 2;
+            sec = 0;
+        }
+        else if (gm.stagenum == 8)
+        {
+            min = 3;
             sec = 0;
         }
         else
@@ -72,9 +77,13 @@ public class Time_UI : MonoBehaviour
         {
             Gauge.fillAmount = GaugeValue / 180;
         }
-        else if (gm.stagenum == 7 || gm.stagenum == 8)
+        else if (gm.stagenum == 7 )
         {
             Gauge.fillAmount = GaugeValue / 120 ;
+        }
+        else if(gm.stagenum == 8)
+        {
+            Gauge.fillAmount = GaugeValue / 180;
         }
     }
 

@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class Hedgehog : MonoBehaviour
 {
+    public float time;
     public GameObject target;
     public float rotateSpeed;
 
@@ -20,14 +21,16 @@ public class Hedgehog : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(time >= 0)
+        {
+            time -= Time.deltaTime;
+        }
     }
 
     IEnumerator chase()
     {
-        float time = 3;
-
-        while(time >= 0)
+        time = 3;   
+        while(true)
         {
             Vector2 direction = new Vector2(transform.position.x - target.transform.position.x,
                 transform.position.y - target.transform.position.y);
@@ -36,8 +39,11 @@ public class Hedgehog : MonoBehaviour
             Quaternion angleAxis = Quaternion.AngleAxis(angle - 90f, Vector3.forward);
             Quaternion rotation = Quaternion.Slerp(transform.rotation, angleAxis, rotateSpeed * Time.deltaTime);
             transform.rotation = rotation;
-            time -= 0.01f;
-            yield return new WaitForSeconds(0.01f * Time.deltaTime);
+            yield return new WaitForSeconds(0.001f);
+            if(time <= 0)
+            {
+                break;
+            }
         }
         transform.DOMove(target.transform.position, 1.5f);
         yield return new WaitForSeconds(3f);

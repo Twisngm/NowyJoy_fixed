@@ -93,7 +93,7 @@ public class GateBall : MonoBehaviour
 
         for (int i = 0; i < gates.Length; i++)
         {
-            gates[i].transform.DOMove(GateVec[i], 1.5f).SetEase(Ease.OutBounce);    
+            gates[i].transform.DOMove(GateVec[i], 1.5f).SetEase(Ease.Linear);    
         }
 
         isGate = true;
@@ -123,7 +123,7 @@ public class GateBall : MonoBehaviour
 
         for (int i = 0; i < gates.Length; i++)
         {
-            gates[i].transform.position = new Vector3(gates[i].transform.position.x, gates[i].transform.position.y + 5, gates[i].transform.position.z); 
+            gates[i].transform.position = new Vector3(gates[i].transform.position.x, 9, gates[i].transform.position.z); 
             gates[i].SetActive(false);
         }
         Player.transform.position = new Vector3(0, -3.5f, 0);
