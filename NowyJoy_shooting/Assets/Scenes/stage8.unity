@@ -16707,10 +16707,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate
       objectReference: {fileID: 0}
-    - target: {fileID: 7825907306501760587, guid: 7685c5413cb6caf4ba3963335e1cc0a2, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7685c5413cb6caf4ba3963335e1cc0a2, type: 3}
 --- !u!1 &752769086214683301 stripped

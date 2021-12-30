@@ -69,27 +69,43 @@ public class GameManager : MonoBehaviour
                 break;
             case 3:
                 stagenum = 1; // 스테이지 1
+                if (GameManager.GM_Instance.CurrentStage < 1)
+                    GameManager.GM_Instance.CurrentStage = 1;
                 break;
             case 4:
                 stagenum = 2; // 스테이지 2
+                if (GameManager.GM_Instance.CurrentStage < 2)
+                    GameManager.GM_Instance.CurrentStage = 2;
                 break;
             case 5:
                 stagenum = 3; // 스테이지 3
+                if (GameManager.GM_Instance.CurrentStage < 3)
+                    GameManager.GM_Instance.CurrentStage = 3;
                 break;
             case 6:     // 스테이지 4
                 stagenum = 4;
+                if (GameManager.GM_Instance.CurrentStage < 4)
+                    GameManager.GM_Instance.CurrentStage = 4;
                 break;
             case 7: // 스테이지 5
                 stagenum = 5;
+                if (GameManager.GM_Instance.CurrentStage < 5)
+                    GameManager.GM_Instance.CurrentStage = 5;
                 break;
             case 8:
                 stagenum = 6;
+                if (GameManager.GM_Instance.CurrentStage < 6)
+                    GameManager.GM_Instance.CurrentStage = 6;
                 break;
             case 9:
                 stagenum = 7;
+                if (GameManager.GM_Instance.CurrentStage < 7)
+                    GameManager.GM_Instance.CurrentStage = 7;
                 break;
             case 10:
                 stagenum = 8;
+                if (GameManager.GM_Instance.CurrentStage < 8)
+                    GameManager.GM_Instance.CurrentStage = 8;
                 break;
             case 11:
                 stagenum = 9;

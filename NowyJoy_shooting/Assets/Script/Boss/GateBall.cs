@@ -93,7 +93,7 @@ public class GateBall : MonoBehaviour
 
         for (int i = 0; i < gates.Length; i++)
         {
-            gates[i].transform.DOMove(GateVec[i], 1.5f).SetEase(Ease.Linear);    
+            gates[i].transform.DOMove(GateVec[i], 0.5f).SetEase(Ease.Linear);    
         }
 
         isGate = true;
