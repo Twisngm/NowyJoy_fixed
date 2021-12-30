@@ -42,7 +42,7 @@ public class Boss_Trigger_Bird : MonoBehaviour
     }
     IEnumerator Appear()
     {
-        if (time.min <= 0)
+        if (time.min <= 1)
             StartCoroutine("Appearance");
         else
         {

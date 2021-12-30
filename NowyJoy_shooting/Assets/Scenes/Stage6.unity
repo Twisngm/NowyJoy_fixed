@@ -12621,7 +12621,7 @@ PrefabInstance:
       objectReference: {fileID: 1849523737}
     - target: {fileID: 5710001871153262703, guid: bb811f19bacba5042a86a3eed00e4e87, type: 3}
       propertyPath: LaserSpeed
-      value: 2
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 5710001871153262703, guid: bb811f19bacba5042a86a3eed00e4e87, type: 3}
       propertyPath: Spiral_ptn

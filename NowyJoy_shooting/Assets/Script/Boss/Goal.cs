@@ -21,7 +21,7 @@ public class Goal : MonoBehaviour
     {
         if(collision.tag == "Ball" && GB.goalCnt >= 3)
         {
-            GB.isGoal = true;
+         //   GB.isGoal = true;
         }
     }
 }

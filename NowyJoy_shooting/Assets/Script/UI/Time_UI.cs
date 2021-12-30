@@ -70,7 +70,7 @@ public class Time_UI : MonoBehaviour
             sec = 0;
         }
 
-        GaugeValue = min * 60;
+        GaugeValue = min * 60 + sec;
     }
 
     void Update()

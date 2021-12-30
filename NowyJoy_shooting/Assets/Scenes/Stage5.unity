@@ -4093,7 +4093,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 567155359601311010, guid: e906f26082f7d7e4c8e1e6e13dfe98b3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 810
+      value: 570
       objectReference: {fileID: 0}
     - target: {fileID: 567155359601311010, guid: e906f26082f7d7e4c8e1e6e13dfe98b3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -10363,6 +10363,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   BossName: {fileID: 0}
+  PM: {fileID: 0}
 --- !u!4 &1472398095
 Transform:
   m_ObjectHideFlags: 0
@@ -13894,7 +13895,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 567155359601311010, guid: e906f26082f7d7e4c8e1e6e13dfe98b3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 810
+      value: 570
       objectReference: {fileID: 0}
     - target: {fileID: 567155359601311010, guid: e906f26082f7d7e4c8e1e6e13dfe98b3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -14430,7 +14431,7 @@ PrefabInstance:
       objectReference: {fileID: 542210982}
     - target: {fileID: 5710001871153262703, guid: bb811f19bacba5042a86a3eed00e4e87, type: 3}
       propertyPath: LaserSpeed
-      value: 2
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 5710001871153262703, guid: bb811f19bacba5042a86a3eed00e4e87, type: 3}
       propertyPath: Spiral_ptn

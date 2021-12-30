@@ -8,7 +8,7 @@ public class GateBall : MonoBehaviour
 {
     public float limitTime = 15;
     public bool isGate = false;
-    public bool isGoal = false;
+
     public int goalCnt = 0;
 
     public GameObject[] backGrounds;
@@ -19,7 +19,7 @@ public class GateBall : MonoBehaviour
     public GameObject[] gates;
     public GameObject[] Triggers;
     public Vector3[] GateVec;
-    public GameObject Goal;
+
     public GameObject timer;
     public GameObject Player;
     public Animator anim;
@@ -28,6 +28,7 @@ public class GateBall : MonoBehaviour
 
     public Heart_Queen HQ;
 
+    public GameObject PM;
     GameObject[] Gate_Units;
     // Start is called before the first frame update
     void Start()
@@ -40,7 +41,8 @@ public class GateBall : MonoBehaviour
     void Update()
     {
         CountDown();
-        FadeOUT();
+        if(goalCnt == 3)
+            FadeOUT();
        
     }
 
@@ -51,16 +53,15 @@ public class GateBall : MonoBehaviour
 
     public void FadeOUT()
     {
-        if(isGoal)
-        {
-            StartCoroutine("FadeOut");
-        }
+       
+      StartCoroutine("FadeOut");
+        
     }
 
     IEnumerator FadeIn()
     {
         fade.DOFade(1, 1f);
-        
+        PM.SetActive(false);
         yield return new WaitForSeconds(1f);
         goalCnt = 0;
         backGrounds[0].SetActive(false);
@@ -79,7 +80,7 @@ public class GateBall : MonoBehaviour
         ball.SetActive(true);
         ball.transform.position = new Vector3(0, -2.55f, 0);
 
-        Goal.SetActive(true);
+        
 
         for (int i = 0; i < gates.Length; i++)
         {
@@ -101,9 +102,9 @@ public class GateBall : MonoBehaviour
 
     IEnumerator FadeOut()
     {
-        isGoal = false;
+       
         fade.DOFade(1, 1f);
-      
+        goalCnt = 0;
         yield return new WaitForSeconds(1f);
         backGrounds[0].SetActive(true);
 
@@ -119,7 +120,7 @@ public class GateBall : MonoBehaviour
 
         ball.SetActive(false);
 
-        Goal.SetActive(false);
+ 
 
         for (int i = 0; i < gates.Length; i++)
         {
@@ -129,6 +130,7 @@ public class GateBall : MonoBehaviour
         Player.transform.position = new Vector3(0, -3.5f, 0);
         PlayerEffect.SetActive(true);
         isGate = false;
+        PM.SetActive(true);
         limitTime = 15;
         fade.DOFade(0, 1f);
         
@@ -144,7 +146,7 @@ public class GateBall : MonoBehaviour
 
     IEnumerator GoalFail()
     {
-        if(limitTime <= 0 && !isGoal)
+        if(limitTime <= 0 && goalCnt < 3)
         {
             anim.Play("SmokeFX4");
             yield return new WaitForSeconds(0.45f);
@@ -163,7 +165,7 @@ public class GateBall : MonoBehaviour
                 else
                     GameManager.GM_Instance.HP -= 4;
             }
-
+            Debug.Log("adf");
             StartCoroutine("FadeOut");
         }
         else
