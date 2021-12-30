@@ -139,16 +139,14 @@ public class StageSelect : MonoBehaviour
                     break;
                 case "2":
                         Debug.Log("2스테이지로 이동");
-                    if (GameManager.GM_Instance.CurrentStage < 3)
-                        GameManager.GM_Instance.CurrentStage = 2;
+
                     SceneManager.LoadScene(4);
                     
                     break;
                 case "3":
    
                         Debug.Log("3스테이지로 이동");
-                    if (GameManager.GM_Instance.CurrentStage < 4)
-                        GameManager.GM_Instance.CurrentStage = 3;
+
                     SceneManager.LoadScene(5);
                  
 
@@ -157,40 +155,35 @@ public class StageSelect : MonoBehaviour
                 case "4":
 
                         Debug.Log("4스테이지로 이동");
-                    if (GameManager.GM_Instance.CurrentStage < 5)
-                        GameManager.GM_Instance.CurrentStage = 4;
+
                     SceneManager.LoadScene(6);
              
                     break;
                 case "5":
     
                         Debug.Log("5스테이지로 이동");
-                    if (GameManager.GM_Instance.CurrentStage < 6)
-                        GameManager.GM_Instance.CurrentStage = 5;
+
                     SceneManager.LoadScene(7);
                 
                     break;
                 case "6":
 
                         Debug.Log("6스테이지로 이동");
-                    if (GameManager.GM_Instance.CurrentStage < 7)
-                        GameManager.GM_Instance.CurrentStage = 6;
+
                     SceneManager.LoadScene(8);
                 
                     break;
                 case "7":
             
                         Debug.Log("7스테이지로 이동");
-                    if (GameManager.GM_Instance.CurrentStage < 8)
-                        GameManager.GM_Instance.CurrentStage = 7;
+
                     SceneManager.LoadScene(9);
                
                     break;
                 case "8":
          
                         Debug.Log("8스테이지로 이동");
-                    if (GameManager.GM_Instance.CurrentStage < 9)
-                        GameManager.GM_Instance.CurrentStage = 8;
+
                     SceneManager.LoadScene(14);
               
                     break;

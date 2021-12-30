@@ -14,6 +14,7 @@ public class Boss_Trigger_Rabbit : MonoBehaviour
     public GameObject Ui;
     public RectTransform[] direction;
     public Text BossName;
+    public GameObject PM;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +32,7 @@ public class Boss_Trigger_Rabbit : MonoBehaviour
         direction[0] = GameObject.Find("direction").transform.Find("UP").GetComponent<RectTransform>();
         direction[1] = GameObject.Find("direction").transform.Find("Down").GetComponent<RectTransform>();
         BossName = GameObject.Find("direction").transform.Find("Name").GetComponent<Text>();
+        PM = GameObject.Find("Managers").transform.Find("patternManager").gameObject;
         Appear();
     }
     public void Appear()
@@ -63,6 +65,7 @@ public class Boss_Trigger_Rabbit : MonoBehaviour
         BossName.DOFade(0, 0.5f);
         direction[0].DOAnchorPosY(128, 0.5f);
         direction[1].DOAnchorPosY(-128, 0.5f);
+        PM.SetActive(true);
         // pause.isPause = false;
 
     }

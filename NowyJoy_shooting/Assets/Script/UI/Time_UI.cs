@@ -31,14 +31,19 @@ public class Time_UI : MonoBehaviour
 
         else if (gm.stagenum == 3)
         {
-            min = 2;
-            sec = 0;
+            min = 3;
+            sec = 30;
         }
 
-        else if (gm.stagenum == 4 || gm.stagenum == 5)
+        else if (gm.stagenum == 4)
         {
             min = 2;
             sec = 0;
+        }
+        else if(gm.stagenum == 5)
+        {
+            min = 2;
+            sec = 30;
         }
 
         else if (gm.stagenum == 6)
@@ -56,7 +61,7 @@ public class Time_UI : MonoBehaviour
         else if (gm.stagenum == 8)
         {
             min = 3;
-            sec = 0;
+            sec = 30;
         }
 
         else
@@ -78,27 +83,31 @@ public class Time_UI : MonoBehaviour
         }
         else if(gm.stagenum == 2)
         {
-            Gauge.fillAmount = GaugeValue / 120;
+            Gauge.fillAmount = GaugeValue / 150;
         }
-        else if (gm.stagenum == 3)
+        else if(gm.stagenum == 3)
+        {
+            Gauge.fillAmount = GaugeValue / 210;
+        }
+        else if(gm.stagenum == 4)
         {
             Gauge.fillAmount = GaugeValue / 120;
         }
-        else if (gm.stagenum == 4 || gm.stagenum == 5)
+        else if(gm.stagenum == 5)
         {
-            Gauge.fillAmount = GaugeValue / 120;
+            Gauge.fillAmount = GaugeValue / 150;
         }
         else if (gm.stagenum == 6)
         {
             Gauge.fillAmount = GaugeValue / 180;
         }
-        else if (gm.stagenum == 7 )
+        else if (gm.stagenum == 7)
         {
-            Gauge.fillAmount = GaugeValue / 120 ;
+            Gauge.fillAmount = GaugeValue / 120;
         }
         else if(gm.stagenum == 8)
         {
-            Gauge.fillAmount = GaugeValue / 180;
+            Gauge.fillAmount = GaugeValue / 210;
         }
     }
 
