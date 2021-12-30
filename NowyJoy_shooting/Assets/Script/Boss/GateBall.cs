@@ -172,7 +172,7 @@ public class GateBall : MonoBehaviour
         {
             yield return new WaitForSeconds(0.1f);
             StartCoroutine("GoalFail");
-            Debug.Log("¹Ç¤Í¾ß");
+           
         }
     }
 }
