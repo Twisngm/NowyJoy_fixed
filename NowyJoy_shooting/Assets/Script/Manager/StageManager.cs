@@ -86,14 +86,20 @@ public class StageManager : MonoBehaviour
                 {
                     PerfectClear.SetActive(true);
                     Clearstar_blue.SetActive(true);
-                    GM.CurrentStage = GM.stagenum + 1;
+                    if (GM.CurrentStage <= GM.stagenum)
+                    {
+                        GM.CurrentStage = GM.stagenum + 1;
+                    }
                     GM.starSaver(GM.stagenum, 2);
                 }
                 else
                 {
                     Clear.SetActive(true);
                     Clearstar_yellow.SetActive(true);
-                    GM.CurrentStage = GM.stagenum + 1;
+                    if (GM.CurrentStage <= GM.stagenum)
+                    {
+                        GM.CurrentStage = GM.stagenum + 1;
+                    }
                     if (GM.starnum[GM.stagenum-1] != 2)
                     {
                         GM.starSaver(GM.stagenum, 1);
