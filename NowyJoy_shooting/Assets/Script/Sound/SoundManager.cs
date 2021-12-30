@@ -59,6 +59,12 @@ public class SoundManager : MonoBehaviour
     private AudioClip BgmAudioClip_5stage;
     [SerializeField]
     private AudioClip BgmAudioClip_6stage;
+    [SerializeField]
+    private AudioClip BgmAudioClip_7stage;
+    [SerializeField]
+    private AudioClip BgmAudioClip_8stage;
+    [SerializeField]
+    private AudioClip BgmAudioClip_9stage;
 
     [SerializeField]
     private AudioClip ModeSelectBgmAudioClip; //다른 씬에서 사용할 BGM
@@ -153,31 +159,49 @@ public class SoundManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "stage1")
         { //1스테이지 브금
             bgmPlayer = GameObject.Find("BGMSoundPlayer").GetComponent<AudioSource>();
-            bgmPlayer.clip = BgmAudioClip_1stage; 
+            bgmPlayer.clip = BgmAudioClip_1stage;
             bgmPlayer.Play();
         }
         else if (SceneManager.GetActiveScene().name == "stage2")
-        { //2,3스테이지 브금
+        { //2,스테이지 브금
             bgmPlayer = GameObject.Find("BGMSoundPlayer").GetComponent<AudioSource>();
             bgmPlayer.clip = BgmAudioClip_2stage;
             bgmPlayer.Play();
         }
-        else if ( SceneManager.GetActiveScene().name == "stage3" || SceneManager.GetActiveScene().name == "stage4" || SceneManager.GetActiveScene().name == "stage5")
+        else if (SceneManager.GetActiveScene().name == "stage3")
         { //2,3스테이지 브금
             bgmPlayer = GameObject.Find("BGMSoundPlayer").GetComponent<AudioSource>();
             bgmPlayer.clip = BgmAudioClip_3stage;
             bgmPlayer.Play();
         }
-        else if (SceneManager.GetActiveScene().name == "stage6")
-        { // 4스테이지 브금
+        else if (SceneManager.GetActiveScene().name == "stage4")
+        { //2,3스테이지 브금
             bgmPlayer = GameObject.Find("BGMSoundPlayer").GetComponent<AudioSource>();
             bgmPlayer.clip = BgmAudioClip_4stage;
             bgmPlayer.Play();
         }
-        else if (SceneManager.GetActiveScene().name == "stage7" || SceneManager.GetActiveScene().name == "stage8" || SceneManager.GetActiveScene().name == "stage9")
-        { //5,6스테이지 브금
+        else if (SceneManager.GetActiveScene().name == "stage5")
+        { //2,3스테이지 브금
             bgmPlayer = GameObject.Find("BGMSoundPlayer").GetComponent<AudioSource>();
             bgmPlayer.clip = BgmAudioClip_5stage;
+            bgmPlayer.Play();
+        }
+        else if (SceneManager.GetActiveScene().name == "stage6")
+        { // 4스테이지 브금
+            bgmPlayer = GameObject.Find("BGMSoundPlayer").GetComponent<AudioSource>();
+            bgmPlayer.clip = BgmAudioClip_6stage;
+            bgmPlayer.Play();
+        }
+        else if (SceneManager.GetActiveScene().name == "stage7")
+        { //모자장수
+            bgmPlayer = GameObject.Find("BGMSoundPlayer").GetComponent<AudioSource>();
+            bgmPlayer.clip = BgmAudioClip_7stage;
+            bgmPlayer.Play();
+        }
+        else if (SceneManager.GetActiveScene().name == "stage8" || SceneManager.GetActiveScene().name == "stage9")
+        { //하트여왕
+            bgmPlayer = GameObject.Find("BGMSoundPlayer").GetComponent<AudioSource>();
+            bgmPlayer.clip = BgmAudioClip_8stage;
             bgmPlayer.Play();
         }
         else if (SceneManager.GetActiveScene().name == "ModeSelect")

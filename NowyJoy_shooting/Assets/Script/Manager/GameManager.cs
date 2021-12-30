@@ -69,27 +69,43 @@ public class GameManager : MonoBehaviour
                 break;
             case 3:
                 stagenum = 1; // 스테이지 1
+                if (GameManager.GM_Instance.CurrentStage < 1)
+                    GameManager.GM_Instance.CurrentStage = 1;
                 break;
             case 4:
                 stagenum = 2; // 스테이지 2
+                if (GameManager.GM_Instance.CurrentStage < 2)
+                    GameManager.GM_Instance.CurrentStage = 2;
                 break;
             case 5:
                 stagenum = 3; // 스테이지 3
+                if (GameManager.GM_Instance.CurrentStage < 3)
+                    GameManager.GM_Instance.CurrentStage = 3;
                 break;
             case 6:     // 스테이지 4
                 stagenum = 4;
+                if (GameManager.GM_Instance.CurrentStage < 4)
+                    GameManager.GM_Instance.CurrentStage = 4;
                 break;
             case 7: // 스테이지 5
                 stagenum = 5;
+                if (GameManager.GM_Instance.CurrentStage < 5)
+                    GameManager.GM_Instance.CurrentStage = 5;
                 break;
             case 8:
                 stagenum = 6;
+                if (GameManager.GM_Instance.CurrentStage < 6)
+                    GameManager.GM_Instance.CurrentStage = 6;
                 break;
             case 9:
                 stagenum = 7;
+                if (GameManager.GM_Instance.CurrentStage < 7)
+                    GameManager.GM_Instance.CurrentStage = 7;
                 break;
             case 10:
                 stagenum = 8;
+                if (GameManager.GM_Instance.CurrentStage < 8)
+                    GameManager.GM_Instance.CurrentStage = 8;
                 break;
             case 11:
                 stagenum = 9;
@@ -205,31 +221,29 @@ public class GameManager : MonoBehaviour
     }
     public void Loadstar()
     {
-        if (PlayerPrefs.HasKey("Star1"))
-        {
-            if (CurrentStage == 1)
+            if (stagenum == 1)
             {
                 starnum[0] = PlayerPrefs.GetInt("Star1");
             }
-            else if (CurrentStage == 2)
+            else if (stagenum == 2)
             {
                 starnum[0] = PlayerPrefs.GetInt("Star1");
                 starnum[1] = PlayerPrefs.GetInt("Star2");
             }
-            else if (CurrentStage == 3)
+            else if (stagenum == 3)
             {
                 starnum[0] = PlayerPrefs.GetInt("Star1");
                 starnum[1] = PlayerPrefs.GetInt("Star2");
                 starnum[2] = PlayerPrefs.GetInt("Star3");
             }
-            else if (CurrentStage == 4)
+            else if (stagenum == 4)
             {
                 starnum[0] = PlayerPrefs.GetInt("Star1");
                 starnum[1] = PlayerPrefs.GetInt("Star2");
                 starnum[2] = PlayerPrefs.GetInt("Star3");
                 starnum[3] = PlayerPrefs.GetInt("Star4");
             }
-            else if (CurrentStage == 5)
+            else if (stagenum == 5)
             {
                 starnum[0] = PlayerPrefs.GetInt("Star1");
                 starnum[1] = PlayerPrefs.GetInt("Star2");
@@ -237,7 +251,7 @@ public class GameManager : MonoBehaviour
                 starnum[3] = PlayerPrefs.GetInt("Star4");
                 starnum[4] = PlayerPrefs.GetInt("Star5");
             }
-            else if (CurrentStage == 6)
+            else if (stagenum == 6)
             {
                 starnum[0] = PlayerPrefs.GetInt("Star1");
                 starnum[1] = PlayerPrefs.GetInt("Star2");
@@ -246,7 +260,7 @@ public class GameManager : MonoBehaviour
                 starnum[4] = PlayerPrefs.GetInt("Star5");
                 starnum[5] = PlayerPrefs.GetInt("Star6");
             }
-            else if (CurrentStage == 7)
+            else if (stagenum == 7)
             {
                 starnum[0] = PlayerPrefs.GetInt("Star1");
                 starnum[1] = PlayerPrefs.GetInt("Star2");
@@ -256,7 +270,7 @@ public class GameManager : MonoBehaviour
                 starnum[5] = PlayerPrefs.GetInt("Star6");
                 starnum[6] = PlayerPrefs.GetInt("Star7");
             }
-            else if (CurrentStage == 8)
+            else if (stagenum == 8)
             {
                 starnum[0] = PlayerPrefs.GetInt("Star1");
                 starnum[1] = PlayerPrefs.GetInt("Star2");
@@ -267,6 +281,5 @@ public class GameManager : MonoBehaviour
                 starnum[6] = PlayerPrefs.GetInt("Star7");
                 starnum[7] = PlayerPrefs.GetInt("Star8");
             }
-        }
     }
 }

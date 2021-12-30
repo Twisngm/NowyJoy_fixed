@@ -63,19 +63,20 @@ public class StageManager : MonoBehaviour
             GM.Save();
 
             if (GM.stagenum == 8)
-            {
-                GM.stageUnlock[GM.stagenum] = true;
+            {   
+               
                 if (GM.HP >= (GM.MaxHP * 0.8))
-                {
+                {                
                     GM.starSaver(GM.stagenum, 2);
                 }
                 else
                 {
-                    if (GM.starnum[GM.stagenum] != 2)
-                    {
+                    if (GM.starnum[GM.stagenum - 1] != 2)
+                    {          
                         GM.starSaver(GM.stagenum, 1);
                     }
                 }
+                GM.Loadstar();
                 SceneManager.LoadScene(15);
             }
             else
@@ -85,14 +86,20 @@ public class StageManager : MonoBehaviour
                 {
                     PerfectClear.SetActive(true);
                     Clearstar_blue.SetActive(true);
-                    GM.CurrentStage = GM.stagenum + 1;
+                    if (GM.CurrentStage <= GM.stagenum)
+                    {
+                        GM.CurrentStage = GM.stagenum + 1;
+                    }
                     GM.starSaver(GM.stagenum, 2);
                 }
                 else
                 {
                     Clear.SetActive(true);
                     Clearstar_yellow.SetActive(true);
-                    GM.CurrentStage = GM.stagenum + 1;
+                    if (GM.CurrentStage <= GM.stagenum)
+                    {
+                        GM.CurrentStage = GM.stagenum + 1;
+                    }
                     if (GM.starnum[GM.stagenum-1] != 2)
                     {
                         GM.starSaver(GM.stagenum, 1);

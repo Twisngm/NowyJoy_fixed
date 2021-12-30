@@ -6,6 +6,7 @@ using DG.Tweening;
 public class Fade : MonoBehaviour
 {
     public GameObject PM;
+    public bool SetPM;
     public SpriteRenderer Player;
     public Text StageTxt;
     public LetterSpacing Txt;
@@ -44,6 +45,7 @@ public class Fade : MonoBehaviour
         StageTxt.GetComponentInChildren<Text>().DOFade(0, 1).OnComplete(GameStart);
         Time.timeScale = 1;
         transform.gameObject.SetActive(false);
+        if(SetPM)
         PM.SetActive(true);
     }
 

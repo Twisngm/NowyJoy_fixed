@@ -1872,7 +1872,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 567155359601311010, guid: e906f26082f7d7e4c8e1e6e13dfe98b3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 810
+      value: 570
       objectReference: {fileID: 0}
     - target: {fileID: 567155359601311010, guid: e906f26082f7d7e4c8e1e6e13dfe98b3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5076,6 +5076,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RushWarning: {fileID: 871747495}
   Smoke: {fileID: 0}
+  SM: {fileID: 0}
 --- !u!4 &1035016807
 Transform:
   m_ObjectHideFlags: 0
@@ -10321,7 +10322,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 567155359601311010, guid: e906f26082f7d7e4c8e1e6e13dfe98b3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 810
+      value: 570
       objectReference: {fileID: 0}
     - target: {fileID: 567155359601311010, guid: e906f26082f7d7e4c8e1e6e13dfe98b3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

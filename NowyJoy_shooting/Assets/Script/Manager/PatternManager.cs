@@ -55,7 +55,8 @@ public class PatternManager : MonoBehaviour
     public GameObject[] Warning = new GameObject[4];
     public GameObject[] Warning_F = new GameObject[4];
     public  bool[] isAble_Shape = new bool[4];
-    int Direction;
+    public int Direction;
+    public int Direction_F;
     int Count = 0;
     int Count_F = 0;
 
@@ -313,11 +314,11 @@ public class PatternManager : MonoBehaviour
                 if (isBoss)
                     randPtn[1] = Random.Range(4, 8); // 2스테이지 보스
                 else
-                    randPtn[1] = Random.Range(0, 9); // 2스테이지 일반              
+                    randPtn[1] = Random.Range(2, 9); // 2스테이지 일반              
             else if (GM.stagenum == 4) // 3스테이지
                 randPtn[1] = Random.Range(4, 10);
             else if (GM.stagenum == 5)// 3.5스테이지
-                randPtn[1] = Random.Range(4, 8);
+                randPtn[1] = Random.Range(2, 5);
             else if (GM.stagenum == 6) // 4스테이지 패턴
                 if (isBoss)
                     randPtn[1] = Random.Range(4, 8); // 4스테이지 보스
@@ -385,7 +386,8 @@ public class PatternManager : MonoBehaviour
                 break;
 
             case 2:
-                StartCoroutine("SpiralShot");  // 나선샷 
+                StartCoroutine("SinWaveShot"); // 사인곡선샷
+              
                 break;
 
             case 3:
@@ -401,7 +403,7 @@ public class PatternManager : MonoBehaviour
                 break;
 
             case 6:
-                StartCoroutine("SinWaveShot"); // 사인곡선샷
+                StartCoroutine("SpiralShot");  // 나선샷 
                 break;
 
             case 7:
@@ -501,11 +503,11 @@ public class PatternManager : MonoBehaviour
     public IEnumerator spin()
     {
        
-            StartCoroutine("spinning");
-            isPatterning = true;
-        yield return new WaitForSeconds(2.5f);
-            StopCoroutine("spinning");
-              isPatterning = false;
+       StartCoroutine("spinning");
+       isPatterning = true;
+       yield return new WaitForSeconds(2.5f);
+       StopCoroutine("spinning");
+       isPatterning = false;
            
         
     }
@@ -721,19 +723,20 @@ public class PatternManager : MonoBehaviour
             }
 
             isAble_Shape[Direction] = false;
-
+         
       
             Warning[Direction].SetActive(true);
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1f);
             Warning[Direction].SetActive(false);
+
             sevenWay_ptn.transform.position = shapePos[Direction].transform.position;
             sevenWay_ptn.GetComponent<UbhShotCtrl>().StartShotRoutine();
             yield return new WaitForSeconds(0.2f);
             sevenWay_ptn.GetComponent<UbhShotCtrl>().StopShotRoutineAndPlayingShot();
             Count++;
-
-            yield return new WaitForSeconds(0.5f);
             cnt++;
+            yield return new WaitForSeconds(0.5f);
+           
         }
         isPatterning = false;
   
@@ -757,21 +760,21 @@ public class PatternManager : MonoBehaviour
                     break;
 
             }
+           
 
             isAble_Shape[Direction] = false;
-
-
+        
             Warning[Direction].SetActive(true);
-            yield return new WaitForSeconds(1.25f);
+            yield return new WaitForSeconds(1f);
             Warning[Direction].SetActive(false);
             Spiral_ptn.transform.position = shapePos[Direction].transform.position;
             Spiral_ptn.GetComponent<UbhShotCtrl>().StartShotRoutine();
             yield return new WaitForSeconds(0.5f);
             Spiral_ptn.GetComponent<UbhShotCtrl>().StopShotRoutineAndPlayingShot();
             Count++;
-
-            yield return new WaitForSeconds(0.5f);
             cnt++;
+            yield return new WaitForSeconds(0.5f);
+           
         }
         isPatterning = false;
 
@@ -796,19 +799,19 @@ public class PatternManager : MonoBehaviour
             }
 
             isAble_Shape[Direction] = false;
-
+          
 
             Warning[Direction].SetActive(true);
-            yield return new WaitForSeconds(1.25f);
+            yield return new WaitForSeconds(1f);
             Warning[Direction].SetActive(false);
             Circle_ptn.transform.position = shapePos[Direction].transform.position;
             Circle_ptn.GetComponent<UbhShotCtrl>().StartShotRoutine();
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.2f);
             Circle_ptn.GetComponent<UbhShotCtrl>().StopShotRoutineAndPlayingShot();
             Count++;
-
-            yield return new WaitForSeconds(0.5f);
             cnt++;
+            yield return new WaitForSeconds(0.5f);
+            
         }
         isPatterning = false;
 
@@ -824,49 +827,49 @@ public class PatternManager : MonoBehaviour
             while (true)
             {
 
-                Direction = Random.Range(0, 4);
+                Direction_F = Random.Range(0, 4);
 
-                if (isAble_Flamingo[Direction] == true)
+                if (isAble_Flamingo[Direction_F] == true)
                     break;
 
             }
 
-            isAble_Flamingo[Direction] = false;
+            isAble_Flamingo[Direction_F] = false;
 
-            Warning_F[Direction].SetActive(true);
+            Warning_F[Direction_F].SetActive(true);
             yield return new WaitForSeconds(1f);
-            Warning_F[Direction].SetActive(false);
+            Warning_F[Direction_F].SetActive(false);
 
             flamingo.SetActive(true);
             thorn.SetActive(true);
 
             float randPosX = Random.Range(-0.75f, 0.75f);
             float randPosY = Random.Range(-3.2f, 3.2f);
-            yield return new WaitForSeconds(0.1f);
-            if (Direction == 0)
+            yield return new WaitForSeconds(0.01f);
+            if (Direction_F == 0)
             {
-                flamingo.transform.position = new Vector2(randPosX, flaPos[Direction].transform.position.y);
+                flamingo.transform.position = new Vector2(randPosX, flaPos[Direction_F].transform.position.y);
                 flamingo.transform.rotation = Quaternion.Euler(0, 0, 180);
                 yield return new WaitForSeconds(0.1f);
                 iTween.MoveTo(flamingo, iTween.Hash("y", -5.5f, "time", 3.5f, "easeType", "Linear"));
             }
-            else if (Direction == 1)
+            else if (Direction_F == 1)
             {
-                flamingo.transform.position = new Vector2(randPosX, flaPos[Direction].transform.position.y);
+                flamingo.transform.position = new Vector2(randPosX, flaPos[Direction_F].transform.position.y);
                 flamingo.transform.rotation = Quaternion.Euler(0, 0, 0);
                 yield return new WaitForSeconds(0.1f);
                 iTween.MoveTo(flamingo, iTween.Hash("y", 5.5f, "time", 3.5f, "easeType", "Linear"));
             }
-            else if (Direction == 2)
+            else if (Direction_F == 2)
             {
-                flamingo.transform.position = new Vector2(flaPos[Direction].transform.position.x, randPosY);
+                flamingo.transform.position = new Vector2(flaPos[Direction_F].transform.position.x, randPosY);
                 flamingo.transform.rotation = Quaternion.Euler(0, 0, 90);
                 yield return new WaitForSeconds(0.1f);
                 iTween.MoveTo(flamingo, iTween.Hash("x", -3.5f, "time", 3.5f, "easeType", "Linear"));
             }
-            else if (Direction == 3)
+            else if (Direction_F == 3)
             {
-                flamingo.transform.position = new Vector2(flaPos[Direction].transform.position.x, randPosY);
+                flamingo.transform.position = new Vector2(flaPos[Direction_F].transform.position.x, randPosY);
                 flamingo.transform.rotation = Quaternion.Euler(0, 0, -90);
                 yield return new WaitForSeconds(0.1f);
                 iTween.MoveTo(flamingo, iTween.Hash("x", 3.5f, "time", 3.5f, "easeType", "Linear"));
@@ -983,7 +986,7 @@ public class PatternManager : MonoBehaviour
         // 중앙선 드랍
 
         centerLine.SetActive(true);
-        iTween.MoveTo(centerLine, iTween.Hash("z", 0, "time", 1.5f, "easeType", "EaseOutBounce"));
+        iTween.MoveTo(centerLine, iTween.Hash("z", 0, "time", 1f, "easeType", "EaseOutBounce"));
 
         // 플레이어 활성화 및 분열
 
@@ -1050,7 +1053,6 @@ public class PatternManager : MonoBehaviour
             yield return new WaitForSeconds(Wiper_Speed);
             Wiper_Hor.SetActive(false); // 비활성화
             Warning_Wiper_Hor.SetActive(false);
-
         }
         
         else if(Pos.position.y != 0) // 상하 와이퍼
@@ -1062,7 +1064,9 @@ public class PatternManager : MonoBehaviour
                     Warning[0].SetActive(true);
                 else
                     Warning[1].SetActive(true);
+
                 yield return new WaitForSeconds(1f);
+
                 if (Pos.position.y > 0)
                     Warning[0].SetActive(false);
                 else
@@ -1177,7 +1181,7 @@ public class PatternManager : MonoBehaviour
 
         while (height <= 1) /// 레이저 발사 기능
         {
-            height += LaserSpeed / 500;
+            height += (LaserSpeed / 5) * Time.deltaTime;
             Laser.transform.localScale = new Vector3(height, 1 , 1);
             yield return new WaitForSeconds(0.001f * Time.deltaTime);
         } ///

@@ -1514,7 +1514,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 21ee69dc1112a4d488350f288f202464, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 98da1bbd37a376549bd86a8542f74aa5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2822,7 +2822,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 578a51c97fe918845a83058c0189e3ba, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0cea348683379a4458b2223957867015, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3741,7 +3741,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 31268eaca000f974db74b7240dcbd008, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4cad827ca4926614fabf805d97cf9fcc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4302,14 +4302,17 @@ MonoBehaviour:
   - {fileID: 1136271719}
   attackPlaySoundName: []
   bgmPlayer: {fileID: 0}
-  mainBgmAudioClip: {fileID: 8300000, guid: b639786a7571aa040880a34e26403052, type: 3}
-  TitleBgmAudioClip: {fileID: 8300000, guid: b639786a7571aa040880a34e26403052, type: 3}
+  mainBgmAudioClip: {fileID: 8300000, guid: c120bd05a79460d4bbae319296c3647a, type: 3}
+  TitleBgmAudioClip: {fileID: 8300000, guid: c120bd05a79460d4bbae319296c3647a, type: 3}
   BgmAudioClip_1stage: {fileID: 8300000, guid: 34f76d6adb9769c47888d15b11c68dfd, type: 3}
   BgmAudioClip_2stage: {fileID: 8300000, guid: 254ec0d830574484a917d32b227be08d, type: 3}
   BgmAudioClip_3stage: {fileID: 8300000, guid: 06f3f2f6725ce234cacb4252ce0df914, type: 3}
-  BgmAudioClip_4stage: {fileID: 8300000, guid: a673b3a62e5a2d04dae9daf693225d7d, type: 3}
-  BgmAudioClip_5stage: {fileID: 8300000, guid: 57a2e491a0d5e124ea441338fd6422dc, type: 3}
-  BgmAudioClip_6stage: {fileID: 8300000, guid: 57a2e491a0d5e124ea441338fd6422dc, type: 3}
+  BgmAudioClip_4stage: {fileID: 8300000, guid: 9602cf4fa0e852745929f24a69dd8309, type: 3}
+  BgmAudioClip_5stage: {fileID: 8300000, guid: 0ccf396b7306569459ff4c5d95ba0ffa, type: 3}
+  BgmAudioClip_6stage: {fileID: 8300000, guid: a673b3a62e5a2d04dae9daf693225d7d, type: 3}
+  BgmAudioClip_7stage: {fileID: 8300000, guid: c140822471d04bb44b02b9bf07c76d70, type: 3}
+  BgmAudioClip_8stage: {fileID: 8300000, guid: 57a2e491a0d5e124ea441338fd6422dc, type: 3}
+  BgmAudioClip_9stage: {fileID: 8300000, guid: 57a2e491a0d5e124ea441338fd6422dc, type: 3}
   ModeSelectBgmAudioClip: {fileID: 8300000, guid: 66f3b1a5bc280614ea1f91744773868a, type: 3}
 --- !u!82 &1136271716
 AudioSource:
@@ -5172,7 +5175,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 21ee69dc1112a4d488350f288f202464, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 98da1bbd37a376549bd86a8542f74aa5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5255,7 +5258,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 578a51c97fe918845a83058c0189e3ba, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0cea348683379a4458b2223957867015, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5881,7 +5884,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 31268eaca000f974db74b7240dcbd008, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4cad827ca4926614fabf805d97cf9fcc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

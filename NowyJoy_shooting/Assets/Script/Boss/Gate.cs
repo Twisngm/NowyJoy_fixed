@@ -24,6 +24,7 @@ public class Gate : MonoBehaviour
             // flame.GetComponent<SpriteRenderer>().color = Color.green;
             StartCoroutine("FadeOut");
             GB.goalCnt++;
+            gameObject.SetActive(false);
         }
     }
 

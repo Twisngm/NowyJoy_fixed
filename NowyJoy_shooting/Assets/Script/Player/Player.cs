@@ -142,7 +142,7 @@ public class Player : MonoBehaviour
                 lastTouchTime = Time.time; // 첫번째 손가락을 뗀 순간을 마지막 터치 시간으로 저장
             }
         }
-        /*if (Input.touchCount == 2) // 터치 입력이 두개일 때
+        if (Input.touchCount == 2) // 터치 입력이 두개일 때
         {
             touchZero = Input.GetTouch(0); // 첫번째 터치를 저장
             touchOne = Input.GetTouch(1); // 두번째 터치를 저장
@@ -160,7 +160,7 @@ public class Player : MonoBehaviour
             //거리 차이 구하기 (마이너스면 손가락을 벌린 상태)
             float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
 
-            if (deltaMagnitudeDiff > 0 && transform.localScale.x >= 0.15f)
+            /*if (deltaMagnitudeDiff > 0 && transform.localScale.x >= 0.15f)
             { // 손가락을 서로 가까이 드래그했으며 플레이어의 사이즈가 0.1 이상이라면
                 transform.localScale = new Vector3(
                     transform.localScale.x - 1.0f * (transferspeed * Time.deltaTime),
@@ -186,7 +186,7 @@ public class Player : MonoBehaviour
                     //Playercollider.size.y + (transferspeed * 16 * Time.deltaTime)
                   //  );
                 
-            }
+            }*/
             if (touchZero.phase == TouchPhase.Began) // 첫번째 터치의 phase가 Began(시작)이라면
             {
                     onTouch = true; // onTouch를 true로 (이동 o)
@@ -207,22 +207,7 @@ public class Player : MonoBehaviour
             }
 
         }
-        else
-        {
-            if (transform.localScale.x < 0.3f)
-            {
-                transform.localScale = new Vector3(
-                    transform.localScale.x + (transferspeed * Time.deltaTime),
-                    transform.localScale.y + (transferspeed * Time.deltaTime),
-                    0.3f);
-                
-                    //Playercollider.size = new Vector2(
-                    //Playercollider.size.x + (transferspeed * 13 * Time.deltaTime),
-                    //Playercollider.size.y + (transferspeed * 16 * Time.deltaTime)
-                    //);
-                
-            }
-        }*/
+        
         if (onTouch && Time.timeScale != 0)
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.GetTouch(0).position.x * -1, Input.GetTouch(0).position.y * -1, Spacepos.z));

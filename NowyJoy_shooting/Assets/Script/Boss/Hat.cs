@@ -27,21 +27,30 @@ public class Hat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MH = GameObject.FindGameObjectWithTag("MadHatter").GetComponent<MadHatter>();
+     //   MH = GameObject.Find("RaidBoss_MadHatter").GetComponent<MadHatter>();
     }
 
     // Update is called once per frame
 
+/*
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+       
+    }
+*/
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Body" && MH.isAble == true)
+        if (collision.gameObject.tag == "Body" && MH.isAble == true)
         {
             gameObject.SetActive(false);
             MH.isAble = false;
             Invoke("SetAble", 1f);
         }
     }
-    
+
+
+
     void SetAble()
     {
         MH.isAble = true;
