@@ -3269,6 +3269,11 @@ Transform:
   m_Father: {fileID: 875708484}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &507335384 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5497408524034208233, guid: 7c658062d8b55444583256412605cd1a, type: 3}
+  m_PrefabInstance: {fileID: 5497408523700833576}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -8382,6 +8387,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 791123069}
     m_Modifications:
+    - target: {fileID: 567155357901383661, guid: e906f26082f7d7e4c8e1e6e13dfe98b3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 19ee112b2fd52dc46aaedeb6bbb04ccd, type: 3}
+    - target: {fileID: 567155359601311009, guid: e906f26082f7d7e4c8e1e6e13dfe98b3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d3c8f9908b622d547986075128ba7634, type: 3}
     - target: {fileID: 567155359601311010, guid: e906f26082f7d7e4c8e1e6e13dfe98b3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -10191,6 +10204,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 791123069}
     m_Modifications:
+    - target: {fileID: 567155357901383661, guid: e906f26082f7d7e4c8e1e6e13dfe98b3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 19ee112b2fd52dc46aaedeb6bbb04ccd, type: 3}
+    - target: {fileID: 567155359601311009, guid: e906f26082f7d7e4c8e1e6e13dfe98b3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d3c8f9908b622d547986075128ba7634, type: 3}
     - target: {fileID: 567155359601311010, guid: e906f26082f7d7e4c8e1e6e13dfe98b3, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -10658,7 +10679,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4888688031186015602, guid: 2ead5bbcfd311164db1fe25ab144d139, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4888688031186015603, guid: 2ead5bbcfd311164db1fe25ab144d139, type: 3}
       propertyPath: m_Pivot.x
@@ -12057,6 +12078,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 791123069}
     m_Modifications:
+    - target: {fileID: 567155357901383661, guid: e906f26082f7d7e4c8e1e6e13dfe98b3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 19ee112b2fd52dc46aaedeb6bbb04ccd, type: 3}
+    - target: {fileID: 567155359601311009, guid: e906f26082f7d7e4c8e1e6e13dfe98b3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d3c8f9908b622d547986075128ba7634, type: 3}
     - target: {fileID: 567155359601311010, guid: e906f26082f7d7e4c8e1e6e13dfe98b3, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -14546,6 +14575,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 791123069}
     m_Modifications:
+    - target: {fileID: 567155357901383661, guid: e906f26082f7d7e4c8e1e6e13dfe98b3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 19ee112b2fd52dc46aaedeb6bbb04ccd, type: 3}
+    - target: {fileID: 567155359601311009, guid: e906f26082f7d7e4c8e1e6e13dfe98b3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d3c8f9908b622d547986075128ba7634, type: 3}
     - target: {fileID: 567155359601311010, guid: e906f26082f7d7e4c8e1e6e13dfe98b3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -16133,6 +16170,10 @@ PrefabInstance:
       propertyPath: Laser
       value: 
       objectReference: {fileID: 2022120712}
+    - target: {fileID: 5710001871153262703, guid: bb811f19bacba5042a86a3eed00e4e87, type: 3}
+      propertyPath: heart
+      value: 
+      objectReference: {fileID: 507335384}
     - target: {fileID: 5710001871153262703, guid: bb811f19bacba5042a86a3eed00e4e87, type: 3}
       propertyPath: thorn
       value: 

@@ -34,7 +34,7 @@ public class GateBall : MonoBehaviour
     void Start()
     {
         HQ = GameObject.Find("Heart_Queen").GetComponent<Heart_Queen>();
-        StartCoroutine("GoalFail");
+        
     }
 
     // Update is called once per frame
@@ -80,7 +80,7 @@ public class GateBall : MonoBehaviour
         ball.SetActive(true);
         ball.transform.position = new Vector3(0, -2.55f, 0);
 
-        
+        StartCoroutine("GoalFail");
 
         for (int i = 0; i < gates.Length; i++)
         {
@@ -172,6 +172,7 @@ public class GateBall : MonoBehaviour
         {
             yield return new WaitForSeconds(0.1f);
             StartCoroutine("GoalFail");
+            Debug.Log("¹Ç¤Í¾ß");
         }
     }
 }
