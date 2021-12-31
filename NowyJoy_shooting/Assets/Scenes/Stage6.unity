@@ -13166,6 +13166,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 667707127}
     - target: {fileID: 8666031448854229698, guid: 931885ef4ba80334685920982d2572ab, type: 3}
+      propertyPath: moveSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8666031448854229698, guid: 931885ef4ba80334685920982d2572ab, type: 3}
       propertyPath: Hat.Array.data[0]
       value: 
       objectReference: {fileID: 476004246}

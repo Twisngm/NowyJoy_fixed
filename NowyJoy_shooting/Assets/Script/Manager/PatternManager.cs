@@ -960,6 +960,11 @@ public class PatternManager : MonoBehaviour
         else
             iTween.MoveTo(cam, iTween.Hash("z", -1, "time", 0.5f, "easeType", "Linear"));
         isPatterning = false;
+        Invoke("InitZ", 0.5f);
+    }
+    void InitZ()
+    {
+        player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 0);
     }
 
     void StartMirror()
@@ -994,6 +999,7 @@ public class PatternManager : MonoBehaviour
         Mirror.SetActive(true);
         Mirror_Safe[0].SetActive(true);
         Mirror_Safe[1].SetActive(true);
+        yield return new WaitForSeconds(0.2f);
         GameObject playerClone = objManager.MakeObj("playerClone"); // 適経 持失
         player.SetActive(true);      
         playerClone.transform.position = ClonePos;

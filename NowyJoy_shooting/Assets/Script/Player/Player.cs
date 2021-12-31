@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
     public GameObject shotEffect;
     void Start()
     {
-        Spacepos = Camera.main.ScreenToWorldPoint(transform.position);
+        Spacepos = Camera.main.ScreenToWorldPoint(Vector3.zero);
         Playercollider = GetComponent<PolygonCollider2D>();
         heart = transform.GetChild(0).GetComponent<Heart>();
         lastTouchTime = Time.time;
@@ -73,6 +73,7 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
+        
         OnDrag();
         //Update_LookRatation();
         //Reload();
